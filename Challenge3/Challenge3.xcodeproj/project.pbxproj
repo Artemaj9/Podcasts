@@ -7,18 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D84B2C12AC094A900BC87E7 /* Challenge3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B2C02AC094A900BC87E7 /* Challenge3App.swift */; };
-		5D84B2C32AC094A900BC87E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B2C22AC094A900BC87E7 /* ContentView.swift */; };
 		5D84B2C52AC094AB00BC87E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D84B2C42AC094AB00BC87E7 /* Assets.xcassets */; };
 		5D84B2C82AC094AB00BC87E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D84B2C72AC094AB00BC87E7 /* Preview Assets.xcassets */; };
+		5D84B2CF2AC0961600BC87E7 /* PodcastAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B2CE2AC0961600BC87E7 /* PodcastAppApp.swift */; };
+		5D84B2D42AC0968200BC87E7 /* LocalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B2D32AC0968200BC87E7 /* LocalManager.swift */; };
+		5D84B2E42AC0975100BC87E7 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B2D72AC0975100BC87E7 /* FirebaseManager.swift */; };
+		5D84B2E52AC0975100BC87E7 /* PodcastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B2DA2AC0975100BC87E7 /* PodcastModel.swift */; };
+		5D84B2E62AC0975100BC87E7 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B2DC2AC0975100BC87E7 /* APIError.swift */; };
+		5D84B2E72AC0975100BC87E7 /* APIMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B2DD2AC0975100BC87E7 /* APIMethods.swift */; };
+		5D84B2E82AC0975100BC87E7 /* SessionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B2DE2AC0975100BC87E7 /* SessionDispatcher.swift */; };
+		5D84B2E92AC0975100BC87E7 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B2DF2AC0975100BC87E7 /* DataProvider.swift */; };
+		5D84B2EA2AC0975100BC87E7 /* RequestImplimentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B2E02AC0975100BC87E7 /* RequestImplimentation.swift */; };
+		5D84B2EB2AC0975100BC87E7 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B2E12AC0975100BC87E7 /* RequestProtocol.swift */; };
+		5D84B2EC2AC0975100BC87E7 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B2E22AC0975100BC87E7 /* ContentType.swift */; };
+		5D84B2ED2AC0975100BC87E7 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B2E32AC0975100BC87E7 /* APIRequest.swift */; };
+		5D84B3022AC0985E00BC87E7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B3012AC0985E00BC87E7 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5D84B2BD2AC094A900BC87E7 /* Challenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5D84B2C02AC094A900BC87E7 /* Challenge3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge3App.swift; sourceTree = "<group>"; };
-		5D84B2C22AC094A900BC87E7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5D84B2C42AC094AB00BC87E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D84B2C72AC094AB00BC87E7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5D84B2CE2AC0961600BC87E7 /* PodcastAppApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastAppApp.swift; sourceTree = "<group>"; };
+		5D84B2D32AC0968200BC87E7 /* LocalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalManager.swift; sourceTree = "<group>"; };
+		5D84B2D72AC0975100BC87E7 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		5D84B2DA2AC0975100BC87E7 /* PodcastModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastModel.swift; sourceTree = "<group>"; };
+		5D84B2DC2AC0975100BC87E7 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		5D84B2DD2AC0975100BC87E7 /* APIMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIMethods.swift; sourceTree = "<group>"; };
+		5D84B2DE2AC0975100BC87E7 /* SessionDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDispatcher.swift; sourceTree = "<group>"; };
+		5D84B2DF2AC0975100BC87E7 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		5D84B2E02AC0975100BC87E7 /* RequestImplimentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestImplimentation.swift; sourceTree = "<group>"; };
+		5D84B2E12AC0975100BC87E7 /* RequestProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
+		5D84B2E22AC0975100BC87E7 /* ContentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
+		5D84B2E32AC0975100BC87E7 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		5D84B3012AC0985E00BC87E7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +73,10 @@
 		5D84B2BF2AC094A900BC87E7 /* Challenge3 */ = {
 			isa = PBXGroup;
 			children = (
-				5D84B2C02AC094A900BC87E7 /* Challenge3App.swift */,
-				5D84B2C22AC094A900BC87E7 /* ContentView.swift */,
+				5D84B2CE2AC0961600BC87E7 /* PodcastAppApp.swift */,
+				5D84B2D22AC0968200BC87E7 /* LocalManagers */,
+				5D84B2D52AC0975100BC87E7 /* NetworkLayer */,
+				5D84B3032AC0986E00BC87E7 /* Extension */,
 				5D84B2C42AC094AB00BC87E7 /* Assets.xcassets */,
 				5D84B2C62AC094AB00BC87E7 /* Preview Content */,
 			);
@@ -65,6 +89,71 @@
 				5D84B2C72AC094AB00BC87E7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5D84B2D22AC0968200BC87E7 /* LocalManagers */ = {
+			isa = PBXGroup;
+			children = (
+				5D84B2D32AC0968200BC87E7 /* LocalManager.swift */,
+			);
+			path = LocalManagers;
+			sourceTree = "<group>";
+		};
+		5D84B2D52AC0975100BC87E7 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				5D84B2D62AC0975100BC87E7 /* FirebaseManagers */,
+				5D84B2D82AC0975100BC87E7 /* APIManagers */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		5D84B2D62AC0975100BC87E7 /* FirebaseManagers */ = {
+			isa = PBXGroup;
+			children = (
+				5D84B2D72AC0975100BC87E7 /* FirebaseManager.swift */,
+			);
+			path = FirebaseManagers;
+			sourceTree = "<group>";
+		};
+		5D84B2D82AC0975100BC87E7 /* APIManagers */ = {
+			isa = PBXGroup;
+			children = (
+				5D84B2D92AC0975100BC87E7 /* Models */,
+				5D84B2DB2AC0975100BC87E7 /* Base */,
+			);
+			path = APIManagers;
+			sourceTree = "<group>";
+		};
+		5D84B2D92AC0975100BC87E7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5D84B2DA2AC0975100BC87E7 /* PodcastModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5D84B2DB2AC0975100BC87E7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				5D84B2DC2AC0975100BC87E7 /* APIError.swift */,
+				5D84B2DD2AC0975100BC87E7 /* APIMethods.swift */,
+				5D84B2DE2AC0975100BC87E7 /* SessionDispatcher.swift */,
+				5D84B2DF2AC0975100BC87E7 /* DataProvider.swift */,
+				5D84B2E02AC0975100BC87E7 /* RequestImplimentation.swift */,
+				5D84B2E12AC0975100BC87E7 /* RequestProtocol.swift */,
+				5D84B2E22AC0975100BC87E7 /* ContentType.swift */,
+				5D84B2E32AC0975100BC87E7 /* APIRequest.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		5D84B3032AC0986E00BC87E7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5D84B3012AC0985E00BC87E7 /* Extensions.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +198,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 5D84B2B42AC094A900BC87E7;
 			productRefGroup = 5D84B2BE2AC094A900BC87E7 /* Products */;
@@ -137,8 +227,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D84B2C32AC094A900BC87E7 /* ContentView.swift in Sources */,
-				5D84B2C12AC094A900BC87E7 /* Challenge3App.swift in Sources */,
+				5D84B2E42AC0975100BC87E7 /* FirebaseManager.swift in Sources */,
+				5D84B2CF2AC0961600BC87E7 /* PodcastAppApp.swift in Sources */,
+				5D84B2ED2AC0975100BC87E7 /* APIRequest.swift in Sources */,
+				5D84B2EA2AC0975100BC87E7 /* RequestImplimentation.swift in Sources */,
+				5D84B2D42AC0968200BC87E7 /* LocalManager.swift in Sources */,
+				5D84B2EC2AC0975100BC87E7 /* ContentType.swift in Sources */,
+				5D84B2E52AC0975100BC87E7 /* PodcastModel.swift in Sources */,
+				5D84B2EB2AC0975100BC87E7 /* RequestProtocol.swift in Sources */,
+				5D84B2E82AC0975100BC87E7 /* SessionDispatcher.swift in Sources */,
+				5D84B2E92AC0975100BC87E7 /* DataProvider.swift in Sources */,
+				5D84B2E72AC0975100BC87E7 /* APIMethods.swift in Sources */,
+				5D84B2E62AC0975100BC87E7 /* APIError.swift in Sources */,
+				5D84B3022AC0985E00BC87E7 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
