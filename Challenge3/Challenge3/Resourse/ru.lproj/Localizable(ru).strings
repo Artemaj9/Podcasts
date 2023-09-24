@@ -6,3 +6,6 @@
 //MARK: - StartCreateAccount
 
 "StartCreate.navTitle" = "Создать аккаунт";
+"Onboarding.skip" = "Пропустить";
+"Onboarding.next" = "Далее";
+"Onboarding.getStarted" = "Начать";

@@ -6,3 +6,6 @@
 //MARK: - StartCreateAccount
 
 "StartCreate.navTitle" = "Create account";
+"Onboarding.skip" = "Skip";
+"Onboarding.next" = "Next";
+"Onboarding.getStarted" = "Get Started";

@@ -15,7 +15,11 @@ struct Localizable {
         enum CreateWithEmail {}
     }
     
-    enum Onboarding {}
+    enum Onboarding {
+        static let skip = localizedStringKey("Onboarding.skip")
+        static let next = localizedStringKey("Onboarding.next")
+        static let getStarted = localizedStringKey("Onboarding.getStarted")
+    }
     
     enum HomePage {}
     

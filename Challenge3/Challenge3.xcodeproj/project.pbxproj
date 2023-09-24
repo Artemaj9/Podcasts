@@ -49,7 +49,6 @@
 		5D84B35E2AC0999C00BC87E7 /* NowPlayingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B3282AC0999C00BC87E7 /* NowPlayingViewModel.swift */; };
 		5D84B35F2AC0999C00BC87E7 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B3292AC0999C00BC87E7 /* NowPlayingView.swift */; };
 		5D84B3602AC0999C00BC87E7 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B32B2AC0999C00BC87E7 /* OnboardingModel.swift */; };
-		5D84B3612AC0999C00BC87E7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B32C2AC0999C00BC87E7 /* OnboardingView.swift */; };
 		5D84B3622AC0999C00BC87E7 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B32F2AC0999C00BC87E7 /* SearchView.swift */; };
 		5D84B3632AC0999C00BC87E7 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B3302AC0999C00BC87E7 /* SearchViewModel.swift */; };
 		5D84B3642AC0999C00BC87E7 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B3312AC0999C00BC87E7 /* SearchModel.swift */; };
@@ -67,6 +66,9 @@
 		5D84B3702AC0999C00BC87E7 /* AutorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B3432AC0999C00BC87E7 /* AutorizationView.swift */; };
 		5D84B3712AC0999C00BC87E7 /* AutorizarionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B3442AC0999C00BC87E7 /* AutorizarionModel.swift */; };
 		5D84B3722AC0999C00BC87E7 /* AutorizarionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B3452AC0999C00BC87E7 /* AutorizarionViewModel.swift */; };
+		B72544812AC0D0D3003B3FF6 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72544802AC0D0D3003B3FF6 /* OnboardingViewModel.swift */; };
+		B72544842AC0D229003B3FF6 /* OnboardingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72544832AC0D229003B3FF6 /* OnboardingIndicator.swift */; };
+		B72544862AC0D9C4003B3FF6 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72544852AC0D9C4003B3FF6 /* OnboardingView.swift */; };
 		B78EC3C32AC0C050009B8ABC /* Localizable(en).strings in Resources */ = {isa = PBXBuildFile; fileRef = B78EC3BC2AC0C050009B8ABC /* Localizable(en).strings */; };
 		B78EC3C42AC0C050009B8ABC /* Pallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EC3BE2AC0C050009B8ABC /* Pallete.swift */; };
 		B78EC3C52AC0C050009B8ABC /* Localizable(ru).strings in Resources */ = {isa = PBXBuildFile; fileRef = B78EC3BF2AC0C050009B8ABC /* Localizable(ru).strings */; };
@@ -118,7 +120,6 @@
 		5D84B3282AC0999C00BC87E7 /* NowPlayingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingViewModel.swift; sourceTree = "<group>"; };
 		5D84B3292AC0999C00BC87E7 /* NowPlayingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		5D84B32B2AC0999C00BC87E7 /* OnboardingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
-		5D84B32C2AC0999C00BC87E7 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		5D84B32F2AC0999C00BC87E7 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		5D84B3302AC0999C00BC87E7 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		5D84B3312AC0999C00BC87E7 /* SearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
@@ -136,6 +137,9 @@
 		5D84B3432AC0999C00BC87E7 /* AutorizationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutorizationView.swift; sourceTree = "<group>"; };
 		5D84B3442AC0999C00BC87E7 /* AutorizarionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutorizarionModel.swift; sourceTree = "<group>"; };
 		5D84B3452AC0999C00BC87E7 /* AutorizarionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutorizarionViewModel.swift; sourceTree = "<group>"; };
+		B72544802AC0D0D3003B3FF6 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		B72544832AC0D229003B3FF6 /* OnboardingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIndicator.swift; sourceTree = "<group>"; };
+		B72544852AC0D9C4003B3FF6 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B78EC3BD2AC0C050009B8ABC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Localizable(en).strings"; sourceTree = "<group>"; };
 		B78EC3BE2AC0C050009B8ABC /* Pallete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pallete.swift; sourceTree = "<group>"; };
 		B78EC3C02AC0C050009B8ABC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = "ru.lproj/Localizable(ru).strings"; sourceTree = "<group>"; };
@@ -387,8 +391,10 @@
 		5D84B32A2AC0999C00BC87E7 /* OnboardingView */ = {
 			isa = PBXGroup;
 			children = (
+				B72544822AC0D118003B3FF6 /* OnboardingComponents */,
 				5D84B32B2AC0999C00BC87E7 /* OnboardingModel.swift */,
-				5D84B32C2AC0999C00BC87E7 /* OnboardingView.swift */,
+				B72544852AC0D9C4003B3FF6 /* OnboardingView.swift */,
+				B72544802AC0D0D3003B3FF6 /* OnboardingViewModel.swift */,
 			);
 			path = OnboardingView;
 			sourceTree = "<group>";
@@ -468,6 +474,14 @@
 				5D84B3452AC0999C00BC87E7 /* AutorizarionViewModel.swift */,
 			);
 			path = AutorizationView;
+			sourceTree = "<group>";
+		};
+		B72544822AC0D118003B3FF6 /* OnboardingComponents */ = {
+			isa = PBXGroup;
+			children = (
+				B72544832AC0D229003B3FF6 /* OnboardingIndicator.swift */,
+			);
+			path = OnboardingComponents;
 			sourceTree = "<group>";
 		};
 		B78EC3BB2AC0C050009B8ABC /* Resourse */ = {
@@ -565,7 +579,6 @@
 				5D84B3712AC0999C00BC87E7 /* AutorizarionModel.swift in Sources */,
 				5D84B34B2AC0999C00BC87E7 /* MainTabBar.swift in Sources */,
 				5D84B3522AC0999C00BC87E7 /* HomePageViewModel.swift in Sources */,
-				5D84B3612AC0999C00BC87E7 /* OnboardingView.swift in Sources */,
 				5D84B3462AC0999C00BC87E7 /* ScreenModel.swift in Sources */,
 				5D84B2CF2AC0961600BC87E7 /* PodcastAppApp.swift in Sources */,
 				5D84B3622AC0999C00BC87E7 /* SearchView.swift in Sources */,
@@ -582,6 +595,7 @@
 				5D84B3572AC0999C00BC87E7 /* ProfilesettingsView.swift in Sources */,
 				5D84B2EA2AC0975100BC87E7 /* RequestImplimentation.swift in Sources */,
 				5D84B35E2AC0999C00BC87E7 /* NowPlayingViewModel.swift in Sources */,
+				B72544842AC0D229003B3FF6 /* OnboardingIndicator.swift in Sources */,
 				5D84B2D42AC0968200BC87E7 /* LocalManager.swift in Sources */,
 				5D84B3502AC0999C00BC87E7 /* FavoritesModel.swift in Sources */,
 				5D84B34F2AC0999C00BC87E7 /* FavoritesView.swift in Sources */,
@@ -603,6 +617,7 @@
 				5D84B36D2AC0999C00BC87E7 /* CreateWithEmailView.swift in Sources */,
 				5D84B2E92AC0975100BC87E7 /* DataProvider.swift in Sources */,
 				5D84B3722AC0999C00BC87E7 /* AutorizarionViewModel.swift in Sources */,
+				B72544862AC0D9C4003B3FF6 /* OnboardingView.swift in Sources */,
 				5D84B35B2AC0999C00BC87E7 /* ChannelViewModel.swift in Sources */,
 				5D84B3702AC0999C00BC87E7 /* AutorizationView.swift in Sources */,
 				5D84B3542AC0999C00BC87E7 /* AccountSettingsViewModel.swift in Sources */,
@@ -612,6 +627,7 @@
 				5D84B3682AC0999C00BC87E7 /* CreatePlaylistViewModel.swift in Sources */,
 				5D84B3642AC0999C00BC87E7 /* SearchModel.swift in Sources */,
 				5D84B36A2AC0999C00BC87E7 /* CreatePlaylistModel.swift in Sources */,
+				B72544812AC0D0D3003B3FF6 /* OnboardingViewModel.swift in Sources */,
 				5D84B3602AC0999C00BC87E7 /* OnboardingModel.swift in Sources */,
 				5D84B2E62AC0975100BC87E7 /* APIError.swift in Sources */,
 				5D84B3492AC0999C00BC87E7 /* CustomNavigationStack.swift in Sources */,
