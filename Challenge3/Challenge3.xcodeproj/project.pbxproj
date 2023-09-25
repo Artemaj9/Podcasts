@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D53225A2AC1BA2B009BB98A /* CategoryTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5322592AC1BA2B009BB98A /* CategoryTabs.swift */; };
 		5D84B2C52AC094AB00BC87E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D84B2C42AC094AB00BC87E7 /* Assets.xcassets */; };
 		5D84B2C82AC094AB00BC87E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D84B2C72AC094AB00BC87E7 /* Preview Assets.xcassets */; };
 		5D84B2CF2AC0961600BC87E7 /* PodcastAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B2CE2AC0961600BC87E7 /* PodcastAppApp.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D5322592AC1BA2B009BB98A /* CategoryTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTabs.swift; sourceTree = "<group>"; };
 		5D84B2BD2AC094A900BC87E7 /* Challenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D84B2C42AC094AB00BC87E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D84B2C72AC094AB00BC87E7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				5D84B3102AC0999C00BC87E7 /* Buttons.swift */,
+				5D5322592AC1BA2B009BB98A /* CategoryTabs.swift */,
 				D08922C02AC1A2F500683667 /* Icons.swift */,
 				AC16D57A2AC1B80800B74CBA /* MiniPlayer.swift */,
 			);
@@ -611,6 +614,7 @@
 				5D84B2ED2AC0975100BC87E7 /* APIRequest.swift in Sources */,
 				5D84B35C2AC0999C00BC87E7 /* ChannelView.swift in Sources */,
 				5D84B3512AC0999C00BC87E7 /* HomePageModel.swift in Sources */,
+				5D53225A2AC1BA2B009BB98A /* CategoryTabs.swift in Sources */,
 				5D84B3592AC0999C00BC87E7 /* ProfileSettingsViewModel.swift in Sources */,
 				5D84B3472AC0999C00BC87E7 /* CustomNavigationContainer.swift in Sources */,
 				AC16D57B2AC1B80800B74CBA /* MiniPlayer.swift in Sources */,
