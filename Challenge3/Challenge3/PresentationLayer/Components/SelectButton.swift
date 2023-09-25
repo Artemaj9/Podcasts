@@ -7,8 +7,6 @@ import SwiftUI
 struct SelectButton: View {
     
     // MARK: - Internal Properties
-    var height: CGFloat = 60
-    var width: CGFloat = 296
     var image: String = Images.ChangePicture.photo.rawValue
     var text: String
     
