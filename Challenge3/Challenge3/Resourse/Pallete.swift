@@ -17,5 +17,24 @@ enum Pallete {
         static let forNext = Color("grayForNext")
         static let forPhotoCells = Color("grayForPhotoCells")
         static let forTextFields = Color("grayForTextFields")
+        static let forText = Color("grayForText")
+    }
+    
+    enum Others {
+        static let white = Color("customWhite")
+    }
+    
+    enum Other {
+        static let blue = Color("otherBlue")
+        static let pink = Color("otherPink")
+        static let purple = Color("otherPurple")
+        static let peach = Color("otherPeach")
+    }
+    
+    enum OtherLight {
+        static let blue = Color("otherLightBlue")
+        static let pink = Color("otherLightPink")
+        static let purple = Color("otherLightPurple")
+        static let peach = Color("otherLightPeach")
     }
 }
