@@ -7,11 +7,7 @@ import Foundation
 struct OnboardingModel {
 
     // MARK: - Internal Properties
-    static let onboardingImages: [String] = [
-        "image1",
-        "image2",
-        "image3"
-    ]
+    static let onboardingImages: [String] = Images.Onboarding.allCases.map { $0.rawValue }
     static let onboardingTitles: [String] = [
         "SUPER APP",
         "SUPER APP\nSUPER APP",

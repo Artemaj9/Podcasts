@@ -25,6 +25,9 @@ struct OnboardingView: View, ItemView {
         OnboardingModel.onboardingTexts[self.currentIndex]
     }
 
+    // MARK: - Private Properties
+    private var strings = Localizable.Onboarding.self
+
     // MARK: - View Builders
     @ViewBuilder func OnboardingBottomBar() -> some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -40,7 +43,7 @@ struct OnboardingView: View, ItemView {
                 HStack {
                     if onboardingViewModel.currentIndex == 2 {
                         Spacer()
-                        Text("Get Started")
+                        Text(strings.getStarted)
                             .foregroundColor(.white)
                             .padding(.vertical, 18)
                             .padding(.horizontal, 16)
@@ -54,7 +57,7 @@ struct OnboardingView: View, ItemView {
                         Spacer()
                     } else {
                         Group {
-                            Text("Skip")
+                            Text(strings.skip)
                                 .font(.system(size: 17, weight: .semibold))
                                 .onTapGesture {
                                     withAnimation {
@@ -62,7 +65,7 @@ struct OnboardingView: View, ItemView {
                                     }
                                 }
                             Spacer()
-                            Text("Next")
+                            Text(strings.next)
                                 .padding(16)
                                 .background(.white)
                                 .cornerRadius(20)
@@ -96,8 +99,8 @@ struct OnboardingView: View, ItemView {
         }
         .padding(.horizontal, 30)
         .frame(idealWidth: 320)
-
     }
+
 }
 
 struct OnboardingView_Previews: PreviewProvider {
