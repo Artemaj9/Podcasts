@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct Localizable {
     
@@ -15,7 +16,11 @@ struct Localizable {
         enum CreateWithEmail {}
     }
     
-    enum Onboarding {}
+    enum Onboarding {
+        static var skip = localizedStringKey("Onboarding.skip")
+        static var next = localizedStringKey("Onboarding.next")
+        static var getStarted = localizedStringKey("Onboarding.getStarted")
+    }
     
     enum HomePage {}
     

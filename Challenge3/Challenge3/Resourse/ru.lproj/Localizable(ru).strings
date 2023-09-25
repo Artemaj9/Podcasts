@@ -1,8 +1,0 @@
-/* 
-  Localizable(ru).strings
-*/
-
-
-//MARK: - StartCreateAccount
-
-"StartCreate.navTitle" = "Создать аккаунт";

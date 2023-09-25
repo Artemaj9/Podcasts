@@ -1,0 +1,12 @@
+/* 
+  Localizable(ru).strings
+*/
+
+
+//MARK: - StartCreateAccount
+"StartCreate.navTitle" = "Создать аккаунт";
+
+// MARK: - Onboarding
+"Onboarding.skip" = "Пропустить";
+"Onboarding.next" = "Далее";
+"Onboarding.getStarted" = "Начать";

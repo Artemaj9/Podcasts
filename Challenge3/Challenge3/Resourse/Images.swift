@@ -22,7 +22,7 @@ enum Images {
         case avatar, insertPicture
     }
     
-    enum Onboarding: String {
+    enum Onboarding: String, CaseIterable {
         case image1, image2, image3
     }
     
