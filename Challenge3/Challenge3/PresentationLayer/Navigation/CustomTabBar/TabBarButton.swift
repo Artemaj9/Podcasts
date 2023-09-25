@@ -12,19 +12,21 @@ struct TabBarButton: View {
 
     // MARK: - Internal Properties
     let index: Int
-    let iconName: String
+    let activeIconName: String
+    let inactiveIconName: String
 
     // MARK: - Body
     var body: some View {
         VStack(alignment: .center) {
-            Image(iconName)
+            Image(selectedTab == index ? activeIconName : inactiveIconName)
                 .frame(maxWidth: 25, maxHeight: 25)
         }
         .padding()
         .frame(minWidth: 0, maxWidth: .infinity)
-//        .foregroundColor(selectedTab == index ? Colors.main : Colors.black)
         .onTapGesture {
-            selectedTab = index
+            withAnimation {
+                selectedTab = index
+            }
         }
     }
 }

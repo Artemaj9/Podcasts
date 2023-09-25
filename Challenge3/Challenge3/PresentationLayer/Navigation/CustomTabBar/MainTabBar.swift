@@ -44,19 +44,33 @@ struct MainTabBar: View, ItemView {
                 EmptyView()
             }
 
-            // Custom Tab Bar доделать замену картинок на таб баре
             if firstTabNavigationModel.isRootView && secondTabNavigationModel.isRootView {
                 HStack {
                     Spacer()
-                    TabBarButton(selectedTab: $selectedTab, index: 0,
-                                 iconName: Images.TabBar.home.rawValue)
-                    //                    Spacer()
-                    TabBarButton(selectedTab: $selectedTab, index: 1,
-                                 iconName: Images.TabBar.setting.rawValue)
-                    TabBarButton(selectedTab: $selectedTab, index: 2,
-                                 iconName: Images.TabBar.bookmark.rawValue)
-                    TabBarButton(selectedTab: $selectedTab, index: 3,
-                                 iconName: Images.TabBar.setting.rawValue)
+                    TabBarButton(
+                        selectedTab: $selectedTab,
+                        index: 0,
+                        activeIconName: Images.TabBar.homeFill.rawValue,
+                        inactiveIconName: Images.TabBar.home.rawValue
+                    )
+                    TabBarButton(
+                        selectedTab: $selectedTab,
+                        index: 1,
+                        activeIconName: Images.TabBar.settingFill.rawValue,
+                        inactiveIconName: Images.TabBar.setting.rawValue
+                    )
+                    TabBarButton(
+                        selectedTab: $selectedTab,
+                        index: 2,
+                        activeIconName: Images.TabBar.bookmarkFill.rawValue,
+                        inactiveIconName: Images.TabBar.bookmark.rawValue
+                    )
+                    TabBarButton(
+                        selectedTab: $selectedTab,
+                        index: 3,
+                        activeIconName: Images.TabBar.settingFill.rawValue,
+                        inactiveIconName: Images.TabBar.setting.rawValue
+                    )
                     Spacer()
                 }
                 .frame(height: 50)
