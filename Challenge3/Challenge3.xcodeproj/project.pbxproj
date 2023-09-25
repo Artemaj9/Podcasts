@@ -78,6 +78,7 @@
 		B78EC3C72AC0C050009B8ABC /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EC3C22AC0C050009B8ABC /* Localizable.swift */; };
 		D08922C12AC1A2F500683667 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08922C02AC1A2F500683667 /* Icons.swift */; };
 		D0D8E5022AC1C115005D5543 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D0D8E5012AC1C115005D5543 /* Kingfisher */; };
+		FAE797092AC210CE003F3F0C /* SelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE797082AC210CE003F3F0C /* SelectButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,6 +153,7 @@
 		B78EC3C12AC0C050009B8ABC /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		B78EC3C22AC0C050009B8ABC /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		D08922C02AC1A2F500683667 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		FAE797082AC210CE003F3F0C /* SelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +319,7 @@
 				5D5322592AC1BA2B009BB98A /* CategoryTabs.swift */,
 				D08922C02AC1A2F500683667 /* Icons.swift */,
 				AC16D57A2AC1B80800B74CBA /* MiniPlayer.swift */,
+				FAE797082AC210CE003F3F0C /* SelectButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				5D84B35A2AC0999C00BC87E7 /* ChannelModel.swift in Sources */,
 				5D84B3652AC0999C00BC87E7 /* SearchResultView.swift in Sources */,
 				5D84B35D2AC0999C00BC87E7 /* NowPlayingModel.swift in Sources */,
+				FAE797092AC210CE003F3F0C /* SelectButton.swift in Sources */,
 				5D84B3672AC0999C00BC87E7 /* SearchResultViewModel.swift in Sources */,
 				5D84B3662AC0999C00BC87E7 /* SearchResultModel.swift in Sources */,
 				B78EC3C72AC0C050009B8ABC /* Localizable.swift in Sources */,
