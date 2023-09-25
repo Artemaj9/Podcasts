@@ -36,5 +36,11 @@ enum Pallete {
         static let pink = Color("otherLightPink")
         static let purple = Color("otherLightPurple")
         static let peach = Color("otherLightPeach")
+       
+    }
+    
+    enum BlackWhite {
+        static let black = Color(.black)
+        static let white = Color(.white)
     }
 }
