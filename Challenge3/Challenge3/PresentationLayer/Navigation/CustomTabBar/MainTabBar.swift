@@ -9,13 +9,12 @@ struct MainTabBar: View, ItemView {
 
     @State private var selectedTab = 0
 
-    //под каждую вкладку таббара создается свой навигейшн стек
+    // под каждую вкладку таббара создается свой навигейшн стек
     @StateObject var firstTabNavigationModel = CustomNavigationViewModel()
     @StateObject var secondTabNavigationModel = CustomNavigationViewModel()
     @StateObject var thirdTabNavigationModel = CustomNavigationViewModel()
     @StateObject var fourthTabNavigationModel = CustomNavigationViewModel()
 
-    //добавляем вьюмодели экранов расположенных на таб баре
     @EnvironmentObject var homeViewModel: HomePageViewModel
     @EnvironmentObject var searchViewModel: SearchViewModel
     @EnvironmentObject var favoritesViewModel: FavoritesViewModel
@@ -26,8 +25,8 @@ struct MainTabBar: View, ItemView {
             // Your main content
             switch selectedTab {
             case 0:
-                    NavigationContainer(viewModel: firstTabNavigationModel) {
-                        HomePageView(listener: firstTabNavigationModel as? CustomNavigationContainer)
+                NavigationContainer(viewModel: firstTabNavigationModel) {
+                    HomePageView(listener: firstTabNavigationModel as? CustomNavigationContainer)
                 }
             case 1:
                 NavigationContainer(viewModel: secondTabNavigationModel) {
@@ -45,41 +44,49 @@ struct MainTabBar: View, ItemView {
                 EmptyView()
             }
 
-            // Custom Tab Bar доделать замену картинок на таб баре
             if firstTabNavigationModel.isRootView && secondTabNavigationModel.isRootView {
                 HStack {
                     Spacer()
-                    TabBarButton(index: 0,
-                                 iconName: Image(Images.TabBar.home.rawValue),
-                                 selectedTab: $selectedTab)
-                    Spacer()
-                    TabBarButton(index: 1,
-                                 iconName: Image(Images.TabBar.setting.rawValue),
-                                 selectedTab: $selectedTab)
-                    TabBarButton(index: 2,
-                                 iconName: Image(Images.TabBar.bookmark.rawValue),
-                                 selectedTab: $selectedTab)
-                    TabBarButton(index: 3,
-                                 iconName: Image(Images.TabBar.setting.rawValue),
-                                 selectedTab: $selectedTab)
+                    TabBarButton(
+                        selectedTab: $selectedTab,
+                        index: 0,
+                        activeIconName: Images.TabBar.homeFill.rawValue,
+                        inactiveIconName: Images.TabBar.home.rawValue
+                    )
+                    TabBarButton(
+                        selectedTab: $selectedTab,
+                        index: 1,
+                        activeIconName: Images.TabBar.settingFill.rawValue,
+                        inactiveIconName: Images.TabBar.setting.rawValue
+                    )
+                    TabBarButton(
+                        selectedTab: $selectedTab,
+                        index: 2,
+                        activeIconName: Images.TabBar.bookmarkFill.rawValue,
+                        inactiveIconName: Images.TabBar.bookmark.rawValue
+                    )
+                    TabBarButton(
+                        selectedTab: $selectedTab,
+                        index: 3,
+                        activeIconName: Images.TabBar.settingFill.rawValue,
+                        inactiveIconName: Images.TabBar.setting.rawValue
+                    )
                     Spacer()
                 }
                 .frame(height: 50)
-                .background(Pallete.Gray.forNext) //заменить цвет
+                .background(Pallete.Gray.forNext)
             }
         }
     }
 }
 
 struct MainTabBar_Previews: PreviewProvider {
-
     static var previews: some View {
-        MainTabBar() //дописать все вьюмодели которые используются на таб баре
+        MainTabBar()
             .environmentObject(SearchViewModel())
-            .environmentObject( HomePageViewModel())
+            .environmentObject(HomePageViewModel())
             .environmentObject(SearchViewModel())
-            .environmentObject( FavoritesViewModel())
+            .environmentObject(FavoritesViewModel())
             .environmentObject(ProfileSettingsViewModel())
     }
 }
-
