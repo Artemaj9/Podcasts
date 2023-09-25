@@ -15,6 +15,7 @@ struct CustomLabel: View {
     var fontStyle: FontStyle = .main
     var sizeLabel: Double = 16
     var sizeAddit: Double = 14
+    
     // MARK: - Body
     var body: some View {
         VStack{
