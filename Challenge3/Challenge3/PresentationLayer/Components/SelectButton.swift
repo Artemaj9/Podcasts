@@ -16,10 +16,10 @@ struct SelectButton: View {
     var body: some View {
         HStack{
             Image(image)
-                .frame(width: 21, height: 24)
+                .aspectRatio(contentMode: .fit)
                 .padding()
-            Text(text)
             
+            Text(text)
                 .font(.system(size: 14).bold())
             
             Spacer()
