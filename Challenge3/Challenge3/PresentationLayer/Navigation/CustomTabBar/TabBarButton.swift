@@ -4,17 +4,20 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct TabBarButton: View {
-    let index: Int
-    let iconName: Image
+
+    // MARK: - Property Wrapper
     @Binding var selectedTab: Int
     @Environment(\.locale) var locale: Locale
 
+    // MARK: - Internal Properties
+    let index: Int
+    let iconName: String
+
+    // MARK: - Body
     var body: some View {
         VStack(alignment: .center) {
-            iconName
+            Image(iconName)
                 .frame(maxWidth: 25, maxHeight: 25)
         }
         .padding()

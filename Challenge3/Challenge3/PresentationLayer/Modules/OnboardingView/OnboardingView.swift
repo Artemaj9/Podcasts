@@ -29,7 +29,7 @@ struct OnboardingView: View, ItemView {
     private var strings = Localizable.Onboarding.self
 
     // MARK: - View Builders
-    @ViewBuilder func OnboardingBottomBar() -> some View {
+    @ViewBuilder func onboardingBottomBar() -> some View {
         VStack(alignment: .leading, spacing: 16) {
             Text(currentTitle)
                 .font(.system(size: 34, weight: .bold))
@@ -95,7 +95,7 @@ struct OnboardingView: View, ItemView {
             Spacer()
             Image(currentImageName)
             Spacer()
-            OnboardingBottomBar()
+            onboardingBottomBar()
         }
         .padding(.horizontal, 30)
         .frame(idealWidth: 320)
