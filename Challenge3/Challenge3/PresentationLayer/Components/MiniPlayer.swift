@@ -1,8 +1,5 @@
 //
 //  MiniPlayer.swift
-//  Challenge3
-//
-//  Created by Artem on 25.09.2023.
 //
 
 import SwiftUI
@@ -48,21 +45,15 @@ struct MiniPlayer: View {
                     Spacer()
                     HStack(spacing: 14) {
                         Button {
-                            print("Previous track")
-                            // Add previous track function here!
                         } label: {
                             Image(Images.AudioPlaying.previous.rawValue)
                         }
                         Button {
-                            print("Play")
                             isPlaying.toggle()
-                            // Add Play function here!
                         } label: {
                           Image(Images.AudioPlaying.play.rawValue)
                         }
                         Button {
-                            print("Next")
-                            // Add next track function here!
                         } label: {
                             Image(Images.AudioPlaying.next.rawValue)
                         }
