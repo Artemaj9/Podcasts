@@ -20,9 +20,9 @@ enum Pallete {
         static let forText = Color("grayForText")
     }
     
-//    enum Others {
-//        static let white = Color("customWhite")
-//    }
+    enum Others {
+        static let white = Color("customWhite")
+    }
     
     enum Other {
         static let blue = Color("otherBlue")
