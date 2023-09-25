@@ -11,7 +11,7 @@ struct MiniPlayer: View {
     let height: CGFloat
     let title: String
     let podcastColor: Color
-    
+
     var body: some View {
         ZStack(alignment: .leading) {
             VStack(spacing: 0) {
@@ -28,7 +28,7 @@ struct MiniPlayer: View {
                 .gesture(DragGesture(minimumDistance: 0).onEnded({ value in
                     progress = value.location.x/(width - 20)
                 }))
-                
+
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: width, height: height)
                     .foregroundColor(Pallete.Blue.forOnboarding)

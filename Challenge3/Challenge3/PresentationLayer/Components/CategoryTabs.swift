@@ -7,22 +7,22 @@ import SwiftUI
 struct CategoryTabView: View {
     @Binding var selectedCategory: Int
     var data: [String]
-    
+
     var body: some View {
         ScrollViewReader { scrollViewProxy in
-            
+
             ScrollView(.horizontal, showsIndicators: false) {
-                
+
                 HStack(spacing: 0) {
-                    
-                    ForEach(0..<data.count, id:\.self) { index in
+
+                    ForEach(0..<data.count, id: \.self) { index in
                         CategoryButton(
                             title: data[index],
                             isSelected: selectedCategory == index
                         ) {
                             withAnimation {
                                 selectedCategory = index
-                                
+
                                 if index == data.count - 1 {
                                     scrollViewProxy.scrollTo(index, anchor: .trailing)
                                 } else {
@@ -47,7 +47,7 @@ struct CategoryButton: View {
     var title: String
     var isSelected: Bool
     var onTap: () -> Void
-    
+
     var body: some View {
         Text(title)
             .font(.title)
@@ -62,4 +62,3 @@ struct CategoryButton: View {
             .onTapGesture(perform: onTap)
     }
 }
-

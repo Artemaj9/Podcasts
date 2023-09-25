@@ -5,9 +5,9 @@
 import Foundation
 
 final class Requests {
-    
+
     static let shared = Requests()
-   
+
     // Example!!!
 //    struct GetRecipeAutocomplete: Request {
 //        typealias ReturnType = [RecipeShort]

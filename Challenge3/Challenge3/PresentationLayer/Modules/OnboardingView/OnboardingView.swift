@@ -40,53 +40,56 @@ struct OnboardingView: View, ItemView {
                 .multilineTextAlignment(.leading)
                 .lineLimit(3)
             VStack(spacing: 20) {
-                HStack {
-                    if onboardingViewModel.currentIndex == 2 {
-                        Spacer()
-                        Text(strings.getStarted)
-                            .foregroundColor(.white)
-                            .padding(.vertical, 18)
-                            .padding(.horizontal, 16)
-                            .background(Pallete.Blue.forAccent)
-                            .cornerRadius(16)
-                            .onTapGesture {
-                                withAnimation {
-                                    // TODO: Dismiss OnboardingView
-                                }
-                            }
-                        Spacer()
-                    } else {
-                        Group {
-                            Text(strings.skip)
-                                .font(.system(size: 17, weight: .semibold))
-                                .onTapGesture {
-                                    withAnimation {
-                                        // TODO: Dismiss OnboardingView
-                                    }
-                                }
-                            Spacer()
-                            Text(strings.next)
-                                .padding(16)
-                                .background(.white)
-                                .cornerRadius(20)
-                                .onTapGesture {
-                                    withAnimation {
-                                        if onboardingViewModel.currentIndex <= 1 {
-                                            self.onboardingViewModel.currentIndex += 1
-                                        } else {
-                                            // TODO: Dismiss OnboardingView
-                                        }
-                                    }
-                                }
-                        }
-                    }
-                }
+                onboardingSkipAndNext()
                 OnboardingIndicator(selectedIndex: $onboardingViewModel.currentIndex)
             }
         }
         .padding(30)
         .background(Pallete.Blue.forOnboarding)
         .cornerRadius(30)
+    }
+    @ViewBuilder func onboardingSkipAndNext() -> some View {
+        HStack {
+            if onboardingViewModel.currentIndex == 2 {
+                Spacer()
+                Text(strings.getStarted)
+                    .foregroundColor(.white)
+                    .padding(.vertical, 18)
+                    .padding(.horizontal, 16)
+                    .background(Pallete.Blue.forAccent)
+                    .cornerRadius(16)
+                    .onTapGesture {
+                        withAnimation {
+                            // TODO: Dismiss OnboardingView
+                        }
+                    }
+                Spacer()
+            } else {
+                Group {
+                    Text(strings.skip)
+                        .font(.system(size: 17, weight: .semibold))
+                        .onTapGesture {
+                            withAnimation {
+                                // TODO: Dismiss OnboardingView
+                            }
+                        }
+                    Spacer()
+                    Text(strings.next)
+                        .padding(16)
+                        .background(.white)
+                        .cornerRadius(20)
+                        .onTapGesture {
+                            withAnimation {
+                                if onboardingViewModel.currentIndex <= 1 {
+                                    self.onboardingViewModel.currentIndex += 1
+                                } else {
+                                    // TODO: Dismiss OnboardingView
+                                }
+                            }
+                        }
+                }
+            }
+        }
     }
 
     // MARK: - Body

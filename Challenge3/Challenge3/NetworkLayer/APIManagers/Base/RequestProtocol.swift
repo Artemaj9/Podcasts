@@ -13,7 +13,7 @@ protocol Request {
     var body: Codable? { get }
     var headers: HTTPHeader? { get }
     var queryParam: QueryParams? { get }
-    
+
     associatedtype ReturnType: Codable
 }
 
@@ -22,28 +22,28 @@ extension Request {
     var body: Codable? { nil }
     var headers: HTTPHeader? { nil }
     var queryParam: QueryParams? { nil }
-    
+
     func asURLRequest(_ baseURL: String) -> URLRequest? {
         guard var urlComponents = URLComponents(string: baseURL) else { return nil }
         urlComponents.path = "\(urlComponents.path)\(path)"
         urlComponents.queryItems = addQueryParams(queryParams: queryParam)
         guard let finalURL = urlComponents.url else { return nil }
-        
+
         var urlRequest = URLRequest(url: finalURL)
         urlRequest.httpMethod = method.rawValue
         urlRequest.httpBody = requestFromBody()
         urlRequest.allHTTPHeaderFields = headers
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         urlRequest.setValue(APIRequest.apiKey, forHTTPHeaderField: "x-api-key")
-        
+
         return urlRequest
     }
-    
+
     private func requestFromBody() -> Data? {
         guard let body else { return nil }
         guard let httpBody = try? JSONEncoder().encode(body) else { return nil }
-        
+
         return httpBody
     }
     
