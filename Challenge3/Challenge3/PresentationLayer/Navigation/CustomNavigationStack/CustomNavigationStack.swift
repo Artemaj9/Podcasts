@@ -6,7 +6,7 @@ import Foundation
 
 // MARK: custom navigation stack model itself
 public struct CustomNavigationStack {
-    private var screens: [Screen] = [Screen]() //здесь хранятся экраны
+    private var screens: [Screen] = [Screen]() // здесь хранятся экраны
 
     var count: Int {
         screens.count
