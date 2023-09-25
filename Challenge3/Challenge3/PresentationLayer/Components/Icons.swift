@@ -9,16 +9,16 @@ struct Icons: View {
     var body: some View {
         VStack {
             Text("For test ONLY!")
-            
+
             Spacer()
-            
+
             HStack {
                 CustomIcon(iconString: Images.Icon.closeSquare.rawValue, width: 48, height: 48)
                     .padding()
-                
+
                 CustomImage(width: 48, height: 48)
             }
-            
+
             Spacer()
         }
     }
@@ -29,13 +29,13 @@ struct CustomIcon: View {
     var backColor: Color = Pallete.Gray.forCells
     var width: CGFloat?
     var height: CGFloat?
-    
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .fill(backColor)
                 .frame(width: width, height: height)
-            
+
             Image(iconString)
                 .foregroundColor(Color.gray)
                 .padding(12)
@@ -48,7 +48,7 @@ struct CustomImage: View {
     var backColor: Color = Pallete.OtherLight.peach
     var width: CGFloat?
     var height: CGFloat?
-    
+
     var body: some View {
         ZStack {
             if let urlString = imageString, let url = URL(string: urlString), url.scheme != nil {

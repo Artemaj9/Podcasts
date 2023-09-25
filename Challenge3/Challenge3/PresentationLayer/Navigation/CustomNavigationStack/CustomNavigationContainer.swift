@@ -5,19 +5,20 @@
 import SwiftUI
 
 // MARK: each view(screen) must be signed under this protocol
-protocol ItemView : View {
+protocol ItemView: View {
     var listener: CustomNavigationContainer? { get set }
 }
 
 protocol CustomNavigationContainer {
-    func push<Content:View & ItemView>(view: Content)
-    func pop() //на экран назад
-    func popToRoot() //удаляет все вьюхи из навигейшн стека
+    func push<Content: View & ItemView>(view: Content)
+    func pop() // на экран назад
+    func popToRoot() // удаляет все вьюхи из навигейшн стека
 }
 
 // MARK: - this is just a view, which contains every view in app
-struct NavigationContainer<Content: View & ItemView>: View, CustomNavigationContainer { //в таб баре под каждую вкладку свой навигейшн контейнер
-    
+struct NavigationContainer<Content: View & ItemView>: View, CustomNavigationContainer {
+    // в таб баре под каждую вкладку свой навигейшн контейнер
+
     @ObservedObject var viewModel: CustomNavigationViewModel
     private var content: Content
 
@@ -35,15 +36,15 @@ struct NavigationContainer<Content: View & ItemView>: View, CustomNavigationCont
                 content
             } else {
                 viewModel.currentScreen?.screen
-                    .transition(viewModel.animationDirection == .forward ? .move(edge: .leading) : .move(edge: .trailing)) // MARK: animation
+                    .transition(
+                        viewModel.animationDirection == .forward ? .move(edge: .leading) : .move(edge: .trailing)
+                    ) // MARK: animation
             }
         }
         .animation(.default, value: viewModel.currentScreen)
     }
-
-
-// MARK: - these methods are used for making navigation in the app
-    func push<Content>(view: Content) where Content : ItemView {
+    // MARK: - these methods are used for making navigation in the app
+    func push<Content>(view: Content) where Content: ItemView {
         var newView = view
         newView.listener = self
         self.viewModel.push(newView.toAny())

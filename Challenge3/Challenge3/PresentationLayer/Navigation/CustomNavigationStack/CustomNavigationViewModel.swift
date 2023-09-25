@@ -15,7 +15,7 @@ enum AnimationDirection { // MARK: animation directions
 }
 
 class CustomNavigationViewModel: ObservableObject {
-    @Published var currentScreen: Screen? = nil
+    @Published var currentScreen: Screen?
     @Published var animationDirection: AnimationDirection = .none
     @Published var isRootView: Bool = true
     public var navigationType: NavigationType = .push
@@ -47,4 +47,3 @@ class CustomNavigationViewModel: ObservableObject {
         self.isRootView = true  // Update isRootView when popping to root
     }
 }
-
