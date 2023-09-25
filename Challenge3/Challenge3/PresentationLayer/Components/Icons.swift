@@ -51,8 +51,14 @@ struct CustomImage: View {
     
     var body: some View {
         ZStack {
-            if let imageString {
-                KFImage(URL(string: imageString))
+            if let urlString = imageString, let url = URL(string: urlString), url.scheme != nil {
+                KFImage(url)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: width, height: height)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            } else if let imageString = imageString, !imageString.isEmpty {
+                Image(imageString)
                     .resizable()
                     .scaledToFit()
                     .frame(width: width, height: height)
