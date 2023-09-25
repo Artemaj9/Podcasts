@@ -12,32 +12,64 @@ struct CustomLabel: View {
     var additionalText: String
     var color: Color = Pallete.BlackWhite.black
     var secondColor: Color = Pallete.Gray.forText
-    var fontStyle: FontStyle = .main
-    var sizeLabel: Double = 16
-    var sizeAddit: Double = 14
+    var labelStyle: LabelStyle = .create
+    var epsText: String
     
     // MARK: - Body
     var body: some View {
-        VStack{
-            switch fontStyle {
-            case .main:
+        
+        switch labelStyle {
+        case .create:
+            VStack(alignment: .center, spacing: 8) {
                 Text(labelText)
-                    .font(.system(size: sizeLabel))
+                    .font(.system(size: 24))
                     .foregroundColor(color)
-                
-            case .second:
                 Text(additionalText)
-                    .font(.system(size: sizeAddit))
+                    .font(.system(size: 16))
                     .foregroundColor(secondColor)
-                
-            @unknown default:
-                Text(labelText)
             }
+        case .homepage:
+            VStack(alignment: .leading, spacing: 4) {
+                Text(labelText)
+                    .font(.system(size: 16))
+                    .foregroundColor(color)
+                Text(additionalText)
+                    .font(.system(size: 14))
+                    .foregroundColor(secondColor)
+            }
+            
+        case .nowPlaying:
+            VStack(alignment: .center, spacing: 5) {
+                Text(labelText)
+                    .font(.system(size: 16))
+                    .foregroundColor(color)
+                Text(additionalText)
+                    .font(.system(size: 14))
+                    .foregroundColor(secondColor)
+            }
+        
+        case .channel:
+            VStack(alignment: .center, spacing: 5) {
+                Text(labelText)
+                    .font(.system(size: 16))
+                    .foregroundColor(color)
+                HStack{
+                    Text(additionalText)
+                        .font(.system(size: 14))
+                        .foregroundColor(secondColor)
+                    Text(epsText)
+                        .font(.system(size: 14))
+                        .foregroundColor(secondColor)
+                }
+            }
+        @unknown default:
+            Text(labelText)
         }
+        
     }
 }
 
-enum FontStyle: String {
-    case main, second
+enum LabelStyle: String {
+    case create, homepage, nowPlaying, channel
 }
 
