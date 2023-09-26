@@ -6,9 +6,9 @@ import SwiftUI
 
 enum RoundedButtonState {
     case filledBlue
-    case blackBlue
+    case strokeBlue
     case filledGray
-    case blankBlack
+    case select
     case outGoogle
 }
 
@@ -21,15 +21,15 @@ struct Buttons: View {
         VStack {
             CustomButton(title: "Войти",buttonType: .filledBlue) {}
             
-            CustomButton(title: "Log Out",buttonType: .blackBlue) {}
+            CustomButton(title: "Log Out",buttonType: .strokeBlue) {}
             
             CustomButton(title: "Save Changes",buttonType: .filledGray) {}
             
-            CustomButton(title: "Select from local files",buttonType:.blankBlack) {}
+            CustomButton(title: "Select from local files",buttonType:.select) {}
             
             CustomButton(title: "Continue with Google",buttonType: .outGoogle) {}
             
-            StrokeButton(title: "Зарегестрироваться",foregroundColor: .green) {}
+            StringButton(title: "Зарегестрироваться",foregroundColor: .green) {}
             
             BackButton(isReverse: true) {}
             
@@ -47,7 +47,6 @@ struct CustomButton: View {
     var title: String
     var font: Font = .system(size: 20)
     var cornerRadius: Double = 50
-    var padding: Double = 16
     var buttonType: RoundedButtonState = .filledBlue
     
     var action: () -> Void
@@ -62,14 +61,12 @@ struct CustomButton: View {
                     Image(Images.Icon.iconGoogle.rawValue)
                         .resizable()
                         .frame(width: 20, height: 20)
-                        .padding(.trailing, 8)
                     
                     Text(title)
                         .font(font)
                     
                     Spacer()
                 }
-                .padding(padding)
                 .font(font)
                 .background(.white)
                 .foregroundColor(.black)
@@ -85,7 +82,6 @@ struct CustomButton: View {
                 Button(action: action) {
                     Text(title)
                         .frame(maxWidth: .infinity)
-                        .padding(padding)
                         .font(font)
                         .background(Pallete.Gray.forButton)
                         .foregroundColor(.gray)
@@ -94,12 +90,11 @@ struct CustomButton: View {
             }
             .padding()
             
-        case .blackBlue:
+        case .strokeBlue:
             ZStack {
                 Button(action: action) {
                     Text(title)
                         .frame(maxWidth: .infinity)
-                        .padding(padding)
                         .font(font)
                         .background(.white)
                         .foregroundColor(.blue)
@@ -126,7 +121,7 @@ struct CustomButton: View {
             }
             .padding()
             
-        case .blankBlack:
+        case .select:
             HStack {
                 Spacer()
                 
@@ -140,7 +135,6 @@ struct CustomButton: View {
                 
                 Spacer()
             }
-            .padding(padding)
             .font(font)
             .background(Pallete.Gray.forCells)
             .foregroundColor(.black)
@@ -151,7 +145,7 @@ struct CustomButton: View {
     }
 }
 
-struct StrokeButton: View {
+struct StringButton: View {
     var title: String
     var font: Font = .system(size: 20)
     var foregroundColor: Color = .black
@@ -193,7 +187,6 @@ struct GenresButton: View {
     var title: String
     var font: Font = .system(size: 20)
     var cornerRadius: Double = 10
-    var padding: Double = 50
     
     var action: () -> Void
     var body: some View {
@@ -201,11 +194,11 @@ struct GenresButton: View {
             ZStack {
                 Button(action: action) {
                     Text(title)
-                        .padding(padding)
                         .font(font)
                         .background(.pink)
                         .foregroundColor(.white)
                         .cornerRadius(cornerRadius)
+                        .frame(alignment: .center)
                 }
             }
             .padding()
