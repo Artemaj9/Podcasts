@@ -54,7 +54,9 @@ struct CustomButton: View {
     var body: some View {
         switch buttonType {
         case .outGoogle:
-            Button(action: action) {
+            Button {
+                action()
+            } label: {
                 HStack {
                     Spacer()
                     
@@ -79,7 +81,9 @@ struct CustomButton: View {
             
         case .filledGray:
             ZStack {
-                Button(action: action) {
+                Button {
+                    action()
+                } label: {
                     Text(title)
                         .frame(maxWidth: .infinity)
                         .font(font)
@@ -92,7 +96,9 @@ struct CustomButton: View {
             
         case .strokeBlue:
             ZStack {
-                Button(action: action) {
+                Button {
+                    action()
+                } label: {
                     Text(title)
                         .frame(maxWidth: .infinity)
                         .font(font)
@@ -108,7 +114,9 @@ struct CustomButton: View {
             .padding()
             
         case .filledBlue:
-            Button(action: action) {
+            Button {
+                action()
+            } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: cornerRadius)
                         .fill(.blue)
@@ -154,7 +162,9 @@ struct StringButton: View {
     var action: () -> Void
     
     var body: some View {
-        Button(action: action) {
+        Button {
+            action()
+        } label: {
             Text(title)
                 .font(font)
                 .background(background)
@@ -171,7 +181,9 @@ struct BackButton: View {
     var action: () -> Void
     
     var body: some View {
-        Button(action: action) {
+        Button {
+            action()
+        } label: {
             HStack {
                 Image(Images.Icon.arrowLeft.rawValue)
                     .padding(.horizontal)
@@ -189,8 +201,11 @@ struct GenresButton: View {
     var cornerRadius: Double = 10
     
     var action: () -> Void
+    
     var body: some View {
-        Button(action: action) {
+        Button {
+            action()
+        } label: {
             ZStack {
                 Button(action: action) {
                     Text(title)
@@ -203,6 +218,6 @@ struct GenresButton: View {
             }
             .padding()
         }
+        }
     }
-}
 
