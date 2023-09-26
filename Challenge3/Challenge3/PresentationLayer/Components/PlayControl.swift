@@ -57,9 +57,6 @@ struct PlayControl: View {
                 } label: {
                     Image(Images.AudioPlaying.repeatTrack.rawValue)
                 }
-                
-                Spacer()
-                
             }
         }
     }
