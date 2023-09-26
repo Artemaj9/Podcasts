@@ -28,7 +28,6 @@ struct SelectButton: View {
                 .cornerRadius(8)
             
         }
-        .frame(width: width , height: height)
     }
 }
 
