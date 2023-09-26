@@ -1,10 +1,10 @@
 //
-//  AutorizarionViewModel.swift
+//  LoginViewModel.swift
 //
 
 import Foundation
 
-final class AuthorizarionViewModel: ObservableObject {
+final class LoginViewModel: ObservableObject{
     @Published var login = ""
     @Published var password = ""
 }
