@@ -5,6 +5,10 @@
 import Foundation
 
 enum Images {
+    
+    enum SystemIcons: String {
+        case xmark = "xmark.circle.fill"
+    }
 
     enum Icon: String {
         case arrowLeft, calendar, check, checkFill

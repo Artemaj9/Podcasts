@@ -13,15 +13,15 @@ struct LoginTextField: View {
     let title: String
     let placeHolder: String
     let withHideOption: Bool
+    let withBorder: Bool
     let cornerRadius: CGFloat
 
     var body: some View {
-        
+
         VStack(alignment: .leading, spacing: 0) {
             Text(title)
                 .fontWeight(.light)
-                .padding(.leading, 16)
-            
+                .padding(.leading)
             ZStack(alignment: .trailing) {
                 Group {
                     if isSecure {
@@ -49,7 +49,11 @@ struct LoginTextField: View {
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: cornerRadius)
-                        .fill(Color.white)
+                       .fill(Color.white)
+                       .overlay(
+                                 RoundedRectangle(cornerRadius: cornerRadius)
+                                    .stroke(Pallete.Blue.forAccent, lineWidth: withBorder ? 1 : 0)
+                             )
                         .shadow(radius: isFocused ? 4 : 0)
                         .animation(.linear, value: isFocused)
                 )
@@ -68,23 +72,27 @@ struct LoginTextField: View {
                                    title: "Login",
                                    placeHolder: "Login",
                                    withHideOption: true,
+                                   withBorder: false,
                                    cornerRadius: 12)
                     LoginTextField(inputText: "",
                                    isSecure: false,
                                    title: "Password",
                                    placeHolder: "Enter your password",
                                    withHideOption: true,
+                                   withBorder: false,
                                    cornerRadius: 12)
                     LoginTextField(inputText: "",
                                    title: " E-mail",
                                    placeHolder: "Email",
                                    withHideOption: false,
+                                   withBorder: true,
                                    cornerRadius: 24)
                     LoginTextField(inputText: "",
                                    isSecure: true,
                                    title: "FirstName",
                                    placeHolder: "FirstName",
                                    withHideOption: true,
+                                   withBorder: false,
                                    cornerRadius: 24)
                 }
             }

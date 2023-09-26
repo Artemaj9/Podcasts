@@ -7,10 +7,11 @@ import SwiftUI
 struct SearchBarView: View {
 
     @State var searchText: String
+    let placeholder: String
 
     var body: some View {
         HStack {
-            Image(systemName: "xmark.circle.fill")
+            Image(systemName: Images.SystemIcons.xmark.rawValue)
                 .foregroundColor(
                     searchText.isEmpty ?
                     Color.gray.opacity(0) : Pallete.Blue.forAccent.opacity(1)
@@ -21,11 +22,11 @@ struct SearchBarView: View {
                  UIApplication.shared.endEditing()
                     searchText = ""
                 }
-            TextField("Search...", text: $searchText)
+            TextField(placeholder, text: $searchText)
                 .foregroundColor(Color.black)
                 .disableAutocorrection(true)
                 .overlay(
-                    ZStack() {
+                    ZStack {
                         Image(Images.TabBar.search.rawValue)
                             .padding()
                             .offset(x: 0)
@@ -50,7 +51,7 @@ struct SearchBarView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Pallete.Blue.forOnboarding.ignoresSafeArea()
-            SearchBarView(searchText: "ok")
+            SearchBarView(searchText: "", placeholder: "Podcast, chanell, or artist...")
                 .previewLayout(.sizeThatFits)
         }
     }
