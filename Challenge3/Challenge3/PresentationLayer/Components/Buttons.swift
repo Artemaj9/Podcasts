@@ -82,7 +82,6 @@ struct CustomButton: View {
             
         case .filledGray:
             ZStack {
-                
                 Button(action: action) {
                     Text(title)
                         .frame(maxWidth: .infinity)
@@ -114,31 +113,33 @@ struct CustomButton: View {
             .padding()
             
         case .filledBlue:
-            ZStack {
-                Button(action: action) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: cornerRadius)
-                            .fill(.blue)
-                        
-                        Text(title)
-                            .padding()
-                            .font(font)
-                            .foregroundColor(.white)
-                    }
+            Button(action: action) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .fill(.blue)
+                    
+                    Text(title)
+                        .padding()
+                        .font(font)
+                        .foregroundColor(.white)
                 }
             }
             .padding()
             
         case .blankBlack:
             HStack {
+                Spacer()
+                
                 Image("folder")
                     .resizable()
                     .frame(width: 20, height: 20)
                     .padding(.trailing, 8)
+                
                 Text(title)
                     .font(font)
+                
+                Spacer()
             }
-            .frame(maxWidth: .infinity)
             .padding(padding)
             .font(font)
             .background(Pallete.Gray.forCells)
