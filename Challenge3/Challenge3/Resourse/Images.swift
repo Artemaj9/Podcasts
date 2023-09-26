@@ -19,7 +19,7 @@ enum Images {
     }
 
     enum AudioPlaying: String {
-        case next, nextFill, play, playFill, previous, previousFill, repeatTrack, shuffle
+        case next, nextFill, play, playFill, previous, priviousFill, repeatTrack, shuffle
     }
 
     enum ChangePicture: String {
