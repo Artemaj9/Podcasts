@@ -1,0 +1,109 @@
+//
+//  NavigationBars.swift
+//
+
+import SwiftUI
+
+struct NavigationBars: View {
+
+    var atView: NavigationBarPlacement
+    var leadingButtonAction: () -> Void
+    var trailingButtonAction: (() -> Void)?
+
+    private var currentText: String {
+        switch atView {
+        case .signUp:
+            return "Sign Up"
+        case .channel:
+            return "Channel"
+        case .nowPlaying:
+            return "Now playing"
+        case .search:
+            return "Search"
+        case .playlist:
+            return "Playlist"
+        case .accountSetting:
+            return "Profile"
+        case .createPlaylist:
+            return "Create Playlist"
+        }
+    }
+
+    private var leadingContentView: some View {
+        Group {
+            switch atView {
+            case .signUp, .channel, .nowPlaying, .accountSetting, .createPlaylist:
+                Button {
+                    leadingButtonAction()
+                } label: {
+                    Image(Images.Icon.arrowLeft.rawValue)
+                }
+
+            default:
+                EmptyView()
+            }
+        }
+    }
+
+    private var trailingContentView: some View {
+        Group {
+            switch atView {
+            case .nowPlaying:
+                Button {
+                    if let trailingButtonAction {
+                        trailingButtonAction()
+                    }
+                } label: {
+                    Image(Images.Icon.playlist.rawValue)
+                }
+
+            case .playlist, .createPlaylist:
+                Button {
+                    if let trailingButtonAction {
+                        trailingButtonAction()
+                    }
+                } label: {
+                    Image(systemName: "ellipsis")
+                        .foregroundColor(.black)
+                        .rotationEffect(.degrees(90))
+                }
+
+            default:
+                EmptyView()
+            }
+        }
+    }
+
+    var body: some View {
+        HStack {
+            Spacer()
+            Text(currentText)
+                .font(.system(size: 16, weight: .bold))
+            Spacer()
+        }
+        .overlay {
+            HStack {
+                leadingContentView
+                Spacer()
+                trailingContentView
+            }.padding(.horizontal, 32)
+        }
+    }
+}
+
+struct NavigationBars_Previews: PreviewProvider {
+    static var previews: some View {
+        ScrollView {
+            Image("image2")
+        }
+        .makeCustomNavBar {
+            NavigationBars(atView: .createPlaylist) {
+
+            }
+        }
+    }
+}
+
+enum NavigationBarPlacement {
+    case signUp, channel, nowPlaying, search, playlist, accountSetting, createPlaylist
+}

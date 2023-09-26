@@ -79,6 +79,8 @@
 		B78EC3C52AC0C050009B8ABC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B78EC3BF2AC0C050009B8ABC /* Localizable.strings */; };
 		B78EC3C62AC0C050009B8ABC /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EC3C12AC0C050009B8ABC /* Images.swift */; };
 		B78EC3C72AC0C050009B8ABC /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EC3C22AC0C050009B8ABC /* Localizable.swift */; };
+		B7FA0B202AC36F8A000022E7 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FA0B1F2AC36F8A000022E7 /* CustomNavigationBar.swift */; };
+		B7FA0B222AC36FA5000022E7 /* NavigationBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FA0B212AC36FA5000022E7 /* NavigationBars.swift */; };
 		D08922C12AC1A2F500683667 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08922C02AC1A2F500683667 /* Icons.swift */; };
 		D0D8E5022AC1C115005D5543 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D0D8E5012AC1C115005D5543 /* Kingfisher */; };
 		D0D8E5062AC226F4005D5543 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D8E5052AC226F4005D5543 /* Cells.swift */; };
@@ -161,6 +163,8 @@
 		B78EC3C02AC0C050009B8ABC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B78EC3C12AC0C050009B8ABC /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		B78EC3C22AC0C050009B8ABC /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		B7FA0B1F2AC36F8A000022E7 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		B7FA0B212AC36FA5000022E7 /* NavigationBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBars.swift; sourceTree = "<group>"; };
 		D08922C02AC1A2F500683667 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		D0D8E5052AC226F4005D5543 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		FAA1887D2AC36E0F00C0E183 /* PlayControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayControl.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 				5D84B3092AC0999C00BC87E7 /* CustomNavigationViewModel.swift */,
 				5D84B30A2AC0999C00BC87E7 /* CustomNavigationStack.swift */,
 				5D84B30B2AC0999C00BC87E7 /* View+AnyView.swift */,
+				B7FA0B1F2AC36F8A000022E7 /* CustomNavigationBar.swift */,
 			);
 			path = CustomNavigationStack;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 				D0D8E5052AC226F4005D5543 /* Cells.swift */,
 				FAE797082AC210CE003F3F0C /* SelectButton.swift */,
 				FAE797062AC1FDF8003F3F0C /* CustomLabel.swift */,
+				B7FA0B212AC36FA5000022E7 /* NavigationBars.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -634,6 +640,7 @@
 				5D84B34D2AC0999C00BC87E7 /* Buttons.swift in Sources */,
 				5D84B2E42AC0975100BC87E7 /* FirebaseManager.swift in Sources */,
 				5D84B36E2AC0999C00BC87E7 /* CreateWithEmailModel.swift in Sources */,
+				B7FA0B202AC36F8A000022E7 /* CustomNavigationBar.swift in Sources */,
 				5D84B3482AC0999C00BC87E7 /* CustomNavigationViewModel.swift in Sources */,
 				5D84B3552AC0999C00BC87E7 /* AccountSettingsModel.swift in Sources */,
 				5D84B3712AC0999C00BC87E7 /* AutorizarionModel.swift in Sources */,
@@ -697,6 +704,7 @@
 				5D84B36A2AC0999C00BC87E7 /* CreatePlaylistModel.swift in Sources */,
 				B72544812AC0D0D3003B3FF6 /* OnboardingViewModel.swift in Sources */,
 				5D84B3602AC0999C00BC87E7 /* OnboardingModel.swift in Sources */,
+				B7FA0B222AC36FA5000022E7 /* NavigationBars.swift in Sources */,
 				5D84B2E62AC0975100BC87E7 /* APIError.swift in Sources */,
 				5D84B3492AC0999C00BC87E7 /* CustomNavigationStack.swift in Sources */,
 				5D84B3022AC0985E00BC87E7 /* Extensions.swift in Sources */,
