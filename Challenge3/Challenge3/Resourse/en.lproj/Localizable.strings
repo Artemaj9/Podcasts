@@ -1,0 +1,12 @@
+/* 
+  Localizable(en).strings
+*/
+
+
+//MARK: - StartCreateAccount
+"StartCreate.navTitle" = "Create account";
+
+// MARK: - Onboarding
+"Onboarding.skip" = "Skip";
+"Onboarding.next" = "Next";
+"Onboarding.getStarted" = "Get Started";
