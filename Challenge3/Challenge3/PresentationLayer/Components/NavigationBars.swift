@@ -33,10 +33,8 @@ struct NavigationBars: View {
         Group {
             switch atView {
             case .signUp, .channel, .nowPlaying, .accountSetting, .createPlaylist:
-                Button {
+                BackButton(isReverse: false, padding: 0) {
                     leadingButtonAction()
-                } label: {
-                    Image(Images.Icon.arrowLeft.rawValue)
                 }
 
             default:

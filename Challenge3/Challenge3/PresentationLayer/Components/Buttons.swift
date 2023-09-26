@@ -186,7 +186,6 @@ struct BackButton: View {
         } label: {
             HStack {
                 Image(Images.Icon.arrowLeft.rawValue)
-                    .padding(.horizontal)
             }
             .padding(padding)
             .background(isReverse ? background : .clear)
