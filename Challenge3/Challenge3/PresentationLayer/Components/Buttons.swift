@@ -59,7 +59,7 @@ struct CustomButton: View {
                 HStack {
                     Spacer()
                     
-                    Image("iconGoogle")
+                    Image(Images.Icon.iconGoogle.rawValue)
                         .resizable()
                         .frame(width: 20, height: 20)
                         .padding(.trailing, 8)
@@ -130,7 +130,7 @@ struct CustomButton: View {
             HStack {
                 Spacer()
                 
-                Image("folder")
+                Image(Images.Icon.folder.rawValue)
                     .resizable()
                     .frame(width: 20, height: 20)
                     .padding(.trailing, 8)
