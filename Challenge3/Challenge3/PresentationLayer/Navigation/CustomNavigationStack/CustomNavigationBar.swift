@@ -24,10 +24,15 @@ struct CustomNavBar<Content: View>: View {
 
 extension View {
     func makeCustomNavBar<Content: View>(content: @escaping () -> Content) -> some View {
-        self.safeAreaInset(edge: .top) {
-            CustomNavBar {
-                content()
+        VStack {
+            self.safeAreaInset(edge: .top) {
+                CustomNavBar {
+                    VStack {
+                        content()
+                    }
+                }
             }
+            Spacer()
         }
     }
 }
