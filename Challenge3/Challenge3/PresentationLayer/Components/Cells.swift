@@ -10,8 +10,12 @@ struct Cells: View {
     var body: some View {
         VStack {
             Text("For test ONLY!")
+            
             NavigationView {
                 ScrollView() {
+                    FilledWideCell()
+                        .padding(.horizontal)
+                    
                     ForEach(0..<3) { _ in
                         NavigationLink(destination: Icons()) {
                             FilledWideCell(
@@ -44,17 +48,6 @@ struct Cells: View {
                     )
                     .padding([.top, .leading])
                 }
-            }
-            
-            VStack(spacing: 16) {
-                MenuCell(menuIcon: .accountSettings)
-                    .padding(.horizontal)
-                
-                MenuCell(menuIcon: .changePass)
-                    .padding(.horizontal)
-                
-                MenuCell(menuIcon: .forgetPass)
-                    .padding(.horizontal)
             }
         }
     }
@@ -109,8 +102,8 @@ struct FilledWideCell: View {
                     Spacer()
                     
                     HStack {
-                        if mainLeft != nil {
-                            Text(mainLeft ?? "")
+                        if let mainLeft {
+                            Text(mainLeft)
                                 .foregroundColor(.black)
                         }
                         if (mainLeft != nil && mainRight != nil) {
@@ -121,8 +114,8 @@ struct FilledWideCell: View {
                         } else {
                             Text("")
                         }
-                        if mainRight != nil {
-                            Text(mainRight ?? "")
+                        if let mainRight {
+                            Text(mainRight)
                                 .foregroundColor(.black)
                         }
                         
@@ -130,8 +123,8 @@ struct FilledWideCell: View {
                     }
                     
                     HStack {
-                        if secondLeft != nil {
-                            Text(secondLeft ?? "")
+                        if let secondLeft {
+                            Text(secondLeft)
                                 .foregroundColor(Pallete.Gray.forText)
                         }
                         if (secondLeft != nil && secondRight != nil) {
@@ -139,8 +132,8 @@ struct FilledWideCell: View {
                                 .fill(.white)
                                 .frame(width: 4)
                         }
-                        if secondRight != nil {
-                            Text(secondRight ?? "")
+                        if let secondRight {
+                            Text(secondRight)
                                 .foregroundColor(Pallete.Gray.forText)
                         }
                         
@@ -152,8 +145,9 @@ struct FilledWideCell: View {
                 
                 Spacer()
                 
-                Button(action: {iconState?.toggle()},
-                       label: {
+                Button {iconState?.toggle()
+                    
+                } label: {
                     switch iconMode {
                     case .like:
                         Image(iconState == true ? Images.Icon.heartFill.rawValue : Images.Icon.heart.rawValue)
@@ -164,8 +158,8 @@ struct FilledWideCell: View {
                     default:
                         Text("")
                     }
-                })
-                .frame(width: 56, height: 56)
+                }
+                .frame(width: 56, height: height)
             }
         }
     }
@@ -185,12 +179,12 @@ struct BlankWideCell: View {
             )
             
             VStack(alignment: .leading) {
-                if mainTitle != nil {
-                    Text(mainTitle ?? "")
+                if let mainTitle {
+                    Text(mainTitle)
                         .foregroundColor(.black)
                 }
-                if secondTitle != nil {
-                    Text(secondTitle ?? "")
+                if let secondTitle {
+                    Text(secondTitle)
                         .foregroundColor(Pallete.Gray.forText)
                 }
             }
@@ -201,22 +195,24 @@ struct BlankWideCell: View {
 }
 
 struct MenuCell: View {
-    var menuIcon: MenuIcon = .accountSettings
+    var menuItems: [String: String]
     
     var body: some View {
-        HStack(spacing: 12) {
-            CustomIcon(
-                iconString: (menuIcon == .accountSettings) ? Images.Icon.profile.rawValue : (menuIcon == .changePass ? Images.Icon.shield.rawValue : Images.Icon.unlock.rawValue),
-                width: 48, height: 48
-            )
-            
-            Text(
-                (menuIcon == .accountSettings) ? "Account Settings" : (menuIcon == .changePass ? "Change Password" : "Forget Password")
-            )
-            
-            Spacer()
-            
-            Image(Images.Icon.arrowRight.rawValue)
+        VStack {
+            ForEach(Array(menuItems), id: \.0) { item in
+                HStack(spacing: 12) {
+                    CustomIcon(
+                        iconString: item.0,
+                        width: 48, height: 48
+                    )
+                    
+                    Text(item.1)
+                    
+                    Spacer()
+                    
+                    Image(Images.Icon.arrowRight.rawValue)
+                }
+            }
         }
     }
 }
@@ -227,8 +223,4 @@ enum WideCellMode: String {
 
 enum IconMode: String {
     case like, select, blank
-}
-
-enum MenuIcon: String {
-    case accountSettings, changePass, forgetPass
 }
