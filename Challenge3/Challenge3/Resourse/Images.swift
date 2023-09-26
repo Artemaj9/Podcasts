@@ -7,10 +7,11 @@ import Foundation
 enum Images {
 
     enum Icon: String {
-        case arrowLeft, calendar, check, checkFill
+        case arrowLeft, arrowRight, calendar, check, checkFill
         case closeSquare, edit, ellipse, fire, folder
         case heart, heartFill, hide, horizontalIcon, iconGoogle
         case playlist, plus, plusWithBorder, tickSquare
+        case profile, shield, unlock
     }
 
     enum AudioPlaying: String {
