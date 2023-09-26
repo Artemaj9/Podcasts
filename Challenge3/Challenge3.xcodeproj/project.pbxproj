@@ -81,6 +81,7 @@
 		B78EC3C72AC0C050009B8ABC /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EC3C22AC0C050009B8ABC /* Localizable.swift */; };
 		D08922C12AC1A2F500683667 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08922C02AC1A2F500683667 /* Icons.swift */; };
 		D0D8E5022AC1C115005D5543 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D0D8E5012AC1C115005D5543 /* Kingfisher */; };
+		D0D8E5062AC226F4005D5543 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D8E5052AC226F4005D5543 /* Cells.swift */; };
 		FAE797092AC210CE003F3F0C /* SelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE797082AC210CE003F3F0C /* SelectButton.swift */; };
 		FAE797072AC1FDF8003F3F0C /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE797062AC1FDF8003F3F0C /* CustomLabel.swift */; };
 /* End PBXBuildFile section */
@@ -160,6 +161,7 @@
 		B78EC3C12AC0C050009B8ABC /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		B78EC3C22AC0C050009B8ABC /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		D08922C02AC1A2F500683667 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		D0D8E5052AC226F4005D5543 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		FAE797082AC210CE003F3F0C /* SelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectButton.swift; sourceTree = "<group>"; };
 		FAE797062AC1FDF8003F3F0C /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -330,6 +332,7 @@
 				5D5322592AC1BA2B009BB98A /* CategoryTabs.swift */,
 				D08922C02AC1A2F500683667 /* Icons.swift */,
 				AC16D57A2AC1B80800B74CBA /* MiniPlayer.swift */,
+				D0D8E5052AC226F4005D5543 /* Cells.swift */,
 				FAE797082AC210CE003F3F0C /* SelectButton.swift */,
 				FAE797062AC1FDF8003F3F0C /* CustomLabel.swift */,
 			);
@@ -685,6 +688,7 @@
 				B78EC3C42AC0C050009B8ABC /* Pallete.swift in Sources */,
 				D08922C12AC1A2F500683667 /* Icons.swift in Sources */,
 				5D84B3682AC0999C00BC87E7 /* CreatePlaylistViewModel.swift in Sources */,
+				D0D8E5062AC226F4005D5543 /* Cells.swift in Sources */,
 				5D84B3642AC0999C00BC87E7 /* SearchModel.swift in Sources */,
 				5D84B36A2AC0999C00BC87E7 /* CreatePlaylistModel.swift in Sources */,
 				B72544812AC0D0D3003B3FF6 /* OnboardingViewModel.swift in Sources */,
