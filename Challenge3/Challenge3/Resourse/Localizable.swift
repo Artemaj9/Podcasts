@@ -24,7 +24,9 @@ struct Localizable {
 
     enum HomePage {}
 
-    enum Channel {}
+    enum Channel {
+        static var allEpisode = localizedStringKey("Channel.allEpisode")
+    }
 
     enum NowPlaying {}
 
