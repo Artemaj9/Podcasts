@@ -15,13 +15,14 @@ struct LoginTextField: View {
     let withHideOption: Bool
     let withBorder: Bool
     let cornerRadius: CGFloat
+    var backgroundColor: Color = Pallete.Gray.forTextFields
 
     var body: some View {
 
         VStack(alignment: .leading, spacing: 0) {
             Text(title)
-                .fontWeight(.light)
                 .padding(.leading)
+                .foregroundColor(Pallete.Gray.forText)
             ZStack(alignment: .trailing) {
                 Group {
                     if isSecure {
@@ -49,7 +50,7 @@ struct LoginTextField: View {
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: cornerRadius)
-                       .fill(Color.white)
+                        .fill(backgroundColor)
                        .overlay(
                                  RoundedRectangle(cornerRadius: cornerRadius)
                                     .stroke(Pallete.Blue.forAccent, lineWidth: withBorder ? 1 : 0)
@@ -73,27 +74,31 @@ struct LoginTextField: View {
                                    placeHolder: "Login",
                                    withHideOption: true,
                                    withBorder: false,
-                                   cornerRadius: 12)
+                                   cornerRadius: 12,
+                                   backgroundColor: Pallete.Gray.forTextFields)
                     LoginTextField(inputText: "",
                                    isSecure: false,
                                    title: "Password",
                                    placeHolder: "Enter your password",
                                    withHideOption: true,
                                    withBorder: false,
-                                   cornerRadius: 12)
+                                   cornerRadius: 12,
+                                   backgroundColor: Pallete.Gray.forTextFields)
                     LoginTextField(inputText: "",
                                    title: " E-mail",
                                    placeHolder: "Email",
                                    withHideOption: false,
                                    withBorder: true,
-                                   cornerRadius: 24)
+                                   cornerRadius: 24,
+                                   backgroundColor: .white)
                     LoginTextField(inputText: "",
                                    isSecure: true,
                                    title: "FirstName",
                                    placeHolder: "FirstName",
                                    withHideOption: true,
                                    withBorder: false,
-                                   cornerRadius: 24)
+                                   cornerRadius: 24,
+                                   backgroundColor: Pallete.Gray.forTextFields)
                 }
             }
         }
