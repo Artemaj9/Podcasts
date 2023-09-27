@@ -15,7 +15,7 @@ struct LoginTextField: View {
     let withHideOption: Bool
     let withBorder: Bool
     let cornerRadius: CGFloat
-    var backgroundColor: Color = Pallete.Gray.forTextFields
+    let backgroundColor: Color
 
     var body: some View {
 
