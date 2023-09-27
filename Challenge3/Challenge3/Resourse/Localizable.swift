@@ -44,7 +44,16 @@ struct Localizable {
 
     enum ProfileSettings {}
 
-    enum AccountSettings {}
+    enum AccountSettings {
+        static var gender = localizedStringKey("AccountSettingsView.gender")
+        static var dateOfBirth = localizedStringKey("AccountSettingsView.gender")
+        static var saveChanges = NSLocalizedString("AccountSettingsView.saveChanges", comment: "")
+        static var male = NSLocalizedString("AccountSettingsView.male", comment: "")
+        static var female = NSLocalizedString("AccountSettingsView.female", comment: "")
+        static var firstName = NSLocalizedString("AccountSettingsView.firstName", comment: "")
+        static var lastName = NSLocalizedString("AccountSettingsView.lastName", comment: "")
+        static var email = NSLocalizedString("AccountSettingsView.email", comment: "")
+    }
 
 }
 
