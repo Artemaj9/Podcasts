@@ -23,7 +23,7 @@ struct FavoritesView: View, ItemView {
         Playlist(mainTitle: "Tuhan mengapa dia berbeda", secondTitle: "15 Eps"),
         Playlist(mainTitle: "Another Playlist", secondTitle: "10 Eps")
     ]
-
+    
     //MARK: - View's Body
     
     var body: some View {
@@ -52,16 +52,21 @@ struct FavoritesView: View, ItemView {
                 .padding(.horizontal)
             }
             
-            Text(Localizable.Favorite.yourPlaylist)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding([.top, .leading])
-            
-            CreateButton {
-                listener?.push(view: CreatePlaylistView())
+            HStack() {
+                Text(Localizable.Favorite.yourPlaylist)
+                Spacer()
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
             .padding([.top, .leading])
-
+            
+            
+            HStack {
+                CreateButton {
+                    listener?.push(view: CreatePlaylistView())
+                }
+                Spacer()
+            }
+            .padding([.top, .leading])
+            
             ScrollView() {
                 
                 ForEach(playlists, id: \.mainTitle) { playlist in

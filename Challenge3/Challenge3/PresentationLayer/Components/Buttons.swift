@@ -228,10 +228,9 @@ struct CreateButton: View {
             action()
         } label: {
             HStack(spacing: 12) {
-                CustomImage(
-                    imageString: Images.Icon.plus.rawValue,
-                    width: 48, height: 48
-                )
+                
+                CustomIcon(iconString: Images.Icon.plus.rawValue, backColor: Pallete.OtherLight.peach,
+                           width: 48, height: 48)
                 
                 Text(Localizable.Favorite.createPlaylist)
                     .foregroundColor(.black)

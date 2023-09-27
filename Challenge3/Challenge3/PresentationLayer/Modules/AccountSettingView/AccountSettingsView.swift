@@ -15,5 +15,6 @@ struct AccountSettingsView: View, ItemView {
 struct AccountSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         AccountSettingsView()
+            .environmentObject(AccountSettingsViewModel())
     }
 }

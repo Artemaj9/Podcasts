@@ -38,7 +38,6 @@ struct CustomIcon: View {
 
             Image(iconString)
                 .foregroundColor(Color.gray)
-                .padding(12)
         }
     }
 }
