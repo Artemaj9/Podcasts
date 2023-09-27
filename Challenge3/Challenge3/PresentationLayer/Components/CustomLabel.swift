@@ -53,10 +53,13 @@ struct CustomLabel: View {
                 Text(labelText)
                     .font(.system(size: 16))
                     .foregroundColor(color)
-                HStack{
+                HStack {
                     Text(additionalText)
                         .font(.system(size: 14))
                         .foregroundColor(secondColor)
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(secondColor)
+                        .frame(width: 1, height: 16)
                     Text(epsText)
                         .font(.system(size: 14))
                         .foregroundColor(secondColor)

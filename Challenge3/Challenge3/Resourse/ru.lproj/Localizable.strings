@@ -2,7 +2,6 @@
   Localizable(ru).strings
 */
 
-
 //MARK: - StartCreateAccount
 "StartCreate.navTitle" = "Создать аккаунт";
 "StartCreate.greeting" = "Мы рады приветствовать вас!";
@@ -14,11 +13,13 @@
 "StartCreate.enterEmail" = "Введите ваш e-mail";
 "StartCreate.email" = "Почта";
 
-
 // MARK: - Onboarding
 "Onboarding.skip" = "Пропустить";
 "Onboarding.next" = "Далее";
 "Onboarding.getStarted" = "Начать";
+
+//MARK: - Channel
+"Channel.allEpisode" = "Все подкасты";
 
 //MARK: - AccountSettings
 "AccountSettingsView.gender" = "Пол";
