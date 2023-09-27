@@ -13,10 +13,11 @@ struct AccountSettingsView: View, ItemView {
     var listener: CustomNavigationContainer?
 
     // MARK: - Private Properties
-    private var titles: [String] = [
-        "First name", "Last name", "E-mail"
-    ]
     private var strings = Localizable.AccountSettings.self
+    
+    private var titles: [String] = [
+        Localizable.AccountSettings.firstName, Localizable.AccountSettings.lastName, Localizable.AccountSettings.email
+    ]
 
     // MARK: - Private Views
     private var datePickerView: some View {
@@ -67,7 +68,7 @@ struct AccountSettingsView: View, ItemView {
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 24)
-                    .fill(.white)
+                    .fill(Pallete.BlackWhite.white)
                     .overlay(
                         RoundedRectangle(cornerRadius: 24)
                             .stroke(Pallete.Blue.forAccent, lineWidth: 1)
@@ -76,7 +77,7 @@ struct AccountSettingsView: View, ItemView {
             .overlay {
                 HStack {
                     Spacer()
-                    Image("calendar")
+                    Image(Images.Icon.calendar.rawValue)
                         .padding()
                         .onTapGesture {
                             withAnimation {
@@ -98,7 +99,7 @@ struct AccountSettingsView: View, ItemView {
                 withHideOption: false,
                 withBorder: true,
                 cornerRadius: 24,
-                backgroundColor: .white
+                backgroundColor: Pallete.BlackWhite.white
             )
         }
     }
@@ -117,18 +118,15 @@ struct AccountSettingsView: View, ItemView {
                 textFieldsRows
                 birthdaySelectionRow
                 genderSelectionRow
+                CustomButton(title: strings.saveChanges, buttonType: .filledGray) {
+                    listener?.pop()
+                }
             }
 
-        }
-        .safeAreaInset(edge: .bottom) {
-            CustomButton(title: strings.saveChanges, buttonType: .filledGray) {
-
-            }
-            .background(.white)
         }
         .makeCustomNavBar {
             NavigationBars(atView: .accountSetting) {
-
+                listener?.pop()
             }
         }
         .overlay {
@@ -149,16 +147,23 @@ struct GenderPicker: View {
     var body: some View {
         HStack(spacing: 16) {
             ForEach(SelectedGender.allCases, id: \.hashValue) { gender in
+                var genderText: String {
+                    switch gender {
+                    case .male:
+                       return Localizable.AccountSettings.male
+                    case .female:
+                       return Localizable.AccountSettings.female
+                    }
+                }
                 HStack {
                     Image(selectedGender == gender ? Images.Icon.checkFill.rawValue : Images.Icon.check.rawValue)
                     Spacer()
-                    Text(gender.rawValue)
+                    Text(genderText)
                         .font(.system(size: 16, weight: .semibold))
                     Spacer()
                 }
                 .padding(.vertical, 10)
                 .padding(.horizontal)
-                .frame(width: 156)
                 .background {
                     RoundedRectangle(cornerRadius: 24)
                         .fill(.white)
@@ -180,13 +185,14 @@ struct GenderPicker: View {
     }
 }
 
-enum SelectedGender: String, CaseIterable {
-    case male = "Male"
-    case fermale = "Fermale"
+enum SelectedGender: CaseIterable {
+    case male
+    case female
 }
 
 struct AccountSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         AccountSettingsView()
+            .environmentObject(AccountSettingsViewModel())
     }
 }

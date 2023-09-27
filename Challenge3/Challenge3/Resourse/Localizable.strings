@@ -13,3 +13,8 @@
 "AccountSettingsView.gender" = "Gender";
 "AccountSettingsView.dateOfBirth" = "Date of Birth";
 "AccountSettingsView.saveChanges" = "Save Changes";
+"AccountSettingsView.female" = "Female";
+"AccountSettingsView.male" = "Male";
+"AccountSettingsView.firstName" = "First Name";
+"AccountSettingsView.lastName" = "Last Name";
+"AccountSettingsView.email" = "E-mail";

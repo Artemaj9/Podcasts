@@ -13,3 +13,8 @@
 "AccountSettingsView.gender" = "Пол";
 "AccountSettingsView.dateOfBirth" = "День рождения";
 "AccountSettingsView.saveChanges" = "Сохранить";
+"AccountSettingsView.female" = "Женский";
+"AccountSettingsView.male" = "Мужской";
+"AccountSettingsView.firstName" = "Ваше имя";
+"AccountSettingsView.lastName" = "Ваша фамилия";
+"AccountSettingsView.email" = "Ваша почта";
