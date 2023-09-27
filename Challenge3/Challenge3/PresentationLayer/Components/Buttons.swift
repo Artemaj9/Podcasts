@@ -219,3 +219,23 @@ struct GenresButton: View {
         }
       }
     }
+
+struct CreateButton: View {
+    var action: () -> Void
+    
+    var body: some View {
+        Button {
+            action()
+        } label: {
+            HStack(spacing: 12) {
+                CustomImage(
+                    imageString: Images.Icon.plus.rawValue,
+                    width: 48, height: 48
+                )
+                
+                Text(Localizable.Favorite.createPlaylist)
+                    .foregroundColor(.black)
+            }
+        }
+    }
+}

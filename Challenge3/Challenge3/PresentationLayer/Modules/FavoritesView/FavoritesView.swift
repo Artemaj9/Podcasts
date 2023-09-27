@@ -59,17 +59,16 @@ struct FavoritesView: View, ItemView {
                 .padding([.top, .leading])
 
             ScrollView() {
-                BlankWideCell(
-                    mainTitle: "Create playlist", //нужно решить проблему локализации
-                    cellMode: .new
-                )
+                CreateButton {
+                    listener?.push(view: CreatePlaylistView())
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding([.top, .leading])
                 
                 ForEach(playlists, id: \.mainTitle) { playlist in
                     BlankWideCell(
                         mainTitle: playlist.mainTitle,
-                        secondTitle: playlist.secondTitle,
-                        cellMode: .normal
+                        secondTitle: playlist.secondTitle
                     )
                     .padding([.top, .leading])
                 }
