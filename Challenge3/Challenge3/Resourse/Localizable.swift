@@ -7,7 +7,22 @@ import Foundation
 
 struct Localizable {
 
-    enum Autorization {}
+    enum Autorization {
+        static var firstName = NSLocalizedString("Authorizaion.firstName", comment: "")
+        static var lastName = NSLocalizedString("Authorizaion.lastName", comment: "")
+        static var email = NSLocalizedString("Authorizaion.email", comment: "")
+        static var password = NSLocalizedString("Authorizaion.password", comment: "")
+        static var confPassword = NSLocalizedString("Authorizaion.confPassword", comment: "")
+        static var firstNameField = NSLocalizedString("Authorizaion.firstNameField", comment: "")
+        static var lastNameField = NSLocalizedString("Authorizaion.lastNameField", comment: "")
+        static var emailField = NSLocalizedString("Authorizaion.emailField", comment: "")
+        static var passwordFiled = NSLocalizedString("Authorizaion.passwordField", comment: "")
+        static var confPasswordFiled = NSLocalizedString("Authorizaion.confPasswordField", comment: "")
+        static var signUp = NSLocalizedString("Authorizaion.signUp", comment: "")
+        static var signUpAdit = NSLocalizedString("Authorizaion.signUpAdit", comment: "")
+        static var alreadyHave = NSLocalizedString("Authorizaion.alreadyHave", comment: "")
+        static var login = NSLocalizedString("Authorizaion.login", comment: "")
+    }
 
     enum CreateAccount {
         enum StartCreate {

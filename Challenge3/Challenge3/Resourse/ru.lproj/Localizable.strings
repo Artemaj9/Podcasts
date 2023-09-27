@@ -16,3 +16,21 @@
 "Favorites.seeAll" = "Показать все";
 "Favorites.createPlaylist" = "Создать плейлист";
 "Favorites.yourPlaylist" = "Ваши плейлисты";
+
+//MARK: - Authorizaion
+"Authorizaion.firstName" = "Имя";
+"Authorizaion.lastName" = "Фамилия";
+"Authorizaion.email" = "E-mail";
+"Authorizaion.password" = "Пароль";
+"Authorizaion.confPassword" = "Подтвердите пароль";
+"Authorizaion.signUp" = "Зарегестрироваться";
+"Authorizaion.signUpAdit" = "для продолжения";
+"Authorizaion.alreadyHave" = "У вас уже есть аккаунт?";
+"Authorizaion.login" = "Войти";
+
+
+"Authorizaion.firstNameField" = "Введите своё имя";
+"Authorizaion.lastNameField" = "Введите свою фамилию";
+"Authorizaion.emailField" = "Введите свой email";
+"Authorizaion.passwordField" = "Введите пароль";
+"Authorizaion.confPasswordField" = "Подтвердите пароль";

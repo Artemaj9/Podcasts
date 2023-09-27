@@ -16,3 +16,21 @@
 "Favorites.seeAll" = "See all";
 "Favorites.createPlaylist" = "Create Playlist";
 "Favorites.yourPlaylist" = "Your Playlist";
+
+//MARK: - Authorizaion
+
+"Authorizaion.firstName" = "First Name";
+"Authorizaion.lastName" = "Last Name";
+"Authorizaion.email" = "E-mail";
+"Authorizaion.password" = "Password";
+"Authorizaion.confPassword" = "Confirm Password";
+"Authorizaion.signUp" = "Sign Up";
+"Authorizaion.signUpAdit" = "for continue";
+"Authorizaion.alreadyHave" = "Already have an account?";
+"Authorizaion.login" = "Login";
+
+"Authorizaion.firstNameField" = "Enter your first name";
+"Authorizaion.lastNameField" = "Enter your last Name";
+"Authorizaion.emailField" = "Enter your email";
+"Authorizaion.passwordField" = "Enter your password";
+"Authorizaion.confPasswordField" = "Confirm your password";
