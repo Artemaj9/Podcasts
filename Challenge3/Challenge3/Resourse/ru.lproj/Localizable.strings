@@ -2,12 +2,37 @@
   Localizable(ru).strings
 */
 
-
 //MARK: - StartCreateAccount
 "StartCreate.navTitle" = "Создать аккаунт";
+"StartCreate.greeting" = "Мы рады приветствовать вас!";
+"StartCreate.login" = "Войти";
+"StartCreate.alreadyHave" = "Уже есть аккаунт?";
+"StartCreate.contWithEmail" = "Войти через почту";
+"StartCreate.continueWithGoogle" = "Продолжить с Google";
+"StartCreate.orContinueWith" = "────   Или продолжить с   ────";
+"StartCreate.enterEmail" = "Введите ваш e-mail";
+"StartCreate.email" = "Почта";
 
 // MARK: - Onboarding
 "Onboarding.skip" = "Пропустить";
 "Onboarding.next" = "Далее";
 "Onboarding.getStarted" = "Начать";
+
+//MARK: - Channel
 "Channel.allEpisode" = "Все подкасты";
+
+//MARK: - AccountSettings
+"AccountSettingsView.gender" = "Пол";
+"AccountSettingsView.dateOfBirth" = "День рождения";
+"AccountSettingsView.saveChanges" = "Сохранить";
+"AccountSettingsView.female" = "Женский";
+"AccountSettingsView.male" = "Мужской";
+"AccountSettingsView.firstName" = "Ваше имя";
+"AccountSettingsView.lastName" = "Ваша фамилия";
+"AccountSettingsView.email" = "Ваша почта";
+
+//MARK: - Favorites
+"Favorites.favorites" = "Избранное";
+"Favorites.seeAll" = "Показать все";
+"Favorites.createPlaylist" = "Создать плейлист";
+"Favorites.yourPlaylist" = "Ваши плейлисты";

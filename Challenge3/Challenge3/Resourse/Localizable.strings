@@ -2,12 +2,37 @@
   Localizable(en).strings
 */
 
-
 //MARK: - StartCreateAccount
 "StartCreate.navTitle" = "Create account";
+"StartCreate.greeting" = "We are happy to greet you!";
+"StartCreate.login" = "login";
+"StartCreate.alreadyHave" = "Already have an account?";
+"StartCreate.contWithEmail" = "Continue with Email";
+"StartCreate.continueWithGoogle" = "Continue with Google";
+"StartCreate.orContinueWith" = "────   Or continue with   ────";
+"StartCreate.enterEmail" = "Enter your e-mail address";
+"StartCreate.email" = "E-mail";
 
 // MARK: - Onboarding
 "Onboarding.skip" = "Skip";
 "Onboarding.next" = "Next";
 "Onboarding.getStarted" = "Get Started";
-"Channel.allEpisode" = "All Episode";
+
+//MARK: -Channel
+"Channel.allEpisode" = "All Episode"
+ 
+ //MARK: - AccountSettings
+"AccountSettingsView.gender" = "Gender";
+"AccountSettingsView.dateOfBirth" = "Date of Birth";
+"AccountSettingsView.saveChanges" = "Save Changes";
+"AccountSettingsView.female" = "Female";
+"AccountSettingsView.male" = "Male";
+"AccountSettingsView.firstName" = "First Name";
+"AccountSettingsView.lastName" = "Last Name";
+"AccountSettingsView.email" = "E-mail";
+
+//MARK: - Favorites
+"Favorites.favorites" = "Favorites";
+"Favorites.seeAll" = "See all";
+"Favorites.createPlaylist" = "Create Playlist";
+"Favorites.yourPlaylist" = "Your Playlist";

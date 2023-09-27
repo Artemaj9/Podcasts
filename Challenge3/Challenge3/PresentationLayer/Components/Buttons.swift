@@ -45,7 +45,7 @@ struct Buttons_Previews: PreviewProvider {
 }
 struct CustomButton: View {
     var title: String
-    var font: Font = .system(size: 20)
+    var font: Font = .body
     var cornerRadius: Double = 50
     var buttonType: RoundedButtonState = .filledBlue
     
@@ -229,3 +229,22 @@ struct GenresButton: View {
         }
       }
     }
+
+struct CreateButton: View {
+    var action: () -> Void
+    
+    var body: some View {
+        Button {
+            action()
+        } label: {
+            HStack(spacing: 12) {
+                
+                CustomIcon(iconString: Images.Icon.plus.rawValue, backColor: Pallete.OtherLight.peach,
+                           width: 48, height: 48)
+                
+                Text(Localizable.Favorite.createPlaylist)
+                    .foregroundColor(.black)
+            }
+        }
+    }
+}
