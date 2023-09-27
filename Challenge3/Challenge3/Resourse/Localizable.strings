@@ -10,3 +10,9 @@
 "Onboarding.skip" = "Skip";
 "Onboarding.next" = "Next";
 "Onboarding.getStarted" = "Get Started";
+
+//MARK: - Favorites
+"Favorites.favorites" = "Favorites";
+"Favorites.seeAll" = "See all";
+"Favorites.createPlaylist" = "Create Playlist";
+"Favorites.yourPlaylist" = "Your Playlist";
