@@ -1,5 +1,6 @@
 //
-//  FavoritesCell.swift//
+//  FavoritesCell.swift
+//
 
 import SwiftUI
 

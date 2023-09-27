@@ -28,8 +28,6 @@ struct FavoritesView: View, ItemView {
     
     var body: some View {
         VStack {
-            NavigationBars(atView: .playlist) { }
-            .padding(.bottom)
             
             HStack {
                 Text(Localizable.Favorite.favorites)
@@ -57,13 +55,14 @@ struct FavoritesView: View, ItemView {
             Text(Localizable.Favorite.yourPlaylist)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding([.top, .leading])
+            
+            CreateButton {
+                listener?.push(view: CreatePlaylistView())
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding([.top, .leading])
 
             ScrollView() {
-                CreateButton {
-                    listener?.push(view: CreatePlaylistView())
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding([.top, .leading])
                 
                 ForEach(playlists, id: \.mainTitle) { playlist in
                     BlankWideCell(
@@ -73,6 +72,9 @@ struct FavoritesView: View, ItemView {
                     .padding([.top, .leading])
                 }
             }
+        }
+        .makeCustomNavBar {
+            NavigationBars(atView: .playlist) { }
         }
     }
 }
