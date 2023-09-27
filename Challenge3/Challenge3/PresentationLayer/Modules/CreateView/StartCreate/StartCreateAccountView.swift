@@ -15,16 +15,15 @@ struct StartCreateAccountView: View, ItemView {
                     Text(Localizable.CreateAccount.StartCreate.navTitle)
                         .fontWeight(.bold)
                         .font(.title)
-                        .padding(.top, 64)
                         .padding(.bottom, 8)
-                    Text("Lorem ipsum dolor sit amet")
+                        .padding(.top, 64)
+                    Text(Localizable.CreateAccount.StartCreate.greeting)
                         .font(.title3)
                         .padding(.bottom, 60)
                 }
                 .foregroundColor(.white)
                 ZStack {
                     RoundedRectangle(cornerRadius: 30)
-                        .ignoresSafeArea(.all, edges: .bottom)
                         .foregroundColor(.white)
                     VStack(spacing: 8) {
                         LoginTextField(inputText: "",
@@ -37,7 +36,9 @@ struct StartCreateAccountView: View, ItemView {
                         
                         VStack(spacing: 16) {
                             CustomButton(title: Localizable.CreateAccount.StartCreate.contWithEmail,
-                            buttonType: .filledBlue) {}
+                            buttonType: .filledBlue) {
+                                listener?.push(view: CreateWithEmailView())
+                            }
                                                         
                             Text(Localizable.CreateAccount.StartCreate.orContWith)
                                 .foregroundColor(Pallete.Gray.forText)
@@ -49,12 +50,17 @@ struct StartCreateAccountView: View, ItemView {
                         HStack {
                             Text(Localizable.CreateAccount.StartCreate.already)
                                 .minimumScaleFactor(0.7)
-                            StringButton(title: Localizable.CreateAccount.StartCreate.login,foregroundColor: .green) {}
+                            StringButton(title: Localizable.CreateAccount.StartCreate.login,foregroundColor: .green) {
+                                listener?.pop()
+                            }
                         }
+                        Spacer()
                         Spacer()
                     }
                     .padding(.top, 36)
                 }
+                .offset(y: 8)
+                .ignoresSafeArea(.all, edges: .bottom)
             }
         }
     }

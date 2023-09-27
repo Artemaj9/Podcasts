@@ -45,7 +45,7 @@ struct Buttons_Previews: PreviewProvider {
 }
 struct CustomButton: View {
     var title: String
-    var font: Font = .system(size: 20)
+    var font: Font = .body
     var cornerRadius: Double = 50
     var buttonType: RoundedButtonState = .filledBlue
     

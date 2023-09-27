@@ -12,6 +12,7 @@ struct Localizable {
     enum CreateAccount {
         enum StartCreate {
             static let navTitle = NSLocalizedString("StartCreate.navTitle", comment: "")
+            static let greeting = NSLocalizedString("StartCreate.greeting", comment: "")
             static let login = NSLocalizedString("StartCreate.login", comment: "")
             static let already = NSLocalizedString("StartCreate.alreadyHave", comment: "")
             static let contWithEmail = NSLocalizedString("StartCreate.contWithEmail", comment: "")

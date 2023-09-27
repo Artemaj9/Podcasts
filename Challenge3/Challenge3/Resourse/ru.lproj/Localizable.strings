@@ -5,6 +5,7 @@
 
 //MARK: - StartCreateAccount
 "StartCreate.navTitle" = "Создать аккаунт";
+"StartCreate.greeting" = "Мы рады приветствовать вас!";
 "StartCreate.login" = "Войти";
 "StartCreate.alreadyHave" = "Уже есть аккаунт?";
 "StartCreate.contWithEmail" = "Войти через почту";
