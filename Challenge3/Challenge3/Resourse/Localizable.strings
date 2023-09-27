@@ -10,3 +10,6 @@
 "Onboarding.skip" = "Skip";
 "Onboarding.next" = "Next";
 "Onboarding.getStarted" = "Get Started";
+"AccountSettingsView.gender" = "Gender";
+"AccountSettingsView.dateOfBirth" = "Date of Birth";
+"AccountSettingsView.saveChanges" = "Save Changes";

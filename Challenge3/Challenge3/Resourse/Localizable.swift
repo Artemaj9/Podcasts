@@ -39,7 +39,11 @@ struct Localizable {
 
     enum ProfileSettings {}
 
-    enum AccountSettings {}
+    enum AccountSettings {
+        static let gender = localizedStringKey("AccountSettingsView.gender")
+        static let dateOfBirth = localizedStringKey("AccountSettingsView.gender")
+        static let saveChanges = NSLocalizedString("AccountSettingsView.saveChanges", comment: "")
+    }
 
 }
 

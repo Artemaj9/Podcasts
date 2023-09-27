@@ -10,3 +10,6 @@
 "Onboarding.skip" = "Пропустить";
 "Onboarding.next" = "Далее";
 "Onboarding.getStarted" = "Начать";
+"AccountSettingsView.gender" = "Пол";
+"AccountSettingsView.dateOfBirth" = "День рождения";
+"AccountSettingsView.saveChanges" = "Сохранить";
