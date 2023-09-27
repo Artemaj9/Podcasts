@@ -1,6 +1,7 @@
-/* 
+/*
   Localizable(en).strings
 */
+
 
 //MARK: - StartCreateAccount
 "StartCreate.navTitle" = "Create account";
@@ -19,7 +20,7 @@
 "Onboarding.getStarted" = "Get Started";
 
 //MARK: -Channel
-"Channel.allEpisode" = "All Episode"
+"Channel.allEpisode" = "All Episode";
  
  //MARK: - AccountSettings
 "AccountSettingsView.gender" = "Gender";

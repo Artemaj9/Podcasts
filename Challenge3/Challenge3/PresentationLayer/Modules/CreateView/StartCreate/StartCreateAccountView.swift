@@ -26,7 +26,7 @@ struct StartCreateAccountView: View, ItemView {
                     RoundedRectangle(cornerRadius: 30)
                         .foregroundColor(.white)
                     VStack(spacing: 8) {
-                        LoginTextField(inputText: "",
+                        LoginTextField(inputText: .constant(""),
                                        title: Localizable.CreateAccount.StartCreate.email,
                                        placeHolder: Localizable.CreateAccount.StartCreate.enterEmail,
                                        withHideOption: false,
