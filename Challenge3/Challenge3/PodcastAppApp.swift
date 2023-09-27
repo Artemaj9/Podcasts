@@ -26,7 +26,7 @@ struct Challenge3App: App {
     var body: some Scene {
         WindowGroup { // добавить if какой экран будет показываться при старте
             NavigationContainer(viewModel: navigationViewModel) {
-               FavoritesView()
+               OnboardingView()
             }
             .environmentObject(favoritesViewModel)
             .environmentObject(homePageViewModel)
