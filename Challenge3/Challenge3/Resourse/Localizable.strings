@@ -5,6 +5,15 @@
 
 //MARK: - StartCreateAccount
 "StartCreate.navTitle" = "Create account";
+"StartCreate.login" = "login";
+"StartCreate.alreadyHave" = "Already have an account?";
+"StartCreate.contWithEmail" = "Continue with Email";
+"StartCreate.continueWithGoogle" = "Continue with Google";
+"StartCreate.orContinueWith" = "────   Or continue with   ────";
+"StartCreate.enterEmail" = "Enter your e-mail address";
+"StartCreate.email" = "E-mail";
+
+
 
 // MARK: - Onboarding
 "Onboarding.skip" = "Skip";
