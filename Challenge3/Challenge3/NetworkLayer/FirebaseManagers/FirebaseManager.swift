@@ -2,6 +2,12 @@
 //  FirebaseManager.swift
 //
 
-import Foundation
+import SwiftUI
+import FirebaseAuth
+import GoogleSignInSwift
 
-class FirebaseManager {}
+final class FirebaseManager: ObservableObject {
+    
+}
+
+

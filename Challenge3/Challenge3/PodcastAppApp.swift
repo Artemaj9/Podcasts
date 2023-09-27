@@ -3,6 +3,15 @@
 //
 
 import SwiftUI
+import FirebaseCore
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+    return true
+  }
+}
 
 @main
 struct Challenge3App: App {
@@ -21,6 +30,8 @@ struct Challenge3App: App {
     @StateObject var createPlaylistViewModel = CreatePlaylistViewModel()
     @StateObject var createWithEmailViewModel = CreateWithEmailViewModel()
     @StateObject var authorizarionViewModel = AuthorizarionViewModel()
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     // MARK: - Body
     var body: some Scene {
@@ -39,6 +50,7 @@ struct Challenge3App: App {
             .environmentObject(createPlaylistViewModel)
             .environmentObject(createWithEmailViewModel)
             .environmentObject(authorizarionViewModel)
+            .environmentObject(AuthenticationModel())
         }
     }
 }
