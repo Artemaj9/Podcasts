@@ -72,6 +72,7 @@ struct CustomButton: View {
                 .font(font)
                 .background(.white)
                 .foregroundColor(.black)
+                .padding()
                 .overlay(
                     RoundedRectangle(cornerRadius: cornerRadius)
                         .stroke(Color.black, lineWidth: 2)
@@ -84,9 +85,13 @@ struct CustomButton: View {
                 Button {
                     action()
                 } label: {
-                    Text(title)
-                        .frame(maxWidth: .infinity)
-                        .font(font)
+                    HStack {
+                        Spacer()
+                        Text(title)
+                            .font(font)
+                        Spacer()
+                    }
+                        .padding()
                         .background(Pallete.Gray.forButton)
                         .foregroundColor(.gray)
                         .cornerRadius(cornerRadius)
@@ -99,12 +104,16 @@ struct CustomButton: View {
                 Button {
                     action()
                 } label: {
-                    Text(title)
-                        .frame(maxWidth: .infinity)
+                    HStack {
+                        Spacer()
+                        Text(title)
+                            .font(font)
+                        Spacer()
+                    }
                         .font(font)
                         .background(.white)
                         .foregroundColor(.blue)
-                        .cornerRadius(cornerRadius)
+                        .padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: cornerRadius)
                                 .stroke(Color.blue, lineWidth: 2)
@@ -117,16 +126,17 @@ struct CustomButton: View {
             Button {
                 action()
             } label: {
-                ZStack {
-                    RoundedRectangle(cornerRadius: cornerRadius)
-                        .fill(.blue)
-                    
+                HStack {
+                    Spacer()
                     Text(title)
-                        .padding()
                         .font(font)
                         .foregroundColor(.white)
+                    Spacer()
                 }
-            }
+                    .padding(20)
+                    .background( RoundedRectangle(cornerRadius: cornerRadius)
+                        .fill(.blue))
+                }
             .padding()
             
         case .select:
@@ -143,7 +153,7 @@ struct CustomButton: View {
                 
                 Spacer()
             }
-            .font(font)
+            .padding()
             .background(Pallete.Gray.forCells)
             .foregroundColor(.black)
             .cornerRadius(cornerRadius)
