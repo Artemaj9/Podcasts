@@ -68,6 +68,8 @@
 		5D84B3712AC0999C00BC87E7 /* AutorizarionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B3442AC0999C00BC87E7 /* AutorizarionModel.swift */; };
 		5D84B3722AC0999C00BC87E7 /* AutorizarionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B3452AC0999C00BC87E7 /* AutorizarionViewModel.swift */; };
 		5DCF86062AC1EBF900B28053 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5DCF86052AC1EBF900B28053 /* Localizable.strings */; };
+		5DCF86082AC41C9900B28053 /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF86072AC41C9900B28053 /* FavoritesCell.swift */; };
+		5DCF860A2AC465C300B28053 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF86092AC465C300B28053 /* PlaylistModel.swift */; };
 		AC16D57B2AC1B80800B74CBA /* MiniPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16D57A2AC1B80800B74CBA /* MiniPlayer.swift */; };
 		ACEE58CA2AC2194E0037C34E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE58C92AC2194E0037C34E /* LoginTextField.swift */; };
 		ACEE58CC2AC21B050037C34E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE58CB2AC21B050037C34E /* SearchBar.swift */; };
@@ -152,6 +154,8 @@
 		5D84B3442AC0999C00BC87E7 /* AutorizarionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutorizarionModel.swift; sourceTree = "<group>"; };
 		5D84B3452AC0999C00BC87E7 /* AutorizarionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutorizarionViewModel.swift; sourceTree = "<group>"; };
 		5DCF86052AC1EBF900B28053 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		5DCF86072AC41C9900B28053 /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
+		5DCF86092AC465C300B28053 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
 		AC16D57A2AC1B80800B74CBA /* MiniPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayer.swift; sourceTree = "<group>"; };
 		ACEE58C92AC2194E0037C34E /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		ACEE58CB2AC21B050037C34E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -371,6 +375,8 @@
 			children = (
 				5D84B3132AC0999C00BC87E7 /* FavoritesViewModel.swift */,
 				5D84B3142AC0999C00BC87E7 /* FavoritesView.swift */,
+				5DCF86092AC465C300B28053 /* PlaylistModel.swift */,
+				5DCF86072AC41C9900B28053 /* FavoritesCell.swift */,
 				5D84B3152AC0999C00BC87E7 /* FavoritesModel.swift */,
 			);
 			path = FavoritesView;
@@ -644,6 +650,7 @@
 				B7FA0B202AC36F8A000022E7 /* CustomNavigationBar.swift in Sources */,
 				5D84B3482AC0999C00BC87E7 /* CustomNavigationViewModel.swift in Sources */,
 				5D84B3552AC0999C00BC87E7 /* AccountSettingsModel.swift in Sources */,
+				5DCF86082AC41C9900B28053 /* FavoritesCell.swift in Sources */,
 				5D84B3712AC0999C00BC87E7 /* AutorizarionModel.swift in Sources */,
 				5D84B34B2AC0999C00BC87E7 /* MainTabBar.swift in Sources */,
 				5D84B3522AC0999C00BC87E7 /* HomePageViewModel.swift in Sources */,
@@ -692,6 +699,7 @@
 				5D84B2E92AC0975100BC87E7 /* DataProvider.swift in Sources */,
 				5D84B3722AC0999C00BC87E7 /* AutorizarionViewModel.swift in Sources */,
 				B72544862AC0D9C4003B3FF6 /* OnboardingView.swift in Sources */,
+				5DCF860A2AC465C300B28053 /* PlaylistModel.swift in Sources */,
 				5D84B35B2AC0999C00BC87E7 /* ChannelViewModel.swift in Sources */,
 				5D84B3702AC0999C00BC87E7 /* AutorizationView.swift in Sources */,
 				5D84B3542AC0999C00BC87E7 /* AccountSettingsViewModel.swift in Sources */,

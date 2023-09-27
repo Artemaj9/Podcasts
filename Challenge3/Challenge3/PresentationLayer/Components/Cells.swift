@@ -34,17 +34,14 @@ struct Cells: View {
             }
             
             ScrollView() {
-                BlankWideCell(
-                    mainTitle: "Create Playlist",
-                    cellMode: .new
-                )
+                CreateButton{}
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding([.top, .leading])
                 
                 ForEach(0..<2) { _ in
                     BlankWideCell(
                         mainTitle: "Tuhan mengapa dia berbeda",
-                        secondTitle: "15 Eps",
-                        cellMode: .normal
+                        secondTitle: "15 Eps"
                     )
                     .padding([.top, .leading])
                 }
@@ -169,12 +166,11 @@ struct BlankWideCell: View {
     var mainTitle: String?
     var secondTitle: String?
     var image: String?
-    var cellMode: WideCellMode?
     
     var body: some View {
         HStack(spacing: 12) {
             CustomImage(
-                imageString: (cellMode == .new) ? Images.Icon.plus.rawValue : (cellMode == .normal ? image : nil),
+                imageString: image,
                 width: 48, height: 48
             )
             
@@ -215,10 +211,6 @@ struct MenuCell: View {
             }
         }
     }
-}
-
-enum WideCellMode: String {
-    case new, normal
 }
 
 enum IconMode: String {

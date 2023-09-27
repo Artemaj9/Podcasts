@@ -5,10 +5,82 @@
 import SwiftUI
 
 struct FavoritesView: View, ItemView {
+    
+    //MARK: - Internal Properties
+    
     var listener: CustomNavigationContainer?
-
+    
+    //MARK: - Mock data
+    
+    let data: [(image: String?, firstText: String?, secondText: String?)] = [
+        (image: nil, firstText: "Text1", secondText: "Description1"),
+        (image: "image2", firstText: "Text2", secondText: "Description2"),
+        (image: "image2", firstText: "Text3", secondText: "Description3"),
+        (image: "image2", firstText: "Text4", secondText: "Description4")
+    ]
+    
+    let playlists: [Playlist] = [
+        Playlist(mainTitle: "Tuhan mengapa dia berbeda", secondTitle: "15 Eps"),
+        Playlist(mainTitle: "Another Playlist", secondTitle: "10 Eps")
+    ]
+    
+    //MARK: - View's Body
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            HStack {
+                Text(Localizable.Favorite.favorites)
+                
+                Spacer ()
+                
+                Button {
+                    
+                } label: {
+                    Text(Localizable.Favorite.seeAll)
+                        .foregroundColor(Pallete.Gray.forText)
+                }
+            }
+            .padding(.horizontal)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 20) {
+                    ForEach(data, id: \.firstText) { item in
+                        FavoritesCell(image: item.image, firstText: item.firstText, secondText: item.secondText)
+                    }
+                }
+                .padding(.horizontal)
+            }
+            
+            HStack() {
+                Text(Localizable.Favorite.yourPlaylist)
+                Spacer()
+            }
+            .padding([.top, .leading])
+            
+            
+            HStack {
+                CreateButton {
+                    listener?.push(view: CreatePlaylistView())
+                }
+                Spacer()
+            }
+            .padding([.top, .leading])
+            
+            ScrollView() {
+                
+                ForEach(playlists, id: \.mainTitle) { playlist in
+                    BlankWideCell(
+                        mainTitle: playlist.mainTitle,
+                        secondTitle: playlist.secondTitle
+                    )
+                    .padding([.top, .leading])
+                }
+            }
+        }
+        .makeCustomNavBar {
+            NavigationBars(atView: .playlist) { }
+        }
     }
 }
 

@@ -33,7 +33,12 @@ struct Localizable {
         enum SarchResult {}
     }
 
-    enum Favorite {}
+    enum Favorite {
+        static var favorites = localizedStringKey("Favorites.favorites")
+        static var seeAll = localizedStringKey("Favorites.seeAll")
+        static var createPlaylist = localizedStringKey( "Favorites.createPlaylist")
+        static var yourPlaylist = localizedStringKey("Favorites.yourPlaylist")
+    }
 
     enum Playlist {}
 

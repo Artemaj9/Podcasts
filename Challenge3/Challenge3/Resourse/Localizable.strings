@@ -10,6 +10,8 @@
 "Onboarding.skip" = "Skip";
 "Onboarding.next" = "Next";
 "Onboarding.getStarted" = "Get Started";
+ 
+ //MARK: - AccountSettings
 "AccountSettingsView.gender" = "Gender";
 "AccountSettingsView.dateOfBirth" = "Date of Birth";
 "AccountSettingsView.saveChanges" = "Save Changes";
@@ -18,3 +20,9 @@
 "AccountSettingsView.firstName" = "First Name";
 "AccountSettingsView.lastName" = "Last Name";
 "AccountSettingsView.email" = "E-mail";
+
+//MARK: - Favorites
+"Favorites.favorites" = "Favorites";
+"Favorites.seeAll" = "See all";
+"Favorites.createPlaylist" = "Create Playlist";
+"Favorites.yourPlaylist" = "Your Playlist";
