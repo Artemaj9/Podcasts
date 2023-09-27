@@ -61,7 +61,6 @@ struct CustomImage: View {
                 Image(imageString)
                     .resizable()
                     .scaledToFit()
-                    .background(backColor)
                     .frame(width: width, height: height)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             } else {
