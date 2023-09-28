@@ -5,9 +5,12 @@
 import SwiftUI
 
 struct SearchBarView: View {
-
+   
+// MARK: - Property Wrappers
     @State var searchText: String
     @FocusState var isFocused: Bool
+    
+// MARK: - Internal Properties
     let placeholder: String
     let backgroundColor: Color
 
@@ -26,7 +29,7 @@ struct SearchBarView: View {
                 }
             TextField(placeholder, text: $searchText)
                 .focused($isFocused)
-                .foregroundColor(Color.black)
+                .foregroundColor(Pallete.BlackWhite.black)
                 .disableAutocorrection(true)
                 .overlay(
                     ZStack {
