@@ -23,14 +23,14 @@ struct ProfilesettingsView: View, ItemView {
                 secondTitle: "Love,life and chill"
             )
             
-            MenuCell(menuItems:texts,spacing: 21)
+            MenuCell(menuItems:texts, spacing: 21)
             
             Spacer()
             
             CustomButton(title: Localizable.ProfileSettings.logOut, buttonType: .strokeBlue) {
             }
         }
-        .padding([.top, .leading])
+        .padding([.top, .horizontal])
     }
 }
 struct ProfilesettingsView_Previews: PreviewProvider {
