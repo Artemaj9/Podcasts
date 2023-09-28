@@ -33,6 +33,7 @@ struct ProfilesettingsView: View, ItemView {
         .padding([.top, .horizontal])
     }
 }
+
 struct ProfilesettingsView_Previews: PreviewProvider {
     static var previews: some View {
         ProfilesettingsView()
