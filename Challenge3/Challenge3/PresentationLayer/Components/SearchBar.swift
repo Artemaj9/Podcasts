@@ -7,7 +7,9 @@ import SwiftUI
 struct SearchBarView: View {
 
     @State var searchText: String
+    @FocusState var isFocused: Bool
     let placeholder: String
+    let backgroundColor: Color
 
     var body: some View {
         HStack {
@@ -23,6 +25,7 @@ struct SearchBarView: View {
                     searchText = ""
                 }
             TextField(placeholder, text: $searchText)
+                .focused($isFocused)
                 .foregroundColor(Color.black)
                 .disableAutocorrection(true)
                 .overlay(
@@ -42,7 +45,9 @@ struct SearchBarView: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(Color.white))
+                .fill(backgroundColor)
+        .shadow(radius: isFocused ? 2 : 0)
+        .animation(.linear, value: isFocused))
         .padding()
     }
 }
@@ -51,7 +56,7 @@ struct SearchBarView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Pallete.Blue.forOnboarding.ignoresSafeArea()
-            SearchBarView(searchText: "", placeholder: "Podcast, chanell, or artist...")
+            SearchBarView(searchText: "", placeholder: "Podcast, chanell, or artist...", backgroundColor: Pallete.Gray.forCells)
                 .previewLayout(.sizeThatFits)
         }
     }

@@ -34,7 +34,7 @@ struct Buttons: View {
             
             BackButton(isReverse: true) {}
             
-            GenresButton(title: "Comedy") {}
+            GenresButton(title: "Comedy", backgroundColor: .pink, hSize: 147) {}
         }
     }
 }
@@ -233,9 +233,15 @@ struct BackButton: View {
 }
 
 struct GenresButton: View {
-    var title: String
-    var font: Font = .system(size: 20)
-    var cornerRadius: Double = 10
+    
+    let title: String
+    let font: Font = .body
+    let cornerRadius: CGFloat = 12
+    let backgroundColor: Color
+    let hSize: CGFloat
+    let aspectRatio = 0.57
+    
+    
     
     var action: () -> Void
     
@@ -243,20 +249,19 @@ struct GenresButton: View {
         Button {
             action()
         } label: {
-            ZStack {
-                Button(action: action) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .fill(backgroundColor)
+                        .frame(width: hSize, height: aspectRatio * hSize)
                     Text(title)
                         .font(font)
-                        .background(.pink)
                         .foregroundColor(.white)
-                        .cornerRadius(cornerRadius)
-                        .frame(alignment: .center)
                 }
-            }
-            .padding()
+                .padding(.vertical, 8)
+                .padding(.horizontal, 6)
         }
-      }
     }
+}
 
 struct CreateButton: View {
     var action: () -> Void
