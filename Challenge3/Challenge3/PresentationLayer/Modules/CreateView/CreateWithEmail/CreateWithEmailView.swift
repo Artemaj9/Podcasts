@@ -11,7 +11,9 @@ struct CreateWithEmailView: View, ItemView {
     var listener: CustomNavigationContainer?
     
     var body: some View {
-  
+
+        VStack{
+
         ScrollView{
             
             VStack{

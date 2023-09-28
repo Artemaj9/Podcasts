@@ -10,6 +10,7 @@ enum RoundedButtonState {
     case filledGray
     case select
     case outGoogle
+    case outApple
 }
 
 struct Buttons: View {
@@ -53,33 +54,6 @@ struct CustomButton: View {
     
     var body: some View {
         switch buttonType {
-        case .outGoogle:
-            Button {
-                action()
-            } label: {
-                HStack {
-                    Spacer()
-                    
-                    Image(Images.Icon.iconGoogle.rawValue)
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                    
-                    Text(title)
-                        .font(font)
-                    
-                    Spacer()
-                }
-                .font(font)
-                .background(.white)
-                .foregroundColor(.black)
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: cornerRadius)
-                        .stroke(Color.black, lineWidth: 2)
-                )
-                .padding()
-            }
-            
         case .filledGray:
             ZStack {
                 Button {
@@ -158,7 +132,61 @@ struct CustomButton: View {
             .foregroundColor(.black)
             .cornerRadius(cornerRadius)
             .padding()
-            
+
+        case .outGoogle:
+            Button {
+                action()
+            } label: {
+                HStack {
+                    Spacer()
+
+                    Image(Images.Icon.iconGoogle.rawValue)
+                        .resizable()
+                        .frame(width: 20, height: 20)
+
+                    Text(title)
+                        .font(font)
+
+                    Spacer()
+                }
+                .font(font)
+                .background(.white)
+                .foregroundColor(.black)
+                .padding()
+                .overlay(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .stroke(Color.black, lineWidth: 2)
+                )
+                .padding()
+            }
+
+        case .outApple:
+            Button {
+                action()
+            } label: {
+                HStack {
+                    Spacer()
+
+                    Image(systemName: Images.Icon.appleLogo.rawValue)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+
+                    Text(title)
+                        .font(font)
+
+                    Spacer()
+                }
+                .font(font)
+                .background(.white)
+                .foregroundColor(.black)
+                .padding()
+                .overlay(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .stroke(Color.black, lineWidth: 2)
+                )
+                .padding()
+            }
         }
     }
 }
