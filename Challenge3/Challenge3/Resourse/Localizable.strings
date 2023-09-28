@@ -68,3 +68,11 @@
 "CreateWithEmail.emailField" = "Enter your email";
 "CreateWithEmail.passwordField" = "Enter your password";
 "CreateWithEmail.confPasswordField" = "Confirm your password";
+
+//MARK: - Profile Setting
+
+"ProfileSetting.accountSetting" = "Account Setting";
+"ProfileSetting.changePassword" = "Change Password";
+"ProfileSetting.forgetPassword" = "Forget Password";
+"ProfileSetting.logOut" = "Log Out";
+

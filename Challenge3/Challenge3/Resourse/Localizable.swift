@@ -79,7 +79,12 @@ struct Localizable {
 
     enum Playlist {}
 
-    enum ProfileSettings {}
+    enum ProfileSettings {
+        static var accountSetting = NSLocalizedString("ProfileSetting.accountSetting", comment: "")
+        static var changePassword = NSLocalizedString("ProfileSetting.changePassword", comment: "")
+        static var forgetPassword = NSLocalizedString("ProfileSetting.forgetPassword", comment: "")
+        static var logOut = NSLocalizedString("ProfileSetting.logOut", comment: "")
+    }
 
     enum AccountSettings {
         static var gender = localizedStringKey("AccountSettingsView.gender")
