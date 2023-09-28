@@ -7,6 +7,7 @@ import SwiftUI
 struct SearchBarView: View {
 
     @State var searchText: String
+    @FocusState var isFocused: Bool
     let placeholder: String
 
     var body: some View {
@@ -23,6 +24,7 @@ struct SearchBarView: View {
                     searchText = ""
                 }
             TextField(placeholder, text: $searchText)
+                .focused($isFocused)
                 .foregroundColor(Color.black)
                 .disableAutocorrection(true)
                 .overlay(
@@ -42,7 +44,9 @@ struct SearchBarView: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(Color.white))
+                .fill(Color.white)
+        .shadow(radius: isFocused ? 2 : 0)
+        .animation(.linear, value: isFocused))
         .padding()
     }
 }
