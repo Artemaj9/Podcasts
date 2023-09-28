@@ -38,7 +38,6 @@ struct CustomIcon: View {
 
             Image(iconString)
                 .foregroundColor(Color.gray)
-                .padding(12)
         }
     }
 }
@@ -61,7 +60,6 @@ struct CustomImage: View {
                 Image(imageString)
                     .resizable()
                     .scaledToFit()
-                    .background(backColor)
                     .frame(width: width, height: height)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             } else {

@@ -2,9 +2,16 @@
   Localizable(ru).strings
 */
 
-
 //MARK: - StartCreateAccount
 "StartCreate.navTitle" = "Создать аккаунт";
+"StartCreate.greeting" = "Мы рады приветствовать вас!";
+"StartCreate.login" = "Войти";
+"StartCreate.alreadyHave" = "Уже есть аккаунт?";
+"StartCreate.contWithEmail" = "Войти через почту";
+"StartCreate.continueWithGoogle" = "Продолжить с Google";
+"StartCreate.orContinueWith" = "────   Или продолжить с   ────";
+"StartCreate.enterEmail" = "Введите ваш e-mail";
+"StartCreate.email" = "Почта";
 
 // MARK: - Onboarding
 "Onboarding.skip" = "Пропустить";
@@ -22,3 +29,40 @@
 "Autorization.signInWithApple" = "Войти с Apple";
 "Autorization.dontHaveAccount" = "У вас еще нет аккаунта?";
 "Autorization.signIn" = "Зарегистрироваться";
+
+//MARK: - Channel
+"Channel.allEpisode" = "Все подкасты";
+
+//MARK: - AccountSettings
+"AccountSettingsView.gender" = "Пол";
+"AccountSettingsView.dateOfBirth" = "День рождения";
+"AccountSettingsView.saveChanges" = "Сохранить";
+"AccountSettingsView.female" = "Женский";
+"AccountSettingsView.male" = "Мужской";
+"AccountSettingsView.firstName" = "Ваше имя";
+"AccountSettingsView.lastName" = "Ваша фамилия";
+"AccountSettingsView.email" = "Ваша почта";
+
+//MARK: - Favorites
+"Favorites.favorites" = "Избранное";
+"Favorites.seeAll" = "Показать все";
+"Favorites.createPlaylist" = "Создать плейлист";
+"Favorites.yourPlaylist" = "Ваши плейлисты";
+
+//MARK: - Create Account With Email
+"CreateWithEmail.firstName" = "Имя";
+"CreateWithEmail.lastName" = "Фамилия";
+"CreateWithEmail.email" = "E-mail";
+"CreateWithEmail.password" = "Пароль";
+"CreateWithEmail.confPassword" = "Подтвердите пароль";
+"CreateWithEmail.complete" = "Заполните свой аккаунт";
+"CreateWithEmail.signUpAdit" = "для продолжения";
+"CreateWithEmail.alreadyHave" = "У вас уже есть аккаунт?";
+"CreateWithEmail.login" = "Войти";
+"CreateWithEmail.signUp" = "Зарегистрироваться";
+
+"CreateWithEmail.firstNameField" = "Введите своё имя";
+"CreateWithEmail.lastNameField" = "Введите свою фамилию";
+"CreateWithEmail.emailField" = "Введите свой email";
+"CreateWithEmail.passwordField" = "Введите пароль";
+"CreateWithEmail.confPasswordField" = "Подтвердите пароль";
