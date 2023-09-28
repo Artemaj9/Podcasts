@@ -21,9 +21,9 @@ struct AuthorizationView: View, ItemView {
             
             Spacer()
             
-            LoginTextField(inputText: authorizarionViewModel.login, title: strings.enterLogin, placeHolder: strings.login, withHideOption: false, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
+            LoginTextField(inputText: $authorizarionViewModel.login, title: strings.enterLogin, placeHolder: strings.login, withHideOption: false, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
             
-            LoginTextField(inputText: authorizarionViewModel.password, isSecure: false, title: strings.enterPassword, placeHolder: strings.password, withHideOption: true, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
+            LoginTextField(inputText: $authorizarionViewModel.password, isSecure: false, title: strings.enterPassword, placeHolder: strings.password, withHideOption: true, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
             
             CustomButton(title: strings.logIn, cornerRadius: 100, buttonType: .filledBlue, action: {})
                 .frame(height: 62)
