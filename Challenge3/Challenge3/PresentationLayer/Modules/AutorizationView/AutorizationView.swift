@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct AuthorizationView: View {
+struct AuthorizationView: View, ItemView {
 
     // MARK: - Internal Properties
     var listener: CustomNavigationContainer?
