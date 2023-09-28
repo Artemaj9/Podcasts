@@ -76,11 +76,8 @@ struct SearchView: View, ItemView {
                     }
                     .padding(.leading, -2)
                     .padding(.trailing, 10)
-                        
                 }
-                .padding(.top, 44)
             }
-            .ignoresSafeArea()
         }
     }
     
@@ -96,7 +93,7 @@ struct SearchView: View, ItemView {
         let yInitial = 0.48*maxY
         
         // координата, на которой прозрачность становится нулевой
-        let yFinal = 0.43*maxY
+        let yFinal = 0.44*maxY
         
         // угловой коэффициент линейной зависимости
         let k = 1 / (yInitial - yFinal)
