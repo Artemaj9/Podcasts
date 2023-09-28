@@ -54,3 +54,11 @@
 "CreateWithEmail.emailField" = "Введите свой email";
 "CreateWithEmail.passwordField" = "Введите пароль";
 "CreateWithEmail.confPasswordField" = "Подтвердите пароль";
+
+//MARK: - Profile Setting
+
+"ProfileSetting.accountSetting" = "Настройки аккаунта";
+"ProfileSetting.changePassword" = "Изменить пароль";
+"ProfileSetting.forgetPassword" = "Восстановить пароль";
+"ProfileSetting.logOut" = "Выйти";
+

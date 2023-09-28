@@ -192,9 +192,10 @@ struct BlankWideCell: View {
 
 struct MenuCell: View {
     var menuItems: [String: String]
+    var spacing: Double = 16
     
     var body: some View {
-        VStack {
+        VStack(spacing: spacing) {
             ForEach(Array(menuItems), id: \.0) { item in
                 HStack(spacing: 12) {
                     CustomIcon(
