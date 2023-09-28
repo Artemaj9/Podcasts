@@ -26,13 +26,15 @@ struct NavigationBars: View {
             return "Profile"
         case .createPlaylist:
             return "Create Playlist"
+        case .favorites:
+            return "Favorites"
         }
     }
 
     private var leadingContentView: some View {
         Group {
             switch atView {
-            case .signUp, .channel, .nowPlaying, .accountSetting, .createPlaylist:
+            case .signUp, .channel, .nowPlaying, .accountSetting, .createPlaylist, .favorites:
                 BackButton(isReverse: false, padding: 0) {
                     leadingButtonAction()
                 }
@@ -55,15 +57,14 @@ struct NavigationBars: View {
                     Image(Images.Icon.playlist.rawValue)
                 }
 
-            case .playlist, .createPlaylist:
+            case .playlist, .createPlaylist, .favorites:
                 Button {
                     if let trailingButtonAction {
                         trailingButtonAction()
                     }
                 } label: {
-                    Image(systemName: "ellipsis")
+                    Image(Images.Icon.horizontalIcon.rawValue)
                         .foregroundColor(.black)
-                        .rotationEffect(.degrees(90))
                 }
 
             default:
@@ -103,5 +104,5 @@ struct NavigationBars_Previews: PreviewProvider {
 }
 
 enum NavigationBarPlacement {
-    case signUp, channel, nowPlaying, search, playlist, accountSetting, createPlaylist
+    case signUp, channel, nowPlaying, search, playlist, accountSetting, createPlaylist, favorites
 }
