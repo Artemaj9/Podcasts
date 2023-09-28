@@ -35,7 +35,7 @@ struct FavoritesView: View, ItemView {
                 Spacer ()
                 
                 Button {
-                    
+                    listener?.push(view: FavoritesDetailView())
                 } label: {
                     Text(Localizable.Favorite.seeAll)
                         .foregroundColor(Pallete.Gray.forText)
@@ -75,6 +75,9 @@ struct FavoritesView: View, ItemView {
                         secondTitle: playlist.secondTitle
                     )
                     .padding([.top, .leading])
+                    .onTapGesture {
+                        listener?.push(view: ChannelView())
+                    }
                 }
             }
         }
