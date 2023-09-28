@@ -5,12 +5,17 @@
 import SwiftUI
 
 struct ProfilesettingsView: View, ItemView {
+
+    // MARK: - Internal Properties
     var listener: CustomNavigationContainer?
+
     var texts: [String: String] = [
         Images.Icon.profile.rawValue: Localizable.ProfileSettings.accountSetting,
         Images.Icon.shield.rawValue: Localizable.ProfileSettings.changePassword,
         Images.Icon.unlock.rawValue: Localizable.ProfileSettings.forgetPassword
     ]
+
+    // MARK: - Body
     var body: some View {
         VStack(alignment: .leading, spacing: 66) {
             BlankWideCell(
