@@ -22,11 +22,16 @@ struct SearchView: View, ItemView {
                         .fontWeight(.semibold)
                         .padding(.vertical, 20)
                     
-                    SearchBarView(searchText: "", placeholder: "Podcasts, chanell or artist")
+                    SearchBarView(searchText: "", placeholder: "Podcasts, chanell or artist", backgroundColor: Pallete.BlackWhite.white)
                     HStack {
                         Text("Top Genres")
                             .fontWeight(.semibold)
                         Spacer()
+                        Button {
+                        } label: {
+                            Text("See all")
+                                .foregroundColor(Pallete.Gray.forText)
+                        }
                     }
                     .offset(y: 16)
                     .padding(.horizontal, 28)
@@ -48,11 +53,6 @@ struct SearchView: View, ItemView {
                         Text("Browse all")
                             .fontWeight(.semibold)
                         Spacer()
-                        Button {
-                        } label: {
-                            Text("See all")
-                                .foregroundColor(Pallete.Gray.forText)
-                        }
                     }
                     .padding(.horizontal, 28)
                     VStack {
