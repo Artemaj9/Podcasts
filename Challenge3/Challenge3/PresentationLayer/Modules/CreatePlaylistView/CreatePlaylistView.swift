@@ -25,7 +25,7 @@ struct CreatePlaylistView: View, ItemView {
             }
             .padding(.horizontal)
             
-            SearchBarView(searchText: "", placeholder: "")
+            SearchBarView(searchText: "", placeholder: "", backgroundColor: Pallete.Gray.forTextFields)
                 .background(Pallete.Gray.forCells)
             
             ScrollView() {
