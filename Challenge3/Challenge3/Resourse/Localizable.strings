@@ -10,3 +10,15 @@
 "Onboarding.skip" = "Skip";
 "Onboarding.next" = "Next";
 "Onboarding.getStarted" = "Get Started";
+
+// MARK: - Autorization
+"Autorization.enterLogin" = "Enter your login";
+"Autorization.login" = "Login";
+"Autorization.enterPassword" = "Enter your password";
+"Autorization.password" = "Password";
+"Autorization.logIn" = "Log In";
+"Autorization.orContinueWith" = "Or continue with";
+"Autorization.signInWithGoogle" = "Sign in with Google";
+"Autorization.signInWithApple" = "Sign in with Apple";
+"Autorization.dontHaveAccount" = "Don't have an account?";
+"Autorization.signIn" = "Sign In";

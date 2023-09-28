@@ -1,61 +1,75 @@
 //
-//  AutorizationView.swift
+//  AuthorizationView.swift
 //
 
 import SwiftUI
 
-struct AutorizationView: View {
-    
-    @StateObject var viewModel: AuthorizarionViewModel
-    @State private var isActive: Bool = false
-    
+struct AuthorizationView: View {
+
+    // MARK: - Internal Properties
+    var listener: CustomNavigationContainer?
+
+    // MARK: - Property Wrappers
+    @EnvironmentObject var authorizarionViewModel: AuthorizarionViewModel
+
+    // MARK: - Private Properties
+    private var strings = Localizable.Autorization.self
+
     // MARK: - Body
     var body: some View {
-        VStack{
+        VStack {
             
             Spacer()
             
-            LoginTextField(inputText: viewModel.login, title: "Введите логин", placeHolder: "Логин", withHideOption: false, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
+            LoginTextField(inputText: authorizarionViewModel.login, title: strings.enterLogin, placeHolder: strings.login, withHideOption: false, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
             
-            LoginTextField(inputText: viewModel.password, isSecure: false, title: "Введите пароль", placeHolder: "Пароль", withHideOption: true, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
+            LoginTextField(inputText: authorizarionViewModel.password, isSecure: false, title: strings.enterPassword, placeHolder: strings.password, withHideOption: true, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
             
-            CustomButton(title: "Войти", cornerRadius: 100, buttonType: .filledBlue, action: {})
+            CustomButton(title: strings.logIn, cornerRadius: 100, buttonType: .filledBlue, action: {})
                 .frame(height: 62)
             
-            HStack{
+            HStack {
                 Rectangle()
                     .frame(width: 62, height: 1)
                 
-                Text("Or continue with")
+                Text(strings.continueWith)
                 
                 Rectangle()
                     .frame(width: 62, height: 1)
                 
-            }.foregroundColor(Pallete.BlackWhite.black)
-                .padding(32)
+            }
+            .foregroundColor(Pallete.BlackWhite.black)
+            .padding(32)
             
-            CustomButton(title: "Sign in with Google", buttonType: .outGoogle, action: {} )
+            CustomButton(title: strings.signInWithGoogle, buttonType: .outGoogle) {
+
+            }
             
+            CustomButton(title: strings.signInWithApple, buttonType: .outApple) {
+
+            }
+
             Spacer()
             
-            HStack{
+            HStack {
                 Spacer()
                 
-                Text("У вас еще нет аккаунта?")
+                Text(strings.dontHaveAccount)
                     .font(.system(size: 12))
                 
-                StringButton(title: "Зарегистрироваться", font: (.system(size: 12)), foregroundColor: .green, action: {})
+                StringButton(title: strings.signIn, font: .system(size: 12), foregroundColor: Pallete.Other.green, action: {})
                 
                 Spacer()
             }
             
-        }.background(NavigationLink(destination: CreateWithEmailView(), isActive: $isActive) {
-            EmptyView()
-        })
-        
+        }
     }
 }
 
 
-
-
+struct AuthorizationView_Previews: PreviewProvider {
+    static var previews: some View {
+        AuthorizationView()
+            .environmentObject(AuthorizarionViewModel())
+    }
+}

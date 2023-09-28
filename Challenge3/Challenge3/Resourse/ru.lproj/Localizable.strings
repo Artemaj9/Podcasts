@@ -11,4 +11,14 @@
 "Onboarding.next" = "Далее";
 "Onboarding.getStarted" = "Начать";
 
-
+// MARK: - Autorization
+"Autorization.enterLogin" = "Введите логин";
+"Autorization.login" = "Логин";
+"Autorization.enterPassword" = "Введите пароль";
+"Autorization.password" = "Пароль";
+"Autorization.logIn" = "Войти";
+"Autorization.orContinueWith" = "Использовать";
+"Autorization.signInWithGoogle" = "Войти с Google";
+"Autorization.signInWithApple" = "Войти с Apple";
+"Autorization.dontHaveAccount" = "У вас еще нет аккаунта?";
+"Autorization.signIn" = "Зарегистрироваться";

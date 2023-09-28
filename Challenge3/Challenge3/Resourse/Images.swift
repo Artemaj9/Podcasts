@@ -16,6 +16,7 @@ enum Images {
         case heart, heartFill, hide, horizontalIcon, iconGoogle, eye
         case playlist, plus, plusWithBorder, tickSquare
         case profile, shield, unlock
+        case appleLogo = "apple.logo"
     }
 
     enum AudioPlaying: String {

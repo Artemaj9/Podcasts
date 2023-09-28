@@ -5,6 +5,6 @@
 import Foundation
 
 final class AuthorizarionViewModel: ObservableObject {
-    @Published var login = ""
-    @Published var password = ""
+    @Published var login: String = ""
+    @Published var password: String = ""
 }
