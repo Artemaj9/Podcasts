@@ -8,20 +8,6 @@ import Foundation
 struct Localizable {
 
     enum Autorization {
-        static var firstName = NSLocalizedString("Authorizaion.firstName", comment: "")
-        static var lastName = NSLocalizedString("Authorizaion.lastName", comment: "")
-        static var email = NSLocalizedString("Authorizaion.email", comment: "")
-        static var password = NSLocalizedString("Authorizaion.password", comment: "")
-        static var confPassword = NSLocalizedString("Authorizaion.confPassword", comment: "")
-        static var firstNameField = NSLocalizedString("Authorizaion.firstNameField", comment: "")
-        static var lastNameField = NSLocalizedString("Authorizaion.lastNameField", comment: "")
-        static var emailField = NSLocalizedString("Authorizaion.emailField", comment: "")
-        static var passwordFiled = NSLocalizedString("Authorizaion.passwordField", comment: "")
-        static var confPasswordFiled = NSLocalizedString("Authorizaion.confPasswordField", comment: "")
-        static var signUp = NSLocalizedString("Authorizaion.signUp", comment: "")
-        static var signUpAdit = NSLocalizedString("Authorizaion.signUpAdit", comment: "")
-        static var alreadyHave = NSLocalizedString("Authorizaion.alreadyHave", comment: "")
-        static var login = NSLocalizedString("Authorizaion.login", comment: "")
     }
 
     enum CreateAccount {
@@ -36,7 +22,23 @@ struct Localizable {
             static let enterEmail = NSLocalizedString("StartCreate.enterEmail", comment: "")
             static let email = NSLocalizedString("StartCreate.email", comment: "")
         }
-        enum CreateWithEmail {}
+        enum CreateWithEmail {
+            static var firstName = NSLocalizedString("CreateWithEmail.firstName", comment: "")
+            static var lastName = NSLocalizedString("CreateWithEmail.lastName", comment: "")
+            static var email = NSLocalizedString("CreateWithEmail", comment: "")
+            static var password = NSLocalizedString("CreateWithEmail.password", comment: "")
+            static var confPassword = NSLocalizedString("CreateWithEmail.confPassword", comment: "")
+            static var firstNameField = NSLocalizedString("CreateWithEmail.firstNameField", comment: "")
+            static var lastNameField = NSLocalizedString("CreateWithEmail.lastNameField", comment: "")
+            static var emailField = NSLocalizedString("CreateWithEmail.emailField", comment: "")
+            static var passwordFiled = NSLocalizedString("CreateWithEmail.passwordField", comment: "")
+            static var confPasswordFiled = NSLocalizedString("CreateWithEmail.confPasswordField", comment: "")
+            static var complete = NSLocalizedString("CreateWithEmail.complete", comment: "")
+            static var signUpAdit = NSLocalizedString("CreateWithEmail.signUpAdit", comment: "")
+            static var alreadyHave = NSLocalizedString("CreateWithEmail.alreadyHave", comment: "")
+            static var login = NSLocalizedString("CreateWithEmail.login", comment: "")
+            static var signUp = NSLocalizedString("CreateWithEmail.signUp", comment: "")
+        }
     }
 
     enum Onboarding {

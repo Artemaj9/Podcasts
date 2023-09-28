@@ -38,20 +38,21 @@
 "Favorites.createPlaylist" = "Create Playlist";
 "Favorites.yourPlaylist" = "Your Playlist";
 
-//MARK: - Authorizaion
+//MARK: - Create Account With Email
 
-"Authorizaion.firstName" = "First Name";
-"Authorizaion.lastName" = "Last Name";
-"Authorizaion.email" = "E-mail";
-"Authorizaion.password" = "Password";
-"Authorizaion.confPassword" = "Confirm Password";
-"Authorizaion.signUp" = "Sign Up";
-"Authorizaion.signUpAdit" = "for continue";
-"Authorizaion.alreadyHave" = "Already have an account?";
-"Authorizaion.login" = "Login";
+"CreateWithEmail.firstName" = "First Name";
+"CreateWithEmail.lastName" = "Last Name";
+"CreateWithEmail.email" = "E-mail";
+"CreateWithEmail.password" = "Password";
+"CreateWithEmail.confPassword" = "Confirm Password";
+"CreateWithEmail.complete" = "Complete your account";
+"CreateWithEmail.signUpAdit" = "for continue";
+"CreateWithEmail.alreadyHave" = "Already have an account?";
+"CreateWithEmail.login" = "Login";
+"CreateWithEmail.signUp" = "Sign Up";
 
-"Authorizaion.firstNameField" = "Enter your first name";
-"Authorizaion.lastNameField" = "Enter your last Name";
-"Authorizaion.emailField" = "Enter your email";
-"Authorizaion.passwordField" = "Enter your password";
-"Authorizaion.confPasswordField" = "Confirm your password";
+"CreateWithEmail.firstNameField" = "Enter your first name";
+"CreateWithEmail.lastNameField" = "Enter your last Name";
+"CreateWithEmail.emailField" = "Enter your email";
+"CreateWithEmail.passwordField" = "Enter your password";
+"CreateWithEmail.confPasswordField" = "Confirm your password";
