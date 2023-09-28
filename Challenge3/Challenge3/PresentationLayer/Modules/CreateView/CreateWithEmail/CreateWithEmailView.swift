@@ -5,8 +5,8 @@
 import SwiftUI
 
 struct CreateWithEmailView: View, ItemView {
-    
-    @StateObject var viewModel: CreateWithEmailViewModel
+
+    @EnvironmentObject var viewModel: CreateWithEmailViewModel
     
     var listener: CustomNavigationContainer?
     
@@ -51,6 +51,7 @@ struct CreateWithEmailView: View, ItemView {
 
 struct CreatetWithEmailView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateWithEmailView(viewModel: CreateWithEmailViewModel())
+        CreateWithEmailView()
+            .environmentObject(CreateWithEmailViewModel())
     }
 }
