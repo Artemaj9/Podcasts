@@ -14,15 +14,16 @@ struct CategoryTabView: View {
             ScrollView(.horizontal, showsIndicators: false) {
 
                 HStack(spacing: 0) {
-
+                    Rectangle()
+                        .fill(.clear)
+                        .frame(width: 32, height: 0)
                     ForEach(0..<data.count, id: \.self) { index in
                         CategoryButton(
                             title: data[index],
                             isSelected: selectedCategory == index
                         ) {
+                            selectedCategory = index
                             withAnimation {
-                                selectedCategory = index
-
                                 if index == data.count - 1 {
                                     scrollViewProxy.scrollTo(index, anchor: .trailing)
                                 } else {
@@ -30,6 +31,7 @@ struct CategoryTabView: View {
                                 }
                             }
                         }
+                        .id(index)
                     }
                 }
             }
@@ -39,26 +41,27 @@ struct CategoryTabView: View {
 
 struct CategoryTabView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryTabView(selectedCategory: .constant(1), data: ["Category 1", "Category 2", "Category 3", "Category 4"])
+        HomePageView()
     }
 }
 
 struct CategoryButton: View {
+
     var title: String
     var isSelected: Bool
     var onTap: () -> Void
 
     var body: some View {
         Text(title)
-            .font(.title)
+            .font(.system(size: 16, weight: isSelected ? .bold : .regular))
             .foregroundColor(isSelected ? Color.black : Pallete.Gray.forText)
-            .padding(.vertical, 8)
+            .padding(.vertical, 10)
             .padding(.horizontal)
+            .animation(.linear, value: isSelected)
             .background(
-                   RoundedRectangle(cornerRadius: 8)
-                       .strokeBorder(isSelected ? Pallete.Gray.forNext: Color.clear, lineWidth: 0.5)
-                       .background(isSelected ? Pallete.Others.white : Pallete.Gray.forPhotoCells)
-               )
+                RoundedRectangle(cornerRadius: 8)
+                    .strokeBorder(isSelected ? Pallete.Gray.forNext: Color.clear, lineWidth: 0.5)
+            )
             .onTapGesture(perform: onTap)
     }
 }
