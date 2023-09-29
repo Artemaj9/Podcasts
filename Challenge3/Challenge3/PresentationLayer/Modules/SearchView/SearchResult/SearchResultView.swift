@@ -13,6 +13,15 @@ struct SearchResultView: View, ItemView {
     // MARK: - Internal Properties
     
     var listener: CustomNavigationContainer?
+    
+    //MARK: - Mock datas
+    
+    @State var cellDatas: [CellData] = [
+        CellData(iconState: false, mainLeft: "Between love and career", mainRight: nil, secondLeft: "Second 1", secondRight: "Right Sec 1", image: nil, iconMode: .select, height: nil),
+        CellData(iconState: true, mainLeft: "Between love and career", mainRight: nil, secondLeft: "Second 2", secondRight: "Right Sec 2", image: nil, iconMode: .select, height: nil),
+        CellData(iconState: false, mainLeft: "Between love and career", mainRight: nil, secondLeft: "Second 3", secondRight: "Right Sec 3", image: nil, iconMode: .select, height: nil),
+        CellData(iconState: true, mainLeft: "Between love and career", mainRight: nil, secondLeft: "Second 4", secondRight: "Right Sec 4", image: nil, iconMode: .select, height: nil)
+    ]
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -69,7 +78,9 @@ struct SearchResultView: View, ItemView {
                 }
                 ForEach(0..<20) { index in
                     GeometryReader { geo in
-                        FilledWideCell(mainLeft: "Between love and career", secondLeft: "56:38", secondRight: "56 Eps", image: "", iconMode: .blank)
+                        ForEach($cellDatas) { $data in
+                            FilledWideCell(data: $data)
+                        }
                             .opacity(vm.getScrollOpacity(geometry: geo))
                             .padding(.vertical, 8)
                             
