@@ -11,14 +11,16 @@ enum Images {
     }
 
     enum Icon: String {
-        case arrowLeft, calendar, check, checkFill
+        case arrowLeft, arrowRight, calendar, check, checkFill
         case closeSquare, edit, ellipse, fire, folder
         case heart, heartFill, hide, horizontalIcon, iconGoogle, eye
         case playlist, plus, plusWithBorder, tickSquare
+        case profile, shield, unlock
+        case appleLogo = "apple.logo"
     }
 
     enum AudioPlaying: String {
-        case next, nextFill, play, playFill, previous, previousFill, repeatTrack, shuffle
+        case next, nextFill, play, playFill, previous, priviousFill, repeatTrack, shuffle
     }
 
     enum ChangePicture: String {

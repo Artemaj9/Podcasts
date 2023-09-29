@@ -1,12 +1,97 @@
-/* 
+/*
   Localizable(en).strings
 */
 
-
 //MARK: - StartCreateAccount
 "StartCreate.navTitle" = "Create account";
+"StartCreate.greeting" = "We are happy to greet you!";
+"StartCreate.login" = "login";
+"StartCreate.alreadyHave" = "Already have an account?";
+"StartCreate.contWithEmail" = "Continue with Email";
+"StartCreate.continueWithGoogle" = "Continue with Google";
+"StartCreate.orContinueWith" = "────   Or continue with   ────";
+"StartCreate.enterEmail" = "Enter your e-mail address";
+"StartCreate.email" = "E-mail";
 
 // MARK: - Onboarding
 "Onboarding.skip" = "Skip";
 "Onboarding.next" = "Next";
 "Onboarding.getStarted" = "Get Started";
+
+// MARK: - Autorization
+"Autorization.enterLogin" = "Enter your login";
+"Autorization.login" = "Login";
+"Autorization.enterPassword" = "Enter your password";
+"Autorization.password" = "Password";
+"Autorization.logIn" = "Log In";
+"Autorization.orContinueWith" = "Or continue with";
+"Autorization.signInWithGoogle" = "Sign in with Google";
+"Autorization.signInWithApple" = "Sign in with Apple";
+"Autorization.dontHaveAccount" = "Don't have an account?";
+"Autorization.signIn" = "Sign In";
+
+//MARK: - Channel
+"Channel.allEpisode" = "All Episode";
+ 
+ //MARK: - AccountSettings
+"AccountSettingsView.gender" = "Gender";
+"AccountSettingsView.dateOfBirth" = "Date of Birth";
+"AccountSettingsView.saveChanges" = "Save Changes";
+"AccountSettingsView.female" = "Female";
+"AccountSettingsView.male" = "Male";
+"AccountSettingsView.firstName" = "First Name";
+"AccountSettingsView.lastName" = "Last Name";
+"AccountSettingsView.email" = "E-mail";
+
+//MARK: - Favorites
+"Favorites.favorites" = "Favorites";
+"Favorites.seeAll" = "See all";
+"Favorites.createPlaylist" = "Create Playlist";
+"Favorites.yourPlaylist" = "Your Playlist";
+
+//MARK: - Create Account With Email
+
+"CreateWithEmail.firstName" = "First Name";
+"CreateWithEmail.lastName" = "Last Name";
+"CreateWithEmail.email" = "E-mail";
+"CreateWithEmail.password" = "Password";
+"CreateWithEmail.confPassword" = "Confirm Password";
+"CreateWithEmail.complete" = "Complete your account";
+"CreateWithEmail.signUpAdit" = "for continue";
+"CreateWithEmail.alreadyHave" = "Already have an account?";
+"CreateWithEmail.login" = "Login";
+"CreateWithEmail.signUp" = "Sign Up";
+
+"CreateWithEmail.firstNameField" = "Enter your first name";
+"CreateWithEmail.lastNameField" = "Enter your last Name";
+"CreateWithEmail.emailField" = "Enter your email";
+"CreateWithEmail.passwordField" = "Enter your password";
+"CreateWithEmail.confPasswordField" = "Confirm your password";
+
+//MARK: - Profile Setting
+
+"ProfileSetting.accountSetting" = "Account Setting";
+"ProfileSetting.changePassword" = "Change Password";
+"ProfileSetting.forgetPassword" = "Forget Password";
+"ProfileSetting.logOut" = "Log Out";
+
+// MARK: - HomePage
+
+"HomePageView.category" = "Category";
+"HomePageView.seeAll" = "See all";
+"HomePageView.Categories.popular" = "🔥 Popular";
+"HomePageView.Categories.recent" = "Recent";
+"HomePageView.Categories.music" = "Music";
+"HomePageView.Categories.design" = "Design";
+
+//MARK: -Search Result
+
+"SearchResults.searchResults" = "Search Results";
+"SearchResults.allEpisodes" = "All Episodes";
+
+//MARK: - Playlist
+
+"Playlist.playlistPlaceholder" = "Give a name for your playlist";
+"Playlist.chooseImage" = "Choose image";
+"Playlist.seeAll" = "See All";
+"Playlist.select" = "Select from local files";

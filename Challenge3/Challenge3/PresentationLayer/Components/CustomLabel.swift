@@ -53,13 +53,34 @@ struct CustomLabel: View {
                 Text(labelText)
                     .font(.system(size: 16))
                     .foregroundColor(color)
-                HStack{
+                HStack {
                     Text(additionalText)
                         .font(.system(size: 14))
                         .foregroundColor(secondColor)
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(secondColor)
+                        .frame(width: 1, height: 16)
                     Text(epsText)
                         .font(.system(size: 14))
                         .foregroundColor(secondColor)
+                }
+            }
+        case .searchResult:
+            VStack(alignment: .leading, spacing: 5) {
+                Text(labelText)
+                    .font(.system(size: 16))
+                    .foregroundColor(Pallete.Other.deepPurpleText)
+                HStack {
+                    Text(additionalText)
+                        .font(.system(size: 14))
+                        .foregroundColor(secondColor)
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(secondColor)
+                        .frame(width: 1, height: 16)
+                    Text(epsText)
+                        .font(.system(size: 14))
+                        .fontWeight(.semibold)
+                        .foregroundColor(Pallete.Gray.darkerForText)
                 }
             }
         @unknown default:
@@ -70,6 +91,5 @@ struct CustomLabel: View {
 }
 
 enum LabelStyle: String {
-    case create, homepage, nowPlaying, channel
+    case create, homepage, nowPlaying, channel, searchResult
 }
-
