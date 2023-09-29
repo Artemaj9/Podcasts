@@ -31,7 +31,7 @@
 "Autorization.dontHaveAccount" = "Don't have an account?";
 "Autorization.signIn" = "Sign In";
 
-//MARK: -Channel
+//MARK: - Channel
 "Channel.allEpisode" = "All Episode";
  
  //MARK: - AccountSettings
@@ -75,4 +75,13 @@
 "ProfileSetting.changePassword" = "Change Password";
 "ProfileSetting.forgetPassword" = "Forget Password";
 "ProfileSetting.logOut" = "Log Out";
+
+// MARK: - HomePage
+
+"HomePageView.category" = "Category";
+"HomePageView.seeAll" = "See all";
+"HomePageView.Categories.popular" = "🔥 Popular";
+"HomePageView.Categories.recent" = "Recent";
+"HomePageView.Categories.music" = "Music";
+"HomePageView.Categories.design" = "Design";
 

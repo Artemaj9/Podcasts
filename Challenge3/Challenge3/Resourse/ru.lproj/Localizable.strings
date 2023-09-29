@@ -74,3 +74,11 @@
 "ProfileSetting.forgetPassword" = "Восстановить пароль";
 "ProfileSetting.logOut" = "Выйти";
 
+// MARK: - HomePage
+
+"HomePageView.category" = "Категории";
+"HomePageView.seeAll" = "Смотреть все";
+"HomePageView.Categories.popular" = "🔥 Популярное";
+"HomePageView.Categories.recent" = "Недавние";
+"HomePageView.Categories.music" = "Музыка";
+"HomePageView.Categories.design" = "Дизайн";
