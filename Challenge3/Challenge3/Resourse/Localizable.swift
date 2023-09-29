@@ -76,7 +76,10 @@ struct Localizable {
 
     enum Search {
         enum SearchBasic {}
-        enum SarchResult {}
+        enum SarchResult {
+            static var searchResults = NSLocalizedString("SearchResults.searchResults", comment: "")
+            static var allEpisodes = NSLocalizedString("SearchResults.allEpisodes", comment: "")
+        }
     }
 
     enum Favorite {
@@ -86,7 +89,12 @@ struct Localizable {
         static var yourPlaylist = localizedStringKey("Favorites.yourPlaylist")
     }
 
-    enum Playlist {}
+    enum Playlist {
+        static var playlistPlaceholder = NSLocalizedString("Playlist.playlistPlaceholder", comment: "")
+        static var chooseImage = NSLocalizedString("Playlist.chooseImage", comment: "")
+        static var seeAll = NSLocalizedString("Playlist.seeAll", comment: "")
+        static var select = NSLocalizedString("Playlist.select", comment: "")
+    }
 
     enum ProfileSettings {
         static var accountSetting = NSLocalizedString("ProfileSetting.accountSetting", comment: "")

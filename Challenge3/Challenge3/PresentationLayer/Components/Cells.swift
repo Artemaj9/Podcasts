@@ -7,44 +7,38 @@ import SwiftUI
 struct Cells: View {
     @State var iconState: Bool = false
     
+    //MARK: - Mock data
+    
+    @State var cellDatas: [CellData] = [
+        CellData(iconState: false, mainLeft: "Main 1", mainRight: "Right 1", secondLeft: "Second 1", secondRight: "Right Sec 1", image: "image1", iconMode: .like, height: nil),
+        CellData(iconState: true, mainLeft: "Main 2", mainRight: "Right 2", secondLeft: "Second 2", secondRight: "Right Sec 2", image: "image2", iconMode: .select, height: nil),
+        CellData(iconState: false, mainLeft: "Main 3", mainRight: "Right 3", secondLeft: "Second 3", secondRight: "Right Sec 3", image: "image3", iconMode: .like, height: nil),
+        CellData(iconState: true, mainLeft: "Main 4", mainRight: "Right 4", secondLeft: "Second 4", secondRight: "Right Sec 4", image: nil, iconMode: .select, height: nil)
+    ]
+    
     var body: some View {
         VStack {
             Text("For test ONLY!")
             
-            NavigationView {
-                ScrollView() {
-                    FilledWideCell()
-                        .padding(.horizontal)
-                    
-                    ForEach(0..<3) { _ in
-                        NavigationLink(destination: Icons()) {
-                            FilledWideCell(
-                                iconState: Binding<Bool?>(
-                                    get: { iconState },
-                                    set: { newValue in iconState = newValue ?? false }
-                                ),
-                                mainLeft: "Ngobam", mainRight: "Gofar Hilman",
-                                secondLeft: "Music & Fun", secondRight: "23 Eps",
-                                iconMode: .like
-                            )
-                            .padding([.top, .horizontal])
-                        }
-                    }
+            ScrollView {
+                ForEach($cellDatas) { $data in
+                    FilledWideCell(data: $data)
                 }
+                .padding()
             }
-            
-            ScrollView() {
-                CreateButton{}
+        }
+        
+        ScrollView() {
+            CreateButton{}
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding([.top, .leading])
-                
-                ForEach(0..<2) { _ in
-                    BlankWideCell(
-                        mainTitle: "Tuhan mengapa dia berbeda",
-                        secondTitle: "15 Eps"
-                    )
-                    .padding([.top, .leading])
-                }
+            
+            ForEach(0..<2) { _ in
+                BlankWideCell(
+                    mainTitle: "Tuhan mengapa dia berbeda",
+                    secondTitle: "15 Eps"
+                )
+                .padding([.top, .leading])
             }
         }
     }
@@ -57,40 +51,17 @@ struct Cells_Previews: PreviewProvider {
 }
 
 struct FilledWideCell: View {
-    @Binding var iconState: Bool?
-    
-    var mainLeft: String?
-    var mainRight: String?
-    var secondLeft: String?
-    var secondRight: String?
-    var image: String?
-    var iconMode: IconMode?
-    var height: CGFloat?
-    
-    init(
-        iconState: Binding<Bool?>? = nil,
-        mainLeft: String? = nil, mainRight: String? = nil,
-        secondLeft: String? = nil, secondRight: String? = nil,
-        image: String? = nil, iconMode: IconMode? = nil,
-        height: CGFloat? = nil) {
-            self._iconState = iconState ?? .constant(false)
-            self.mainLeft = mainLeft
-            self.mainRight = mainRight
-            self.secondLeft = secondLeft
-            self.secondRight = secondRight
-            self.image = image
-            self.iconMode = iconMode
-            self.height = height
-        }
+    @Binding var data: CellData
     
     var body: some View {
         ZStack {
+            
             RoundedRectangle(cornerRadius: 16)
                 .fill(Pallete.Gray.forCells)
-                .frame(height: height)
+                .frame(height: data.height)
             
             HStack(alignment: .center) {
-                CustomImage(imageString: image, width: 56 ,height: 56)
+                CustomImage(imageString: data.image, width: 56 ,height: 56)
                     .padding(8)
                 
                 Spacer()
@@ -99,11 +70,11 @@ struct FilledWideCell: View {
                     Spacer()
                     
                     HStack {
-                        if let mainLeft {
+                        if let mainLeft = data.mainLeft {
                             Text(mainLeft)
-                                .foregroundColor(.black)
+                                .foregroundColor(Pallete.Other.deepPurpleText)
                         }
-                        if (mainLeft != nil && mainRight != nil) {
+                        if (data.mainLeft != nil && data.mainRight != nil) {
                             Rectangle()
                                 .fill(.white)
                                 .frame(width: 1)
@@ -111,27 +82,27 @@ struct FilledWideCell: View {
                         } else {
                             Text("")
                         }
-                        if let mainRight {
+                        if let mainRight = data.mainRight {
                             Text(mainRight)
-                                .foregroundColor(.black)
+                                .foregroundColor(Pallete.Other.deepPurpleText)
                         }
                         
                         Spacer()
                     }
                     
                     HStack {
-                        if let secondLeft {
+                        if let secondLeft = data.secondLeft {
                             Text(secondLeft)
                                 .foregroundColor(Pallete.Gray.forText)
                         }
-                        if (secondLeft != nil && secondRight != nil) {
+                        if (data.secondLeft != nil && data.secondRight != nil) {
                             Circle()
-                                .fill(.white)
+                                .fill(Pallete.Gray.forDots)
                                 .frame(width: 4)
                         }
-                        if let secondRight {
+                        if let secondRight = data.secondRight {
                             Text(secondRight)
-                                .foregroundColor(Pallete.Gray.forText)
+                                .foregroundColor(Pallete.Gray.darkerForText)
                         }
                         
                         Spacer()
@@ -142,23 +113,24 @@ struct FilledWideCell: View {
                 
                 Spacer()
                 
-                Button {iconState?.toggle()
-                    
+                Button {
+                    data.iconState.toggle()
                 } label: {
-                    switch iconMode {
+                    switch data.iconMode {
                     case .like:
-                        Image(iconState == true ? Images.Icon.heartFill.rawValue : Images.Icon.heart.rawValue)
+                        Image(data.iconState ? Images.Icon.heartFill.rawValue : Images.Icon.heart.rawValue)
                             .padding(.trailing, 8)
                     case .select:
-                        Image(iconState == true ? Images.Icon.tickSquare.rawValue : Images.Icon.plusWithBorder.rawValue)
+                        Image(data.iconState ? Images.Icon.tickSquare.rawValue : Images.Icon.plusWithBorder.rawValue)
                             .padding(.trailing, 26)
                     default:
                         Text("")
                     }
                 }
-                .frame(width: 56, height: height)
+                .frame(width: 56, height: data.height)
             }
         }
+        .padding(5)
     }
 }
 
@@ -216,4 +188,16 @@ struct MenuCell: View {
 
 enum IconMode: String {
     case like, select, blank
+}
+
+struct CellData: Identifiable {
+    let id: UUID = UUID()
+    var iconState: Bool
+    let mainLeft: String?
+    let mainRight: String?
+    let secondLeft: String?
+    let secondRight: String?
+    let image: String?
+    let iconMode: IconMode?
+    let height: CGFloat?
 }

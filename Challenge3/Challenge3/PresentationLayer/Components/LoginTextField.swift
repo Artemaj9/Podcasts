@@ -64,6 +64,7 @@ struct LoginTextField: View {
 }
 
 struct LoginTextField_Previews: PreviewProvider {
+
     static var previews: some View {
         ZStack {
             Pallete.Blue.forOnboarding.ignoresSafeArea()

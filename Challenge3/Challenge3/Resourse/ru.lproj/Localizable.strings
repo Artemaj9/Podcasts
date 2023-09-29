@@ -82,3 +82,14 @@
 "HomePageView.Categories.recent" = "Недавние";
 "HomePageView.Categories.music" = "Музыка";
 "HomePageView.Categories.design" = "Дизайн";
+
+//MARK: -Search Result
+"SearchResults.searchResults" = "Результаты поиска";
+"SearchResults.allEpisodes" = "Все эпизоды";
+
+//MARK: - Playlist
+
+"Playlist.playlistPlaceholder" = "Введите название плейлиста";
+"Playlist.chooseImage" = "Выберете изображение";
+"Playlist.seeAll" = "Показать все";
+"Playlist.select" = "Выберете локальный файл";
