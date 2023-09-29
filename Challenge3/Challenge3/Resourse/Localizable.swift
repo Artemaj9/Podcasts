@@ -67,7 +67,10 @@ struct Localizable {
 
     enum Search {
         enum SearchBasic {}
-        enum SarchResult {}
+        enum SarchResult {
+            static var searchResults = NSLocalizedString("SearchResults.searchResults", comment: "")
+            static var allEpisodes = NSLocalizedString("SearchResults.allEpisodes", comment: "")
+        }
     }
 
     enum Favorite {
