@@ -5,7 +5,6 @@
 import SwiftUI
 
 extension View {
-    
     func customPlaceholder<Content: View>(
         when shouldShow: Bool,
         alinment: Alignment = .leading,

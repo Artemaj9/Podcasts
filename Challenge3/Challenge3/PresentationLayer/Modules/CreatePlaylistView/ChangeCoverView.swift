@@ -5,14 +5,20 @@
 import SwiftUI
 
 struct ChangeCoverView: View, ItemView {
+    
+    //MARK: - Property Wrapers
+    
     @Binding var isShowSheet: Bool
     
+    //MARK: - Internal properties
     
     var listener: CustomNavigationContainer?
     
     //MARK: - Mock data
     
     var data = ["image1", "image2", "image3"]
+    
+    //MARK: - View's body
     
     var body: some View {
         VStack(spacing: 30) {
@@ -43,7 +49,6 @@ struct ChangeCoverView: View, ItemView {
             CustomButton(title: Localizable.Playlist.select,
                          buttonType:.select) {}
         }
-        
         .makeCustomNavBar {
             NavigationBars(atView: .chageCover) {
                 listener?.pop()

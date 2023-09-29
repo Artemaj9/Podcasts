@@ -2,7 +2,6 @@
 //  Sheet.swift
 //
 
-
 import SwiftUI
 
 struct BottomSheet: View {

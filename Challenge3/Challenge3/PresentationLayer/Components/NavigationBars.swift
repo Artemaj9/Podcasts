@@ -99,7 +99,6 @@ struct NavigationBars_Previews: PreviewProvider {
         }
         .makeCustomNavBar {
             NavigationBars(atView: .chageCover) {
-
             }
         }
     }
