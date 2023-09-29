@@ -76,3 +76,9 @@
 "ProfileSetting.forgetPassword" = "Forget Password";
 "ProfileSetting.logOut" = "Log Out";
 
+//MARK: - Playlist
+
+"Playlist.playlistPlaceholder" = "Give a name for your playlist";
+"Playlist.chooseImage" = "Choose image";
+"Playlist.seeAll" = "See All";
+"Playlist.select" = "Select from local files";

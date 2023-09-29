@@ -28,13 +28,15 @@ struct NavigationBars: View {
             return "Create Playlist"
         case .favorites:
             return "Favorites"
+        case .chageCover:
+            return "Change Cover"
         }
     }
 
     private var leadingContentView: some View {
         Group {
             switch atView {
-            case .signUp, .channel, .nowPlaying, .accountSetting, .createPlaylist, .favorites:
+            case .signUp, .channel, .nowPlaying, .accountSetting, .createPlaylist, .favorites, .chageCover:
                 BackButton(isReverse: false, padding: 0) {
                     leadingButtonAction()
                 }
@@ -96,7 +98,7 @@ struct NavigationBars_Previews: PreviewProvider {
             Image("image2")
         }
         .makeCustomNavBar {
-            NavigationBars(atView: .createPlaylist) {
+            NavigationBars(atView: .chageCover) {
 
             }
         }
@@ -104,5 +106,5 @@ struct NavigationBars_Previews: PreviewProvider {
 }
 
 enum NavigationBarPlacement {
-    case signUp, channel, nowPlaying, search, playlist, accountSetting, createPlaylist, favorites
+    case signUp, channel, nowPlaying, search, playlist, accountSetting, createPlaylist, favorites, chageCover
 }
