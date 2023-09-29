@@ -13,6 +13,15 @@ struct HomePageView: View, ItemView {
     // MARK: - Property Wrapper
 
     @State private var selectedCategory: Int = 0
+    
+    // MARK: - Mock Data
+    
+    @State var cellDatas: [CellData] = [
+        CellData(iconState: false, mainLeft: "Main 1", mainRight: "Right 1", secondLeft: "Second 1", secondRight: "Right Sec 1", image: nil, iconMode: .select, height: nil),
+        CellData(iconState: true, mainLeft: "Main 2", mainRight: "Right 2", secondLeft: "Second 2", secondRight: "Right Sec 2", image: nil, iconMode: .select, height: nil),
+        CellData(iconState: false, mainLeft: "Main 3", mainRight: "Right 3", secondLeft: "Second 3", secondRight: "Right Sec 3", image: nil, iconMode: .select, height: nil),
+        CellData(iconState: true, mainLeft: "Main 4", mainRight: "Right 4", secondLeft: "Second 4", secondRight: "Right Sec 4", image: nil, iconMode: .select, height: nil)
+    ]
 
     // MARK: - Private Properties
 
@@ -86,8 +95,8 @@ struct HomePageView: View, ItemView {
             switch selectedCategory {
             case 0:
                 VStack(spacing: 16) {
-                    ForEach(0..<30) { index in
-                        FilledWideCell(mainLeft: "Ngobam", mainRight: "Gofar Hilman", secondLeft: "Music & Fun", secondRight: "23 Eps", iconMode: .like)
+                    ForEach($cellDatas) { data in
+                        FilledWideCell(data: data)
                     }
                 }
                 .padding(.horizontal, 32)
