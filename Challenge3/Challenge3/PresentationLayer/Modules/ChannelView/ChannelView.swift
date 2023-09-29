@@ -5,10 +5,10 @@
 import SwiftUI
 
 struct ChannelView: View, ItemView {
-
+    
     // MARK: - Internal Properties
     var listener: CustomNavigationContainer?
-
+    
     // MARK: - Private Properties
     private var strings = Localizable.Channel.self
     private var informationRow: some View {
@@ -19,7 +19,12 @@ struct ChannelView: View, ItemView {
             }
         }
     }
-
+    
+    //MARK: Mock data
+    @State private var data = [
+        CellData(iconState: false, mainLeft: "Between love and career", mainRight: nil, secondLeft: "56:38", secondRight: "56 Eps", image: "", iconMode: .blank, height: nil)
+    ]
+    
     // MARK: - Body
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -29,18 +34,19 @@ struct ChannelView: View, ItemView {
                     HStack {
                         Text(strings.allEpisode)
                             .font(.system(size: 14, weight: .bold))
+                            .padding(.horizontal)
                         Spacer()
                     }
-                    ForEach(0..<100) { index in
-                        FilledWideCell(mainLeft: "Between love and career", secondLeft: "56:38", secondRight: "56 Eps", image: "", iconMode: .blank)
+                    ForEach($data) { $data in
+                        FilledWideCell(data: $data)
                     }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
             }
-        }
-        .makeCustomNavBar {
-            NavigationBars(atView: .channel) {
-                listener?.pop()
+            .makeCustomNavBar {
+                NavigationBars(atView: .channel) {
+                    listener?.pop()
+                }
             }
         }
     }

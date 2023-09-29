@@ -5,44 +5,77 @@
 import SwiftUI
 
 struct CreatePlaylistView: View, ItemView {
+    
+    //MARK: - Property Wrapers
+    
     @State private var image: String?
-    @State var iconState: Bool = false
+    @State private var title: String = ""
+    @State private var isShowBottomSheet = false
+    
+    //MARK: - Internal Properties
     
     var listener: CustomNavigationContainer?
-
+    
+    //MARK: - Mock datas
+    
+    @State var cellDatas: [CellData] = [
+        CellData(iconState: false, mainLeft: "Main 1", mainRight: "Right 1", secondLeft: "Second 1", secondRight: "Right Sec 1", image: nil, iconMode: .select, height: nil),
+        CellData(iconState: true, mainLeft: "Main 2", mainRight: "Right 2", secondLeft: "Second 2", secondRight: "Right Sec 2", image: nil, iconMode: .select, height: nil),
+        CellData(iconState: false, mainLeft: "Main 3", mainRight: "Right 3", secondLeft: "Second 3", secondRight: "Right Sec 3", image: nil, iconMode: .select, height: nil),
+        CellData(iconState: true, mainLeft: "Main 4", mainRight: "Right 4", secondLeft: "Second 4", secondRight: "Right Sec 4", image: nil, iconMode: .select, height: nil)
+    ]
+    
     var body: some View {
         VStack {
             CustomImage(imageString: image, width: 84, height: 84)
+                .onTapGesture {
+                    isShowBottomSheet = true
+                }
                 .padding()
                 .cornerRadius(10)
                 .padding(.top)
-            
-            VStack {
-                Text("Give a name for your playlist")
-                Rectangle()
-                    .fill(Color.black)
-                    .frame(width: .infinity, height: 1)
+            VStack() {
+                TextField("", text: $title)
+                    .customPlaceholder(when: title.isEmpty, alinment: .center) {
+                        Text(Localizable.Playlist.playlistPlaceholder).foregroundColor(.gray)
+                    }
+                    .padding(.vertical)
+                    .autocorrectionDisabled()
+                    .autocapitalization(.none)
+                    .background(
+                        VStack {
+                            Spacer()
+                            Rectangle()
+                                .fill(Pallete.Gray.forText)
+                                .frame(height: 1)
+                        }
+                    )
             }
-            .padding(.horizontal)
+            .padding([.horizontal, .bottom])
             
             SearchBarView(searchText: "", placeholder: "", backgroundColor: Pallete.Gray.forTextFields)
-                .background(Pallete.Gray.forCells)
+                .frame(height: 32)
             
-            ScrollView() {
-                ForEach(0..<3) { _ in
-                    NavigationLink(destination: Icons()) {
-                        FilledWideCell(
-                            iconState: Binding<Bool?>(
-                                get: { iconState },
-                                set: { newValue in iconState = newValue ?? false }
-                            ),
-                            mainLeft: "Ngobam", mainRight: "Gofar Hilman",
-                            secondLeft: "Music & Fun", secondRight: "23 Eps",
-                            iconMode: .select
-                        )
-                        .padding([.top, .horizontal])
-                    }
+            ScrollView {
+                ForEach($cellDatas) { $data in
+                    FilledWideCell(data: $data)
                 }
+                .padding()
+            }
+            
+            Spacer()
+        }
+        .overlay {
+            BottomSheet(
+                isShowing: $isShowBottomSheet,
+                content: AnyView(ChangeCoverView(isShowSheet: $isShowBottomSheet))
+            )
+        }
+        .makeCustomNavBar {
+            NavigationBars(atView: .createPlaylist) {
+                listener?.pop()
+            } trailingButtonAction: {
+                
             }
         }
     }
@@ -53,4 +86,3 @@ struct CreatePlaylistView_Previews: PreviewProvider {
         CreatePlaylistView()
     }
 }
-
