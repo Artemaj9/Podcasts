@@ -74,3 +74,6 @@
 "ProfileSetting.forgetPassword" = "Восстановить пароль";
 "ProfileSetting.logOut" = "Выйти";
 
+//MARK: -Search Result
+"SearchResults.searchResults" = "Результаты поиска";
+"SearchResults.allEpisodes" = "Все эпизоды";

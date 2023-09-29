@@ -76,3 +76,7 @@
 "ProfileSetting.forgetPassword" = "Forget Password";
 "ProfileSetting.logOut" = "Log Out";
 
+//MARK: -Search Result
+
+"SearchResults.searchResults" = "Search Results";
+"SearchResults.allEpisodes" = "All Episodes";

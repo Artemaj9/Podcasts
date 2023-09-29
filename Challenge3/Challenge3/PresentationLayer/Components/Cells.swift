@@ -101,7 +101,7 @@ struct FilledWideCell: View {
                     HStack {
                         if let mainLeft {
                             Text(mainLeft)
-                                .foregroundColor(.black)
+                                .foregroundColor(Pallete.Other.deepPurpleText)
                         }
                         if (mainLeft != nil && mainRight != nil) {
                             Rectangle()
@@ -113,7 +113,7 @@ struct FilledWideCell: View {
                         }
                         if let mainRight {
                             Text(mainRight)
-                                .foregroundColor(.black)
+                                .foregroundColor(Pallete.Other.deepPurpleText)
                         }
                         
                         Spacer()
@@ -126,12 +126,12 @@ struct FilledWideCell: View {
                         }
                         if (secondLeft != nil && secondRight != nil) {
                             Circle()
-                                .fill(.white)
+                                .fill(Pallete.Gray.forDots)
                                 .frame(width: 4)
                         }
                         if let secondRight {
                             Text(secondRight)
-                                .foregroundColor(Pallete.Gray.forText)
+                                .foregroundColor(Pallete.Gray.darkerForText)
                         }
                         
                         Spacer()
