@@ -2,7 +2,6 @@
   Localizable(en).strings
 */
 
-
 //MARK: - StartCreateAccount
 "StartCreate.navTitle" = "Create account";
 "StartCreate.greeting" = "We are happy to greet you!";
@@ -80,3 +79,10 @@
 
 "SearchResults.searchResults" = "Search Results";
 "SearchResults.allEpisodes" = "All Episodes";
+
+//MARK: - Playlist
+
+"Playlist.playlistPlaceholder" = "Give a name for your playlist";
+"Playlist.chooseImage" = "Choose image";
+"Playlist.seeAll" = "See All";
+"Playlist.select" = "Select from local files";

@@ -77,3 +77,10 @@
 //MARK: -Search Result
 "SearchResults.searchResults" = "Результаты поиска";
 "SearchResults.allEpisodes" = "Все эпизоды";
+
+//MARK: - Playlist
+
+"Playlist.playlistPlaceholder" = "Введите название плейлиста";
+"Playlist.chooseImage" = "Выберете изображение";
+"Playlist.seeAll" = "Показать все";
+"Playlist.select" = "Выберете локальный файл";

@@ -71,6 +71,9 @@
 		5DCF86062AC1EBF900B28053 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5DCF86052AC1EBF900B28053 /* Localizable.strings */; };
 		5DCF86082AC41C9900B28053 /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF86072AC41C9900B28053 /* FavoritesCell.swift */; };
 		5DCF860A2AC465C300B28053 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF86092AC465C300B28053 /* PlaylistModel.swift */; };
+		5DE1B0EC2AC6C81C00F5AAB6 /* Ext+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE1B0EB2AC6C81C00F5AAB6 /* Ext+Placeholder.swift */; };
+		5DE1B0EE2AC6CE5000F5AAB6 /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE1B0ED2AC6CE5000F5AAB6 /* Sheet.swift */; };
+		5DE1B0F02AC6D17400F5AAB6 /* ChangeCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE1B0EF2AC6D17400F5AAB6 /* ChangeCoverView.swift */; };
 		AC16D57B2AC1B80800B74CBA /* MiniPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16D57A2AC1B80800B74CBA /* MiniPlayer.swift */; };
 		ACDB850F2AC5B34100985723 /* BackgroundSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB850E2AC5B34100985723 /* BackgroundSearchView.swift */; };
 		ACEE58CA2AC2194E0037C34E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE58C92AC2194E0037C34E /* LoginTextField.swift */; };
@@ -159,6 +162,9 @@
 		5DCF86052AC1EBF900B28053 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		5DCF86072AC41C9900B28053 /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
 		5DCF86092AC465C300B28053 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
+		5DE1B0EB2AC6C81C00F5AAB6 /* Ext+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Placeholder.swift"; sourceTree = "<group>"; };
+		5DE1B0ED2AC6CE5000F5AAB6 /* Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
+		5DE1B0EF2AC6D17400F5AAB6 /* ChangeCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCoverView.swift; sourceTree = "<group>"; };
 		AC16D57A2AC1B80800B74CBA /* MiniPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayer.swift; sourceTree = "<group>"; };
 		ACDB850E2AC5B34100985723 /* BackgroundSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundSearchView.swift; sourceTree = "<group>"; };
 		ACEE58C92AC2194E0037C34E /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
@@ -293,6 +299,7 @@
 			children = (
 				5D84B3012AC0985E00BC87E7 /* Extensions.swift */,
 				ACEE58CD2AC21C8B0037C34E /* UIApplication.swift */,
+				5DE1B0EB2AC6C81C00F5AAB6 /* Ext+Placeholder.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -350,6 +357,7 @@
 				FAA1887D2AC36E0F00C0E183 /* PlayControl.swift */,
 				D0D8E5052AC226F4005D5543 /* Cells.swift */,
 				FAE797082AC210CE003F3F0C /* SelectButton.swift */,
+				5DE1B0ED2AC6CE5000F5AAB6 /* Sheet.swift */,
 				FAE797062AC1FDF8003F3F0C /* CustomLabel.swift */,
 				B7FA0B212AC36FA5000022E7 /* NavigationBars.swift */,
 			);
@@ -483,6 +491,7 @@
 			children = (
 				5D84B3372AC0999C00BC87E7 /* CreatePlaylistViewModel.swift */,
 				5D84B3382AC0999C00BC87E7 /* CreatePlaylistView.swift */,
+				5DE1B0EF2AC6D17400F5AAB6 /* ChangeCoverView.swift */,
 				5D84B3392AC0999C00BC87E7 /* CreatePlaylistModel.swift */,
 			);
 			path = CreatePlaylistView;
@@ -662,6 +671,7 @@
 				5D84B3522AC0999C00BC87E7 /* HomePageViewModel.swift in Sources */,
 				5D84B3462AC0999C00BC87E7 /* ScreenModel.swift in Sources */,
 				5D84B2CF2AC0961600BC87E7 /* PodcastAppApp.swift in Sources */,
+				5DE1B0EC2AC6C81C00F5AAB6 /* Ext+Placeholder.swift in Sources */,
 				5D84B3622AC0999C00BC87E7 /* SearchView.swift in Sources */,
 				5D84B3582AC0999C00BC87E7 /* ProfileSettingsModel.swift in Sources */,
 				5DB3538F2AC593F400A7E617 /* FavoritesDetailView.swift in Sources */,
@@ -689,11 +699,13 @@
 				5D84B3562AC0999C00BC87E7 /* AccountSettingsView.swift in Sources */,
 				5D84B2E52AC0975100BC87E7 /* PodcastModel.swift in Sources */,
 				5D84B2EB2AC0975100BC87E7 /* RequestProtocol.swift in Sources */,
+				5DE1B0F02AC6D17400F5AAB6 /* ChangeCoverView.swift in Sources */,
 				5D84B34C2AC0999C00BC87E7 /* TabBarButton.swift in Sources */,
 				5D84B3632AC0999C00BC87E7 /* SearchViewModel.swift in Sources */,
 				B78EC3C62AC0C050009B8ABC /* Images.swift in Sources */,
 				5D84B2E82AC0975100BC87E7 /* SessionDispatcher.swift in Sources */,
 				5D84B35A2AC0999C00BC87E7 /* ChannelModel.swift in Sources */,
+				5DE1B0EE2AC6CE5000F5AAB6 /* Sheet.swift in Sources */,
 				5D84B3652AC0999C00BC87E7 /* SearchResultView.swift in Sources */,
 				5D84B35D2AC0999C00BC87E7 /* NowPlayingModel.swift in Sources */,
 				FAE797092AC210CE003F3F0C /* SelectButton.swift in Sources */,
