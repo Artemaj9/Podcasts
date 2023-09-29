@@ -30,6 +30,7 @@ struct Challenge3App: App {
     @StateObject var createPlaylistViewModel = CreatePlaylistViewModel()
     @StateObject var createWithEmailViewModel = CreateWithEmailViewModel()
     @StateObject var authorizarionViewModel = AuthorizarionViewModel()
+    @StateObject var authenticationViewModel = AuthenticationViewModel()
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
@@ -50,7 +51,7 @@ struct Challenge3App: App {
             .environmentObject(createPlaylistViewModel)
             .environmentObject(createWithEmailViewModel)
             .environmentObject(authorizarionViewModel)
-            .environmentObject(AuthenticationModel())
+            .environmentObject(authenticationViewModel)
         }
     }
 }

@@ -9,7 +9,7 @@ import Combine
 import AuthenticationServices
 
 struct testView: View, ItemView {
-    @EnvironmentObject var viewModel: AuthenticationModel
+    @EnvironmentObject var viewModel: AuthenticationViewModel
     @Environment(\.dismiss) var dismiss
     
     var listener: CustomNavigationContainer?

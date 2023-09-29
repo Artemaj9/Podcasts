@@ -22,7 +22,7 @@ enum AuthenticationFlow {
 }
 
 @MainActor
-class AuthenticationModel: ObservableObject {
+class AuthenticationViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var confirmPassword = ""
@@ -38,6 +38,7 @@ class AuthenticationModel: ObservableObject {
     @Published var displayName = ""
     
     private var currentNonce: String?
+    private var authStateHandler: AuthStateDidChangeListenerHandle?
     
     init() {
         registerAuthStateHandler()
@@ -51,8 +52,6 @@ class AuthenticationModel: ObservableObject {
             }
             .assign(to: &$isValid)
     }
-    
-    private var authStateHandler: AuthStateDidChangeListenerHandle?
     
     func registerAuthStateHandler() {
         if authStateHandler == nil {
@@ -88,7 +87,7 @@ class AuthenticationModel: ObservableObject {
 
 // MARK: - Email and Password Authetication
 
-extension AuthenticationModel {
+extension AuthenticationViewModel {
     func signInWithEmailPassword() async -> Bool {
         authenticationState = .authenticating
         
@@ -121,20 +120,26 @@ extension AuthenticationModel {
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
         changeRequest?.displayName = "\(firstName) \(lastName)"
         changeRequest?.commitChanges { error in
-            self.errorMessage = error?.localizedDescription ?? ""
+            if let error {
+                self.errorMessage = error.localizedDescription
+            }
         }
     }
     
     func changeUserPassword() {
         Auth.auth().currentUser?.updatePassword(to: password) { error in
-            self.errorMessage = error?.localizedDescription ?? ""
+            if let error {
+                self.errorMessage = error.localizedDescription
+            }
         }
         reauthenticateUser()
     }
     
     func changeUserEmail() {
         Auth.auth().currentUser?.updateEmail(to: email) { error in
-            self.errorMessage = error?.localizedDescription ?? ""
+            if let error {
+                self.errorMessage = error.localizedDescription
+            }
         }
         reauthenticateUser()
     }
@@ -174,7 +179,7 @@ enum AuthenticationError: Error {
 case tokenError(message: String)
 }
 
-extension AuthenticationModel {
+extension AuthenticationViewModel {
     func signInWithGoogle() async -> Bool {
         guard let clientID = FirebaseApp.app()?.options.clientID else {
             fatalError("No client ID found in Firebase configuration")
@@ -214,7 +219,7 @@ extension AuthenticationModel {
 
 // MARK: - Apple Sign-In
 
-extension AuthenticationModel {
+extension AuthenticationViewModel {
     func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest) {
         request.requestedScopes = [.fullName, .email]
         let nonce = randomNonceString()
