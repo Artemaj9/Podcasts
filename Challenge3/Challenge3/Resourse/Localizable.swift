@@ -57,7 +57,16 @@ struct Localizable {
         static var getStarted = localizedStringKey("Onboarding.getStarted")
     }
 
-    enum HomePage {}
+    enum HomePage {
+        static var category = NSLocalizedString("HomePageView.category", comment: "")
+        static var seeAll = NSLocalizedString("HomePageView.seeAll", comment: "")
+        enum Categories {
+            static var popular = NSLocalizedString("HomePageView.Categories.popular", comment: "")
+            static var recent = NSLocalizedString("HomePageView.Categories.recent", comment: "")
+            static var music = NSLocalizedString("HomePageView.Categories.music", comment: "")
+            static var design = NSLocalizedString("HomePageView.Categories.design", comment: "")
+        }
+    }
 
     enum Channel {
         static var allEpisode = localizedStringKey("Channel.allEpisode")

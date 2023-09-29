@@ -6,11 +6,11 @@ import SwiftUI
 
 struct SearchBarView: View {
    
-// MARK: - Property Wrappers
+    // MARK: - Property Wrappers
     @State var searchText: String
     @FocusState var isFocused: Bool
     
-// MARK: - Internal Properties
+    // MARK: - Internal Properties
     let placeholder: String
     let backgroundColor: Color
 
