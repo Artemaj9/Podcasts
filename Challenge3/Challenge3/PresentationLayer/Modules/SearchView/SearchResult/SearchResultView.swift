@@ -7,9 +7,11 @@ import SwiftUI
 struct SearchResultView: View, ItemView {
     
     // MARK: - Property Wrappers
+    
     @StateObject var vm = SearchResultViewModel()
     
     // MARK: - Internal Properties
+    
     var listener: CustomNavigationContainer?
 
     var body: some View {
@@ -38,7 +40,7 @@ struct SearchResultView: View, ItemView {
             .frame(height: 1)
             .padding(.bottom, 4)
                
-            Text("Search Results")
+            Text(Localizable.Search.SarchResult.searchResults)
                 .fontWeight(.semibold)
                 .foregroundColor(Pallete.Other.deepPurpleText)
             
@@ -60,7 +62,7 @@ struct SearchResultView: View, ItemView {
                     }
             .padding(.horizontal, 8)
                 HStack {
-                    Text("All Podcast")
+                    Text(Localizable.Search.SarchResult.allEpisodes)
                         .fontWeight(.light)
                         .foregroundColor(Pallete.Other.deepPurpleText)
                     Spacer()
