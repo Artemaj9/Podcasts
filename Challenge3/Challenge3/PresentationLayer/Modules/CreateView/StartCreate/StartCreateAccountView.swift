@@ -3,8 +3,11 @@
 //
 
 import SwiftUI
+import _AuthenticationServices_SwiftUI
 
 struct StartCreateAccountView: View, ItemView {
+    @EnvironmentObject var viewModel: AuthenticationViewModel
+    @Environment(\.dismiss) var dismiss
     var listener: CustomNavigationContainer?
     
     var body: some View {
@@ -26,7 +29,7 @@ struct StartCreateAccountView: View, ItemView {
                     RoundedRectangle(cornerRadius: 30)
                         .foregroundColor(.white)
                     VStack(spacing: 8) {
-                        LoginTextField(inputText: .constant(""),
+                        LoginTextField(inputText: $viewModel.email,
                                        title: Localizable.CreateAccount.StartCreate.email,
                                        placeHolder: Localizable.CreateAccount.StartCreate.enterEmail,
                                        withHideOption: false,
@@ -44,7 +47,17 @@ struct StartCreateAccountView: View, ItemView {
                                 .foregroundColor(Pallete.Gray.forText)
                             
                             CustomButton(title: Localizable.CreateAccount.StartCreate.contWithGoogle,
-                            buttonType: .outGoogle) {}
+                            buttonType: .outGoogle) {
+                                signInWithGoogle()
+                            }
+                            
+                            SignInWithAppleButton(.signIn) { request in viewModel.handleSignInWithAppleRequest(request)
+                            } onCompletion: { result in
+                                viewModel.handleSignInWithAppleCompletion(result)
+                            }
+                                .frame(width: 400, height: 60)
+                                .clipShape(RoundedCorners(radius: 50))
+                            
                         }
                         Spacer()
                         HStack {
@@ -61,6 +74,13 @@ struct StartCreateAccountView: View, ItemView {
                 }
                 .offset(y: 8)
                 .ignoresSafeArea(.all, edges: .bottom)
+            }
+        }
+    }
+    private func signInWithGoogle() {
+        Task {
+            if await viewModel.signInWithGoogle() == true {
+                dismiss()
             }
         }
     }

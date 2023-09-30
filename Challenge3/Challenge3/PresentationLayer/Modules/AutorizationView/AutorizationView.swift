@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import _AuthenticationServices_SwiftUI
 
 struct AuthorizationView: View, ItemView {
 
@@ -11,9 +12,8 @@ struct AuthorizationView: View, ItemView {
 
     // MARK: - Property Wrappers
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    
     @Environment(\.dismiss) var dismiss
-
+    
     // MARK: - Private Properties
     private var strings = Localizable.Autorization.self
 
@@ -24,9 +24,10 @@ struct AuthorizationView: View, ItemView {
             Spacer()
             
             LoginTextField(inputText: $viewModel.email, title: strings.enterLogin, placeHolder: strings.login, withHideOption: false, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
-            
-            LoginTextField(inputText: $viewModel.password, isSecure: true, title: strings.enterPassword, placeHolder: strings.password, withHideOption: true, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
+              
                 
+            LoginTextField(inputText: $viewModel.password, isSecure: true, title: strings.enterPassword, placeHolder: strings.password, withHideOption: true, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
+            
             Text(viewModel.errorMessage)
                 .foregroundColor(Pallete.Other.pink)
             
@@ -52,9 +53,12 @@ struct AuthorizationView: View, ItemView {
                 signInWithGoogle()
             }
             
-            CustomButton(title: strings.signInWithApple, buttonType: .outApple) {
-
+            SignInWithAppleButton(.signIn) { request in viewModel.handleSignInWithAppleRequest(request)
+            } onCompletion: { result in
+                viewModel.handleSignInWithAppleCompletion(result)
             }
+                .frame(width: 400, height: 60)
+                .clipShape(RoundedCorners(radius: 50))
 
             Spacer()
             
@@ -62,27 +66,27 @@ struct AuthorizationView: View, ItemView {
                 Spacer()
                 
                 Text(strings.dontHaveAccount)
-                    .font(.system(size: 12))
+                    .font(.system(size: 16))
                 
-                StringButton(title: strings.signIn, font: .system(size: 12), foregroundColor: Pallete.Other.green, action: {})
+                StringButton(title: strings.signIn, font: .system(size: 16), foregroundColor: Pallete.Other.green, action: {})
                 
                 Spacer()
             }
         }
     }
     
-    private func signInWithEmail() {
+   func signInWithEmail() {
         Task {
             if await viewModel.signInWithEmailPassword() == true {
-                dismiss()
+                listener?.pop()
             }
         }
     }
     
-    private func signInWithGoogle() {
+    func signInWithGoogle() {
         Task {
             if await viewModel.signInWithGoogle() == true {
-                dismiss()
+                listener?.pop()
             }
         }
     }

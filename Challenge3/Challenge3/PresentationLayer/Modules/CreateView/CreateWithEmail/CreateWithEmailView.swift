@@ -5,8 +5,8 @@
 import SwiftUI
 
 struct CreateWithEmailView: View, ItemView {
-
-    @EnvironmentObject var viewModel: CreateWithEmailViewModel
+    @EnvironmentObject var viewModel: AuthenticationViewModel
+    @Environment(\.dismiss) var dismiss
     
     var listener: CustomNavigationContainer?
     
@@ -26,14 +26,17 @@ struct CreateWithEmailView: View, ItemView {
                     
                     LoginTextField(inputText: $viewModel.email, title: Localizable.CreateAccount.CreateWithEmail.email, placeHolder: Localizable.CreateAccount.CreateWithEmail.emailField, withHideOption: false, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)
                     
-                    LoginTextField(inputText: $viewModel.password, title: Localizable.CreateAccount.CreateWithEmail.password, placeHolder: Localizable.CreateAccount.CreateWithEmail.passwordFiled, withHideOption: true, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)
+                    LoginTextField(inputText: $viewModel.password, isSecure: true, title: Localizable.CreateAccount.CreateWithEmail.password, placeHolder: Localizable.CreateAccount.CreateWithEmail.passwordFiled, withHideOption: true, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)
                     
-                    LoginTextField(inputText: $viewModel.confpassword, title: Localizable.CreateAccount.CreateWithEmail.confPassword, placeHolder: Localizable.CreateAccount.CreateWithEmail.confPasswordFiled, withHideOption: true, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)
+                    LoginTextField(inputText: $viewModel.confirmPassword, isSecure: true, title: Localizable.CreateAccount.CreateWithEmail.confPassword, placeHolder: Localizable.CreateAccount.CreateWithEmail.confPasswordFiled, withHideOption: true, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)
+                    
+                    Text(viewModel.errorMessage)
+                        .foregroundColor(Pallete.Other.pink)
                     
                     CustomButton(title: Localizable.CreateAccount.CreateWithEmail.signUp, font: (.system(size: 16)), buttonType: .filledBlue, action: {
-                        listener?.push(view: OnboardingView())
+                        signUpWithEmail()
                     })
-                    
+                   
                     HStack{
                         Text(Localizable.CreateAccount.CreateWithEmail.alreadyHave)
                         
@@ -47,6 +50,14 @@ struct CreateWithEmailView: View, ItemView {
                 NavigationBars(atView: .signUp, leadingButtonAction: {
                     listener?.pop()
                 })
+            }
+        }
+    }
+    private func signUpWithEmail() {
+        Task {
+            if await viewModel.signUpWithEmailPassword() == true {
+                dismiss()
+                listener?.push(view: OnboardingView())
             }
         }
     }
