@@ -57,7 +57,7 @@ struct CategoryButton: View {
             .foregroundColor(isSelected ? Color.black : Pallete.Gray.forText)
             .padding(.vertical, 10)
             .padding(.horizontal)
-            .animation(.linear, value: isSelected)
+            .animation(.linear(duration: 0.1), value: isSelected)
             .background(
                 RoundedRectangle(cornerRadius: 8)
                     .strokeBorder(isSelected ? Pallete.Gray.forNext: Color.clear, lineWidth: 0.5)
