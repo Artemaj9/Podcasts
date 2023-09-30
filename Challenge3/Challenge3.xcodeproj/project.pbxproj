@@ -82,14 +82,21 @@
 		B72544812AC0D0D3003B3FF6 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72544802AC0D0D3003B3FF6 /* OnboardingViewModel.swift */; };
 		B72544842AC0D229003B3FF6 /* OnboardingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72544832AC0D229003B3FF6 /* OnboardingIndicator.swift */; };
 		B72544862AC0D9C4003B3FF6 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72544852AC0D9C4003B3FF6 /* OnboardingView.swift */; };
+		B789D1652AC82842006CAFAF /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B789D1622AC82842006CAFAF /* Manrope-Regular.ttf */; };
+		B789D1662AC82842006CAFAF /* Manrope-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B789D1632AC82842006CAFAF /* Manrope-Bold.ttf */; };
+		B789D1672AC82842006CAFAF /* Manrope-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B789D1642AC82842006CAFAF /* Manrope-SemiBold.ttf */; };
+		B789D16C2AC8285D006CAFAF /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B789D1692AC8285D006CAFAF /* PlusJakartaSans-SemiBold.ttf */; };
+		B789D16D2AC8285D006CAFAF /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B789D16A2AC8285D006CAFAF /* PlusJakartaSans-Bold.ttf */; };
+		B789D16E2AC8285D006CAFAF /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B789D16B2AC8285D006CAFAF /* PlusJakartaSans-Regular.ttf */; };
+		B789D1722AC82BEB006CAFAF /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B789D1712AC82BEB006CAFAF /* Font.swift */; };
 		B78EC3C42AC0C050009B8ABC /* Pallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EC3BE2AC0C050009B8ABC /* Pallete.swift */; };
 		B78EC3C52AC0C050009B8ABC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B78EC3BF2AC0C050009B8ABC /* Localizable.strings */; };
 		B78EC3C62AC0C050009B8ABC /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EC3C12AC0C050009B8ABC /* Images.swift */; };
 		B78EC3C72AC0C050009B8ABC /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EC3C22AC0C050009B8ABC /* Localizable.swift */; };
-		D05867922AC4B92D00DE6539 /* testView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05867912AC4B92D00DE6539 /* testView.swift */; };
-		D05867942AC4CFFA00DE6539 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D05867932AC4CFFA00DE6539 /* GoogleService-Info.plist */; };
 		B7FA0B202AC36F8A000022E7 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FA0B1F2AC36F8A000022E7 /* CustomNavigationBar.swift */; };
 		B7FA0B222AC36FA5000022E7 /* NavigationBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FA0B212AC36FA5000022E7 /* NavigationBars.swift */; };
+		D05867922AC4B92D00DE6539 /* testView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05867912AC4B92D00DE6539 /* testView.swift */; };
+		D05867942AC4CFFA00DE6539 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D05867932AC4CFFA00DE6539 /* GoogleService-Info.plist */; };
 		D08922C12AC1A2F500683667 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08922C02AC1A2F500683667 /* Icons.swift */; };
 		D09F7C572AC356C9000C10F3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D09F7C562AC356C9000C10F3 /* FirebaseAuth */; };
 		D09F7C592AC356C9000C10F3 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = D09F7C582AC356C9000C10F3 /* FirebaseAuthCombine-Community */; };
@@ -188,10 +195,19 @@
 		B72544802AC0D0D3003B3FF6 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		B72544832AC0D229003B3FF6 /* OnboardingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIndicator.swift; sourceTree = "<group>"; };
 		B72544852AC0D9C4003B3FF6 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		B789D1622AC82842006CAFAF /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Regular.ttf"; sourceTree = "<group>"; };
+		B789D1632AC82842006CAFAF /* Manrope-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Bold.ttf"; sourceTree = "<group>"; };
+		B789D1642AC82842006CAFAF /* Manrope-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-SemiBold.ttf"; sourceTree = "<group>"; };
+		B789D1692AC8285D006CAFAF /* PlusJakartaSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		B789D16A2AC8285D006CAFAF /* PlusJakartaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Bold.ttf"; sourceTree = "<group>"; };
+		B789D16B2AC8285D006CAFAF /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
+		B789D1712AC82BEB006CAFAF /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		B78EC3BE2AC0C050009B8ABC /* Pallete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pallete.swift; sourceTree = "<group>"; };
 		B78EC3C02AC0C050009B8ABC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B78EC3C12AC0C050009B8ABC /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		B78EC3C22AC0C050009B8ABC /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		B7FA0B1F2AC36F8A000022E7 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		B7FA0B212AC36FA5000022E7 /* NavigationBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBars.swift; sourceTree = "<group>"; };
 		D05867902AC4A7F100DE6539 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D05867912AC4B92D00DE6539 /* testView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testView.swift; sourceTree = "<group>"; };
 		D05867932AC4CFFA00DE6539 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -199,9 +215,6 @@
 		D09F7C682AC35A3E000C10F3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D09F7C732AC37F8C000C10F3 /* AuthentificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthentificationViewModel.swift; sourceTree = "<group>"; };
 		D0AE3FE12AC62A2500583648 /* Challenge3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Challenge3.entitlements; sourceTree = "<group>"; };
-		B7FA0B1F2AC36F8A000022E7 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
-		B7FA0B212AC36FA5000022E7 /* NavigationBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBars.swift; sourceTree = "<group>"; };
-		D08922C02AC1A2F500683667 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		D0D8E5052AC226F4005D5543 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		FAA1887D2AC36E0F00C0E183 /* PlayControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayControl.swift; sourceTree = "<group>"; };
 		FAE797062AC1FDF8003F3F0C /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
@@ -582,9 +595,40 @@
 			path = OnboardingComponents;
 			sourceTree = "<group>";
 		};
+		B789D1602AC8279C006CAFAF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B789D1682AC82846006CAFAF /* Plus Jakarta Sans */,
+				B789D1612AC82831006CAFAF /* Manrope */,
+				B789D1712AC82BEB006CAFAF /* Font.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B789D1612AC82831006CAFAF /* Manrope */ = {
+			isa = PBXGroup;
+			children = (
+				B789D1632AC82842006CAFAF /* Manrope-Bold.ttf */,
+				B789D1622AC82842006CAFAF /* Manrope-Regular.ttf */,
+				B789D1642AC82842006CAFAF /* Manrope-SemiBold.ttf */,
+			);
+			path = Manrope;
+			sourceTree = "<group>";
+		};
+		B789D1682AC82846006CAFAF /* Plus Jakarta Sans */ = {
+			isa = PBXGroup;
+			children = (
+				B789D16A2AC8285D006CAFAF /* PlusJakartaSans-Bold.ttf */,
+				B789D16B2AC8285D006CAFAF /* PlusJakartaSans-Regular.ttf */,
+				B789D1692AC8285D006CAFAF /* PlusJakartaSans-SemiBold.ttf */,
+			);
+			path = "Plus Jakarta Sans";
+			sourceTree = "<group>";
+		};
 		B78EC3BB2AC0C050009B8ABC /* Resourse */ = {
 			isa = PBXGroup;
 			children = (
+				B789D1602AC8279C006CAFAF /* Fonts */,
 				5DCF86052AC1EBF900B28053 /* Localizable.strings */,
 				B78EC3BE2AC0C050009B8ABC /* Pallete.swift */,
 				B78EC3BF2AC0C050009B8ABC /* Localizable.strings */,
@@ -674,10 +718,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DCF86062AC1EBF900B28053 /* Localizable.strings in Resources */,
+				B789D16D2AC8285D006CAFAF /* PlusJakartaSans-Bold.ttf in Resources */,
 				5D84B2C82AC094AB00BC87E7 /* Preview Assets.xcassets in Resources */,
+				B789D1652AC82842006CAFAF /* Manrope-Regular.ttf in Resources */,
+				B789D1662AC82842006CAFAF /* Manrope-Bold.ttf in Resources */,
+				B789D16C2AC8285D006CAFAF /* PlusJakartaSans-SemiBold.ttf in Resources */,
 				B78EC3C52AC0C050009B8ABC /* Localizable.strings in Resources */,
 				5D84B2C52AC094AB00BC87E7 /* Assets.xcassets in Resources */,
+				B789D1672AC82842006CAFAF /* Manrope-SemiBold.ttf in Resources */,
 				D05867942AC4CFFA00DE6539 /* GoogleService-Info.plist in Resources */,
+				B789D16E2AC8285D006CAFAF /* PlusJakartaSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -787,6 +837,7 @@
 				5D84B3642AC0999C00BC87E7 /* SearchModel.swift in Sources */,
 				5D84B36A2AC0999C00BC87E7 /* CreatePlaylistModel.swift in Sources */,
 				B72544812AC0D0D3003B3FF6 /* OnboardingViewModel.swift in Sources */,
+				B789D1722AC82BEB006CAFAF /* Font.swift in Sources */,
 				5D84B3602AC0999C00BC87E7 /* OnboardingModel.swift in Sources */,
 				B7FA0B222AC36FA5000022E7 /* NavigationBars.swift in Sources */,
 				5D84B2E62AC0975100BC87E7 /* APIError.swift in Sources */,
