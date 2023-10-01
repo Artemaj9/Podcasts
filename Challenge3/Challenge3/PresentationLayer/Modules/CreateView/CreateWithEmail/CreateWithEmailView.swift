@@ -5,10 +5,16 @@
 import SwiftUI
 
 struct CreateWithEmailView: View, ItemView {
+    
+    // MARK: - Property wrapers
+    
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    @Environment(\.dismiss) var dismiss
+    
+    // MARK: - Internal properties
     
     var listener: CustomNavigationContainer?
+    
+    // MARK: - View's body
     
     var body: some View {
         
@@ -40,24 +46,23 @@ struct CreateWithEmailView: View, ItemView {
                     HStack {
                         Text(Localizable.CreateAccount.CreateWithEmail.alreadyHave)
                         
-                        StringButton(title: Localizable.CreateAccount.CreateWithEmail.login, font: (.system(size: 16)), foregroundColor: .green, action: {
+                        StringButton(title: Localizable.CreateAccount.CreateWithEmail.login, font: (.system(size: 16)), foregroundColor: .green) {
                             listener?.push(view: AuthorizationView())
-                        })
+                        }
                     }
                 }
             }
             .makeCustomNavBar {
-                NavigationBars(atView: .signUp, leadingButtonAction: {
+                NavigationBars(atView: .signUp) {
                     listener?.pop()
-                })
+                }
             }
         }
     }
     private func signUpWithEmail() {
         Task {
-            if await viewModel.signUpWithEmailPassword() == true {
-                dismiss()
-                listener?.push(view: OnboardingView())
+            if await viewModel.signUpWithEmailPassword() {
+                    listener?.push(view: OnboardingView())
             }
         }
     }

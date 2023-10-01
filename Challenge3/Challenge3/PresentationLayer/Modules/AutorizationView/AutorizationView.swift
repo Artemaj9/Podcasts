@@ -7,17 +7,20 @@ import _AuthenticationServices_SwiftUI
 
 struct AuthorizationView: View, ItemView {
 
+    // MARK: - Property Wrappers
+    
+    @EnvironmentObject var viewModel: AuthenticationViewModel
+    
     // MARK: - Internal Properties
+    
     var listener: CustomNavigationContainer?
 
-    // MARK: - Property Wrappers
-    @EnvironmentObject var viewModel: AuthenticationViewModel
-   
-    
     // MARK: - Private Properties
+    
     private var strings = Localizable.Autorization.self
 
     // MARK: - Body
+    
     var body: some View {
         VStack {
             
@@ -31,7 +34,7 @@ struct AuthorizationView: View, ItemView {
             Text(viewModel.errorMessage)
                 .foregroundColor(Pallete.Other.pink)
             
-            CustomButton(title: strings.logIn, cornerRadius: 100, buttonType: .filledBlue){ 
+            CustomButton(title: strings.logIn, cornerRadius: 100, buttonType: .filledBlue) {
                 signInWithEmail()
             }
                 .frame(height: 62)
@@ -44,7 +47,6 @@ struct AuthorizationView: View, ItemView {
                 
                 Rectangle()
                     .frame(width: 62, height: 1)
-                
             }
             .foregroundColor(Pallete.BlackWhite.black)
             .padding(32)
@@ -52,9 +54,8 @@ struct AuthorizationView: View, ItemView {
             CustomButton(title: strings.signInWithGoogle, buttonType: .outGoogle) {
                 signInWithGoogle()
             }
-            
+
             SignInWithAppleButton(.signIn) { request in
-                
                 viewModel.handleSignInWithAppleRequest(request)
             } onCompletion: { result in
                 viewModel.handleSignInWithAppleCompletion(result)
@@ -70,7 +71,7 @@ struct AuthorizationView: View, ItemView {
                 Text(strings.dontHaveAccount)
                     .font(.system(size: 16))
                 
-                StringButton(title: strings.signIn, font: .system(size: 16), foregroundColor: Pallete.Other.green){}
+                StringButton(title: strings.signIn, font: .system(size: 16), foregroundColor: Pallete.Other.green) { }
                 
                 Spacer()
             }
@@ -79,7 +80,7 @@ struct AuthorizationView: View, ItemView {
     
    func signInWithEmail() {
         Task {
-            if await viewModel.signInWithEmailPassword(){
+            if await viewModel.signInWithEmailPassword() {
                 listener?.pop()
             }
         }
@@ -87,7 +88,7 @@ struct AuthorizationView: View, ItemView {
     
     func signInWithGoogle() {
         Task {
-            if await viewModel.signInWithGoogle(){
+            if await viewModel.signInWithGoogle() {
                 listener?.pop()
             }
         }
