@@ -12,7 +12,7 @@ struct AuthorizationView: View, ItemView {
 
     // MARK: - Property Wrappers
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    @Environment(\.dismiss) var dismiss
+   
     
     // MARK: - Private Properties
     private var strings = Localizable.Autorization.self
@@ -31,9 +31,9 @@ struct AuthorizationView: View, ItemView {
             Text(viewModel.errorMessage)
                 .foregroundColor(Pallete.Other.pink)
             
-            CustomButton(title: strings.logIn, cornerRadius: 100, buttonType: .filledBlue, action: {
+            CustomButton(title: strings.logIn, cornerRadius: 100, buttonType: .filledBlue){ 
                 signInWithEmail()
-            })
+            }
                 .frame(height: 62)
             
             HStack {
@@ -53,7 +53,9 @@ struct AuthorizationView: View, ItemView {
                 signInWithGoogle()
             }
             
-            SignInWithAppleButton(.signIn) { request in viewModel.handleSignInWithAppleRequest(request)
+            SignInWithAppleButton(.signIn) { request in
+                
+                viewModel.handleSignInWithAppleRequest(request)
             } onCompletion: { result in
                 viewModel.handleSignInWithAppleCompletion(result)
             }
@@ -68,7 +70,7 @@ struct AuthorizationView: View, ItemView {
                 Text(strings.dontHaveAccount)
                     .font(.system(size: 16))
                 
-                StringButton(title: strings.signIn, font: .system(size: 16), foregroundColor: Pallete.Other.green, action: {})
+                StringButton(title: strings.signIn, font: .system(size: 16), foregroundColor: Pallete.Other.green){}
                 
                 Spacer()
             }
@@ -77,7 +79,7 @@ struct AuthorizationView: View, ItemView {
     
    func signInWithEmail() {
         Task {
-            if await viewModel.signInWithEmailPassword() == true {
+            if await viewModel.signInWithEmailPassword(){
                 listener?.pop()
             }
         }
@@ -85,7 +87,7 @@ struct AuthorizationView: View, ItemView {
     
     func signInWithGoogle() {
         Task {
-            if await viewModel.signInWithGoogle() == true {
+            if await viewModel.signInWithGoogle(){
                 listener?.pop()
             }
         }

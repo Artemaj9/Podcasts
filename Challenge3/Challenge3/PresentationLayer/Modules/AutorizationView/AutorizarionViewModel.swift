@@ -4,8 +4,4 @@
 
 import Foundation
 
-final class AuthorizarionViewModel: ObservableObject {
-   
-    
-   
-}
+final class AuthorizarionViewModel: ObservableObject {}

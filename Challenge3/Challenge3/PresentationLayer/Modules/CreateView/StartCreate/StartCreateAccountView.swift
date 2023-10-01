@@ -7,7 +7,7 @@ import _AuthenticationServices_SwiftUI
 
 struct StartCreateAccountView: View, ItemView {
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    @Environment(\.dismiss) var dismiss
+
     var listener: CustomNavigationContainer?
     
     var body: some View {
@@ -51,7 +51,9 @@ struct StartCreateAccountView: View, ItemView {
                                 signInWithGoogle()
                             }
                             
-                            SignInWithAppleButton(.signIn) { request in viewModel.handleSignInWithAppleRequest(request)
+                            SignInWithAppleButton(.signIn) {
+                                
+                                request in viewModel.handleSignInWithAppleRequest(request)
                             } onCompletion: { result in
                                 viewModel.handleSignInWithAppleCompletion(result)
                             }
@@ -79,8 +81,8 @@ struct StartCreateAccountView: View, ItemView {
     }
     private func signInWithGoogle() {
         Task {
-            if await viewModel.signInWithGoogle() == true {
-                dismiss()
+            if await viewModel.signInWithGoogle() {
+                listener?.pop()
             }
         }
     }
