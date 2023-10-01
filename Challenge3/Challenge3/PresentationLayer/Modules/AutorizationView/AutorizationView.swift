@@ -3,29 +3,40 @@
 //
 
 import SwiftUI
+import _AuthenticationServices_SwiftUI
 
 struct AuthorizationView: View, ItemView {
 
+    // MARK: - Property Wrappers
+    
+    @EnvironmentObject var viewModel: AuthenticationViewModel
+    
     // MARK: - Internal Properties
+    
     var listener: CustomNavigationContainer?
 
-    // MARK: - Property Wrappers
-    @EnvironmentObject var authorizarionViewModel: AuthorizarionViewModel
-
     // MARK: - Private Properties
+    
     private var strings = Localizable.Autorization.self
 
     // MARK: - Body
+    
     var body: some View {
         VStack {
             
             Spacer()
             
-            LoginTextField(inputText: $authorizarionViewModel.login, title: strings.enterLogin, placeHolder: strings.login, withHideOption: false, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
+            LoginTextField(inputText: $viewModel.email, title: strings.enterLogin, placeHolder: strings.login, withHideOption: false, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
+              
+                
+            LoginTextField(inputText: $viewModel.password, isSecure: true, title: strings.enterPassword, placeHolder: strings.password, withHideOption: true, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
             
-            LoginTextField(inputText: $authorizarionViewModel.password, isSecure: false, title: strings.enterPassword, placeHolder: strings.password, withHideOption: true, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
+            Text(viewModel.errorMessage)
+                .foregroundColor(Pallete.Other.pink)
             
-            CustomButton(title: strings.logIn, cornerRadius: 100, buttonType: .filledBlue, action: {})
+            CustomButton(title: strings.logIn, cornerRadius: 100, buttonType: .filledBlue) {
+                signInWithEmail()
+            }
                 .frame(height: 62)
             
             HStack {
@@ -36,18 +47,21 @@ struct AuthorizationView: View, ItemView {
                 
                 Rectangle()
                     .frame(width: 62, height: 1)
-                
             }
             .foregroundColor(Pallete.BlackWhite.black)
             .padding(32)
             
             CustomButton(title: strings.signInWithGoogle, buttonType: .outGoogle) {
-
+                signInWithGoogle()
             }
-            
-            CustomButton(title: strings.signInWithApple, buttonType: .outApple) {
 
+            SignInWithAppleButton(.signIn) { request in
+                viewModel.handleSignInWithAppleRequest(request)
+            } onCompletion: { result in
+                viewModel.handleSignInWithAppleCompletion(result)
             }
+                .frame(width: 400, height: 60)
+                .clipShape(RoundedCorners(radius: 50))
 
             Spacer()
             
@@ -55,13 +69,28 @@ struct AuthorizationView: View, ItemView {
                 Spacer()
                 
                 Text(strings.dontHaveAccount)
-                    .font(.system(size: 12))
+                    .font(.system(size: 16))
                 
-                StringButton(title: strings.signIn, font: .system(size: 12), foregroundColor: Pallete.Other.green, action: {})
+                StringButton(title: strings.signIn, font: .system(size: 16), foregroundColor: Pallete.Other.green) { }
                 
                 Spacer()
             }
-            
+        }
+    }
+    
+   func signInWithEmail() {
+        Task {
+            if await viewModel.signInWithEmailPassword() {
+                listener?.pop()
+            }
+        }
+    }
+    
+    func signInWithGoogle() {
+        Task {
+            if await viewModel.signInWithGoogle() {
+                listener?.pop()
+            }
         }
     }
 }
