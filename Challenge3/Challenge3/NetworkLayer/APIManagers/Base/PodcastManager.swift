@@ -5,6 +5,7 @@
 import Foundation
 import PodcastIndexKit
 
+@MainActor
 final class PodcastManager: ObservableObject {
     @Published var apiError = ""
     

@@ -10,6 +10,7 @@ struct PodcastCategory: Codable, Hashable, Sendable {
     public let name: String?
 }
 
+@MainActor
 final class CategoryManager: ObservableObject {
     @Published var apiError = ""
     
