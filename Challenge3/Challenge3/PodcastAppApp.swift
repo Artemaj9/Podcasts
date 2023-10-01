@@ -4,21 +4,25 @@
 
 import SwiftUI
 import FirebaseCore
+import PodcastIndexKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
-    return true
-  }
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        PodcastIndexKit.setup(apiKey: APIRequest.apiKey,
+                              apiSecret: APIRequest.apiSecret,
+                              userAgent: APIRequest.userAgent)
+        return true
+    }
 }
 
 @main
 struct Challenge3App: App {
-
+    
     // MARK: - Property Wrapper
     @StateObject var navigationViewModel = CustomNavigationViewModel()
-
+    
     @StateObject var favoritesViewModel = FavoritesViewModel()
     @StateObject var homePageViewModel = HomePageViewModel()
     @StateObject var accountSettingsViewModel = AccountSettingsViewModel()
@@ -31,14 +35,15 @@ struct Challenge3App: App {
     @StateObject var createWithEmailViewModel = CreateWithEmailViewModel()
     @StateObject var authorizarionViewModel = AuthorizarionViewModel()
     @StateObject var authenticationViewModel = AuthenticationViewModel()
+    @StateObject var searchManager = SearchManager()
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-
+    
     // MARK: - Body
     var body: some Scene {
         WindowGroup { // добавить if какой экран будет показываться при старте
             NavigationContainer(viewModel: navigationViewModel) {
-               HomePageView()
+                testView()
             }
             .environmentObject(favoritesViewModel)
             .environmentObject(homePageViewModel)
@@ -52,6 +57,7 @@ struct Challenge3App: App {
             .environmentObject(createWithEmailViewModel)
             .environmentObject(authorizarionViewModel)
             .environmentObject(authenticationViewModel)
+            .environmentObject(searchManager)
         }
     }
 }
