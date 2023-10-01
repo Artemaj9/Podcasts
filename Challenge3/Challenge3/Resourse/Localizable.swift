@@ -35,7 +35,7 @@ struct Localizable {
         enum CreateWithEmail {
             static var firstName = NSLocalizedString("CreateWithEmail.firstName", comment: "")
             static var lastName = NSLocalizedString("CreateWithEmail.lastName", comment: "")
-            static var email = NSLocalizedString("CreateWithEmail", comment: "")
+            static var email = NSLocalizedString("CreateWithEmail.email", comment: "")
             static var password = NSLocalizedString("CreateWithEmail.password", comment: "")
             static var confPassword = NSLocalizedString("CreateWithEmail.confPassword", comment: "")
             static var firstNameField = NSLocalizedString("CreateWithEmail.firstNameField", comment: "")
