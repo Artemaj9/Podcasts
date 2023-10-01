@@ -33,9 +33,9 @@ struct CreateWithEmailView: View, ItemView {
                     Text(viewModel.errorMessage)
                         .foregroundColor(Pallete.Other.pink)
                     
-                    CustomButton(title: Localizable.CreateAccount.CreateWithEmail.signUp, font: (.system(size: 16)), buttonType: .filledBlue, action: {
+                    CustomButton(title: Localizable.CreateAccount.CreateWithEmail.signUp, font: (.system(size: 16)), buttonType: .filledBlue) {
                         signUpWithEmail()
-                    })
+                    }
                    
                     HStack{
                         Text(Localizable.CreateAccount.CreateWithEmail.alreadyHave)
