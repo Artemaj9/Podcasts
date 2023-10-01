@@ -7,93 +7,40 @@
 import SwiftUI
 import Combine
 import AuthenticationServices
+import PodcastIndexKit
 
 struct testView: View, ItemView {
     @EnvironmentObject var viewModel: AuthenticationViewModel
+    @EnvironmentObject var apiModel: SearchManager
     @Environment(\.dismiss) var dismiss
+    
+    @State var podcasts: [Podcast]?
+    @State var searchString = ""
     
     var listener: CustomNavigationContainer?
     
-    private func signUpWithEmail() {
+    private func getPodcasts() {
         Task {
-            if await viewModel.signUpWithEmailPassword() == true {
-                dismiss()
-            }
-        }
-    }
-    
-    private func signInWithEmail() {
-        Task {
-            if await viewModel.signInWithEmailPassword() == true {
-                dismiss()
-            }
-        }
-    }
-    
-    private func signInWithGoogle() {
-        Task {
-            if await viewModel.signInWithGoogle() == true {
-                dismiss()
-            }
-        }
-    }
-    
-    private func signOut() {
-        Task {
-            viewModel.signOut()
+            podcasts = await apiModel.performSearchByTerm(term: searchString, max: 10, debug: true)
         }
     }
     
     var body: some View {
         VStack(spacing: 30) {
-            Group {
-                TextField("Email", text: $viewModel.email)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled(true)
-                    .submitLabel(.next)
-                
-                TextField("Password", text: $viewModel.password)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled(true)
-                    .submitLabel(.next)
-                
-                TextField("Confirm password", text: $viewModel.confirmPassword)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled(true)
-                    .submitLabel(.go)
-                    .onSubmit {
-                        signUpWithEmail()
+            TextField("Search", text: $searchString)
+            
+            Button {
+                getPodcasts()
+            } label: {
+                Text("get podcasts")
+            }
+            
+            if podcasts != nil {
+                ScrollView {
+                    ForEach(podcasts!, id: \.id) { item in
+                        Text(item.link ?? "")
                     }
-            }
-            
-            Button {
-                signUpWithEmail()
-            } label: {
-                Text("SignUp with email")
-            }
-            
-            Button {
-                signInWithEmail()
-            } label: {
-                Text("SignIn with email")
-            }
-            
-            Button {
-                signInWithGoogle()
-            } label: {
-                Text("SignUp with google")
-            }
-            
-            SignInWithAppleButton(.signIn) { request in viewModel.handleSignInWithAppleRequest(request)
-            } onCompletion: { result in
-                viewModel.handleSignInWithAppleCompletion(result)
-            }
-            .frame(width: 300, height: 80)
-            
-            Button {
-                signOut()
-            } label: {
-                Text("Sign Out")
+                }
             }
         }
     }
