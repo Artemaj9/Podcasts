@@ -22,4 +22,21 @@ final class PodcastManager: ObservableObject {
             return nil
         }
     }
+    
+    // MARK: - This call returns popular podcasts. With optional category use
+    
+    func performTrendingPodcasts(max: Int, category: String?, debug: Bool = false) async -> [Podcast]? {
+        precondition(max >= 0 && max <= 1000, "max should be int 0-1000")
+        do {
+            let result = try await PodcastIndexKit().podcastsService.trendingPodcasts(
+                max: max,
+                cat: category,
+                pretty: debug
+            )
+            return result.feeds
+        }
+        catch {
+            return nil
+        }
+    }
 }

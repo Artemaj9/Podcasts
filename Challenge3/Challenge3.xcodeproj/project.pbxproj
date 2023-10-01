@@ -86,6 +86,7 @@
 		D02B520A2AC9701B00503637 /* PodcastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02B52092AC9701B00503637 /* PodcastManager.swift */; };
 		D02B520C2AC986C200503637 /* EpisodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02B520B2AC986C200503637 /* EpisodeManager.swift */; };
 		D02B520E2AC9AAED00503637 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02B520D2AC9AAED00503637 /* CategoryManager.swift */; };
+		D02B52102AC9B08100503637 /* RecentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02B520F2AC9B08100503637 /* RecentManager.swift */; };
 		D05867922AC4B92D00DE6539 /* testView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05867912AC4B92D00DE6539 /* testView.swift */; };
 		D05867942AC4CFFA00DE6539 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D05867932AC4CFFA00DE6539 /* GoogleService-Info.plist */; };
 		D08922C12AC1A2F500683667 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08922C02AC1A2F500683667 /* Icons.swift */; };
@@ -189,6 +190,7 @@
 		D02B52092AC9701B00503637 /* PodcastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastManager.swift; sourceTree = "<group>"; };
 		D02B520B2AC986C200503637 /* EpisodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeManager.swift; sourceTree = "<group>"; };
 		D02B520D2AC9AAED00503637 /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
+		D02B520F2AC9B08100503637 /* RecentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentManager.swift; sourceTree = "<group>"; };
 		D05867902AC4A7F100DE6539 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D05867912AC4B92D00DE6539 /* testView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testView.swift; sourceTree = "<group>"; };
 		D05867932AC4CFFA00DE6539 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -319,8 +321,9 @@
 				5D84B2E32AC0975100BC87E7 /* APIRequest.swift */,
 				D02B520D2AC9AAED00503637 /* CategoryManager.swift */,
 				D02B520B2AC986C200503637 /* EpisodeManager.swift */,
-				D02B52052AC85FB600503637 /* SearchManager.swift */,
 				D02B52092AC9701B00503637 /* PodcastManager.swift */,
+				D02B520F2AC9B08100503637 /* RecentManager.swift */,
+				D02B52052AC85FB600503637 /* SearchManager.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 				5D84B3642AC0999C00BC87E7 /* SearchModel.swift in Sources */,
 				5D84B36A2AC0999C00BC87E7 /* CreatePlaylistModel.swift in Sources */,
 				D02B520A2AC9701B00503637 /* PodcastManager.swift in Sources */,
+				D02B52102AC9B08100503637 /* RecentManager.swift in Sources */,
 				B72544812AC0D0D3003B3FF6 /* OnboardingViewModel.swift in Sources */,
 				5D84B3602AC0999C00BC87E7 /* OnboardingModel.swift in Sources */,
 				B7FA0B222AC36FA5000022E7 /* NavigationBars.swift in Sources */,

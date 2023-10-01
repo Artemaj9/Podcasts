@@ -13,6 +13,8 @@ struct PodcastCategory: Codable, Hashable, Sendable {
 final class CategoryManager: ObservableObject {
     @Published var apiError = ""
     
+    // MARK: - This call return list of available categories
+    
     func getCategoryList(debug: Bool = false) async -> [PodcastCategory]? {
         do {
             let result = try await PodcastIndexKit().categoriesService.list(pretty: debug)
