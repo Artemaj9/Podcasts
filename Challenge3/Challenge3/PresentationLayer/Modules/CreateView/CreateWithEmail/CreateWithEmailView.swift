@@ -36,8 +36,8 @@ struct CreateWithEmailView: View, ItemView {
                     CustomButton(title: Localizable.CreateAccount.CreateWithEmail.signUp, font: (.system(size: 16)), buttonType: .filledBlue) {
                         signUpWithEmail()
                     }
-                   
-                    HStack{
+                    
+                    HStack {
                         Text(Localizable.CreateAccount.CreateWithEmail.alreadyHave)
                         
                         StringButton(title: Localizable.CreateAccount.CreateWithEmail.login, font: (.system(size: 16)), foregroundColor: .green, action: {
