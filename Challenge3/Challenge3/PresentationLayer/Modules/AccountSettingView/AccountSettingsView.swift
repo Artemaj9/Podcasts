@@ -136,8 +136,6 @@ struct AccountSettingsView: View, ItemView {
         }
     }
     
-    
-    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .center) {
