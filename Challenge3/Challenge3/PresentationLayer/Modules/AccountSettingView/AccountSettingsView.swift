@@ -3,6 +3,8 @@
 //
 
 import SwiftUI
+import CoreImage
+import CoreImage.CIFilterBuiltins
 
 struct AccountSettingsView: View, ItemView {
 
@@ -104,12 +106,37 @@ struct AccountSettingsView: View, ItemView {
         }
     }
     private var userImageRow: some View {
-        Image(Images.DefaultView.avatar.rawValue)
-            .overlay(
-                Image(Images.Icon.edit.rawValue)
-                    .offset(x: 35, y: 35)
-            )
+        VStack {
+        ZStack {
+            if let image = accountSettingsViewModel.image {
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(Circle())
+            } else {
+                Image(Images.DefaultView.avatar.rawValue)
+                    .overlay(
+                        Image(Images.Icon.edit.rawValue)
+                            .offset(x: 35, y: 35)
+                    )
+            }
+        }
+        .onTapGesture {
+            accountSettingsViewModel.showingImagePicker = true
+        }
+        .frame(width: 150,height: 150)
+
+    .padding([.horizontal, .bottom])
+    .onChange(of: accountSettingsViewModel.inputImage) { _ in
+        accountSettingsViewModel.loadImage()
     }
+    .sheet(isPresented: $accountSettingsViewModel.showingImagePicker) {
+        ImagePicker(image: $accountSettingsViewModel.inputImage)
+    }
+        }
+    }
+    
+    
 
     var body: some View {
         ScrollView(showsIndicators: false) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DA769D22ACB37E200B57C90 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA769D12ACB37E100B57C90 /* ImagePicker.swift */; };
 		5D53225A2AC1BA2B009BB98A /* CategoryTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5322592AC1BA2B009BB98A /* CategoryTabs.swift */; };
 		5D84B2C52AC094AB00BC87E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D84B2C42AC094AB00BC87E7 /* Assets.xcassets */; };
 		5D84B2C82AC094AB00BC87E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D84B2C72AC094AB00BC87E7 /* Preview Assets.xcassets */; };
@@ -118,6 +119,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DA769D12ACB37E100B57C90 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5D5322592AC1BA2B009BB98A /* CategoryTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTabs.swift; sourceTree = "<group>"; };
 		5D84B2BD2AC094A900BC87E7 /* Challenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D84B2C42AC094AB00BC87E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				ACEE58C92AC2194E0037C34E /* LoginTextField.swift */,
 				ACEE58CB2AC21B050037C34E /* SearchBar.swift */,
 				5D5322592AC1BA2B009BB98A /* CategoryTabs.swift */,
+				2DA769D12ACB37E100B57C90 /* ImagePicker.swift */,
 				D08922C02AC1A2F500683667 /* Icons.swift */,
 				AC16D57A2AC1B80800B74CBA /* MiniPlayer.swift */,
 				FAA1887D2AC36E0F00C0E183 /* PlayControl.swift */,
@@ -794,6 +797,7 @@
 				B72544842AC0D229003B3FF6 /* OnboardingIndicator.swift in Sources */,
 				5D84B2D42AC0968200BC87E7 /* LocalManager.swift in Sources */,
 				5D84B3502AC0999C00BC87E7 /* FavoritesModel.swift in Sources */,
+				2DA769D22ACB37E200B57C90 /* ImagePicker.swift in Sources */,
 				D02B520E2AC9AAED00503637 /* CategoryManager.swift in Sources */,
 				5D84B34F2AC0999C00BC87E7 /* FavoritesView.swift in Sources */,
 				ACEE58CA2AC2194E0037C34E /* LoginTextField.swift in Sources */,
