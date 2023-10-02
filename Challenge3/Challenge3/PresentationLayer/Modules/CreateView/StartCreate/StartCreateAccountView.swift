@@ -7,6 +7,7 @@ import _AuthenticationServices_SwiftUI
 
 struct StartCreateAccountView: View, ItemView {
     @EnvironmentObject var viewModel: AuthenticationViewModel
+    @EnvironmentObject var splashViewModel: SplashViewModel
 
     var listener: CustomNavigationContainer?
     
@@ -39,15 +40,15 @@ struct StartCreateAccountView: View, ItemView {
                         
                         VStack(spacing: 16) {
                             CustomButton(title: Localizable.CreateAccount.StartCreate.contWithEmail,
-                            buttonType: .filledBlue) {
+                                         buttonType: .filledBlue) {
                                 listener?.push(view: CreateWithEmailView())
                             }
-                                                        
+
                             Text(Localizable.CreateAccount.StartCreate.orContWith)
                                 .foregroundColor(Pallete.Gray.forText)
                             
                             CustomButton(title: Localizable.CreateAccount.StartCreate.contWithGoogle,
-                            buttonType: .outGoogle) {
+                                         buttonType: .outGoogle) {
                                 signInWithGoogle()
                             }
                             
@@ -57,8 +58,9 @@ struct StartCreateAccountView: View, ItemView {
                             } onCompletion: { result in
                                 viewModel.handleSignInWithAppleCompletion(result)
                             }
-                                .frame(width: 400, height: 60)
-                                .clipShape(RoundedCorners(radius: 50))
+                            .frame(height: 60)
+                            .clipShape(RoundedCorners(radius: 50))
+                            .padding(.horizontal)
                             
                         }
                         Spacer()
@@ -82,7 +84,8 @@ struct StartCreateAccountView: View, ItemView {
     private func signInWithGoogle() {
         Task {
             if await viewModel.signInWithGoogle() {
-                listener?.pop()
+                splashViewModel.isNotLoggedIn = true
+                listener?.push(view: HomePageView())
             }
         }
     }
@@ -91,5 +94,6 @@ struct StartCreateAccountView: View, ItemView {
 struct StartCreateAccountView_Previews: PreviewProvider {
     static var previews: some View {
         StartCreateAccountView()
+            .environmentObject(SplashViewModel())
     }
 }

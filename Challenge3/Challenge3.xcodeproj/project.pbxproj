@@ -75,6 +75,8 @@
 		B72544812AC0D0D3003B3FF6 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72544802AC0D0D3003B3FF6 /* OnboardingViewModel.swift */; };
 		B72544842AC0D229003B3FF6 /* OnboardingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72544832AC0D229003B3FF6 /* OnboardingIndicator.swift */; };
 		B72544862AC0D9C4003B3FF6 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72544852AC0D9C4003B3FF6 /* OnboardingView.swift */; };
+		B77F73B02ACB51120016873F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77F73AF2ACB51120016873F /* SplashView.swift */; };
+		B77F73B22ACB51680016873F /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77F73B12ACB51680016873F /* SplashViewModel.swift */; };
 		B789D1652AC82842006CAFAF /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B789D1622AC82842006CAFAF /* Manrope-Regular.ttf */; };
 		B789D1662AC82842006CAFAF /* Manrope-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B789D1632AC82842006CAFAF /* Manrope-Bold.ttf */; };
 		B789D1672AC82842006CAFAF /* Manrope-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B789D1642AC82842006CAFAF /* Manrope-SemiBold.ttf */; };
@@ -187,6 +189,8 @@
 		B72544802AC0D0D3003B3FF6 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		B72544832AC0D229003B3FF6 /* OnboardingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIndicator.swift; sourceTree = "<group>"; };
 		B72544852AC0D9C4003B3FF6 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		B77F73AF2ACB51120016873F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		B77F73B12ACB51680016873F /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		B789D1622AC82842006CAFAF /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Regular.ttf"; sourceTree = "<group>"; };
 		B789D1632AC82842006CAFAF /* Manrope-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Bold.ttf"; sourceTree = "<group>"; };
 		B789D1642AC82842006CAFAF /* Manrope-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -415,6 +419,7 @@
 		5D84B3112AC0999C00BC87E7 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B77F73AE2ACB50FA0016873F /* SplashView */,
 				5D84B3122AC0999C00BC87E7 /* FavoritesView */,
 				5D84B3162AC0999C00BC87E7 /* HomePageView */,
 				5D84B31A2AC0999C00BC87E7 /* AccountSettingView */,
@@ -591,6 +596,15 @@
 			path = OnboardingComponents;
 			sourceTree = "<group>";
 		};
+		B77F73AE2ACB50FA0016873F /* SplashView */ = {
+			isa = PBXGroup;
+			children = (
+				B77F73AF2ACB51120016873F /* SplashView.swift */,
+				B77F73B12ACB51680016873F /* SplashViewModel.swift */,
+			);
+			path = SplashView;
+			sourceTree = "<group>";
+		};
 		B789D1602AC8279C006CAFAF /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -759,6 +773,7 @@
 			files = (
 				ACEE58CE2AC21C8B0037C34E /* UIApplication.swift in Sources */,
 				5D84B35F2AC0999C00BC87E7 /* NowPlayingView.swift in Sources */,
+				B77F73B02ACB51120016873F /* SplashView.swift in Sources */,
 				5D84B3692AC0999C00BC87E7 /* CreatePlaylistView.swift in Sources */,
 				5D84B34D2AC0999C00BC87E7 /* Buttons.swift in Sources */,
 				5D84B2E42AC0975100BC87E7 /* FirebaseManager.swift in Sources */,
@@ -779,6 +794,7 @@
 				5DB3538F2AC593F400A7E617 /* FavoritesDetailView.swift in Sources */,
 				5D84B3532AC0999C00BC87E7 /* HomePageView.swift in Sources */,
 				D05867922AC4B92D00DE6539 /* testView.swift in Sources */,
+				B77F73B22ACB51680016873F /* SplashViewModel.swift in Sources */,
 				5D84B36F2AC0999C00BC87E7 /* CreateWithEmailViewModel.swift in Sources */,
 				5D84B34A2AC0999C00BC87E7 /* View+AnyView.swift in Sources */,
 				5D84B2ED2AC0975100BC87E7 /* APIRequest.swift in Sources */,
