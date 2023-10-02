@@ -1,14 +1,12 @@
 //
 //  ImagePicker.swift
-//  Instafilter
-//
-//  Created by Никита Мартьянов on 18.09.23.
 //
 
 import PhotosUI
 import SwiftUI
 
 struct ImagePicker: UIViewControllerRepresentable {
+    
     @Binding var image : UIImage?
     
     class Coordinator : NSObject, PHPickerViewControllerDelegate {

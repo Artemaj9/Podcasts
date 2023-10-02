@@ -18,9 +18,6 @@ final class AccountSettingsViewModel: ObservableObject {
     @Published var inputImage: UIImage?
     @Published var isButtonsVisible = false
     @Published var showingButtons = false
-
-
-
     
     func loadImage() {
         guard let inputImage = inputImage else { return }
@@ -28,5 +25,4 @@ final class AccountSettingsViewModel: ObservableObject {
         image = Image(uiImage: inputImage)
     }
 }
-
 

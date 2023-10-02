@@ -7,20 +7,20 @@ import CoreImage
 import CoreImage.CIFilterBuiltins
 
 struct AccountSettingsView: View, ItemView {
-
+    
     // MARK: - Property Wrappers
     @EnvironmentObject var accountSettingsViewModel: AccountSettingsViewModel
-
+    
     // MARK: - Internal Properties
     var listener: CustomNavigationContainer?
-
+    
     // MARK: - Private Properties
     private var strings = Localizable.AccountSettings.self
     
     private var titles: [String] = [
         Localizable.AccountSettings.firstName, Localizable.AccountSettings.lastName, Localizable.AccountSettings.email
     ]
-
+    
     // MARK: - Private Views
     private var datePickerView: some View {
         ZStack {
@@ -107,37 +107,37 @@ struct AccountSettingsView: View, ItemView {
     }
     private var userImageRow: some View {
         VStack {
-        ZStack {
-            if let image = accountSettingsViewModel.image {
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .clipShape(Circle())
-            } else {
-                Image(Images.DefaultView.avatar.rawValue)
-                    .overlay(
-                        Image(Images.Icon.edit.rawValue)
-                            .offset(x: 35, y: 35)
-                    )
+            ZStack {
+                if let image = accountSettingsViewModel.image {
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                } else {
+                    Image(Images.DefaultView.avatar.rawValue)
+                        .overlay(
+                            Image(Images.Icon.edit.rawValue)
+                                .offset(x: 35, y: 35)
+                        )
+                }
+            }
+            .onTapGesture {
+                accountSettingsViewModel.showingImagePicker = true
+            }
+            .frame(width: 150,height: 150)
+            
+            .padding([.horizontal, .bottom])
+            .onChange(of: accountSettingsViewModel.inputImage) { _ in
+                accountSettingsViewModel.loadImage()
+            }
+            .sheet(isPresented: $accountSettingsViewModel.showingImagePicker) {
+                ImagePicker(image: $accountSettingsViewModel.inputImage)
             }
         }
-        .onTapGesture {
-            accountSettingsViewModel.showingImagePicker = true
-        }
-        .frame(width: 150,height: 150)
-
-    .padding([.horizontal, .bottom])
-    .onChange(of: accountSettingsViewModel.inputImage) { _ in
-        accountSettingsViewModel.loadImage()
-    }
-    .sheet(isPresented: $accountSettingsViewModel.showingImagePicker) {
-        ImagePicker(image: $accountSettingsViewModel.inputImage)
-    }
-        }
     }
     
     
-
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .center) {
@@ -149,7 +149,7 @@ struct AccountSettingsView: View, ItemView {
                     listener?.pop()
                 }
             }
-
+            
         }
         .makeCustomNavBar {
             NavigationBars(atView: .accountSetting) {
@@ -166,10 +166,10 @@ struct AccountSettingsView: View, ItemView {
 
 // MARK: - Components
 struct GenderPicker: View {
-
+    
     // MARK: - Property Wrappers
     @Binding var selectedGender: SelectedGender
-
+    
     // MARK: - Body
     var body: some View {
         HStack(spacing: 16) {
@@ -177,9 +177,9 @@ struct GenderPicker: View {
                 var genderText: String {
                     switch gender {
                     case .male:
-                       return Localizable.AccountSettings.male
+                        return Localizable.AccountSettings.male
                     case .female:
-                       return Localizable.AccountSettings.female
+                        return Localizable.AccountSettings.female
                     }
                 }
                 HStack {
