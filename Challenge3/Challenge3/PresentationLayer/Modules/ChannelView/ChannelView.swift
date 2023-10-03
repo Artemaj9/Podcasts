@@ -22,7 +22,7 @@ struct ChannelView: View, ItemView {
     
     //MARK: Mock data
     @State private var data = [
-        CellData(iconState: false, mainLeft: "Between love and career", mainRight: nil, secondLeft: "56:38", secondRight: "56 Eps", image: "", iconMode: .blank, height: nil)
+        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 1", mainRight: "Right 1", secondLeft: "Second 1", secondRight: "Right Sec 1", image: "image1", iconMode: .blank, height: nil)
     ]
     
     // MARK: - Body

@@ -12,9 +12,11 @@ import PodcastIndexKit
 struct testView: View, ItemView {
     @EnvironmentObject var viewModel: AuthenticationViewModel
     @EnvironmentObject var apiModel: SearchManager
+    @EnvironmentObject var categoryManager: CategoryManager
     @Environment(\.dismiss) var dismiss
     
     @State var podcasts: [Podcast]?
+    @State var categories: CategoriesResponse?
     @State var searchString = ""
     
     var listener: CustomNavigationContainer?
@@ -25,20 +27,37 @@ struct testView: View, ItemView {
         }
     }
     
+    private func getCategories() {
+        Task {
+            print("1")
+            categories = await categoryManager.getCategoryList()
+            print(categories?.feeds?.first?.name ?? "noData")
+        }
+    }
+    
     var body: some View {
         VStack(spacing: 30) {
             TextField("Search", text: $searchString)
             
             Button {
-                getPodcasts()
+//                getPodcasts()
+                getCategories()
             } label: {
                 Text("get podcasts")
             }
             
-            if podcasts != nil {
+//            if podcasts != nil {
+//                ScrollView {
+//                    ForEach(podcasts!, id: \.id) { item in
+//                        Text(item.link ?? "")
+//                    }
+//                }
+//            }
+            
+            if let items = categories {
                 ScrollView {
-                    ForEach(podcasts!, id: \.id) { item in
-                        Text(item.link ?? "")
+                    ForEach(items.feeds!, id: \.id) { item in
+                        Text(item.name ?? "")
                     }
                 }
             }

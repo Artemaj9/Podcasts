@@ -6,7 +6,7 @@ import Foundation
 import CryptoKit
 
 struct APIRequest {
-    static let apiKey: String = "SRJXDSMNYJ8BSPHUYKXW"
-    static let apiSecret: String = "hjnepSe6sRqd^Ae38TWh3Ypp87yZMb8w6ETf3zkS"
+    static let apiKey: String = "JJXSD3NVTGFHLCBQ3VYL"
+    static let apiSecret: String = "KM93rBQPdehPy3#6LUn7xR2mGf^Ws2^yTE8JrvxP"
     static let userAgent: String = "PodcastApp/1.3"
 }

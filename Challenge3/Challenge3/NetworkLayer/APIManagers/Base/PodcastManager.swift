@@ -11,10 +11,10 @@ final class PodcastManager: ObservableObject {
     
     // MARK: - This call returns everything we know about the feed from the feed's GUID. The GUID is a unique, global identifier for the podcast.
     
-    func getPodcastData(podcastID: String, debug: Bool = false) async -> Podcast? {
+    func getPodcastData(podcastID: Int, debug: Bool = false) async -> Podcast? {
         do {
             let result = try await PodcastIndexKit().podcastsService.podcast(
-                byGuid: podcastID,
+                byFeedId: podcastID,
                 pretty: debug
             )
             return result.feed
@@ -37,6 +37,7 @@ final class PodcastManager: ObservableObject {
             return result.feeds
         }
         catch {
+            print(error.localizedDescription)
             return nil
         }
     }

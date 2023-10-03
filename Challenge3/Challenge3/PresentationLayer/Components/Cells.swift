@@ -10,10 +10,10 @@ struct Cells: View {
     //MARK: - Mock data
     
     @State var cellDatas: [CellData] = [
-        CellData(iconState: false, mainLeft: "Main 1", mainRight: "Right 1", secondLeft: "Second 1", secondRight: "Right Sec 1", image: "image1", iconMode: .like, height: nil),
-        CellData(iconState: true, mainLeft: "Main 2", mainRight: "Right 2", secondLeft: "Second 2", secondRight: "Right Sec 2", image: "image2", iconMode: .select, height: nil),
-        CellData(iconState: false, mainLeft: "Main 3", mainRight: "Right 3", secondLeft: "Second 3", secondRight: "Right Sec 3", image: "image3", iconMode: .like, height: nil),
-        CellData(iconState: true, mainLeft: "Main 4", mainRight: "Right 4", secondLeft: "Second 4", secondRight: "Right Sec 4", image: nil, iconMode: .select, height: nil)
+        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 1", mainRight: "Right 1", secondLeft: "Second 1", secondRight: "Right Sec 1", image: "image1", iconMode: .blank, height: nil),
+        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 2", mainRight: "Right 2", secondLeft: "Second 2", secondRight: "Right Sec 2", image: "image2", iconMode: .like, height: nil),
+        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 3", mainRight: "Right 3", secondLeft: "Second 3", secondRight: "Right Sec 3", image: "image3", iconMode: .select, height: nil),
+        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 4", mainRight: "Right 4", secondLeft: "Second 4", secondRight: "Right Sec 4", image: "image4", iconMode: .blank, height: nil)
     ]
     
     var body: some View {
@@ -50,7 +50,7 @@ struct Cells_Previews: PreviewProvider {
     }
 }
 
-struct FilledWideCell: View {
+struct FilledWideCell: View{
     @Binding var data: CellData
     
     var body: some View {
@@ -191,7 +191,8 @@ enum IconMode: String {
 }
 
 struct CellData: Identifiable {
-    let id: UUID = UUID()
+    let id: Int?
+    let guid: String?
     var iconState: Bool
     let mainLeft: String?
     let mainRight: String?

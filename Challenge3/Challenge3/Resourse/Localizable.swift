@@ -59,6 +59,7 @@ struct Localizable {
 
     enum HomePage {
         static var category = NSLocalizedString("HomePageView.category", comment: "")
+        static var rndEpisodes = NSLocalizedString("HomePageView.episodes", comment: "")
         static var seeAll = NSLocalizedString("HomePageView.seeAll", comment: "")
         enum Categories {
             static var popular = NSLocalizedString("HomePageView.Categories.popular", comment: "")

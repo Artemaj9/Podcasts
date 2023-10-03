@@ -22,6 +22,7 @@ final class RecentManager: ObservableObject {
             return result.feeds
         }
         catch {
+            print(error.localizedDescription)
             return nil
         }
     }
