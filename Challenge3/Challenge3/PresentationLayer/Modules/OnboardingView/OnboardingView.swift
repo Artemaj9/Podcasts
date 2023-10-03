@@ -59,9 +59,7 @@ struct OnboardingView: View, ItemView {
                     .background(Pallete.Blue.forAccent)
                     .cornerRadius(16)
                     .onTapGesture {
-                        withAnimation {
-                            // TODO: Dismiss OnboardingView
-                        }
+                        listener?.push(view: HomePageView())
                     }
                 Spacer()
             } else {
@@ -69,9 +67,7 @@ struct OnboardingView: View, ItemView {
                     Text(strings.skip)
                         .font(.system(size: 17, weight: .semibold))
                         .onTapGesture {
-                            withAnimation {
-                                // TODO: Dismiss OnboardingView
-                            }
+                            listener?.push(view: HomePageView())
                         }
                     Spacer()
                     Text(strings.next)
@@ -82,9 +78,7 @@ struct OnboardingView: View, ItemView {
                             withAnimation {
                                 if onboardingViewModel.currentIndex <= 1 {
                                     self.onboardingViewModel.currentIndex += 1
-                                } else {
-                                    // TODO: Dismiss OnboardingView
-                                }
+                                } 
                             }
                         }
                 }

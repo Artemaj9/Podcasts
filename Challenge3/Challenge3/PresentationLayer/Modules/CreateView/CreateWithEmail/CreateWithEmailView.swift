@@ -9,6 +9,7 @@ struct CreateWithEmailView: View, ItemView {
     // MARK: - Property wrapers
     
     @EnvironmentObject var viewModel: AuthenticationViewModel
+    @EnvironmentObject var splashViewModel: SplashViewModel
     
     // MARK: - Internal properties
     
@@ -47,7 +48,7 @@ struct CreateWithEmailView: View, ItemView {
                         Text(Localizable.CreateAccount.CreateWithEmail.alreadyHave)
                         
                         StringButton(title: Localizable.CreateAccount.CreateWithEmail.login, font: (.system(size: 16)), foregroundColor: .green) {
-                            listener?.push(view: AuthorizationView())
+                            listener?.popToRoot()
                         }
                     }
                 }
@@ -62,7 +63,8 @@ struct CreateWithEmailView: View, ItemView {
     private func signUpWithEmail() {
         Task {
             if await viewModel.signUpWithEmailPassword() {
-                    listener?.push(view: OnboardingView())
+                splashViewModel.isNotLoggedIn = true 
+                listener?.push(view: OnboardingView())
             }
         }
     }
@@ -72,5 +74,6 @@ struct CreatetWithEmailView_Previews: PreviewProvider {
     static var previews: some View {
         CreateWithEmailView()
             .environmentObject(CreateWithEmailViewModel())
+            .environmentObject(SplashViewModel())
     }
 }

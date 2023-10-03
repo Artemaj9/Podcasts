@@ -10,7 +10,8 @@ struct AuthorizationView: View, ItemView {
     // MARK: - Property Wrappers
     
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    
+    @EnvironmentObject var splashViewModel: SplashViewModel
+
     // MARK: - Internal Properties
     
     var listener: CustomNavigationContainer?
@@ -60,8 +61,9 @@ struct AuthorizationView: View, ItemView {
             } onCompletion: { result in
                 viewModel.handleSignInWithAppleCompletion(result)
             }
-                .frame(width: 400, height: 60)
-                .clipShape(RoundedCorners(radius: 50))
+            .frame(height: 60)
+            .clipShape(RoundedCorners(radius: 50))
+            .padding(.horizontal)
 
             Spacer()
             
@@ -71,7 +73,9 @@ struct AuthorizationView: View, ItemView {
                 Text(strings.dontHaveAccount)
                     .font(.system(size: 16))
                 
-                StringButton(title: strings.signIn, font: .system(size: 16), foregroundColor: Pallete.Other.green) { }
+                StringButton(title: strings.signIn, font: .system(size: 16), foregroundColor: Pallete.Other.green) {
+                    listener?.push(view: StartCreateAccountView())
+                }
                 
                 Spacer()
             }
@@ -81,7 +85,8 @@ struct AuthorizationView: View, ItemView {
    func signInWithEmail() {
         Task {
             if await viewModel.signInWithEmailPassword() {
-                listener?.pop()
+                splashViewModel.isNotLoggedIn = true 
+                listener?.push(view: HomePageView())
             }
         }
     }
@@ -89,7 +94,7 @@ struct AuthorizationView: View, ItemView {
     func signInWithGoogle() {
         Task {
             if await viewModel.signInWithGoogle() {
-                listener?.pop()
+                listener?.push(view: HomePageView())
             }
         }
     }
@@ -100,5 +105,6 @@ struct AuthorizationView_Previews: PreviewProvider {
     static var previews: some View {
         AuthorizationView()
             .environmentObject(AuthorizarionViewModel())
+            .environmentObject(SplashViewModel())
     }
 }
