@@ -105,7 +105,7 @@ struct AccountSettingsView: View, ItemView {
             )
         }
     }
-    private var userImageRow: some View {
+    var userImageRow: some View {
         VStack {
             ZStack {
                 if let image = accountSettingsViewModel.image {
@@ -122,20 +122,26 @@ struct AccountSettingsView: View, ItemView {
                 }
             }
             .onTapGesture {
-                accountSettingsViewModel.showingImagePicker = true
+                accountSettingsViewModel.isChoosingCameraMode.toggle()
             }
-            .frame(width: 150,height: 150)
-            
+            .frame(width: 150, height: 150)
             .padding([.horizontal, .bottom])
-            .onChange(of: accountSettingsViewModel.inputImage) { _ in
-                accountSettingsViewModel.loadImage()
+            .alert(accountSettingsViewModel.warningMessage, isPresented: $accountSettingsViewModel.isWarningPresented) {
+                Button("Open settings") {
+                    accountSettingsViewModel.openSettings()
+                }
+                
+                Button("OK") {}
             }
-            .sheet(isPresented: $accountSettingsViewModel.showingImagePicker) {
-                ImagePicker(image: $accountSettingsViewModel.inputImage)
+            .sheet(isPresented: $accountSettingsViewModel.isShowingImagePicker) {
+                ImagePicker(selectedImage: $accountSettingsViewModel.image, sourceType: accountSettingsViewModel.cameraMode)
+            }
+            .onChange(of: accountSettingsViewModel.image) { image in
+                accountSettingsViewModel.saveImage(image)
             }
         }
     }
-    
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .center) {
@@ -147,8 +153,8 @@ struct AccountSettingsView: View, ItemView {
                     listener?.pop()
                 }
             }
-            
         }
+        .blur(radius: accountSettingsViewModel.isChoosingCameraMode ? 5 : 0)
         .makeCustomNavBar {
             NavigationBars(atView: .accountSetting) {
                 listener?.pop()
@@ -157,6 +163,31 @@ struct AccountSettingsView: View, ItemView {
         .overlay {
             if accountSettingsViewModel.shouldShowDatePicker {
                 datePickerView
+            }
+            
+        }
+        .overlay {
+            if accountSettingsViewModel.isChoosingCameraMode {
+                ZStack {
+                    Color.black.opacity(0.4)
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            withAnimation {
+                                accountSettingsViewModel.isChoosingCameraMode = false
+                            }
+                        }
+                    
+                    CustomAlert {
+                        accountSettingsViewModel.presentCamera()
+                    } action2: {
+                        accountSettingsViewModel.presentLibraryPicker()
+                    } action3: {
+                        accountSettingsViewModel.image = nil
+                    }
+                    .padding()
+                    .background(Pallete.BlackWhite.white.cornerRadius(12))
+                    .padding()
+                }
             }
         }
     }

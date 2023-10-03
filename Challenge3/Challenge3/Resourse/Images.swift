@@ -24,7 +24,7 @@ enum Images {
     }
 
     enum ChangePicture: String {
-        case gallery, photo, trash
+        case galery, photo, trash
     }
 
     enum DefaultView: String {
