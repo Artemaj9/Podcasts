@@ -42,6 +42,10 @@
 "AccountSettingsView.firstName" = "Ваше имя";
 "AccountSettingsView.lastName" = "Ваша фамилия";
 "AccountSettingsView.email" = "Ваша почта";
+"AccountSettingsView.takeAPhoto" = "Сделать снимок";
+"AccountSettingsView.chooseFromYourFile" = "Выбрать из галереи";
+"AccountSettingsView.deletePhoto" = "Удалить фото";
+"AccountSettingsView.changeYourPicture" = "Выберите свое фото";
 
 //MARK: - Favorites
 "Favorites.favorites" = "Избранное";
