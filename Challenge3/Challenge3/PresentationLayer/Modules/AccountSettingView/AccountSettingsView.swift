@@ -66,7 +66,7 @@ struct AccountSettingsView: View, ItemView {
                         withAnimation {
                             accountSettingsViewModel.isChoosingCameraMode = false
                         }
-                        accountSettingsViewModel.saveImage(image)
+                        accountSettingsViewModel.saveUserData()
                     }
                 }
 
