@@ -55,6 +55,12 @@ struct Localizable {
         static var skip = localizedStringKey("Onboarding.skip")
         static var next = localizedStringKey("Onboarding.next")
         static var getStarted = localizedStringKey("Onboarding.getStarted")
+        static var podcastApp = NSLocalizedString("Onboarding.podcastApp", comment: "")
+        static var findYourFavorite = NSLocalizedString("Onboarding.findYourFavorite", comment: "")
+        static var favoriteAndYour = NSLocalizedString("Onboarding.favoriteAndYour", comment: "")
+        static var youCanChoose = NSLocalizedString("Onboarding.youCanChoose", comment: "")
+        static var theAbilityToCreate = NSLocalizedString("Onboarding.theAbilityToCreate", comment: "")
+        static var youCanSetUp = NSLocalizedString("Onboarding.youCanSetUp", comment: "")
     }
 
     enum HomePage {
