@@ -19,10 +19,10 @@
 "Onboarding.getStarted" = "Get Started";
 "Onboarding.podcastApp" = "Podcast app";
 "Onboarding.findYourFavorite" = "Find your favorite podcasts and listen to them right in the app";
-"Onboarding.favoriteAndYour" = "Favorite and your playlist favorite and your playlist";
-"Onboarding.youCanChoose" = "You can choose the categories of your favorite podcasts, and even create your own playlist";
+"Onboarding.favoriteAndYour" = "Playlists";
+"Onboarding.youCanChoose" = "You can create your own playlists";
 "Onboarding.theAbilityToCreate" = "The ability to create your own profile";
-"Onboarding.youCanSetUp" = "You can set up your profile and then log in to it via apple or google on another device";
+"Onboarding.youCanSetUp" = "You can customize your profile and then log in to it on another device";
 
 // MARK: - Autorization
 "Autorization.enterLogin" = "Enter your login";

@@ -19,10 +19,10 @@
 "Onboarding.getStarted" = "Начать";
 "Onboarding.podcastApp" = "Приложение подкастов";
 "Onboarding.findYourFavorite" = "Найдите свои любимые подкасты и слушайте их прямо в приложении";
-"Onboarding.favoriteAndYour" = "Избранное и ваш плейлист";
-"Onboarding.youCanChoose" = "Вы можете выбирать категории любимых подкастов и даже создавать собственный плейлист";
+"Onboarding.favoriteAndYour" = "Плейлисты";
+"Onboarding.youCanChoose" = "Вы создавать собственные плейлисты";
 "Onboarding.theAbilityToCreate" = "Возможность создать свой профиль";
-"Onboarding.youCanSetUp" = "Вы можете настроить свой профиль, а затем войти в него через apple или google на другом устройстве";
+"Onboarding.youCanSetUp" = "Вы можете настроить свой профиль, а затем войти в него на другом устройстве";
 
 // MARK: - Autorization
 "Autorization.enterLogin" = "Введите логин";
