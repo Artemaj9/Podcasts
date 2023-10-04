@@ -22,7 +22,8 @@ struct Challenge3App: App {
     
     // MARK: - Property Wrapper
     @StateObject var navigationViewModel = CustomNavigationViewModel()
-    
+
+    @StateObject var splashViewModel = SplashViewModel()
     @StateObject var favoritesViewModel = FavoritesViewModel()
     @StateObject var homePageViewModel = HomePageViewModel()
     @StateObject var accountSettingsViewModel = AccountSettingsViewModel()
@@ -43,8 +44,9 @@ struct Challenge3App: App {
     var body: some Scene {
         WindowGroup { // добавить if какой экран будет показываться при старте
             NavigationContainer(viewModel: navigationViewModel) {
-                AccountSettingsView()
+                SplashView()
             }
+            .environmentObject(splashViewModel)
             .environmentObject(favoritesViewModel)
             .environmentObject(homePageViewModel)
             .environmentObject(accountSettingsViewModel)
