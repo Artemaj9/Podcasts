@@ -3,146 +3,157 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct HomePageView: View, ItemView {
-
-    // MARK: - Internal Properties
-
-    var listener: CustomNavigationContainer?
-
+    
     // MARK: - Property Wrapper
-
-    @State private var selectedCategory: Int = 0
     
-    // MARK: - Mock Data
+    @ObservedObject var viewModel = HomePageViewModel()
     
-    @State var cellDatas: [CellData] = [
-        CellData(iconState: false, mainLeft: "Main 1", mainRight: "Right 1", secondLeft: "Second 1", secondRight: "Right Sec 1", image: nil, iconMode: .select, height: nil),
-        CellData(iconState: true, mainLeft: "Main 2", mainRight: "Right 2", secondLeft: "Second 2", secondRight: "Right Sec 2", image: nil, iconMode: .select, height: nil),
-        CellData(iconState: false, mainLeft: "Main 3", mainRight: "Right 3", secondLeft: "Second 3", secondRight: "Right Sec 3", image: nil, iconMode: .select, height: nil),
-        CellData(iconState: true, mainLeft: "Main 4", mainRight: "Right 4", secondLeft: "Second 4", secondRight: "Right Sec 4", image: nil, iconMode: .select, height: nil)
-    ]
-
-    // MARK: - Private Properties
-
+    // MARK: - Internal Properties
+    
+    var listener: CustomNavigationContainer?
+    
+    // MARK: - Internal Properties
+    
     var strings = Localizable.HomePage.self
-    var categoriesStrings = Localizable.HomePage.Categories.self
-
-    // MARK: - Private View Properties
-
-    private var titleRow: some View {
-        HStack {
-            CustomLabel(labelText: "Abigael Amaniah", additionalText: "Love,life and chill", labelStyle: .homepage, epsText: "")
-            Spacer()
-            CustomImage(
-                imageString: "",
-                width: 48, height: 48
-            )
-            .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 4)
-        }
-        .padding(.horizontal, 32)
-    }
-
-    private var categoryAndSeeAllRow: some View {
-        HStack {
-            Text(strings.category)
-                .font(.system(size: 16, weight: .semibold))
-            Spacer()
-            Text(strings.seeAll)
-                .foregroundColor(Pallete.Gray.forText)
-                .font(.system(size: 16))
-                .onTapGesture {
-                    // TODO: - Add Navigation
-                }
-        }
-        .padding(.horizontal, 32)
-        .padding(.top)
-    }
-
-    private var categoryItemsRow: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                Rectangle()
-                    .fill(.clear)
-                    .frame(width: 24, height: 0)
-                ForEach(0..<100) { index in
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Pallete.Other.pink)
-                        .frame(width: 144, height: 200)
-                        .overlay {
-                            createCategoryCell()
-                        }
-                }
-            }
-        }
-    }
-
-    private var categorySelectionView: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                CategoryTabView(selectedCategory: $selectedCategory, data: [
-                    categoriesStrings.popular,
-                    categoriesStrings.recent,
-                    categoriesStrings.music,
-                    categoriesStrings.design
-                ])
-            }
-        }
-    }
-
-    private var categorizedRows: some View {
-        Group {
-            switch selectedCategory {
-            case 0:
-                VStack(spacing: 16) {
-                    ForEach($cellDatas) { data in
-                        FilledWideCell(data: data)
-                    }
+    
+    var body: some View {
+        VStack {
+            Button {
+                
+            } label: {
+                HStack {
+                    CustomLabel(labelText: "Abigael Amaniah", additionalText: "Love,life and chill", labelStyle: .homepage, epsText: "")
+                    
+                    Spacer()
+                    
+                    CustomImage(
+                        imageString: "",
+                        width: 48, height: 48
+                    )
+                    .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 4)
                 }
                 .padding(.horizontal, 32)
-            case 1:
-                Text("recent")
-            case 2:
-                Text("music")
-            case 3:
-                Text("Design")
-            default:
-                Text("unknown")
             }
-        }
-    }
-
-    var body: some View {
-        ScrollView(showsIndicators: false) {
-
-            VStack(spacing: 16) {
-                categoryAndSeeAllRow
-                VStack(spacing: 24) {
-                    categoryItemsRow
-                    categorySelectionView
-                }
-                categorizedRows
-            }
-
-        }
-        .makeCustomNavBar {
-            titleRow
-        }
-    }
-
-    // MARK: - Functions
-
-    @ViewBuilder private func createCategoryCell() -> some View {
-        VStack {
-            Spacer()
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Pallete.BlackWhite.white.opacity(0.6))
-                .frame(width: 144, height: 64)
-                .overlay {
-                    VStack(alignment: .leading) {
-                        CustomLabel(labelText: "Music & Fun", additionalText: "84 Podcast", epsText: "")
+            
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 16) {
+                    HStack {
+                        Text(strings.rndEpisodes)
+                            .font(.system(size: 16, weight: .semibold))
+                        
+                        Spacer()
+                        
+                        Button {
+                            let dataForSendToScreen = viewModel.newPodcasts
+                            // TODO: add localizable string
+                            let screenTitle = "Favorites"
+                            listener?.push(view: FavoritesDetailView(screenTitle: screenTitle, dataForScreen: dataForSendToScreen))
+                        } label: {
+                            Text(strings.seeAll)
+                                .foregroundColor(Pallete.Gray.forText)
+                                .font(.system(size: 16))
+                        }
+                        
+                    }
+                    .padding(.horizontal, 32)
+                    .padding(.top)
+                    
+                    VStack(spacing: 24) {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                Rectangle()
+                                    .fill(.clear)
+                                    .frame(width: 24, height: 0)
+                                
+                                if let newPodcasts = viewModel.newPodcasts {
+                                    ForEach(newPodcasts, id: \.id) { item in
+                                        Button {
+                                            // TODO: add localizable string
+                                            let screenTitle = "Channel"
+                                            let dataForSendToScreen = item
+                                            listener?.push(view: ChannelView(
+                                                screenTitle: screenTitle,
+                                                dataForScreen: dataForSendToScreen)
+                                            )
+                                        } label: {
+                                            ZStack {
+                                                if let podImage = item.image {
+                                                    KFImage(URL(string: podImage))
+                                                        .resizable()
+                                                        .aspectRatio(contentMode: .fill)
+                                                        .frame(width: 144, height: 200)
+                                                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                                                }
+                                                
+                                                VStack {
+                                                    Spacer()
+                                                    
+                                                    RoundedRectangle(cornerRadius: 12)
+                                                        .fill(Pallete.BlackWhite.white.opacity(0.6))
+                                                        .frame(width: 144, height: 64)
+                                                        .overlay() {
+                                                            VStack(alignment: .leading) {
+                                                                Spacer()
+                                                                CustomLabel(
+                                                                    labelText: item.title ?? "",
+                                                                    additionalText: "",
+                                                                    epsText: ""
+                                                                )
+                                                            }
+                                                        }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        HStack {
+                            if !viewModel.categories.isEmpty {
+                                CategoryTabView(
+                                    selectedCategory: $viewModel.selectedCategory,
+                                    data: viewModel.categories)
+                            } else {
+                                // TODO: add skeleton
+                            }
+                        }
+                    }
+                    
+                    ScrollView {
+                        LazyVStack() {
+                            if let podcastData = viewModel.podcastFromCategory {
+                                ForEach(podcastData.indices) { index in
+                                    Button {
+                                        // TODO: add localizable string
+                                        let screenTitle = "Channel"
+                                        let dataForSendToScreen = viewModel.podcastFromCategory![index]
+                                        // TODO: add function for going to detail page
+                                        listener?.push(view: ChannelView(
+                                            screenTitle: screenTitle,
+                                            dataForScreen: dataForSendToScreen)
+                                        )
+                                    } label: {
+                                        let bindingData = Binding<CellData>(
+                                            get: { return viewModel.convertDataToCellData(podcast: viewModel.podcastFromCategory![index]) },
+                                            set: {_ in 
+                                                // TODO: add function to save in coredata
+                                            }
+                                        )
+                                        FilledWideCell(data: bindingData)
+                                    }
+                                }
+                            } else {
+                                // TODO: add skeleton
+                            }
+                        }
+                        .padding(.horizontal, 32)
                     }
                 }
+            }
         }
     }
 }

@@ -81,6 +81,7 @@
 // MARK: - HomePage
 
 "HomePageView.category" = "Категории";
+"HomePageView.episodes" = "Случайные подкасты";
 "HomePageView.seeAll" = "Смотреть все";
 "HomePageView.Categories.popular" = "🔥 Популярное";
 "HomePageView.Categories.recent" = "Недавние";

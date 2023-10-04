@@ -83,6 +83,7 @@
 // MARK: - HomePage
 
 "HomePageView.category" = "Category";
+"HomePageView.episodes" = "Random podcast";
 "HomePageView.seeAll" = "See all";
 "HomePageView.Categories.popular" = "🔥 Popular";
 "HomePageView.Categories.recent" = "Recent";
