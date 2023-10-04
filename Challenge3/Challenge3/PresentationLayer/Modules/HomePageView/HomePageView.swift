@@ -28,12 +28,16 @@ struct HomePageView: View, ItemView {
                     
                     Spacer()
                     
-                    Text(strings.seeAll)
-                        .foregroundColor(Pallete.Gray.forText)
-                        .font(.system(size: 16))
-                        .onTapGesture {
-                            // TODO: - Add Navigation to detail fav view
-                        }
+                    Button {
+                        // TODO: - Add Navigation to detail fav view
+                        let dataForSendToScreen = viewModel.newPodcasts
+                        listener?.push(view: FavoritesDetailView())
+                    } label: {
+                        Text(strings.seeAll)
+                            .foregroundColor(Pallete.Gray.forText)
+                            .font(.system(size: 16))
+                    }
+                    
                 }
                 .padding(.horizontal, 32)
                 .padding(.top)
@@ -48,7 +52,9 @@ struct HomePageView: View, ItemView {
                             if let newPodcasts = viewModel.newPodcasts {
                                 ForEach(newPodcasts, id: \.id) { item in
                                     Button {
+                                        let dataForSendToScreen = item
                                         // TODO: add navigation to channel view
+                                        listener?.push(view: ChannelView())
                                     } label: {
                                         ZStack {
                                             if let podImage = item.image {
@@ -99,7 +105,9 @@ struct HomePageView: View, ItemView {
                         if let podcastData = viewModel.podcastFromCategory {
                             ForEach(podcastData.indices) { index in
                                 Button {
+                                    let dataForSendToScreen = viewModel.podcastFromCategory![index]
                                     // TODO: add function for going to detail page
+                                    listener?.push(view: ChannelView())
                                 } label: {
                                     let bindingData = Binding<CellData>(
                                         get: { return viewModel.podcastFromCategory![index] },
