@@ -6,9 +6,8 @@
 import SwiftUI
 
 struct CustomAlert: View {
-    var action1 : () -> ()
-    var action2 : () -> ()
-    var action3 : () -> ()
+
+    var action: (Int) -> ()
     
     var icons: [String] = [ Images.ChangePicture.photo.rawValue, Images.ChangePicture.galery.rawValue,
         Images.ChangePicture.trash.rawValue]
@@ -42,14 +41,7 @@ struct CustomAlert: View {
                         Image(Images.Icon.arrowRight.rawValue)
                     }
                     .onTapGesture {
-                        if index == 0 {
-                            action1()
-                        }
-                        else if index == 1 {
-                            action2()
-                        } else {
-                            action3()
-                        }
+                        action(index)
                     }
                 }
             }
@@ -59,6 +51,7 @@ struct CustomAlert: View {
 
 struct CustomAlert_Previews: PreviewProvider {
     static var previews: some View {
-        CustomAlert (action1: {}, action2: {}, action3: {})
+        CustomAlert { _ in
+        }
     }
 }

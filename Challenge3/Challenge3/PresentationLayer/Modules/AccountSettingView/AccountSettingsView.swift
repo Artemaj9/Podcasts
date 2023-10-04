@@ -9,12 +9,15 @@ import CoreImage.CIFilterBuiltins
 struct AccountSettingsView: View, ItemView {
     
     // MARK: - Property Wrappers
+
     @EnvironmentObject var accountSettingsViewModel: AccountSettingsViewModel
     
     // MARK: - Internal Properties
+
     var listener: CustomNavigationContainer?
     
     // MARK: - Private Properties
+
     private var strings = Localizable.AccountSettings.self
     
     private var titles: [String] = [
@@ -22,136 +25,115 @@ struct AccountSettingsView: View, ItemView {
     ]
     
     // MARK: - Private Views
-    private var datePickerView: some View {
-        ZStack {
-            Color.black
-                .opacity(0.3)
-                .ignoresSafeArea()
-                .onTapGesture {
-                    withAnimation {
-                        accountSettingsViewModel.shouldShowDatePicker = false
-                    }
-                }
-            DatePicker("", selection: $accountSettingsViewModel.selectedBirthday, in: ...Date(), displayedComponents: .date)
-                .padding()
-                .datePickerStyle(.graphical)
-                .background {
-                    Color.white.cornerRadius(10)
-                }
-                .padding()
-        }
-    }
-    private var genderSelectionRow: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack {
-                Text(strings.gender)
-                    .padding(.leading)
-                    .foregroundColor(Pallete.Gray.forText)
-                Spacer()
-            }
-            GenderPicker(selectedGender: $accountSettingsViewModel.selectedGender)
-                .padding([.top, .horizontal])
-        }
-    }
-    private var birthdaySelectionRow: some View {
-        VStack {
-            VStack(alignment: .leading, spacing: 0) {
-                HStack {
-                    Text(strings.dateOfBirth)
-                        .padding(.leading)
-                        .foregroundColor(Pallete.Gray.forText)
-                    Spacer()
-                }
-            }
-            HStack {
-                Text(accountSettingsViewModel.selectedBirthday, style: .date)
-                Spacer()
-            }
-            .padding()
-            .background(
-                RoundedRectangle(cornerRadius: 24)
-                    .fill(Pallete.BlackWhite.white)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 24)
-                            .stroke(Pallete.Blue.forAccent, lineWidth: 1)
-                    )
-            )
-            .overlay {
-                HStack {
-                    Spacer()
-                    Image(Images.Icon.calendar.rawValue)
-                        .padding()
-                        .onTapGesture {
-                            withAnimation {
-                                self.accountSettingsViewModel.shouldShowDatePicker = true
-                            }
-                        }
-                }
-            }
-            .padding(.horizontal)
-        }
-        .padding(.bottom)
-    }
-    private var textFieldsRows: some View {
-        ForEach(titles.indices, id: \.self) { index in
-            LoginTextField(
-                inputText: $accountSettingsViewModel.texts[index],
-                title: titles[index],
-                placeHolder: titles[index],
-                withHideOption: false,
-                withBorder: true,
-                cornerRadius: 24,
-                backgroundColor: Pallete.BlackWhite.white
-            )
-        }
-    }
-    var userImageRow: some View {
-        VStack {
-            ZStack {
-                if let image = accountSettingsViewModel.image {
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .clipShape(Circle())
-                } else {
-                    Image(Images.DefaultView.avatar.rawValue)
-                        .overlay(
-                            Image(Images.Icon.edit.rawValue)
-                                .offset(x: 35, y: 35)
-                        )
-                }
-            }
-            .onTapGesture {
-                accountSettingsViewModel.isChoosingCameraMode.toggle()
-            }
-            .frame(width: 150, height: 150)
-            .padding([.horizontal, .bottom])
-            .alert(accountSettingsViewModel.warningMessage, isPresented: $accountSettingsViewModel.isWarningPresented) {
-                Button("Open settings") {
-                    accountSettingsViewModel.openSettings()
-                }
-                
-                Button("OK") {}
-            }
-            .sheet(isPresented: $accountSettingsViewModel.isShowingImagePicker) {
-                ImagePicker(selectedImage: $accountSettingsViewModel.image, sourceType: accountSettingsViewModel.cameraMode)
-            }
-            .onChange(of: accountSettingsViewModel.image) { image in
-                accountSettingsViewModel.saveImage(image)
-            }
-        }
-    }
 
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .center) {
-                userImageRow
-                textFieldsRows
-                birthdaySelectionRow
-                genderSelectionRow
+
+                VStack {
+                    ZStack {
+                        if let image = accountSettingsViewModel.image {
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .clipShape(Circle())
+                        } else {
+                            Image(Images.DefaultView.avatar.rawValue)
+                                .overlay(
+                                    Image(Images.Icon.edit.rawValue)
+                                        .offset(x: 35, y: 35)
+                                )
+                        }
+                    }
+                    .onTapGesture {
+                        withAnimation {
+                            accountSettingsViewModel.isChoosingCameraMode.toggle()
+                        }
+                    }
+                    .frame(width: 150, height: 150)
+                    .padding([.horizontal, .bottom])
+                    .alert(accountSettingsViewModel.warningMessage, isPresented: $accountSettingsViewModel.isWarningPresented) {
+                        Button("Open settings") {
+                            accountSettingsViewModel.openSettings()
+                        }
+
+                        Button("OK") {}
+                    }
+                    .sheet(isPresented: $accountSettingsViewModel.isShowingImagePicker) {
+                        ImagePicker(selectedImage: $accountSettingsViewModel.image, sourceType: accountSettingsViewModel.cameraMode)
+                    }
+                    .onChange(of: accountSettingsViewModel.image) { image in
+                        withAnimation {
+                            accountSettingsViewModel.isChoosingCameraMode = false
+                        }
+                        accountSettingsViewModel.saveImage(image)
+                    }
+                }
+
+                ForEach(titles.indices, id: \.self) { index in
+                    LoginTextField(
+                        inputText: $accountSettingsViewModel.texts[index],
+                        title: titles[index],
+                        placeHolder: titles[index],
+                        withHideOption: false,
+                        withBorder: true,
+                        cornerRadius: 24,
+                        backgroundColor: Pallete.BlackWhite.white
+                    )
+                }
+
+                VStack {
+                    VStack(alignment: .leading, spacing: 0) {
+                        HStack {
+                            Text(strings.dateOfBirth)
+                                .padding(.leading)
+                                .foregroundColor(Pallete.Gray.forText)
+                            Spacer()
+                        }
+                    }
+                    HStack {
+                        Text(accountSettingsViewModel.selectedBirthday, style: .date)
+                        Spacer()
+                    }
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 24)
+                            .fill(Pallete.BlackWhite.white)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 24)
+                                    .stroke(Pallete.Blue.forAccent, lineWidth: 1)
+                            )
+                    )
+                    .overlay {
+                        HStack {
+                            Spacer()
+                            Image(Images.Icon.calendar.rawValue)
+                                .padding()
+                                .onTapGesture {
+                                    withAnimation {
+                                        self.accountSettingsViewModel.shouldShowDatePicker = true
+                                    }
+                                }
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+                .padding(.bottom)
+
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack {
+                        Text(strings.gender)
+                            .padding(.leading)
+                            .foregroundColor(Pallete.Gray.forText)
+                        Spacer()
+                    }
+                    GenderPicker(selectedGender: $accountSettingsViewModel.selectedGender)
+                        .padding([.top, .horizontal])
+                }
                 CustomButton(title: strings.saveChanges, buttonType: .filledGray) {
                     listener?.pop()
                 }
+                
             }
         }
         .blur(radius: accountSettingsViewModel.isChoosingCameraMode ? 5 : 0)
@@ -162,7 +144,23 @@ struct AccountSettingsView: View, ItemView {
         }
         .overlay {
             if accountSettingsViewModel.shouldShowDatePicker {
-                datePickerView
+                ZStack {
+                    Color.black
+                        .opacity(0.3)
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            withAnimation {
+                                accountSettingsViewModel.shouldShowDatePicker = false
+                            }
+                        }
+                    DatePicker("", selection: $accountSettingsViewModel.selectedBirthday, in: ...Date(), displayedComponents: .date)
+                        .padding()
+                        .datePickerStyle(.graphical)
+                        .background {
+                            Color.white.cornerRadius(10)
+                        }
+                        .padding()
+                }
             }
             
         }
@@ -176,13 +174,18 @@ struct AccountSettingsView: View, ItemView {
                                 accountSettingsViewModel.isChoosingCameraMode = false
                             }
                         }
-                    
-                    CustomAlert {
-                        accountSettingsViewModel.presentCamera()
-                    } action2: {
-                        accountSettingsViewModel.presentLibraryPicker()
-                    } action3: {
-                        accountSettingsViewModel.image = nil
+
+                    CustomAlert { index in
+                        switch index {
+                        case 0:
+                            accountSettingsViewModel.presentCamera()
+                        case 1:
+                            accountSettingsViewModel.presentLibraryPicker()
+                        case 2:
+                            accountSettingsViewModel.image = nil
+                        default:
+                            break
+                        }
                     }
                     .padding()
                     .background(Pallete.BlackWhite.white.cornerRadius(12))
