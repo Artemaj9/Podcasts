@@ -35,8 +35,6 @@ struct Challenge3App: App {
     @StateObject var createWithEmailViewModel = CreateWithEmailViewModel()
     @StateObject var authorizarionViewModel = AuthorizarionViewModel()
     @StateObject var authenticationViewModel = AuthenticationViewModel()
-//    @StateObject var searchManager = SearchManager()
-//    @StateObject var categoryManager = CategoryManager()
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
@@ -58,8 +56,6 @@ struct Challenge3App: App {
             .environmentObject(createWithEmailViewModel)
             .environmentObject(authorizarionViewModel)
             .environmentObject(authenticationViewModel)
-//            .environmentObject(searchManager)
-//            .environmentObject(categoryManager)
         }
     }
 }

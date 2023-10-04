@@ -8,7 +8,7 @@ import PodcastIndexKit
 final class HomePageViewModel: ObservableObject {
     @Published var categories = ["Popular", "Recent"]
     @Published var newPodcasts: [Podcast]?
-    @Published var podcastFromCategory: [CellData]?
+    @Published var podcastFromCategory: [Podcast]?
     @Published var selectedCategory: Int = 0 {
         didSet {
             getPodcastsByCategory(categoryName: categories[selectedCategory])
@@ -75,43 +75,45 @@ final class HomePageViewModel: ObservableObject {
                 //
             } else if categoryName == "Popular" {
                 if let data = await podcastManager?.performTrendingPodcasts(max: 10, category: nil) {
-                    convertDataToCellData(data: data)
+                    DispatchQueue.main.async { [weak self] in
+                        self?.podcastFromCategory = data
+                    }
                 }
             } else if categoryName == "Recent" {
                 if let data = await recentManager?.performRecentPodcasts(max: 10, category: nil) {
-                    convertDataToCellData(data: data)
+                    DispatchQueue.main.async { [weak self] in
+                        self?.podcastFromCategory = data
+                    }
                 }
             } else {
                 if let data = await podcastManager?.performTrendingPodcasts(max: 10, category: categoryName) {
-                    convertDataToCellData(data: data)
+                    DispatchQueue.main.async { [weak self] in
+                        self?.podcastFromCategory = data
+                    }
                 }
             }
         }
     }
     
-    private func convertDataToCellData(data: [Podcast]) {
-        var cellDataArray: [CellData] = []
+    func convertDataToCellData(podcast: Podcast) -> CellData {
+        var cellData: CellData
 
-        for podcast in data {
-            // TODO: add boolean value from favorite db
-            let isFavorite = false
-            
-            cellDataArray.append(CellData(
-                id: podcast.id,
-                guid: podcast.podcastGuid,
-                iconState: isFavorite,
-                mainLeft: podcast.title,
-                mainRight: podcast.author,
-                secondLeft: podcast.categories?.values.first,
-                secondRight: "\(podcast.episodeCount ?? 1) Eps",
-                image: podcast.image,
-                iconMode: .like,
-                height: nil
-            ))
-        }
-
-        DispatchQueue.main.async { [weak self] in
-            self?.podcastFromCategory = cellDataArray
-        }
+        // TODO: add boolean value from favorite db
+        let isFavorite = false
+        
+        cellData = CellData(
+            id: podcast.id,
+            guid: podcast.podcastGuid,
+            iconState: isFavorite,
+            mainLeft: podcast.title,
+            mainRight: podcast.author,
+            secondLeft: podcast.categories?.values.first,
+            secondRight: "\(podcast.episodeCount ?? 1) Eps",
+            image: podcast.image,
+            iconMode: .like,
+            height: nil
+        )
+        
+        return cellData
     }
 }

@@ -3,21 +3,25 @@
 //
 
 import SwiftUI
+import PodcastIndexKit
 
 struct FavoritesDetailView: View, ItemView {
     
-    //MARK: - Internal Properties
+    // MARK: - Internal Properties
+    
+    let screenTitle: String
+    let dataForScreen: [Podcast]?
     
     var listener: CustomNavigationContainer?
     
-    //MARK: Mock data
+    // MARK: - Mock data
     
     let playlists: [Playlist] = [
         Playlist(mainTitle: "Tuhan mengapa dia berbeda", secondTitle: "15 Eps"),
         Playlist(mainTitle: "Another Playlist", secondTitle: "10 Eps")
     ]
     
-    //MARK: - View's body
+    // MARK: - View's body
     
     var body: some View {
         ScrollView() {
@@ -42,6 +46,6 @@ struct FavoritesDetailView: View, ItemView {
 
 struct FavoritesDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FavoritesDetailView()
+        FavoritesDetailView(screenTitle: "Favorites", dataForScreen: nil)
     }
 }

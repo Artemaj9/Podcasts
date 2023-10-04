@@ -35,7 +35,7 @@ struct FavoritesView: View, ItemView {
                 Spacer ()
                 
                 Button {
-                    listener?.push(view: FavoritesDetailView())
+                    listener?.push(view: FavoritesDetailView(screenTitle: "Favorites", dataForScreen: nil))
                 } label: {
                     Text(Localizable.Favorite.seeAll)
                         .foregroundColor(Pallete.Gray.forText)
@@ -76,7 +76,8 @@ struct FavoritesView: View, ItemView {
                     )
                     .padding([.top, .leading])
                     .onTapGesture {
-                        listener?.push(view: ChannelView())
+                        // TODO: add localizable string
+                        listener?.push(view: ChannelView(screenTitle: "Channel", dataForScreen: nil))
                     }
                 }
             }
