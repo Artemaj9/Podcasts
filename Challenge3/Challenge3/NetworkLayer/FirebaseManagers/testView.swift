@@ -40,20 +40,11 @@ struct testView: View, ItemView {
             TextField("Search", text: $searchString)
             
             Button {
-//                getPodcasts()
                 getCategories()
             } label: {
                 Text("get podcasts")
             }
-            
-//            if podcasts != nil {
-//                ScrollView {
-//                    ForEach(podcasts!, id: \.id) { item in
-//                        Text(item.link ?? "")
-//                    }
-//                }
-//            }
-            
+                        
             if let items = categories {
                 ScrollView {
                     ForEach(items.feeds!, id: \.id) { item in

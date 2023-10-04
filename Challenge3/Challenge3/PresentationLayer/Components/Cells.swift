@@ -50,12 +50,11 @@ struct Cells_Previews: PreviewProvider {
     }
 }
 
-struct FilledWideCell: View{
+struct FilledWideCell: View {
     @Binding var data: CellData
     
     var body: some View {
         ZStack {
-            
             RoundedRectangle(cornerRadius: 16)
                 .fill(Pallete.Gray.forCells)
                 .frame(height: data.height)

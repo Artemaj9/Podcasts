@@ -6,13 +6,12 @@ import Foundation
 import PodcastIndexKit
 
 final class HomePageViewModel: ObservableObject {
-    @Published var categories: CategoriesResponse?
-    @Published var categories2 = ["Popular", "Recent"]
+    @Published var categories = ["Popular", "Recent"]
     @Published var newPodcasts: [Podcast]?
     @Published var podcastFromCategory: [CellData]?
     @Published var selectedCategory: Int = 0 {
         didSet {
-            getPodcastsByCategory(categoryName: categories2[selectedCategory])
+            getPodcastsByCategory(categoryName: categories[selectedCategory])
         }
     }
     
@@ -29,7 +28,7 @@ final class HomePageViewModel: ObservableObject {
             self.podcastManager = await PodcastManager()
             self.recentManager = await RecentManager()
             self.getCategories()
-            self.getPodcastsByCategory(categoryName: categories2[selectedCategory])
+            self.getPodcastsByCategory(categoryName: categories[selectedCategory])
             self.getRandomPodcasts()
         }
     }
@@ -37,8 +36,8 @@ final class HomePageViewModel: ObservableObject {
     func getRandomPodcasts() {
         // TODO: make for another function. Not trending
         Task {
-            if categories2.count > 2 {
-                randomCat = categories2[Int.random(in: 2..<categories2.count)]
+            if categories.count > 2 {
+                randomCat = categories[Int.random(in: 2..<categories.count)]
             } else {
                 getCategories()
                 randomCat = "Arts"
@@ -61,7 +60,7 @@ final class HomePageViewModel: ObservableObject {
                         }
                         for i in podcastCategories {
                             if let catName = i.name {
-                                self?.categories2.append(catName)
+                                self?.categories.append(catName)
                             }
                         }
                     }

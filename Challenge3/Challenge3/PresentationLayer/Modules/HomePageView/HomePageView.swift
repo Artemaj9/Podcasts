@@ -12,12 +12,12 @@ struct HomePageView: View, ItemView {
     var listener: CustomNavigationContainer?
     
     // MARK: - Property Wrapper
+    
     @ObservedObject var viewModel = HomePageViewModel()
     
     // MARK: - Internal Properties
     
     var strings = Localizable.HomePage.self
-    var categoriesStrings = Localizable.HomePage.Categories.self
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -32,7 +32,7 @@ struct HomePageView: View, ItemView {
                         .foregroundColor(Pallete.Gray.forText)
                         .font(.system(size: 16))
                         .onTapGesture {
-                            // TODO: - Add Navigation
+                            // TODO: - Add Navigation to detail fav view
                         }
                 }
                 .padding(.horizontal, 32)
@@ -44,34 +44,38 @@ struct HomePageView: View, ItemView {
                             Rectangle()
                                 .fill(.clear)
                                 .frame(width: 24, height: 0)
+                            
                             if let newPodcasts = viewModel.newPodcasts {
                                 ForEach(newPodcasts, id: \.id) { item in
-                                    ZStack {
-                                        if let podImage = item.image {
-                                            KFImage(URL(string: podImage))
-                                                .resizable()
-//                                                .scaledToFit()
-                                                .aspectRatio(contentMode: .fill)
-                                                .frame(width: 144, height: 200)
-                                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                                                
-                                        }
+                                    Button {
+                                        // TODO: add navigation to channel view
+                                    } label: {
+                                        ZStack {
+                                            if let podImage = item.image {
+                                                KFImage(URL(string: podImage))
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fill)
+                                                    .frame(width: 144, height: 200)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                            }
                                             
-                                        VStack {
-                                            Spacer()
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .fill(Pallete.BlackWhite.white.opacity(0.6))
-                                                .frame(width: 144, height: 64)
-                                                .overlay() {
-                                                    VStack(alignment: .leading) {
-                                                        Spacer()
-                                                        CustomLabel(
-                                                            labelText: item.title ?? "",
-                                                            additionalText: "",
-                                                            epsText: ""
-                                                        )
+                                            VStack {
+                                                Spacer()
+                                                
+                                                RoundedRectangle(cornerRadius: 12)
+                                                    .fill(Pallete.BlackWhite.white.opacity(0.6))
+                                                    .frame(width: 144, height: 64)
+                                                    .overlay() {
+                                                        VStack(alignment: .leading) {
+                                                            Spacer()
+                                                            CustomLabel(
+                                                                labelText: item.title ?? "",
+                                                                additionalText: "",
+                                                                epsText: ""
+                                                            )
+                                                        }
                                                     }
-                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -80,10 +84,10 @@ struct HomePageView: View, ItemView {
                     }
                     
                     HStack {
-                        if !viewModel.categories2.isEmpty {
+                        if !viewModel.categories.isEmpty {
                             CategoryTabView(
                                 selectedCategory: $viewModel.selectedCategory,
-                                data: viewModel.categories2)
+                                data: viewModel.categories)
                         } else {
                             // TODO: add skeleton
                         }
@@ -113,7 +117,6 @@ struct HomePageView: View, ItemView {
                     .padding(.horizontal, 32)
                 }
             }
-            
         }
         .makeCustomNavBar {
             HStack {

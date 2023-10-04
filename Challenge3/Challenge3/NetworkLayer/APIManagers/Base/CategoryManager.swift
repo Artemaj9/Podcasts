@@ -5,7 +5,7 @@
 import Foundation
 import PodcastIndexKit
 
-public struct LocalCategory: Codable, Hashable, Sendable {
+struct LocalCategory: Codable, Hashable, Sendable {
     public let id: Int?
     
     public let name: String?
