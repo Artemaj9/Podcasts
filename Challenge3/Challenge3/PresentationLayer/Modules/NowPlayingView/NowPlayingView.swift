@@ -11,6 +11,9 @@ struct NowPlayingView: View, ItemView {
     @StateObject var vm  = NowPlayingViewModel()
     @StateObject var player = Player(avPlayer: AVPlayer(url: URL(string: "https://samplelib.com/lib/preview/mp3/sample-15s.mp3")!))
     @State var track = false
+    let url = "https://file-examples.com/storage/feaade38c1651bd01984236/2017/11/file_example_MP3_5MG.mp3"
+    
+    let anotherUrl = "https://traffic.libsyn.com/saskapriest/homily-bishopmark-20231001.mp3"
     
     @State var opacity: Double = 1
     @State var currentBackground = 0
@@ -134,7 +137,8 @@ var body: some View {
                 PlayControl()
                     .padding()
                 Button("Change track") {
-                    player.avPlayer.replaceCurrentItem(with: AVPlayerItem(url:  URL(string: "https://traffic.libsyn.com/saskapriest/homily-bishopmark-20231001.mp3")!))
+                    track.toggle()
+                    player.avPlayer.replaceCurrentItem(with: AVPlayerItem(url: track ? URL(string: url)! : URL(string: anotherUrl)!))
                 }
             }
         }

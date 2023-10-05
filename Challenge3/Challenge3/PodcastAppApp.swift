@@ -44,7 +44,7 @@ struct Challenge3App: App {
     var body: some Scene {
         WindowGroup { // добавить if какой экран будет показываться при старте
             NavigationContainer(viewModel: navigationViewModel) {
-                SplashView()
+                NowPlayingView()
             }
             .environmentObject(splashViewModel)
             .environmentObject(favoritesViewModel)

@@ -17,15 +17,15 @@ struct PlayControl: View {
     var body: some View {
         Group{
             HStack(){
-                
-                Spacer()
-                
-                Button{
-                  //  shuffleAction()
-                } label: {
-                    Image(Images.AudioPlaying.shuffle.rawValue)
+                Group {
+                    Spacer()
+                    
+                    Button{
+                        //  shuffleAction()
+                    } label: {
+                        Image(Images.AudioPlaying.shuffle.rawValue)
+                    }
                 }
-                
                 Spacer()
                 
                 Button{
@@ -57,6 +57,8 @@ struct PlayControl: View {
                 } label: {
                     Image(Images.AudioPlaying.repeatTrack.rawValue)
                 }
+                
+                Spacer()
             }
         }
     }
