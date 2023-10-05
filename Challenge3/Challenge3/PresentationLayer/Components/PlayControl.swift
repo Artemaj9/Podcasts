@@ -7,11 +7,11 @@ import SwiftUI
 struct PlayControl: View {
     
     // MARK: - Internal Properties
-    var shuffleAction:  () -> Void
-    var previousAction:  () -> Void
-    var playAction:  () -> Void
-    var nextAction:  () -> Void
-    var repeatAction:  () -> Void
+//    var shuffleAction:  () -> Void
+//    var previousAction:  () -> Void
+//    var playAction:  () -> Void
+//    var nextAction:  () -> Void
+//    var repeatAction:  () -> Void
     
     // MARK: - Body
     var body: some View {
@@ -21,7 +21,7 @@ struct PlayControl: View {
                 Spacer()
                 
                 Button{
-                    shuffleAction()
+                  //  shuffleAction()
                 } label: {
                     Image(Images.AudioPlaying.shuffle.rawValue)
                 }
@@ -29,7 +29,7 @@ struct PlayControl: View {
                 Spacer()
                 
                 Button{
-                    previousAction()
+                  //  previousAction()
                 } label: {
                     Image(Images.AudioPlaying.priviousFill.rawValue)
                 }
@@ -37,7 +37,7 @@ struct PlayControl: View {
                 Spacer()
                 
                 Button{
-                    playAction()
+                  //  playAction()
                 } label: {
                     Image(Images.AudioPlaying.playFill.rawValue)
                 }
@@ -45,7 +45,7 @@ struct PlayControl: View {
                 Spacer()
                 
                 Button{
-                    nextAction()
+                  //  nextAction()
                 } label: {
                     Image(Images.AudioPlaying.nextFill.rawValue)
                 }
@@ -53,7 +53,7 @@ struct PlayControl: View {
                 Spacer()
                 
                 Button{
-                    repeatAction()
+                //    repeatAction()
                 } label: {
                     Image(Images.AudioPlaying.repeatTrack.rawValue)
                 }

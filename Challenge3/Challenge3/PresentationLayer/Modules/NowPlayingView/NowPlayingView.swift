@@ -9,7 +9,8 @@ struct NowPlayingView: View, ItemView {
     var listener: CustomNavigationContainer?
     
     @StateObject var vm  = NowPlayingViewModel()
-    @StateObject var player = Player(avPlayer: AVPlayer(url: URL(string: "https://traffic.libsyn.com/saskapriest/homily-bishopmark-20231001.mp3")!))
+    @StateObject var player = Player(avPlayer: AVPlayer(url: URL(string: "https://samplelib.com/lib/preview/mp3/sample-15s.mp3")!))
+    @State var track = false
     
     @State var opacity: Double = 1
     @State var currentBackground = 0
@@ -130,7 +131,11 @@ var body: some View {
                         .frame(width: 64, height: 64)
                 }
                     .padding(.vertical, 30)
-                
+                PlayControl()
+                    .padding()
+                Button("Change track") {
+                    player.avPlayer.replaceCurrentItem(with: AVPlayerItem(url:  URL(string: "https://traffic.libsyn.com/saskapriest/homily-bishopmark-20231001.mp3")!))
+                }
             }
         }
     }
