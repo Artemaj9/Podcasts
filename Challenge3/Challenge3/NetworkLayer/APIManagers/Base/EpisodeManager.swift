@@ -14,7 +14,7 @@ final class EpisodeManager: ObservableObject {
     func performEpisodesSearch(podcastID: String, debug: Bool = false) async -> [Episode]? {
         do {
             let result = try await PodcastIndexKit().episodesService.episodes(
-                byPodcastGUID: podcastID,
+                byFeedID: podcastID,
                 pretty: debug
             )
             return result.items
@@ -33,9 +33,10 @@ final class EpisodeManager: ObservableObject {
                 max: max,
                 pretty: debug
             )
-            return result.liveItems
+            return result.items
         }
         catch {
+            print(error.localizedDescription)
             return nil
         }
     }
@@ -53,6 +54,7 @@ final class EpisodeManager: ObservableObject {
             return result.items
         }
         catch {
+            print(error.localizedDescription)
             return nil
         }
     }

@@ -3,35 +3,58 @@
 //
 
 import SwiftUI
+import PodcastIndexKit
 
 struct FavoritesDetailView: View, ItemView {
     
-    //MARK: - Internal Properties
+    // MARK: - Property wrapper
+    
+    @ObservedObject var viewModel = FavoritesViewModel()
+    
+    // MARK: - Internal Properties
+    
+    let screenTitle: String
+    let dataForScreen: [Podcast]?
     
     var listener: CustomNavigationContainer?
     
-    //MARK: Mock data
+    var podcastData: [Podcast]? {
+        if dataForScreen == nil {
+            viewModel.getPodcastsFromCategory(category: screenTitle)
+            return viewModel.podcasts
+        } else {
+            return dataForScreen
+        }
+    }
     
-    let playlists: [Playlist] = [
-        Playlist(mainTitle: "Tuhan mengapa dia berbeda", secondTitle: "15 Eps"),
-        Playlist(mainTitle: "Another Playlist", secondTitle: "10 Eps")
-    ]
-    
-    //MARK: - View's body
+    // MARK: - View's body
     
     var body: some View {
         ScrollView() {
-            
-            ForEach(playlists, id: \.mainTitle) { playlist in
-                BlankWideCell(
-                    mainTitle: playlist.mainTitle,
-                    secondTitle: playlist.secondTitle
-                )
-                .padding([.top, .leading])
+            if let podcasts = podcastData {
+                ForEach(podcasts, id: \.id) { podcast in
+                    Button {
+                        // TODO: replace string with localizable string
+                        let screenTitle = "Channel"
+                        let dataForSendToScreen = podcast
+                        listener?.push(view: ChannelView(
+                            screenTitle: screenTitle,
+                            dataForScreen: dataForSendToScreen))
+                    } label: {
+                        BlankWideCell(
+                            mainTitle: podcast.title,
+                            secondTitle: podcast.author,
+                            image: podcast.image
+                        )
+                        .padding([.top, .leading])
+                    }
+                }
+            } else {
+                // TODO: add skeleton
             }
         }
         .makeCustomNavBar {
-            NavigationBars(atView: .favorites) {
+            NavigationBars(atView: .favorites, screenTitle: screenTitle) {
                 listener?.pop()
             } trailingButtonAction: {
 
@@ -42,6 +65,6 @@ struct FavoritesDetailView: View, ItemView {
 
 struct FavoritesDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FavoritesDetailView()
+        FavoritesDetailView(screenTitle: "Favorites", dataForScreen: nil)
     }
 }

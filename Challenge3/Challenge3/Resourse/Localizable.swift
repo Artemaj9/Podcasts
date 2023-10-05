@@ -59,6 +59,7 @@ struct Localizable {
 
     enum HomePage {
         static var category = NSLocalizedString("HomePageView.category", comment: "")
+        static var rndEpisodes = NSLocalizedString("HomePageView.episodes", comment: "")
         static var seeAll = NSLocalizedString("HomePageView.seeAll", comment: "")
         enum Categories {
             static var popular = NSLocalizedString("HomePageView.Categories.popular", comment: "")
@@ -112,6 +113,10 @@ struct Localizable {
         static var firstName = NSLocalizedString("AccountSettingsView.firstName", comment: "")
         static var lastName = NSLocalizedString("AccountSettingsView.lastName", comment: "")
         static var email = NSLocalizedString("AccountSettingsView.email", comment: "")
+        static var takeAPhoto = NSLocalizedString("AccountSettingsView.takeAPhoto", comment: "")
+        static var chooseFromYourFile = NSLocalizedString("AccountSettingsView.chooseFromYourFile", comment: "")
+        static var deletePhoto = NSLocalizedString("AccountSettingsView.deletePhoto", comment: "")
+        static var changeYourPicture = NSLocalizedString("AccountSettingsView.changeYourPicture", comment: "")
     }
 
 }

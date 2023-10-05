@@ -10,13 +10,9 @@ struct CategoryTabView: View {
 
     var body: some View {
         ScrollViewReader { scrollViewProxy in
-
             ScrollView(.horizontal, showsIndicators: false) {
-
                 HStack(spacing: 0) {
-                    Rectangle()
-                        .fill(.clear)
-                        .frame(width: 32, height: 0)
+                    
                     ForEach(0..<data.count, id: \.self) { index in
                         CategoryButton(
                             title: data[index],
@@ -34,6 +30,7 @@ struct CategoryTabView: View {
                         .id(index)
                     }
                 }
+                .padding(.leading)
             }
         }
     }

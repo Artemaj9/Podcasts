@@ -42,6 +42,11 @@
 "AccountSettingsView.firstName" = "First Name";
 "AccountSettingsView.lastName" = "Last Name";
 "AccountSettingsView.email" = "E-mail";
+"AccountSettingsView.takeAPhoto" = "Take a photo";
+"AccountSettingsView.chooseFromYourFile" = "Choose from your file";
+"AccountSettingsView.deletePhoto" = "Delete photo";
+"AccountSettingsView.changeYourPicture" = "Change your picture";
+
 
 //MARK: - Favorites
 "Favorites.favorites" = "Favorites";
@@ -78,6 +83,7 @@
 // MARK: - HomePage
 
 "HomePageView.category" = "Category";
+"HomePageView.episodes" = "Random podcast";
 "HomePageView.seeAll" = "See all";
 "HomePageView.Categories.popular" = "🔥 Popular";
 "HomePageView.Categories.recent" = "Recent";

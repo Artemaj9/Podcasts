@@ -3,14 +3,21 @@
 //
 
 import SwiftUI
+import PodcastIndexKit
 
 struct ChannelView: View, ItemView {
     
     // MARK: - Internal Properties
+    
+    let screenTitle: String
+    let dataForScreen: Podcast?
+    
     var listener: CustomNavigationContainer?
     
+    
     // MARK: - Private Properties
-    private var strings = Localizable.Channel.self
+    
+    var strings = Localizable.Channel.self
     private var informationRow: some View {
         VStack(spacing: 24) {
             VStack(spacing: 5) {
@@ -20,9 +27,10 @@ struct ChannelView: View, ItemView {
         }
     }
     
-    //MARK: Mock data
+    // MARK: - Mock data
+    
     @State private var data = [
-        CellData(iconState: false, mainLeft: "Between love and career", mainRight: nil, secondLeft: "56:38", secondRight: "56 Eps", image: "", iconMode: .blank, height: nil)
+        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 1", mainRight: "Right 1", secondLeft: "Second 1", secondRight: "Right Sec 1", image: "image1", iconMode: .blank, height: nil)
     ]
     
     // MARK: - Body
@@ -54,6 +62,6 @@ struct ChannelView: View, ItemView {
 
 struct ChannelView_Previews: PreviewProvider {
     static var previews: some View {
-        ChannelView()
+        ChannelView(screenTitle: "Channel", dataForScreen: nil)
     }
 }
