@@ -7,6 +7,10 @@ import PodcastIndexKit
 
 struct FavoritesDetailView: View, ItemView {
     
+    // MARK: - Property wrapper
+    
+    @ObservedObject var viewModel = FavoritesViewModel()
+    
     // MARK: - Internal Properties
     
     let screenTitle: String
@@ -14,18 +18,20 @@ struct FavoritesDetailView: View, ItemView {
     
     var listener: CustomNavigationContainer?
     
-    // MARK: - Mock data
-    
-    let playlists: [Playlist] = [
-        Playlist(mainTitle: "Tuhan mengapa dia berbeda", secondTitle: "15 Eps"),
-        Playlist(mainTitle: "Another Playlist", secondTitle: "10 Eps")
-    ]
+    var podcastData: [Podcast]? {
+        if dataForScreen == nil {
+            viewModel.getPodcastsFromCategory(category: screenTitle)
+            return viewModel.podcasts
+        } else {
+            return dataForScreen
+        }
+    }
     
     // MARK: - View's body
     
     var body: some View {
         ScrollView() {
-            if let podcasts = dataForScreen {
+            if let podcasts = podcastData {
                 ForEach(podcasts, id: \.id) { podcast in
                     Button {
                         // TODO: replace string with localizable string
