@@ -25,17 +25,30 @@ struct FavoritesDetailView: View, ItemView {
     
     var body: some View {
         ScrollView() {
-            
-            ForEach(playlists, id: \.mainTitle) { playlist in
-                BlankWideCell(
-                    mainTitle: playlist.mainTitle,
-                    secondTitle: playlist.secondTitle
-                )
-                .padding([.top, .leading])
+            if let podcasts = dataForScreen {
+                ForEach(podcasts, id: \.id) { podcast in
+                    Button {
+                        // TODO: replace string with localizable string
+                        let screenTitle = "Channel"
+                        let dataForSendToScreen = podcast
+                        listener?.push(view: ChannelView(
+                            screenTitle: screenTitle,
+                            dataForScreen: dataForSendToScreen))
+                    } label: {
+                        BlankWideCell(
+                            mainTitle: podcast.title,
+                            secondTitle: podcast.author,
+                            image: podcast.image
+                        )
+                        .padding([.top, .leading])
+                    }
+                }
+            } else {
+                // TODO: add skeleton
             }
         }
         .makeCustomNavBar {
-            NavigationBars(atView: .favorites) {
+            NavigationBars(atView: .favorites, screenTitle: screenTitle) {
                 listener?.pop()
             } trailingButtonAction: {
 
