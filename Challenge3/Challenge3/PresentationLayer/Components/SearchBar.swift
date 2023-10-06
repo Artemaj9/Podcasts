@@ -5,14 +5,17 @@
 import SwiftUI
 
 struct SearchBarView: View {
-   
+
     // MARK: - Property Wrappers
-    @State var searchText: String
+
+    @Binding var searchText: String
     @FocusState var isFocused: Bool
     
     // MARK: - Internal Properties
+    
     let placeholder: String
     let backgroundColor: Color
+    var searchFunc: () -> Void
 
     var body: some View {
         HStack {
@@ -27,6 +30,7 @@ struct SearchBarView: View {
                  UIApplication.shared.endEditing()
                     searchText = ""
                 }
+
             TextField(placeholder, text: $searchText)
                 .focused($isFocused)
                 .foregroundColor(Pallete.BlackWhite.black)
@@ -39,10 +43,15 @@ struct SearchBarView: View {
                             .opacity(searchText.isEmpty ? 0.8 : 1)
                             .scaleEffect(1.4)
                             .saturation(searchText.isEmpty ? 0.1 : 1)
+                            .colorMultiply(searchText.isEmpty ?  Pallete.Other.pink : Pallete.Other.deepPurpleText)
                             .animation(.easeIn, value: searchText.isEmpty)
                     }
                     ,alignment: .trailing
                 )
+                .submitLabel(.search)
+                .onSubmit {
+                    searchFunc()
+                }
         }
         .font(.headline)
         .padding()
@@ -52,15 +61,5 @@ struct SearchBarView: View {
         .shadow(radius: isFocused ? 2 : 0)
         .animation(.linear, value: isFocused))
         .padding()
-    }
-}
-
-struct SearchBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack {
-            Pallete.Blue.forOnboarding.ignoresSafeArea()
-            SearchBarView(searchText: "", placeholder: "Podcast, chanell, or artist...", backgroundColor: Pallete.Gray.forCells)
-                .previewLayout(.sizeThatFits)
-        }
     }
 }
