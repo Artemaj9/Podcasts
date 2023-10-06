@@ -8,14 +8,14 @@ import PodcastIndexKit
 struct SearchView: View, ItemView {
 
     // MARK: - Property Wrappers
-
+    
     @StateObject var searchViewModel = SearchViewModel()
     @State var showDropDown = false
     @State var searchText: String = ""
     @State var transitionFlag = false
-
+    
     // MARK: - Internal Properties
-
+    
     var listener: CustomNavigationContainer?
     let aspectRatio = 0.57
     let padding: CGFloat = 16
@@ -23,39 +23,48 @@ struct SearchView: View, ItemView {
         GridItem(.flexible(), spacing: -8, alignment: nil),
         GridItem(.flexible(), spacing: -8, alignment: nil)
     ]
-
+    
     // MARK: - Body
-
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .top) {
                 BackgroundSearchView()
-
+                
                 VStack(spacing: 4) {
                     Text(Localizable.Search.SearchBasic.search)
                         .fontWeight(.semibold)
                         .padding(.vertical, 20)
-
+                    
                     ZStack(alignment: .trailing) {
-                        SearchBarView(searchText: Binding(
-                            get: {
-                                return searchText
-                            },
-                            set: { (newValue) in
-                                if newValue.count >= 1 {
-                                    searchViewModel.getPodcasts(searchText: newValue)
-                                } else {
-                                    showDropDown = false
-                                }
-                                searchViewModel.podcastTitles = searchViewModel.podcasts?.compactMap({ podcast in
-                                    podcast.title
-                                }) ?? [""]
-                                showDropDown = searchViewModel.podcastTitles.first != "" ? true : false
-                                return searchText = newValue
-                            }),
-                                      placeholder: Localizable.Search.SearchBasic.chanOrArtist,
-                                      backgroundColor:
-                                        Pallete.BlackWhite.white)
+                        SearchBarView(
+                            searchText: Binding(
+                                get: {
+                                    return searchText
+                                },
+                                set: { (newValue) in
+                                    if newValue.count >= 1 {
+                                        searchViewModel.getPodcasts(searchText: newValue)
+                                    } else {
+                                        showDropDown = false
+                                    }
+                                    
+                                    searchViewModel.podcastTitles = searchViewModel.podcasts?.compactMap{ podcast in
+                                        podcast.title
+                                    } ?? [""]
+                                    
+                                    showDropDown = searchViewModel.podcastTitles.first != ""
+                                    return searchText = newValue
+                                }),
+                            placeholder: Localizable.Search.SearchBasic.chanOrArtist,
+                            backgroundColor: Pallete.BlackWhite.white
+                        ) {
+                            listener?.push(
+                                view: SearchResultView(
+                                    searchViewModel:searchViewModel,
+                                    searchText: $searchText)
+                            )
+                        }
                         .onChange(of: searchText) { newValue in
                             if transitionFlag {
                                 transitionFlag.toggle()
@@ -90,7 +99,10 @@ struct SearchView: View, ItemView {
                         Spacer()
                         
                         Button {
-                            listener?.push(view: FavoritesDetailView(screenTitle: Localizable.Search.SearchBasic.topGen, dataForScreen: searchViewModel.trendingPodcasts))
+                            listener?.push(view: FavoritesDetailView(
+                                screenTitle: Localizable.Search.SearchBasic.topGen,
+                                dataForScreen: searchViewModel.trendingPodcasts)
+                            )
                         } label: {
                             Text(Localizable.Search.SearchBasic.seeAll)
                                 .foregroundColor(Pallete.Gray.forText)
@@ -108,7 +120,10 @@ struct SearchView: View, ItemView {
                                             backgroundColor: .cyan,
                                             hSize: geometry.size.width*0.4
                                         ) {
-                                            listener?.push(view: ChannelView(screenTitle: podcast.title!, dataForScreen: podcast))
+                                            listener?.push(view: ChannelView(
+                                                screenTitle: podcast.title!,
+                                                dataForScreen: podcast)
+                                            )
                                         }
                                     }
                             }
@@ -132,25 +147,30 @@ struct SearchView: View, ItemView {
                             LazyVGrid(
                                 columns: columns,
                                 alignment: .center,
-                                spacing: 0,
-                                content: {
-                                    ForEach(searchViewModel.categories, id : \.self) { title in
-                                            GeometryReader { geo2 in
-                                                GenresButton(
-                                                    title: title,
-                                                    backgroundColor: .green,
-                                                    hSize: geometry.size.width*0.4) {
-                                                        searchText = ""
-                                                        listener?.push(view: SearchResultView(searchViewModel: searchViewModel, searchText: $searchText, categoryName: title))
-                                                    }
-                                                    .opacity(getScrollOpacity(geometry: geo2))
+                                spacing: 0
+                            ) {
+                                ForEach(searchViewModel.categories, id : \.self) { title in
+                                    GeometryReader { geo2 in
+                                        GenresButton(
+                                            title: title,
+                                            backgroundColor: .green,
+                                            hSize: geometry.size.width*0.4) {
+                                                searchText = ""
+                                                listener?.push(view: SearchResultView(
+                                                    searchViewModel: searchViewModel,
+                                                    searchText: $searchText,
+                                                    categoryName: title)
+                                                )
                                             }
-                                            .frame(
-                                                width: geometry.size.width*0.4,
-                                                height: geometry.size.width*0.4*aspectRatio + padding,
-                                                alignment: .center)
-                                        }
-                                })
+                                            .opacity(getScrollOpacity(geometry: geo2))
+                                    }
+                                    .frame(
+                                        width: geometry.size.width * 0.4,
+                                        height: geometry.size.width * 0.4 * aspectRatio + padding,
+                                        alignment: .center
+                                    )
+                                }
+                            }
                         }
                         .padding(.horizontal, 12)
                     }
@@ -158,12 +178,15 @@ struct SearchView: View, ItemView {
                     .padding(.trailing, 10)
                 }
 
-                DropDownList(searchText: $searchText,
-                             dropDownList: $searchViewModel.podcastTitles,
-                             showDropDown: $showDropDown, transitionFlag: $transitionFlag)
-                    .padding(20)
-                    .offset(y: 120)
-                    .frame(height: 230)
+                DropDownList(
+                    searchText: $searchText,
+                    dropDownList: $searchViewModel.podcastTitles,
+                    showDropDown: $showDropDown,
+                    transitionFlag: $transitionFlag
+                )
+                .padding(20)
+                .offset(y: 120)
+                .frame(height: 230)
             }
         }
         .task {
@@ -179,15 +202,15 @@ struct SearchView: View, ItemView {
         let currentY = geometry.frame(in: .global).minY
         let opacity: Double
         
-        let yInitial = 0.9*maxY
-        let yInitial2 = 0.48*maxY
+        let yInitial = 0.9 * maxY
+        let yInitial2 = 0.48 * maxY
         let yFinal = maxY
-        let yFinal2 = 0.44*maxY
+        let yFinal2 = 0.44 * maxY
         
         let k = 1 / (yInitial - yFinal)
         let kTop = 1 / (yInitial2 - yFinal2)
-        let b = -k*yFinal
-        let bTop = -kTop*yFinal2
+        let b = -k * yFinal
+        let bTop = -kTop * yFinal2
         
         if currentY < yInitial && currentY > yInitial2 {
             opacity = 1

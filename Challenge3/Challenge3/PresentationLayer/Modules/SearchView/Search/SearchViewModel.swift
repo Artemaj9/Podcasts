@@ -8,7 +8,7 @@ import PodcastIndexKit
 @MainActor
 final class SearchViewModel: ObservableObject {
 
-    // MARK: - Property Wrapers
+    // MARK: - Property Wrappers
 
     @Published var categories = [String]()
     @Published var podcasts: [Podcast]?
@@ -17,7 +17,7 @@ final class SearchViewModel: ObservableObject {
     @Published var podcastTitles = [String]()
     @Published var podcastFromCategory: [Podcast]?
 
-    // MARK: - Internal Properties
+    // MARK: - Private Properties
 
     private var searchManager: SearchManager?
     private var categoryManager: CategoryManager?
@@ -33,13 +33,17 @@ final class SearchViewModel: ObservableObject {
 
     func getPodcasts(searchText: String) {
         Task {
-            podcasts = await searchManager?.performSearchByTerm(term: searchText, max: 10, debug: true)
+            podcasts = await searchManager?.performSearchByTerm(
+                term: searchText, max: 10, debug: true
+            )
         }
     }
         
     func getTrendingPodcasts(max: Int) {
         Task {
-            trendingPodcasts = await podcastManager?.performTrendingPodcasts(max: 20, category: nil)
+            trendingPodcasts = await podcastManager?.performTrendingPodcasts(
+                max: 20, category: nil
+            )
         }
     }
 
@@ -64,7 +68,9 @@ final class SearchViewModel: ObservableObject {
 
     func getPodcastsByCategory(categoryName: String) {
         Task {
-            if let data = await podcastManager?.performTrendingPodcasts(max: 10, category: categoryName) {
+            if let data = await podcastManager?.performTrendingPodcasts(
+                max: 10, category: categoryName
+            ) {
                 DispatchQueue.main.async { [weak self] in
                     self?.podcastFromCategory = data
                 }

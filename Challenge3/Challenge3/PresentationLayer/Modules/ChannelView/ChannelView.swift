@@ -22,6 +22,7 @@ struct ChannelView: View, ItemView {
         VStack(spacing: 24) {
             VStack(spacing: 5) {
                 CustomImage(imageString: dataForScreen?.image, backColor: Pallete.Other.blue, width: 84, height: 84)
+                
                 CustomLabel(labelText: dataForScreen?.title ?? "", additionalText: "Dr. Oi om jean", labelStyle: .channel, epsText: "56 EPS")
             }
         }

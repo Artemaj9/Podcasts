@@ -10,11 +10,12 @@ struct SearchBarView: View {
 
     @Binding var searchText: String
     @FocusState var isFocused: Bool
-
+    
     // MARK: - Internal Properties
-
+    
     let placeholder: String
     let backgroundColor: Color
+    var searchFunc: () -> Void
 
     var body: some View {
         HStack {
@@ -47,6 +48,10 @@ struct SearchBarView: View {
                     }
                     ,alignment: .trailing
                 )
+                .submitLabel(.search)
+                .onSubmit {
+                    searchFunc()
+                }
         }
         .font(.headline)
         .padding()

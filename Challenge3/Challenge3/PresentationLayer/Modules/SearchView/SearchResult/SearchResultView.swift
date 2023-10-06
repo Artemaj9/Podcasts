@@ -9,7 +9,6 @@ struct SearchResultView: View, ItemView {
     // MARK: - Property Wrappers
     
     @ObservedObject var searchViewModel: SearchViewModel
-    @EnvironmentObject var authVM: AuthenticationViewModel
     @Binding var searchText: String
     @State var categoryTitles = [String]()
     
@@ -21,25 +20,28 @@ struct SearchResultView: View, ItemView {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                TextField("",
-                          text: Binding(
-                            get: {
-                                return searchText
-                            },
-                            set: { (newValue) in
-                                if newValue == "" {
-                                    listener?.pop()
-                                }
-                                if newValue.count >= 2 {
-                                    searchViewModel.getPodcasts(searchText: newValue)
-                                }
-                                
-                                categoryTitles = searchViewModel.podcasts?.compactMap({ podcast in
-                                    podcast.title
-                                }) ?? [""]
-                                
-                                return searchText = newValue
-                            }))
+                TextField(
+                    "",
+                    text: Binding(
+                        get: {
+                            return searchText
+                        },
+                        set: { (newValue) in
+                            if newValue == "" {
+                                listener?.pop()
+                            }
+                            if newValue.count >= 2 {
+                                searchViewModel.getPodcasts(searchText: newValue)
+                            }
+                            
+                            categoryTitles = searchViewModel.podcasts?.compactMap { podcast in
+                                podcast.title
+                            } ?? [""]
+                            
+                            return searchText = newValue
+                        }
+                    )
+                )
                 .disableAutocorrection(true)
                 .foregroundColor(Pallete.Other.deepPurpleText)
                 
@@ -76,21 +78,28 @@ struct SearchResultView: View, ItemView {
                     ForEach(podcasts, id: \.id) { podcast in
                         GeometryReader { geometry in
                             HStack {
-                                CustomImage(imageString: podcast.image ?? "",
-                                            backColor: Pallete.Other.blue,
-                                            width: 56, height: 56)
+                                CustomImage(
+                                    imageString: podcast.image ?? "",
+                                    backColor: Pallete.Other.blue,
+                                    width: 56, height: 56
+                                )
 
-                                CustomLabel(labelText: podcast.title ?? "",
-                                            additionalText: podcast.author ?? "",
-                                            labelStyle: .searchResult,
-                                            epsText: podcast.ownerName ?? "")
+                                CustomLabel(
+                                    labelText: podcast.title ?? "",
+                                    additionalText: podcast.author ?? "",
+                                    labelStyle: .searchResult,
+                                    epsText: podcast.ownerName ?? ""
+                                )
 
                                 Spacer()
                             }
                             .opacity(getScrollOpacity(geometry: geometry))
                             .padding(.vertical, 4)
                             .onTapGesture {
-                                listener?.push(view: ChannelView(screenTitle: podcast.title ?? "Unnamed Podcast", dataForScreen: podcast))
+                                listener?.push(view: ChannelView(
+                                    screenTitle: podcast.title ?? "Unnamed Podcast",
+                                    dataForScreen: podcast)
+                                )
                             }
                         }
                         .frame(height: 68)
@@ -99,9 +108,12 @@ struct SearchResultView: View, ItemView {
                 }
                 
                 HStack {
-                    Text(categoryName.isEmpty ? Localizable.Search.SarchResult.allEpisodes : categoryName + " Podcasts" )
-                        .fontWeight(.light)
-                        .foregroundColor(Pallete.Other.deepPurpleText)
+                    Text(
+                        categoryName.isEmpty ?
+                        Localizable.Search.SarchResult.allEpisodes : categoryName + " Podcasts"
+                    )
+                    .fontWeight(.light)
+                    .foregroundColor(Pallete.Other.deepPurpleText)
                     
                     Spacer()
                 }
@@ -113,7 +125,9 @@ struct SearchResultView: View, ItemView {
                             Button {
                                 let screenTitle = "Channel"
                                 let dataForSendToScreen = podcastData[index]
-                                listener?.push(view: ChannelView(screenTitle: screenTitle, dataForScreen: podcastData[index]))
+                                listener?.push(view: ChannelView(
+                                    screenTitle: screenTitle, dataForScreen: podcastData[index])
+                                )
                             } label: {
                                 let bindingData = Binding<CellData>(
                                     get: { return searchViewModel.convertDataToCellData(podcast: podcastData[index]) },
@@ -134,7 +148,6 @@ struct SearchResultView: View, ItemView {
             if categoryName.isEmpty {
                 searchViewModel.getPodcasts(searchText: searchText)
                 searchViewModel.getTrendingPodcasts(max: 100)
-          
             } else {
                 searchViewModel.getPodcastsByCategory(categoryName: categoryName)
             }
@@ -148,15 +161,15 @@ struct SearchResultView: View, ItemView {
         let currentY = geometry.frame(in: .global).minY
         let opacity: Double
         
-        let yInitial = 0.9*maxY
-        let yInitial2 = 0.2*maxY
+        let yInitial = 0.9 * maxY
+        let yInitial2 = 0.2 * maxY
         let yFinal = maxY
-        let yFinal2 = 0.05*maxY
+        let yFinal2 = 0.05 * maxY
         
         let k = 1 / (yInitial - yFinal)
         let kTop = 1 / (yInitial2 - yFinal2)
-        let b = -k*yFinal
-        let bTop = -kTop*yFinal2
+        let b = -k * yFinal
+        let bTop = -kTop * yFinal2
         
         if currentY < yInitial && currentY > yInitial2 {
             opacity = 1
