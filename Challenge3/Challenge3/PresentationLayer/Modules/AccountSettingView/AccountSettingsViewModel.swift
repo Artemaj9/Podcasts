@@ -80,17 +80,15 @@ final class AccountSettingsViewModel: ObservableObject {
     
     private func changeUserEmail() {
         Auth.auth().currentUser?.updateEmail(to: texts[2]) { error in
-            if let error {
-                print("Email has changed")
-            }
+            print(error?.localizedDescription ?? "")
         }
     }
     
     private func changeDisplayName() {
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
         changeRequest?.displayName = "\(texts[0]) \(texts[1])"
-        changeRequest?.commitChanges { error in
-            print("Display name has changed")
+        changeRequest?.commitChanges{ error in
+            print(error?.localizedDescription ?? "")
         }
     }
 
