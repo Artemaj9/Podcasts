@@ -88,7 +88,6 @@ class UserManager: ObservableObject {
             if let error {
                 print(error)
             }
-            
             if let snapshot {
                 dump(snapshot["avatarUrl"] ?? "")
                 
@@ -98,7 +97,7 @@ class UserManager: ObservableObject {
         return output
     }
     func getEmail() -> String {
-        let auth = (Auth.auth().currentUser?.email)!
+        let auth = Auth.auth().currentUser?.email! ?? ""
         return auth
     }
 }
@@ -117,8 +116,6 @@ extension View {
         let size = controller.sizeThatFits(in: UIScreen.main.bounds.size)
         controller.view.bounds = CGRect(origin: .zero, size: size)
         controller.view.sizeToFit()
-        
-        
         let image = controller.view.asUIImage()
         controller.view.removeFromSuperview()
         return image

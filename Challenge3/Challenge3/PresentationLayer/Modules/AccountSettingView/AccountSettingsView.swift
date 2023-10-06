@@ -74,8 +74,8 @@ struct AccountSettingsView: View, ItemView {
                             accountSettingsViewModel.isChoosingCameraMode = false
                         }
                     }
-                    
                 }
+                
                 ForEach(titles.indices, id: \.self) { index in
                     LoginTextField(
                         inputText: $accountSettingsViewModel.texts[index],
@@ -133,9 +133,9 @@ struct AccountSettingsView: View, ItemView {
                             .foregroundColor(Pallete.Gray.forText)
                         Spacer()
                     }
+                    
                     GenderPicker(selectedGender: $accountSettingsViewModel.selectedGender)
                         .padding([.top, .horizontal])
-                    
                 }
                 
                 CustomButton(title: strings.saveChanges, buttonType: .filledGray) {
