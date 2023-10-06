@@ -90,7 +90,7 @@ struct SearchView: View, ItemView {
                         Spacer()
                         
                         Button {
-                            listener?.push(view: FavoritesDetailView(screenTitle:"Popular Podcasts", dataForScreen: searchViewModel.trendingPodcasts))
+                            listener?.push(view: FavoritesDetailView(screenTitle: Localizable.Search.SearchBasic.topGen, dataForScreen: searchViewModel.trendingPodcasts))
                         } label: {
                             Text(Localizable.Search.SearchBasic.seeAll)
                                 .foregroundColor(Pallete.Gray.forText)
