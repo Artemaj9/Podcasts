@@ -15,10 +15,10 @@ struct HomePageView: View, ItemView {
     
     var listener: CustomNavigationContainer?
     
-    // MARK: - Internal Properties
-    
     var strings = Localizable.HomePage.self
-    
+
+    // MARK: - Body
+
     var body: some View {
         VStack {
             Button {
@@ -136,11 +136,19 @@ struct HomePageView: View, ItemView {
                                             screenTitle: screenTitle,
                                             dataForScreen: dataForSendToScreen)
                                         )
+
                                     } label: {
+                                        let nonBindingData = viewModel.convertDataToCellData(podcast: viewModel.podcastFromCategory![index])
                                         let bindingData = Binding<CellData>(
                                             get: { return viewModel.convertDataToCellData(podcast: viewModel.podcastFromCategory![index]) },
-                                            set: {_ in 
-                                                // TODO: add function to save in coredata
+                                            set: {
+                                                if $0.iconState {
+                                                    viewModel.addFavorite(podcastId: $0.id ?? 0)
+                                                    viewModel.fetchFavoriteData()
+                                                } else {
+                                                    viewModel.removeFavorite(podcastId: $0.id ?? 0)
+                                                    viewModel.fetchFavoriteData()
+                                                }
                                             }
                                         )
                                         FilledWideCell(data: bindingData)
