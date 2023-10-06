@@ -9,13 +9,13 @@ import FirebaseFirestore
 import FirebaseAuth
 import UIKit
 
-@MainActor class UserManager: ObservableObject {
+class UserManager: ObservableObject {
     
     @Published var imageUrl: URL?
     
     //MARK: - Private properties
     
-    private let db = Firestore.firestore()
+    private let database = Firestore.firestore()
     private var displayName = ""
     
     //MARK: - Internal functions
@@ -84,7 +84,7 @@ import UIKit
     func searchImage() -> String {
         let auth = Auth.auth().currentUser?.uid
         var output = ""
-        db.collection("users").document(auth ?? "").getDocument { snapshot, error in
+        database.collection("users").document(auth ?? "").getDocument { snapshot, error in
             if let error {
                 print(error)
             }
