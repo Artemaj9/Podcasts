@@ -18,13 +18,9 @@ struct CreateWithEmailView: View, ItemView {
     // MARK: - View's body
     
     var body: some View {
-        
-        VStack{
-            
-            ScrollView{
-                
-                VStack{
-                    
+        VStack {
+            ScrollView {
+                VStack {
                     CustomLabel(labelText: Localizable.CreateAccount.CreateWithEmail.complete, additionalText: Localizable.CreateAccount.CreateWithEmail.signUpAdit, labelStyle: .create, epsText: "")
                     
                     LoginTextField(inputText: $viewModel.firstName, title: Localizable.CreateAccount.CreateWithEmail.firstName, placeHolder: Localizable.CreateAccount.CreateWithEmail.firstNameField, withHideOption: false, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)

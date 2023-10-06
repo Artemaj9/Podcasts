@@ -39,7 +39,7 @@ struct AccountSettingsView: View, ItemView {
                         } else if userManager.imageUrl != nil {
                             KFImage(userManager.imageUrl)
                                 .resizable()
-                                .scaledToFit()
+                                .scaledToFill()
                                 .clipShape(Circle())
                         } else {
                             Image(Images.DefaultView.avatar.rawValue)
@@ -50,7 +50,7 @@ struct AccountSettingsView: View, ItemView {
                         }
                     }
                     .task {
-                        userManager.getImageUrl()
+                        userManager.searchImage()
                     }
                     .onTapGesture {
                         withAnimation {
@@ -139,13 +139,16 @@ struct AccountSettingsView: View, ItemView {
                 }
                 
                 CustomButton(title: strings.saveChanges, buttonType: .filledGray) {
-                    userManager.saveUserData (
-                        image: accountSettingsViewModel.image,
+                    userManager.persistImageToStorage(image: accountSettingsViewModel.image)
+                    
+                    userManager.storeUserInformation (
                         dob: accountSettingsViewModel.selectedBirthday,
                         gender: accountSettingsViewModel.selectedGender
                     )
                     
                     accountSettingsViewModel.saveUserData()
+                    
+                    
                     
                     listener?.pop()
                 }
@@ -197,6 +200,7 @@ struct AccountSettingsView: View, ItemView {
                             accountSettingsViewModel.presentLibraryPicker()
                         case 2:
                             accountSettingsViewModel.image = nil
+                            userManager.imageUrl = nil
                         default:
                             break
                         }

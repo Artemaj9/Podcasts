@@ -120,6 +120,7 @@
 		FAA1887E2AC36E0F00C0E183 /* PlayControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1887D2AC36E0F00C0E183 /* PlayControl.swift */; };
 		FAE797072AC1FDF8003F3F0C /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE797062AC1FDF8003F3F0C /* CustomLabel.swift */; };
 		FAE797092AC210CE003F3F0C /* SelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE797082AC210CE003F3F0C /* SelectButton.swift */; };
+		FAFADF122AD09AA800FA3AA7 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFADF112AD09AA800FA3AA7 /* View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -226,6 +227,7 @@
 		FAA1887D2AC36E0F00C0E183 /* PlayControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayControl.swift; sourceTree = "<group>"; };
 		FAE797062AC1FDF8003F3F0C /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		FAE797082AC210CE003F3F0C /* SelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectButton.swift; sourceTree = "<group>"; };
+		FAFADF112AD09AA800FA3AA7 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +361,7 @@
 				5D84B3012AC0985E00BC87E7 /* Extensions.swift */,
 				ACEE58CD2AC21C8B0037C34E /* UIApplication.swift */,
 				5DE1B0EB2AC6C81C00F5AAB6 /* Ext+Placeholder.swift */,
+				FAFADF112AD09AA800FA3AA7 /* View.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -812,6 +815,7 @@
 				5D84B3512AC0999C00BC87E7 /* HomePageModel.swift in Sources */,
 				5D53225A2AC1BA2B009BB98A /* CategoryTabs.swift in Sources */,
 				5D84B3592AC0999C00BC87E7 /* ProfileSettingsViewModel.swift in Sources */,
+				FAFADF122AD09AA800FA3AA7 /* View.swift in Sources */,
 				5D84B3472AC0999C00BC87E7 /* CustomNavigationContainer.swift in Sources */,
 				AC16D57B2AC1B80800B74CBA /* MiniPlayer.swift in Sources */,
 				5D84B36C2AC0999C00BC87E7 /* StartCreateModel.swift in Sources */,
