@@ -9,7 +9,8 @@ struct HomePageView: View, ItemView {
     
     // MARK: - Property Wrapper
     
-    @ObservedObject var viewModel = HomePageViewModel()
+    @EnvironmentObject var viewModel: HomePageViewModel
+    @EnvironmentObject var favoritesViewModel: FavoritesViewModel
     
     // MARK: - Internal Properties
     
@@ -144,11 +145,11 @@ struct HomePageView: View, ItemView {
                                             set: {
                                                 if $0.iconState {
                                                     viewModel.addFavorite(podcastId: $0.id ?? 0)
-                                                    viewModel.fetchFavoriteData()
                                                 } else {
                                                     viewModel.removeFavorite(podcastId: $0.id ?? 0)
-                                                    viewModel.fetchFavoriteData()
                                                 }
+                                                viewModel.fetchFavoriteData()
+                                                favoritesViewModel.searchFavoritePodcastsFromIndexKit()
                                             }
                                         )
                                         FilledWideCell(data: bindingData)
@@ -169,5 +170,7 @@ struct HomePageView: View, ItemView {
 struct HomePageView_Previews: PreviewProvider {
     static var previews: some View {
         HomePageView()
+            .environmentObject(HomePageViewModel())
+            .environmentObject(FavoritesViewModel())
     }
 }

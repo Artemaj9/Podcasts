@@ -25,7 +25,7 @@ struct SplashView: View, ItemView {
                 if !splashViewModel.isNotLoggedIn {
                     listener?.push(view: AuthorizationView())
                 } else {
-                    listener?.push(view: HomePageView())
+                    listener?.push(view: MainTabBar())
                 }
             }
         }

@@ -3,21 +3,15 @@
 //
 
 import SwiftUI
+import PodcastIndexKit
 
 struct FavoritesView: View, ItemView {
-    
+
+    @EnvironmentObject var favoritesViewModel: FavoritesViewModel
+
     //MARK: - Internal Properties
-    
+
     var listener: CustomNavigationContainer?
-    
-    //MARK: - Mock data
-    
-    let data: [(image: String?, firstText: String?, secondText: String?)] = [
-        (image: nil, firstText: "Text1", secondText: "Description1"),
-        (image: "image2", firstText: "Text2", secondText: "Description2"),
-        (image: "image2", firstText: "Text3", secondText: "Description3"),
-        (image: "image2", firstText: "Text4", secondText: "Description4")
-    ]
     
     let playlists: [Playlist] = [
         Playlist(mainTitle: "Tuhan mengapa dia berbeda", secondTitle: "15 Eps"),
@@ -45,8 +39,12 @@ struct FavoritesView: View, ItemView {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
-                    ForEach(data, id: \.firstText) { item in
-                        FavoritesCell(image: item.image, firstText: item.firstText, secondText: item.secondText)
+                    ForEach(favoritesViewModel.favoriteNetworkPodcasts, id: \.id) { podcast in
+                        FavoritesCell(
+                            image: podcast.image,
+                            firstText: podcast.title,
+                            secondText: podcast.author
+                        )
                     }
                 }
                 .padding(.horizontal)
@@ -91,5 +89,6 @@ struct FavoritesView: View, ItemView {
 struct FavoritesView_Previews: PreviewProvider {
     static var previews: some View {
         FavoritesView()
+            .environmentObject(FavoritesViewModel())
     }
 }
