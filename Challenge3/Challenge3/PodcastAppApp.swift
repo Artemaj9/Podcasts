@@ -37,6 +37,7 @@ struct Challenge3App: App {
     @StateObject var authorizarionViewModel = AuthorizarionViewModel()
     @StateObject var authenticationViewModel = AuthenticationViewModel()
     @StateObject var searchManager = SearchManager()
+    @StateObject var userManager = UserManager()
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
@@ -60,6 +61,7 @@ struct Challenge3App: App {
             .environmentObject(authorizarionViewModel)
             .environmentObject(authenticationViewModel)
             .environmentObject(searchManager)
+            .environmentObject(userManager)
         }
     }
 }

@@ -116,6 +116,7 @@
 		D09F7C742AC37F8C000C10F3 /* AuthentificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09F7C732AC37F8C000C10F3 /* AuthentificationViewModel.swift */; };
 		D0D8E5022AC1C115005D5543 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D0D8E5012AC1C115005D5543 /* Kingfisher */; };
 		D0D8E5062AC226F4005D5543 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D8E5052AC226F4005D5543 /* Cells.swift */; };
+		FA88230F2ACE09A200CBF4CB /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88230E2ACE09A200CBF4CB /* UserManager.swift */; };
 		FAA1887E2AC36E0F00C0E183 /* PlayControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1887D2AC36E0F00C0E183 /* PlayControl.swift */; };
 		FAE797072AC1FDF8003F3F0C /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE797062AC1FDF8003F3F0C /* CustomLabel.swift */; };
 		FAE797092AC210CE003F3F0C /* SelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE797082AC210CE003F3F0C /* SelectButton.swift */; };
@@ -221,6 +222,7 @@
 		D09F7C732AC37F8C000C10F3 /* AuthentificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthentificationViewModel.swift; sourceTree = "<group>"; };
 		D0AE3FE12AC62A2500583648 /* Challenge3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Challenge3.entitlements; sourceTree = "<group>"; };
 		D0D8E5052AC226F4005D5543 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
+		FA88230E2ACE09A200CBF4CB /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		FAA1887D2AC36E0F00C0E183 /* PlayControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayControl.swift; sourceTree = "<group>"; };
 		FAE797062AC1FDF8003F3F0C /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		FAE797082AC210CE003F3F0C /* SelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectButton.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				D05867932AC4CFFA00DE6539 /* GoogleService-Info.plist */,
 				5D84B2D72AC0975100BC87E7 /* FirebaseManager.swift */,
 				D05867912AC4B92D00DE6539 /* testView.swift */,
+				FA88230E2ACE09A200CBF4CB /* UserManager.swift */,
 			);
 			path = FirebaseManagers;
 			sourceTree = "<group>";
@@ -845,6 +848,7 @@
 				B72544862AC0D9C4003B3FF6 /* OnboardingView.swift in Sources */,
 				5DCF860A2AC465C300B28053 /* PlaylistModel.swift in Sources */,
 				5D84B35B2AC0999C00BC87E7 /* ChannelViewModel.swift in Sources */,
+				FA88230F2ACE09A200CBF4CB /* UserManager.swift in Sources */,
 				5D84B3702AC0999C00BC87E7 /* AutorizationView.swift in Sources */,
 				5D84B3542AC0999C00BC87E7 /* AccountSettingsViewModel.swift in Sources */,
 				5D84B36B2AC0999C00BC87E7 /* StartCreateAccountView.swift in Sources */,

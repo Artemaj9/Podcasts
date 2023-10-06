@@ -63,9 +63,11 @@ struct CreateWithEmailView: View, ItemView {
     private func signUpWithEmail() {
         Task {
             if await viewModel.signUpWithEmailPassword() {
-                splashViewModel.isNotLoggedIn = true 
+                viewModel.changeDisplayName()
+                splashViewModel.isNotLoggedIn = true
                 listener?.push(view: OnboardingView())
             }
+            
         }
     }
 }
