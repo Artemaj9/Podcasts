@@ -53,8 +53,9 @@ struct CreatePlaylistView: View, ItemView {
             }
             .padding([.horizontal, .bottom])
             
-            SearchBarView(searchText: "", placeholder: "", backgroundColor: Pallete.Gray.forTextFields)
-                .frame(height: 32)
+            SearchBarView(searchText: .constant(""), placeholder: "", backgroundColor: Pallete.Gray.forTextFields
+            ) {}
+            .frame(height: 32)
             
             ScrollView {
                 ForEach($cellDatas) { $data in

@@ -99,7 +99,7 @@
 //MARK: -Search Result
 
 "SearchResults.searchResults" = "Search Results";
-"SearchResults.allEpisodes" = "All Episodes";
+"SearchResults.allEpisodes" = "All Podcasts";
 
 //MARK: - Playlist
 
@@ -107,3 +107,12 @@
 "Playlist.chooseImage" = "Choose image";
 "Playlist.seeAll" = "See All";
 "Playlist.select" = "Select from local files";
+
+// MARK: - Search
+
+"SearchView.search" = "Search";
+"SearchView.topgen" = "Popular Podcasts";
+"SearchView.seeAll" = "See All";
+"SearchView.channelOrArtist" = "Podcasts, chanell or artist";
+"SearchView.browesAll" = "Browes All";
+
