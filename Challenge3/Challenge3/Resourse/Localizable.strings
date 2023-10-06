@@ -17,6 +17,12 @@
 "Onboarding.skip" = "Skip";
 "Onboarding.next" = "Next";
 "Onboarding.getStarted" = "Get Started";
+"Onboarding.podcastApp" = "Podcast app";
+"Onboarding.findYourFavorite" = "Find your favorite podcasts and listen to them right in the app";
+"Onboarding.favoriteAndYour" = "Playlists";
+"Onboarding.youCanChoose" = "You can create your own playlists";
+"Onboarding.theAbilityToCreate" = "The ability to create your own profile";
+"Onboarding.youCanSetUp" = "You can customize your profile and then log in to it on another device";
 
 // MARK: - Autorization
 "Autorization.enterLogin" = "Enter your login";
