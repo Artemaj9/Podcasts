@@ -93,9 +93,7 @@ final class AccountSettingsViewModel: ObservableObject {
             print("Display name has changed")
         }
     }
-    
-    
-    
+
     private func showCameraWarning() {
         warningMessage = "error"
         isWarningPresented = true

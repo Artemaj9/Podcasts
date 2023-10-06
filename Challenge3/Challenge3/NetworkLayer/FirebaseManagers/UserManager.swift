@@ -20,7 +20,6 @@ import UIKit
     
     //MARK: - Internal functions
     
-    //Download user image
     func saveUserData(image: Image?, dob: Date, gender: SelectedGender = .male) {
         let uiImage: UIImage = image.asUIImage()
         
@@ -29,24 +28,16 @@ import UIKit
         let storageRef = Storage.storage().reference().child("images")
         
         storageRef.putData(imageData, metadata: nil) { (metadata, error) in
-            if let error = error {
-                print("Ошибка загрузки изображения в Firebase Storage: \(error.localizedDescription)")
-            }
             
             storageRef.downloadURL { (url, error) in
-                if let error = error {
-                    print("Ошибка получения URL изображения: \(error.localizedDescription)")
-                }
                 
                 if let imageUrl = url {
-                    print("URL загруженного изображения: \(imageUrl)")
                     self.storeUserInformation(imageProfileURL: imageUrl, dob: dob, gender: gender)
                 }
             }
         }
     }
     
-    //Send date of birth, gender, image
     func storeUserInformation(imageProfileURL: URL, dob: Date, gender: SelectedGender = .male) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let userData = ["uid" : uid, "avatarUrl" : imageProfileURL.absoluteString, "dob": dob as NSDate, "gender": gender.rawValue] as [String : Any]
@@ -61,14 +52,12 @@ import UIKit
             }
     }
     
-    //Get a fullname
     func getDisplayName() -> String {
-        let name = Auth.auth().currentUser?.displayName ?? "llll"
+        let name = Auth.auth().currentUser?.displayName ?? "Unknown"
         displayName = name
         return name
     }
     
-    //Get first name
     func getFirstName() -> String {
         let name = getDisplayName()
         if name.contains("@"){
@@ -78,7 +67,6 @@ import UIKit
         }
     }
     
-    //Get last name
     func getLastName() -> String {
         let name = getDisplayName()
         if name.contains("@") {
@@ -88,17 +76,15 @@ import UIKit
         }
         
     }
-    //Get image url adress
+    
     func getImageUrl() {
         self.imageUrl = URL(string: searchImage())
     }
     
-    //Seacrh image by uid
     func searchImage() -> String {
         let auth = Auth.auth().currentUser?.uid
         var output = ""
         db.collection("users").document(auth ?? "").getDocument { snapshot, error in
-            
             if let error {
                 print(error)
             }
@@ -111,12 +97,10 @@ import UIKit
         }
         return output
     }
-    
     func getEmail() -> String {
         let auth = (Auth.auth().currentUser?.email)!
         return auth
     }
-    
 }
 
 //MARK: - Extensions

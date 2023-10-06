@@ -29,7 +29,6 @@ struct AccountSettingsView: View, ItemView {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .center) {
-                
                 VStack {
                     ZStack {
                         if let image = accountSettingsViewModel.image {
@@ -37,13 +36,11 @@ struct AccountSettingsView: View, ItemView {
                                 .resizable()
                                 .scaledToFill()
                                 .clipShape(Circle())
-                            
                         } else if userManager.imageUrl != nil {
                             KFImage(userManager.imageUrl)
                                 .resizable()
                                 .scaledToFit()
                                 .clipShape(Circle())
-                            
                         } else {
                             Image(Images.DefaultView.avatar.rawValue)
                                 .overlay(
@@ -79,7 +76,6 @@ struct AccountSettingsView: View, ItemView {
                     }
                     
                 }
-                
                 ForEach(titles.indices, id: \.self) { index in
                     LoginTextField(
                         inputText: $accountSettingsViewModel.texts[index],
@@ -139,6 +135,7 @@ struct AccountSettingsView: View, ItemView {
                     }
                     GenderPicker(selectedGender: $accountSettingsViewModel.selectedGender)
                         .padding([.top, .horizontal])
+                    
                 }
                 
                 CustomButton(title: strings.saveChanges, buttonType: .filledGray) {
@@ -231,6 +228,7 @@ struct GenderPicker: View {
                         return Localizable.AccountSettings.female
                     }
                 }
+                
                 HStack {
                     Image(selectedGender == gender ? Images.Icon.checkFill.rawValue : Images.Icon.check.rawValue)
                     Spacer()

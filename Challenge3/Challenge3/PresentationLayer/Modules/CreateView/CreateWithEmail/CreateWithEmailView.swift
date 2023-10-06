@@ -67,7 +67,6 @@ struct CreateWithEmailView: View, ItemView {
                 splashViewModel.isNotLoggedIn = true
                 listener?.push(view: OnboardingView())
             }
-            
         }
     }
 }
