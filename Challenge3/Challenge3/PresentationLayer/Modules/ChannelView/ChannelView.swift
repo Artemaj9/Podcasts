@@ -21,8 +21,8 @@ struct ChannelView: View, ItemView {
     private var informationRow: some View {
         VStack(spacing: 24) {
             VStack(spacing: 5) {
-                CustomImage(imageString: "", backColor: Pallete.Other.blue, width: 84, height: 84)
-                CustomLabel(labelText: "Baby Pesut Podcast", additionalText: "Dr. Oi om jean", labelStyle: .channel, epsText: "56 EPS")
+                CustomImage(imageString: dataForScreen?.image, backColor: Pallete.Other.blue, width: 84, height: 84)
+                CustomLabel(labelText: dataForScreen?.title ?? "", additionalText: "Dr. Oi om jean", labelStyle: .channel, epsText: "56 EPS")
             }
         }
     }

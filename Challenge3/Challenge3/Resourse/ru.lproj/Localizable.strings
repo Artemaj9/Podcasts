@@ -90,7 +90,7 @@
 
 //MARK: -Search Result
 "SearchResults.searchResults" = "Результаты поиска";
-"SearchResults.allEpisodes" = "Все эпизоды";
+"SearchResults.allEpisodes" = "Все подкасты";
 
 //MARK: - Playlist
 
@@ -98,3 +98,11 @@
 "Playlist.chooseImage" = "Выберете изображение";
 "Playlist.seeAll" = "Показать все";
 "Playlist.select" = "Выберете локальный файл";
+
+// MARK: - Search
+
+"SearchView.search" = "Поиск";
+"SearchView.topgen" = "Популярные подкасты";
+"SearchView.seeAll" = "Показать все";
+"SearchView.channelOrArtist" = "Подкасты, каналы, авторы";
+"SearchView.browesAll" = "Просмотреть все";

@@ -32,6 +32,7 @@ struct Localizable {
             static let enterEmail = NSLocalizedString("StartCreate.enterEmail", comment: "")
             static let email = NSLocalizedString("StartCreate.email", comment: "")
         }
+        
         enum CreateWithEmail {
             static var firstName = NSLocalizedString("CreateWithEmail.firstName", comment: "")
             static var lastName = NSLocalizedString("CreateWithEmail.lastName", comment: "")
@@ -76,7 +77,14 @@ struct Localizable {
     enum NowPlaying {}
 
     enum Search {
-        enum SearchBasic {}
+        enum SearchBasic {
+            static var search = NSLocalizedString("SearchView.search", comment: "")
+            static var topGen = NSLocalizedString("SearchView.topgen", comment: "")
+            static var seeAll = NSLocalizedString("SearchView.seeAll", comment: "")
+            static var chanOrArtist = NSLocalizedString("SearchView.channelOrArtist", comment: "")
+            static var browesAll = NSLocalizedString("SearchView.browesAll", comment: "")
+        }
+        
         enum SarchResult {
             static var searchResults = NSLocalizedString("SearchResults.searchResults", comment: "")
             static var allEpisodes = NSLocalizedString("SearchResults.allEpisodes", comment: "")
@@ -118,7 +126,6 @@ struct Localizable {
         static var deletePhoto = NSLocalizedString("AccountSettingsView.deletePhoto", comment: "")
         static var changeYourPicture = NSLocalizedString("AccountSettingsView.changeYourPicture", comment: "")
     }
-
 }
 
 private func localizedStringKey(_ key: String) -> LocalizedStringKey {
