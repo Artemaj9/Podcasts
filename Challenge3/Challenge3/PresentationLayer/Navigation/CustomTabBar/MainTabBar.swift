@@ -46,7 +46,6 @@ struct MainTabBar: View, ItemView {
         }
         .safeAreaInset(edge: .bottom) {
             if firstTabNavigationModel.isRootView && secondTabNavigationModel.isRootView {
-
                 Rectangle()
                     .foregroundColor(.clear)
                     .frame(height: 68)
@@ -69,8 +68,8 @@ struct MainTabBar: View, ItemView {
                             TabBarButton(
                                 selectedTab: $selectedTab,
                                 index: 1,
-                                activeIconName: Images.TabBar.settingFill.rawValue,
-                                inactiveIconName: Images.TabBar.setting.rawValue
+                                activeIconName: Images.TabBar.searchFill.rawValue,
+                                inactiveIconName: Images.TabBar.search.rawValue
                             )
                             TabBarButton(
                                 selectedTab: $selectedTab,
