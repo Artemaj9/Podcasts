@@ -67,7 +67,7 @@ struct SearchView: View, ItemView {
                             listener?.push(
                                 view: SearchResultView(
                                     searchViewModel:searchViewModel,
-                                    searchText: $searchText)
+                                    searchText: searchText)
                             )
                         }
                         .onChange(of: searchText) { newValue in
@@ -76,7 +76,7 @@ struct SearchView: View, ItemView {
                                 listener?.push(
                                     view: SearchResultView(
                                         searchViewModel:searchViewModel,
-                                        searchText: $searchText)
+                                        searchText: searchText)
                                 )
                             }
                         }
@@ -91,7 +91,7 @@ struct SearchView: View, ItemView {
                                     listener?.push(
                                         view: SearchResultView(
                                             searchViewModel:searchViewModel,
-                                            searchText: $searchText)
+                                            searchText: searchText)
                                     )
                                 }
                             }
@@ -165,7 +165,8 @@ struct SearchView: View, ItemView {
                                                 searchText = ""
                                                 listener?.push(view: SearchResultView(
                                                     searchViewModel: searchViewModel,
-                                                    searchText: $searchText,
+                                                    searchText: searchText,
+                                                    isPopWhenEmpty: false,
                                                     categoryName: searchViewModel.categories[index])
                                                 )
                                             }

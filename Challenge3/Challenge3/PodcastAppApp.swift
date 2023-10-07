@@ -31,11 +31,12 @@ struct Challenge3App: App {
     @StateObject var channelViewModel = ChannelViewModel()
     @StateObject var nowPlayingViewModel = NowPlayingViewModel()
     @StateObject var searchViewModel = SearchViewModel()
-    @StateObject var searchResultViewModel = SearchResultViewModel()
     @StateObject var createPlaylistViewModel = CreatePlaylistViewModel()
     @StateObject var createWithEmailViewModel = CreateWithEmailViewModel()
     @StateObject var authorizarionViewModel = AuthorizarionViewModel()
     @StateObject var authenticationViewModel = AuthenticationViewModel()
+    @StateObject var searchManager = SearchManager()
+    @StateObject var userManager = UserManager()
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
@@ -53,11 +54,12 @@ struct Challenge3App: App {
             .environmentObject(channelViewModel)
             .environmentObject(nowPlayingViewModel)
             .environmentObject(searchViewModel)
-            .environmentObject(searchResultViewModel)
             .environmentObject(createPlaylistViewModel)
             .environmentObject(createWithEmailViewModel)
             .environmentObject(authorizarionViewModel)
             .environmentObject(authenticationViewModel)
+            .environmentObject(searchManager)
+            .environmentObject(userManager)
         }
     }
 }
