@@ -223,6 +223,11 @@ struct NowPlayingView: View, ItemView {
             // TODO: add logic for clearing current episode and playlist if playing is paused
             viewModel.cancellables.removeAll()
         }
+        .makeCustomNavBar(showBackground: false) {
+            NavigationBars(atView: .nowPlaying) {
+                listener?.pop()
+            }
+        }
     }
 }
 
