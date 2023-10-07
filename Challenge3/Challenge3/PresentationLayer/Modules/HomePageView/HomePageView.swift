@@ -49,8 +49,7 @@ struct HomePageView: View, ItemView {
                         
                         Button {
                             let dataForSendToScreen = viewModel.newPodcasts
-                            // TODO: add localizable string
-                            let screenTitle = "Favorites"
+                            let screenTitle = strings.rndEpisodes
                             listener?.push(view: FavoritesDetailView(screenTitle: screenTitle, dataForScreen: dataForSendToScreen))
                         } label: {
                             Text(strings.seeAll)

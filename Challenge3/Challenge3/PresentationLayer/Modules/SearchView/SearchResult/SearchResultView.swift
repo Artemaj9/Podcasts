@@ -8,28 +8,49 @@ struct SearchResultView: View, ItemView {
     
     // MARK: - Property Wrappers
     
-    @StateObject var vm = SearchResultViewModel()
+    @ObservedObject var searchViewModel: SearchViewModel
+    @State var searchText: String
+    @State var categoryTitles = [String]()
+    @State var isPopWhenEmpty = true
     
     // MARK: - Internal Properties
     
     var listener: CustomNavigationContainer?
+    var categoryName = ""
     
-    //MARK: - Mock datas
-    
-    @State var cellDatas: [CellData] = [
-        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 1", mainRight: "Right 1", secondLeft: "Second 1", secondRight: "Right Sec 1", image: "image1", iconMode: .blank, height: nil),
-        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 2", mainRight: "Right 2", secondLeft: "Second 2", secondRight: "Right Sec 2", image: "image2", iconMode: .like, height: nil),
-        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 3", mainRight: "Right 3", secondLeft: "Second 3", secondRight: "Right Sec 3", image: "image3", iconMode: .select, height: nil),
-        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 4", mainRight: "Right 4", secondLeft: "Second 4", secondRight: "Right Sec 4", image: "image4", iconMode: .blank, height: nil)
-    ]
-
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text("Baby Pesut")
-                    .fontWeight(.light)
-                    .foregroundColor(Pallete.Other.deepPurpleText)
+                TextField(
+                    "",
+                    text: Binding(
+                        get: {
+                            return searchText
+                        },
+                        set: { (newValue) in
+                            if newValue == "" && isPopWhenEmpty {
+                                listener?.pop()
+                            }
+                            if newValue.count >= 1 && !isPopWhenEmpty {
+                                isPopWhenEmpty = true
+                            }
+                            if newValue.count >= 2 {
+                                searchViewModel.getPodcasts(searchText: newValue)
+                            }
+                            
+                            categoryTitles = searchViewModel.podcasts?.compactMap { podcast in
+                                podcast.title
+                            } ?? [""]
+                            
+                            return searchText = newValue
+                        }
+                    )
+                )
+                .disableAutocorrection(true)
+                .foregroundColor(Pallete.Other.deepPurpleText)
+                
                 Spacer()
+                
                 Button {
                     listener?.pop()
                 } label: {
@@ -41,6 +62,7 @@ struct SearchResultView: View, ItemView {
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 8)
+            
             HStack {
                 Rectangle()
             }
@@ -48,53 +70,119 @@ struct SearchResultView: View, ItemView {
             .foregroundColor(Pallete.Gray.grayDivider)
             .frame(height: 1)
             .padding(.bottom, 4)
-               
+            
             Text(Localizable.Search.SarchResult.searchResults)
                 .fontWeight(.semibold)
                 .foregroundColor(Pallete.Other.deepPurpleText)
-            
                 .padding(.horizontal, 20)
                 .padding(.vertical, 8)
+            
             ScrollView(showsIndicators: false) {
-                ForEach(0..<5) { index in
-                    GeometryReader { geometry in
-                        HStack() {
-                            CustomImage(imageString: "", backColor: Pallete.Other.blue, width: 56, height: 56)
-                            CustomLabel(labelText: "Baby Pesut Podcast", additionalText: "Dr. Oi om jean", labelStyle: .searchResult, epsText: "56 EPS")
-                            Spacer()
+                if let podcasts = searchViewModel.podcasts {
+                    ForEach(podcasts, id: \.id) { podcast in
+                        GeometryReader { geometry in
+                            HStack {
+                                CustomImage(
+                                    imageString: podcast.image ?? "",
+                                    backColor: Pallete.Other.blue,
+                                    width: 56, height: 56
+                                )
+
+                                CustomLabel(
+                                    labelText: podcast.title ?? "",
+                                    additionalText: podcast.author ?? "",
+                                    labelStyle: .searchResult,
+                                    epsText: podcast.ownerName ?? ""
+                                )
+
+                                Spacer()
+                            }
+                            .opacity(getScrollOpacity(geometry: geometry))
+                            .padding(.vertical, 4)
+                            .onTapGesture {
+                                listener?.push(view: ChannelView(
+                                    screenTitle: podcast.title ?? "Unnamed Podcast",
+                                    dataForScreen: podcast)
+                                )
+                            }
                         }
-                        .opacity(vm.getScrollOpacity(geometry: geometry))
-                        .padding(.vertical, 4)
+                        .frame(height: 68)
                     }
-                    .frame(height: 68)
-                   
-                    }
-            .padding(.horizontal, 8)
+                    .padding(.horizontal, 8)
+                }
+                
                 HStack {
-                    Text(Localizable.Search.SarchResult.allEpisodes)
-                        .fontWeight(.light)
-                        .foregroundColor(Pallete.Other.deepPurpleText)
+                    Text(
+                        categoryName.isEmpty ?
+                        Localizable.Search.SarchResult.allEpisodes : categoryName + " Podcasts"
+                    )
+                    .fontWeight(.light)
+                    .foregroundColor(Pallete.Other.deepPurpleText)
+                    
                     Spacer()
                 }
-                ForEach(0..<20) { index in
-                    GeometryReader { geo in
-                        ForEach($cellDatas) { $data in
-                            FilledWideCell(data: $data)
+                                
+                if let podcastData = categoryName.isEmpty ?
+                    searchViewModel.trendingPodcasts : searchViewModel.podcastFromCategory {
+                    ForEach(podcastData.indices) { index in
+                        GeometryReader { geo in
+                            Button {
+                                let screenTitle = "Channel"
+                                let dataForSendToScreen = podcastData[index]
+                                listener?.push(view: ChannelView(
+                                    screenTitle: screenTitle, dataForScreen: podcastData[index])
+                                )
+                            } label: {
+                                let bindingData = Binding<CellData>(
+                                    get: { return searchViewModel.convertDataToCellData(podcast: podcastData[index]) },
+                                    set: {_ in }
+                                )
+                                FilledWideCell(data: bindingData)
+                                    .opacity(getScrollOpacity(geometry: geo))
+                                    .padding(.vertical, 8)
+                            }
                         }
-                            .opacity(vm.getScrollOpacity(geometry: geo))
-                            .padding(.vertical, 8)
-                            
+                        .frame(height: 88)
                     }
-                    .frame(height: 88)
-               }
+                }
             }
             .padding(.horizontal, 20)
         }
+        .onAppear {
+            if categoryName.isEmpty {
+                searchViewModel.getPodcasts(searchText: searchText)
+                searchViewModel.getTrendingPodcasts(max: 100)
+            } else {
+                searchViewModel.getPodcastsByCategory(categoryName: categoryName)
+            }
+        }
     }
-}
-
-struct SearchResultView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchResultView()
+    
+    // MARK: - Functions
+    
+    func getScrollOpacity(geometry: GeometryProxy) -> Double {
+        let maxY = UIScreen.main.bounds.height
+        let currentY = geometry.frame(in: .global).minY
+        let opacity: Double
+        
+        let yInitial = 0.9 * maxY
+        let yInitial2 = 0.2 * maxY
+        let yFinal = maxY
+        let yFinal2 = 0.05 * maxY
+        
+        let k = 1 / (yInitial - yFinal)
+        let kTop = 1 / (yInitial2 - yFinal2)
+        let b = -k * yFinal
+        let bTop = -kTop * yFinal2
+        
+        if currentY < yInitial && currentY > yInitial2 {
+            opacity = 1
+        } else if currentY >= yInitial {
+            opacity = k * currentY + b
+        } else {
+            opacity = kTop * currentY + bTop
+        }
+        
+        return opacity
     }
 }

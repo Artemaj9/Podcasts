@@ -5,19 +5,19 @@
 import SwiftUI
 import CoreImage
 import CoreImage.CIFilterBuiltins
+import Kingfisher
 
 struct AccountSettingsView: View, ItemView {
     
     // MARK: - Property Wrappers
-
+    @EnvironmentObject var userManager: UserManager
     @EnvironmentObject var accountSettingsViewModel: AccountSettingsViewModel
     
     // MARK: - Internal Properties
-
     var listener: CustomNavigationContainer?
     
     // MARK: - Private Properties
-
+    
     private var strings = Localizable.AccountSettings.self
     
     private var titles: [String] = [
@@ -25,17 +25,21 @@ struct AccountSettingsView: View, ItemView {
     ]
     
     // MARK: - Private Views
-
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .center) {
-
                 VStack {
                     ZStack {
                         if let image = accountSettingsViewModel.image {
                             image
                                 .resizable()
-                                .scaledToFit()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                        } else if userManager.imageUrl != nil {
+                            KFImage(userManager.imageUrl)
+                                .resizable()
+                                .scaledToFill()
                                 .clipShape(Circle())
                         } else {
                             Image(Images.DefaultView.avatar.rawValue)
@@ -44,6 +48,9 @@ struct AccountSettingsView: View, ItemView {
                                         .offset(x: 35, y: 35)
                                 )
                         }
+                    }
+                    .task {
+                        userManager.searchImage()
                     }
                     .onTapGesture {
                         withAnimation {
@@ -56,7 +63,7 @@ struct AccountSettingsView: View, ItemView {
                         Button("Open settings") {
                             accountSettingsViewModel.openSettings()
                         }
-
+                        
                         Button("OK") {}
                     }
                     .sheet(isPresented: $accountSettingsViewModel.isShowingImagePicker) {
@@ -66,10 +73,9 @@ struct AccountSettingsView: View, ItemView {
                         withAnimation {
                             accountSettingsViewModel.isChoosingCameraMode = false
                         }
-                        accountSettingsViewModel.saveUserData()
                     }
                 }
-
+                
                 ForEach(titles.indices, id: \.self) { index in
                     LoginTextField(
                         inputText: $accountSettingsViewModel.texts[index],
@@ -81,7 +87,7 @@ struct AccountSettingsView: View, ItemView {
                         backgroundColor: Pallete.BlackWhite.white
                     )
                 }
-
+                
                 VStack {
                     VStack(alignment: .leading, spacing: 0) {
                         HStack {
@@ -119,7 +125,7 @@ struct AccountSettingsView: View, ItemView {
                     .padding(.horizontal)
                 }
                 .padding(.bottom)
-
+                
                 VStack(alignment: .leading, spacing: 0) {
                     HStack {
                         Text(strings.gender)
@@ -127,13 +133,23 @@ struct AccountSettingsView: View, ItemView {
                             .foregroundColor(Pallete.Gray.forText)
                         Spacer()
                     }
+                    
                     GenderPicker(selectedGender: $accountSettingsViewModel.selectedGender)
                         .padding([.top, .horizontal])
                 }
+                
                 CustomButton(title: strings.saveChanges, buttonType: .filledGray) {
+                    userManager.persistImageToStorage(image: accountSettingsViewModel.image)
+                    
+                    userManager.storeUserInformation (
+                        dob: accountSettingsViewModel.selectedBirthday,
+                        gender: accountSettingsViewModel.selectedGender
+                    )
+                    
+                    accountSettingsViewModel.saveUserData()
+                    
                     listener?.pop()
                 }
-                
             }
         }
         .blur(radius: accountSettingsViewModel.isChoosingCameraMode ? 5 : 0)
@@ -153,6 +169,7 @@ struct AccountSettingsView: View, ItemView {
                                 accountSettingsViewModel.shouldShowDatePicker = false
                             }
                         }
+                    
                     DatePicker("", selection: $accountSettingsViewModel.selectedBirthday, in: ...Date(), displayedComponents: .date)
                         .padding()
                         .datePickerStyle(.graphical)
@@ -162,7 +179,6 @@ struct AccountSettingsView: View, ItemView {
                         .padding()
                 }
             }
-            
         }
         .overlay {
             if accountSettingsViewModel.isChoosingCameraMode {
@@ -174,7 +190,7 @@ struct AccountSettingsView: View, ItemView {
                                 accountSettingsViewModel.isChoosingCameraMode = false
                             }
                         }
-
+                    
                     CustomAlert { index in
                         switch index {
                         case 0:
@@ -183,6 +199,7 @@ struct AccountSettingsView: View, ItemView {
                             accountSettingsViewModel.presentLibraryPicker()
                         case 2:
                             accountSettingsViewModel.image = nil
+                            userManager.imageUrl = nil
                         default:
                             break
                         }
@@ -214,11 +231,15 @@ struct GenderPicker: View {
                         return Localizable.AccountSettings.female
                     }
                 }
+                
                 HStack {
                     Image(selectedGender == gender ? Images.Icon.checkFill.rawValue : Images.Icon.check.rawValue)
+                    
                     Spacer()
+                    
                     Text(genderText)
                         .font(.system(size: 16, weight: .semibold))
+                    
                     Spacer()
                 }
                 .padding(.vertical, 10)
@@ -244,7 +265,7 @@ struct GenderPicker: View {
     }
 }
 
-enum SelectedGender: CaseIterable {
+enum SelectedGender: String, CaseIterable {
     case male
     case female
 }

@@ -7,6 +7,7 @@ import SwiftUI
 struct NavigationBars: View {
 
     var atView: NavigationBarPlacement
+    var screenTitle: String?
     var leadingButtonAction: () -> Void
     var trailingButtonAction: (() -> Void)?
 
@@ -27,7 +28,7 @@ struct NavigationBars: View {
         case .createPlaylist:
             return "Create Playlist"
         case .favorites:
-            return "Favorites"
+            return self.screenTitle ?? "Favorites"
         case .chageCover:
             return "Change Cover"
         }

@@ -8,7 +8,8 @@ import PodcastIndexKit
 
 @MainActor
 final class FavoritesViewModel: ObservableObject {
-
+  
+    @Published var podcasts: [Podcast]?
     @Published var favoriteNetworkPodcasts: [Podcast] = []
 
     private var podcastManager: PodcastManager?
@@ -25,6 +26,16 @@ final class FavoritesViewModel: ObservableObject {
     func searchFavoritePodcastsFromIndexKit() {
         Task {
             await searchFavoritePodcasts()
+        }
+    }
+  
+    func getPodcastsFromCategory(category: String) {
+        Task {
+            if let data = await podcastManager?.performTrendingPodcasts(max: 10, category: category) {
+                DispatchQueue.main.async { [weak self] in
+                    self?.podcasts = data
+                }
+            }
         }
     }
 
@@ -57,5 +68,4 @@ final class FavoritesViewModel: ObservableObject {
             return nil
         }
     }
-
 }

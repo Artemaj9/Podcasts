@@ -7,6 +7,10 @@ import PodcastIndexKit
 
 struct FavoritesDetailView: View, ItemView {
     
+    // MARK: - Property wrapper
+    
+    @ObservedObject var viewModel = FavoritesViewModel()
+    
     // MARK: - Internal Properties
     
     let screenTitle: String
@@ -14,27 +18,43 @@ struct FavoritesDetailView: View, ItemView {
     
     var listener: CustomNavigationContainer?
     
+    var podcastData: [Podcast]? {
+        if dataForScreen == nil {
+            viewModel.getPodcastsFromCategory(category: screenTitle)
+            return viewModel.podcasts
+        } else {
+            return dataForScreen
+        }
+    }
+    
     // MARK: - View's body
     
     var body: some View {
-        ScrollView {
-            
-            if let dataForScreen {
-                ForEach(dataForScreen, id: \.id) { podcast in
-                    BlankWideCell(
-                        mainTitle: podcast.title,
-                        secondTitle: podcast.author,
-                        image: podcast.image
-                    )
-                    .padding([.top, .leading])
-                    .onTapGesture {
-                        listener?.push(view: ChannelView(screenTitle: podcast.title ?? "", dataForScreen: podcast))
+        ScrollView() {
+            if let podcasts = podcastData {
+                ForEach(podcasts, id: \.id) { podcast in
+                    Button {
+                        // TODO: replace string with localizable string
+                        let screenTitle = "Channel"
+                        let dataForSendToScreen = podcast
+                        listener?.push(view: ChannelView(
+                            screenTitle: screenTitle,
+                            dataForScreen: dataForSendToScreen))
+                    } label: {
+                        BlankWideCell(
+                            mainTitle: podcast.title,
+                            secondTitle: podcast.author,
+                            image: podcast.image
+                        )
+                        .padding([.top, .leading])
                     }
                 }
+            } else {
+                // TODO: add skeleton
             }
         }
         .makeCustomNavBar {
-            NavigationBars(atView: .favorites) {
+            NavigationBars(atView: .favorites, screenTitle: screenTitle) {
                 listener?.pop()
             }
         }
