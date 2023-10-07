@@ -15,7 +15,7 @@ struct SearchBarView: View {
     
     let placeholder: String
     let backgroundColor: Color
-    var searchFunc: () -> Void
+    var keyboardSearch: () -> Void
 
     var body: some View {
         HStack {
@@ -51,7 +51,7 @@ struct SearchBarView: View {
                 .submitLabel(.search)
                 .onSubmit {
                     if !searchText.isEmpty {
-                        searchFunc()
+                        keyboardSearch()
                     }
                 }
         }
