@@ -63,7 +63,6 @@ final class PlayerViewModel: ObservableObject {
     }
     
     var durationFormatter: DateComponentsFormatter {
-
         let durationFormatter = DateComponentsFormatter()
         durationFormatter.allowedUnits = [.minute, .second]
         durationFormatter.unitsStyle = .positional

@@ -20,7 +20,6 @@ struct NowPlayingView: View, ItemView {
     
     let podcastIndex: Int
     let dataForSend: [Episode]
-//    let mockEpisodesData = mokePodcastData
     
     var body: some View {
         ZStack {
@@ -67,12 +66,12 @@ struct NowPlayingView: View, ItemView {
                                             .opacity(viewModel.getScrollOpacity(geometry: geometry))
                                             .scaleEffect(y:viewModel.getScrollOpacity(geometry: geometry))
                                             .gesture(DragGesture(minimumDistance: 1, coordinateSpace: .global)
-                                                .onChanged{ value in
+                                                .onChanged { value in
                                                     withAnimation(.spring()) {
                                                         viewModel.currentDragOffsetX = value.translation.width
                                                     }
                                                 }
-                                                .onEnded {_ in
+                                                .onEnded { _ in
                                                     let idToScroll = viewModel.scrollto(
                                                         id: index,
                                                         offsetX: viewModel.currentDragOffsetX
