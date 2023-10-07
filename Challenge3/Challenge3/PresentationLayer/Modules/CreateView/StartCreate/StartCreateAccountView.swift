@@ -95,7 +95,7 @@ struct StartCreateAccountView: View, ItemView {
         Task {
             if await authViewModel.signInWithGoogle() {
                 splashViewModel.isNotLoggedIn = true
-                listener?.push(view: HomePageView())
+                listener?.push(view: MainTabBar())
             }
         }
     }

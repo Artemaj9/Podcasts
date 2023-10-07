@@ -43,38 +43,51 @@ struct MainTabBar: View, ItemView {
             default:
                 EmptyView()
             }
-
+        }
+        .safeAreaInset(edge: .bottom) {
             if firstTabNavigationModel.isRootView && secondTabNavigationModel.isRootView {
-                HStack {
-                    Spacer()
-                    TabBarButton(
-                        selectedTab: $selectedTab,
-                        index: 0,
-                        activeIconName: Images.TabBar.homeFill.rawValue,
-                        inactiveIconName: Images.TabBar.home.rawValue
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .frame(height: 68)
+                    .background(.white)
+                    .cornerRadius(20)
+                    .shadow(
+                        color: Color(red: 0.21, green: 0.22, blue: 0.3).opacity(0.08),
+                        radius: 24
                     )
-                    TabBarButton(
-                        selectedTab: $selectedTab,
-                        index: 1,
-                        activeIconName: Images.TabBar.settingFill.rawValue,
-                        inactiveIconName: Images.TabBar.setting.rawValue
-                    )
-                    TabBarButton(
-                        selectedTab: $selectedTab,
-                        index: 2,
-                        activeIconName: Images.TabBar.bookmarkFill.rawValue,
-                        inactiveIconName: Images.TabBar.bookmark.rawValue
-                    )
-                    TabBarButton(
-                        selectedTab: $selectedTab,
-                        index: 3,
-                        activeIconName: Images.TabBar.settingFill.rawValue,
-                        inactiveIconName: Images.TabBar.setting.rawValue
-                    )
-                    Spacer()
-                }
-                .frame(height: 50)
-                .background(Pallete.Gray.forNext)
+                    .padding(.horizontal, 24)
+                    .overlay {
+                        HStack {
+                            Spacer()
+                            TabBarButton(
+                                selectedTab: $selectedTab,
+                                index: 0,
+                                activeIconName: Images.TabBar.homeFill.rawValue,
+                                inactiveIconName: Images.TabBar.home.rawValue
+                            )
+                            TabBarButton(
+                                selectedTab: $selectedTab,
+                                index: 1,
+                                activeIconName: Images.TabBar.searchFill.rawValue,
+                                inactiveIconName: Images.TabBar.search.rawValue
+                            )
+                            TabBarButton(
+                                selectedTab: $selectedTab,
+                                index: 2,
+                                activeIconName: Images.TabBar.bookmarkFill.rawValue,
+                                inactiveIconName: Images.TabBar.bookmark.rawValue
+                            )
+                            TabBarButton(
+                                selectedTab: $selectedTab,
+                                index: 3,
+                                activeIconName: Images.TabBar.settingFill.rawValue,
+                                inactiveIconName: Images.TabBar.setting.rawValue
+                            )
+                            Spacer()
+                        }
+                        .padding(.horizontal, 31)
+                    }
+
             }
         }
     }
@@ -90,3 +103,4 @@ struct MainTabBar_Previews: PreviewProvider {
             .environmentObject(ProfileSettingsViewModel())
     }
 }
+

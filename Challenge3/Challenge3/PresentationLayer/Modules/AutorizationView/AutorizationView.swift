@@ -29,7 +29,6 @@ struct AuthorizationView: View, ItemView {
             
             LoginTextField(inputText: $authViewModel.email, title: strings.enterLogin, placeHolder: strings.login, withHideOption: false, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
             
-            
             LoginTextField(inputText: $authViewModel.password, isSecure: true, title: strings.enterPassword, placeHolder: strings.password, withHideOption: true, withBorder: false, cornerRadius: 12, backgroundColor: Pallete.Gray.forTextFields)
             
             Text(authViewModel.errorMessage)
@@ -86,7 +85,7 @@ struct AuthorizationView: View, ItemView {
         Task {
             if await authViewModel.signInWithEmailPassword() {
                 splashViewModel.isNotLoggedIn = true
-                listener?.push(view: HomePageView())
+                listener?.push(view: MainTabBar())
             }
         }
     }
@@ -94,12 +93,11 @@ struct AuthorizationView: View, ItemView {
     func signInWithGoogle() {
         Task {
             if await authViewModel.signInWithGoogle() {
-                listener?.push(view: HomePageView())
+                listener?.push(view: MainTabBar())
             }
         }
     }
 }
-
 
 struct AuthorizationView_Previews: PreviewProvider {
     static var previews: some View {
