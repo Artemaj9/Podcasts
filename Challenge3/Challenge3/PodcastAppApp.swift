@@ -5,6 +5,7 @@
 import SwiftUI
 import FirebaseCore
 import PodcastIndexKit
+import AVFoundation
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
@@ -20,9 +21,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct Challenge3App: App {
     
-    // MARK: - Property Wrapper
+    // MARK: - Property Wrappers
+    
     @StateObject var navigationViewModel = CustomNavigationViewModel()
-
+    
     @StateObject var splashViewModel = SplashViewModel()
     @StateObject var favoritesViewModel = FavoritesViewModel()
     @StateObject var homePageViewModel = HomePageViewModel()

@@ -5,6 +5,9 @@
 import SwiftUI
 
 struct PlayControl: View {
+    @Binding var isPlaying: Bool
+    @Binding var isRandom: Bool
+    @Binding var isRepeated: Bool
     
     // MARK: - Internal Properties
     var shuffleAction:  () -> Void
@@ -17,15 +20,16 @@ struct PlayControl: View {
     var body: some View {
         Group{
             HStack(){
-                
-                Spacer()
-                
-                Button{
-                    shuffleAction()
-                } label: {
-                    Image(Images.AudioPlaying.shuffle.rawValue)
+                Group {
+                    Spacer()
+                    
+                    Button{
+                          shuffleAction()
+                    } label: {
+                        Image(Images.AudioPlaying.shuffle.rawValue)
+                            .foregroundColor(isRandom ? Pallete.Other.purple : Pallete.Other.blue)
+                    }
                 }
-                
                 Spacer()
                 
                 Button{
@@ -39,7 +43,7 @@ struct PlayControl: View {
                 Button{
                     playAction()
                 } label: {
-                    Image(Images.AudioPlaying.playFill.rawValue)
+                    Image(isPlaying ? Images.AudioPlaying.playFill.rawValue : Images.AudioPlaying.play.rawValue)
                 }
                 
                 Spacer()
@@ -56,7 +60,10 @@ struct PlayControl: View {
                     repeatAction()
                 } label: {
                     Image(Images.AudioPlaying.repeatTrack.rawValue)
+                        .foregroundColor(isRepeated ? Pallete.Other.purple : Pallete.Other.blue)
                 }
+                
+                Spacer()
             }
         }
     }
