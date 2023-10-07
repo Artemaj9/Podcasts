@@ -59,7 +59,7 @@ struct OnboardingView: View, ItemView {
                     .background(Pallete.Blue.forAccent)
                     .cornerRadius(16)
                     .onTapGesture {
-                        listener?.push(view: HomePageView())
+                        listener?.push(view: MainTabBar())
                     }
                 Spacer()
             } else {
@@ -67,7 +67,7 @@ struct OnboardingView: View, ItemView {
                     Text(strings.skip)
                         .font(.system(size: 17, weight: .semibold))
                         .onTapGesture {
-                            listener?.push(view: HomePageView())
+                            listener?.push(view: MainTabBar())
                         }
                     Spacer()
                     Text(strings.next)

@@ -86,7 +86,7 @@ struct AuthorizationView: View, ItemView {
         Task {
             if await viewModel.signInWithEmailPassword() {
                 splashViewModel.isNotLoggedIn = true 
-                listener?.push(view: HomePageView())
+                listener?.push(view: MainTabBar())
             }
         }
     }
@@ -94,7 +94,7 @@ struct AuthorizationView: View, ItemView {
     func signInWithGoogle() {
         Task {
             if await viewModel.signInWithGoogle() {
-                listener?.push(view: HomePageView())
+                listener?.push(view: MainTabBar())
             }
         }
     }
