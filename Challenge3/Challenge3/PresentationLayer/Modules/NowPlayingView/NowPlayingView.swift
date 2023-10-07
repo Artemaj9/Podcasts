@@ -3,37 +3,50 @@
 //
 
 import SwiftUI
+import PodcastIndexKit
 import AVFoundation
+import Kingfisher
 
 struct NowPlayingView: View, ItemView {
     var listener: CustomNavigationContainer?
     
-    @StateObject var vm  = NowPlayingViewModel()
-    @StateObject var player = Player(avPlayer: AVPlayer(url: URL(string: "https://samplelib.com/lib/preview/mp3/sample-15s.mp3")!))
-    @State var track = false
-    let url = "https://file-examples.com/storage/feaade38c1651bd01984236/2017/11/file_example_MP3_5MG.mp3"
-    
-    let anotherUrl = "https://traffic.libsyn.com/saskapriest/homily-bishopmark-20231001.mp3"
+    @ObservedObject var player = PlayerViewModel.shared
+    @EnvironmentObject var viewModel: NowPlayingViewModel
     
     @State var opacity: Double = 1
-    @State var currentBackground = 0
-    
     
     @State var startingOffsetX: CGFloat = UIScreen.main.bounds.width * 0
     @State var endingOffsetX: CGFloat = 0
     
-    let array = ["avatar","avatar","avatar","avatar", "avatar","avatar","avatar","avatar"]
+    let podcastIndex: Int
+    let dataForSend: [Episode]
+//    let mockEpisodesData = mokePodcastData
     
-var body: some View {
+    var body: some View {
         ZStack {
-            GeometryReader {
-                geo in
-                Image(array[currentBackground])
-                    .resizable()
-                    .scaledToFill()
-                    .scaleEffect(2)
-                    .blur(radius: 50)
-                    .animation(.easeIn(duration: 1), value: currentBackground)
+            GeometryReader { geo in
+                let playerIndex = player.currentEpisodeIndex
+                
+                if let imageUrl = player.episodePlaylist?[playerIndex].feedImage {
+                    KFImage(URL(string: imageUrl))
+                        .resizable()
+                        .scaledToFill()
+                        .scaleEffect(2)
+                        .blur(radius: 100)
+                        .animation(
+                            .easeIn(duration: 1),
+                            value: viewModel.currentBackground
+                        )
+                } else {
+                    Image(Images.DefaultView.avatar.rawValue)
+                        .resizable()
+                        .scaledToFill()
+                        .scaleEffect(2)
+                        .blur(radius: 50)
+                        .animation(
+                            .easeIn(duration: 1),
+                            value: viewModel.currentBackground)
+                }
             }
             .ignoresSafeArea()
             
@@ -44,109 +57,194 @@ var body: some View {
                             Color.clear
                                 .frame(width: (UIScreen.main.bounds.size.width/8))
                             
-                            ForEach(Array(0..<7), id: \.self) { id in
-                                GeometryReader { geometry in
-                                    ZStack(alignment: .center) {
-                                        Image(String(array[id]))
-                                            .resizable()
-                                            .scaledToFit()
-                                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                                            .padding(.horizontal, 4)
+                            if let playlist = player.episodePlaylist {
+                                ForEach(playlist.indices, id: \.self) { index in
+                                    GeometryReader { geometry in
+                                        let episode = playlist[index]
+                                        
+                                        EpisodeImageView(episode: episode)
                                             .frame(width: UIScreen.main.bounds.size.width * 0.7)
-                                    }
-                                    .frame(width: UIScreen.main.bounds.size.width * 0.7)
-                                    .opacity(vm.getScrollOpacity(geometry: geometry))
-                                    .scaleEffect(y:vm.getScrollOpacity(geometry: geometry))
-                                    .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
-                                        .onChanged{ value in
-                                            withAnimation(.spring()) {
-                                                vm.currentDragOffsetX = value.translation.width
-                                            }
-                                        }
-                                        .onEnded({_ in
-                                            currentBackground = vm.scrollto(id: id, offsetX:  vm.currentDragOffsetX)
-                                            withAnimation {
-                                                scrollProxy.scrollTo(vm.scrollto(id: id, offsetX: vm.currentDragOffsetX), anchor: .center)
-                                                vm.scrollFlag = vm.scrollFlag(id: id, offsetX: vm.currentDragOffsetX)
-                                                if vm.scrollFlag {
-                                                    vm.setUpTimer()
-                                                } else {
-                                                    vm.currentDragOffsetX = 0
+                                            .opacity(viewModel.getScrollOpacity(geometry: geometry))
+                                            .scaleEffect(y:viewModel.getScrollOpacity(geometry: geometry))
+                                            .gesture(DragGesture(minimumDistance: 1, coordinateSpace: .global)
+                                                .onChanged{ value in
+                                                    withAnimation(.spring()) {
+                                                        viewModel.currentDragOffsetX = value.translation.width
+                                                    }
                                                 }
-                                            }
-                                            
-                                        }))
+                                                .onEnded {_ in
+                                                    let idToScroll = viewModel.scrollto(
+                                                        id: index,
+                                                        offsetX: viewModel.currentDragOffsetX
+                                                    )
+                                                    viewModel.currentBackground = idToScroll
+                                                    
+                                                    withAnimation {
+                                                        scrollProxy.scrollTo(
+                                                            idToScroll,
+                                                            anchor: .center
+                                                        )
+                                                        
+                                                        viewModel.scrollFlag = viewModel.scrollFlag(
+                                                            id: index, offsetX: viewModel.currentDragOffsetX
+                                                        )
+                                                        
+                                                        if viewModel.scrollFlag {
+                                                            viewModel.setUpTimer()
+                                                        } else {
+                                                            viewModel.currentDragOffsetX = 0
+                                                        }
+                                                    }
+                                                }
+                                            )
+                                    }
+                                    .frame(width: 280, height: 240)
                                 }
-                                .frame(width: 280, height: 240)
                             }
-
+                            
                             Color.clear
                                 .frame(width: (UIScreen.main.bounds.size.width - 70) / 2.0)
                         }
-                        .padding(.bottom, -20)
+                    }
+                    .onReceive(NotificationCenter.default.publisher(
+                        for: Notification.Name("ScrollToEpisode"))
+                    ) { notification in
+                        if let episodeIndex = notification.object as? Int {
+                            withAnimation {
+                                scrollProxy.scrollTo(episodeIndex, anchor: .center)
+                            }
+                        }
+                    }
+                    .onReceive(NotificationCenter.default.publisher(
+                        for: Notification.Name("ScrollToNextEpisode"))
+                    ) { notification in
+                        if let episodeIndex = notification.object as? Int {
+                            withAnimation {
+                                scrollProxy.scrollTo(episodeIndex, anchor: .center)
+                            }
+                        }
                     }
                 }
+                
                 VStack {
-                    Text("Track")
+                    Text(player.episodeTitle)
                         .font(.title)
                         .foregroundColor(Pallete.Other.deepPurpleText)
-                    Text("Author")
+                    
+                    Text("\(player.episodeNumber)")
                         .font(.body)
                         .foregroundColor(Pallete.Other.deepPurpleText)
                 }
                 .offset(y: -40)
-                if self.player.itemDuration > 0 {
-                    VStack(alignment: .trailing) {
-                        Slider(value: self.$player.displayTime, in: (0...self.player.itemDuration), onEditingChanged: {
-                            (scrubStarted) in
-                            if scrubStarted {
-                                self.player.scrubState = .scrubStarted
-                            } else {
-                                self.player.scrubState = .scrubEnded(self.player.displayTime)
+                
+                if let durationTime = player.currentEpisode?.duration, durationTime > 0 {
+                    HStack() {
+                        Spacer()
+                        
+                        Text(player.durationFormatter.string(
+                            from: player.displayTime) ?? ""
+                        )
+                        
+                        Slider(
+                            value: $player.displayTime,
+                            in: (0...Double(durationTime)),
+                            onEditingChanged: { (scrubStarted) in
+                                if scrubStarted {
+                                    player.scrubState = .scrubStarted
+                                } else {
+                                    player.scrubState = .scrubEnded(player.displayTime)
+                                }
                             }
-                        })
-                        HStack {
-                            Text(vm.durationFormatter.string(from: self.player.displayTime) ?? "")
-                            Text("/")
-                            Text(vm.durationFormatter.string(from: self.player.itemDuration) ?? "")
-                        }
-                        .foregroundColor(Pallete.Other.deepPurpleText)
-                        .opacity(0.8)
+                        )
+                        
+                        Text(player.durationFormatter.string(
+                            from: Double(durationTime)) ?? ""
+                        )
                     }
+                    .foregroundColor(Pallete.Other.deepPurpleText)
                     .padding()
                 }
                 
-                Button(action: {
-                    switch self.player.timeControlStatus {
-                    case .paused:
-                        self.player.play()
-                    case .waitingToPlayAtSpecifiedRate:
-                        self.player.pause()
-                    case .playing:
-                        self.player.pause()
-                    @unknown default:
-                        fatalError()
+                PlayControl(
+                    isPlaying: $player.isPlaying,
+                    isRandom: $player.isRandom,
+                    isRepeated: $player.isRandom,
+                    shuffleAction: {
+                        player.shufflePlaylist()
+                        viewModel.sendScrollToEpisodeNotification(episodeIndex: 0)
+                    },
+                    previousAction: {
+                        let prevIndex = player.currentEpisodeIndex - 1
+                        
+                        if prevIndex >= 0 {
+                            player.setCurrentEpisode(index: prevIndex)
+                            viewModel.sendScrollToEpisodeNotification(episodeIndex: prevIndex)
+                        }
+                    },
+                    playAction: {
+                        player.isPlaying ?
+                        player.pause() :
+                        player.play()
+                    },
+                    nextAction: {
+                        let nextIndex = player.currentEpisodeIndex + 1
+                        
+                        if player.isRepeated {
+                            if nextIndex < player.episodePlaylist?.count ?? 0 {
+                                player.setCurrentEpisode(index: nextIndex)
+                                viewModel.sendScrollToEpisodeNotification(episodeIndex: nextIndex)
+                            } else {
+                                player.setCurrentEpisode(index: 0)
+                                viewModel.sendScrollToEpisodeNotification(episodeIndex: 0)
+                            }
+                        }
+                        else {
+                            if nextIndex < player.episodePlaylist?.count ?? 0 {
+                                player.setCurrentEpisode(index: nextIndex)
+                                viewModel.sendScrollToEpisodeNotification(episodeIndex: nextIndex)
+                            }
+                        }
+                    },
+                    repeatAction: {
+                        player.repeatPlaylist()
                     }
-                }) {
-                    Image(systemName: self.player.timeControlStatus == .paused ? "play" : "pause")
-                        .imageScale(.large)
-                        .scaleEffect(1.5)
-                        .frame(width: 64, height: 64)
-                }
-                    .padding(.vertical, 30)
-                PlayControl()
-                    .padding()
-                Button("Change track") {
-                    track.toggle()
-                    player.avPlayer.replaceCurrentItem(with: AVPlayerItem(url: track ? URL(string: url)! : URL(string: anotherUrl)!))
-                }
+                )
+                .padding(.vertical, 30)
             }
+        }
+        .onAppear {
+            // TODO: add logic for adding data to playlist when it's empty
+            player.currentEpisodeIndex = podcastIndex
+            player.episodePlaylist = dataForSend
+            if !player.isPlaying {
+                player.play()
+            }
+        }
+        .onDisappear {
+            // TODO: add logic for clearing current episode and playlist if playing is paused
+            viewModel.cancellables.removeAll()
         }
     }
 }
-  
-struct NowPlayingView_Previews: PreviewProvider {
-    static var previews: some View {
-        NowPlayingView()
+
+struct EpisodeImageView: View {
+    let episode: Episode
+    
+    var body: some View {
+        if let imageURL = episode.feedImage {
+            KFImage(URL(string: imageURL))
+                .resizable()
+                .scaledToFit()
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .padding(.horizontal, 4)
+                .frame(width: UIScreen.main.bounds.size.width * 0.7)
+        } else {
+            Image(Images.DefaultView.avatar.rawValue)
+                .resizable()
+                .scaledToFit()
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .padding(.horizontal, 4)
+                .frame(width: UIScreen.main.bounds.size.width * 0.7)
+        }
     }
 }

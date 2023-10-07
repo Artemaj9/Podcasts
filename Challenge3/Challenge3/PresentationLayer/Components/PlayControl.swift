@@ -5,13 +5,16 @@
 import SwiftUI
 
 struct PlayControl: View {
+    @Binding var isPlaying: Bool
+    @Binding var isRandom: Bool
+    @Binding var isRepeated: Bool
     
     // MARK: - Internal Properties
-//    var shuffleAction:  () -> Void
-//    var previousAction:  () -> Void
-//    var playAction:  () -> Void
-//    var nextAction:  () -> Void
-//    var repeatAction:  () -> Void
+    var shuffleAction:  () -> Void
+    var previousAction:  () -> Void
+    var playAction:  () -> Void
+    var nextAction:  () -> Void
+    var repeatAction:  () -> Void
     
     // MARK: - Body
     var body: some View {
@@ -21,15 +24,16 @@ struct PlayControl: View {
                     Spacer()
                     
                     Button{
-                        //  shuffleAction()
+                          shuffleAction()
                     } label: {
                         Image(Images.AudioPlaying.shuffle.rawValue)
+                            .foregroundColor(isRandom ? Pallete.Other.purple : Pallete.Other.blue)
                     }
                 }
                 Spacer()
                 
                 Button{
-                  //  previousAction()
+                    previousAction()
                 } label: {
                     Image(Images.AudioPlaying.priviousFill.rawValue)
                 }
@@ -37,15 +41,15 @@ struct PlayControl: View {
                 Spacer()
                 
                 Button{
-                  //  playAction()
+                    playAction()
                 } label: {
-                    Image(Images.AudioPlaying.playFill.rawValue)
+                    Image(isPlaying ? Images.AudioPlaying.playFill.rawValue : Images.AudioPlaying.play.rawValue)
                 }
                 
                 Spacer()
                 
                 Button{
-                  //  nextAction()
+                    nextAction()
                 } label: {
                     Image(Images.AudioPlaying.nextFill.rawValue)
                 }
@@ -53,9 +57,10 @@ struct PlayControl: View {
                 Spacer()
                 
                 Button{
-                //    repeatAction()
+                    repeatAction()
                 } label: {
                     Image(Images.AudioPlaying.repeatTrack.rawValue)
+                        .foregroundColor(isRepeated ? Pallete.Other.purple : Pallete.Other.blue)
                 }
                 
                 Spacer()
