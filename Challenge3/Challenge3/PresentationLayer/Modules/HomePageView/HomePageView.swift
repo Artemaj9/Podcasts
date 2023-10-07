@@ -9,16 +9,17 @@ struct HomePageView: View, ItemView {
     
     // MARK: - Property Wrapper
     
-    @ObservedObject var viewModel = HomePageViewModel()
+    @EnvironmentObject var viewModel: HomePageViewModel
+    @EnvironmentObject var favoritesViewModel: FavoritesViewModel
     
     // MARK: - Internal Properties
     
     var listener: CustomNavigationContainer?
     
-    // MARK: - Internal Properties
-    
     var strings = Localizable.HomePage.self
-    
+
+    // MARK: - Body
+
     var body: some View {
         VStack {
             Button {
@@ -48,8 +49,7 @@ struct HomePageView: View, ItemView {
                         
                         Button {
                             let dataForSendToScreen = viewModel.newPodcasts
-                            // TODO: add localizable string
-                            let screenTitle = "Favorites"
+                            let screenTitle = strings.rndEpisodes
                             listener?.push(view: FavoritesDetailView(screenTitle: screenTitle, dataForScreen: dataForSendToScreen))
                         } label: {
                             Text(strings.seeAll)
@@ -128,26 +128,32 @@ struct HomePageView: View, ItemView {
                             if let podcastData = viewModel.podcastFromCategory {
                                 ForEach(podcastData.indices) { index in
                                     Button {
-                                        // TODO: add localizable string
                                         let screenTitle = "Channel"
                                         let dataForSendToScreen = viewModel.podcastFromCategory![index]
-                                        // TODO: add function for going to detail page
                                         listener?.push(view: ChannelView(
                                             screenTitle: screenTitle,
                                             dataForScreen: dataForSendToScreen)
                                         )
+
                                     } label: {
+                                        let nonBindingData = viewModel.convertDataToCellData(podcast: viewModel.podcastFromCategory![index])
                                         let bindingData = Binding<CellData>(
                                             get: { return viewModel.convertDataToCellData(podcast: viewModel.podcastFromCategory![index]) },
-                                            set: {_ in 
-                                                // TODO: add function to save in coredata
+                                            set: {
+                                                if $0.iconState {
+                                                    viewModel.addFavorite(podcastId: $0.id ?? 0)
+                                                } else {
+                                                    viewModel.removeFavorite(podcastId: $0.id ?? 0)
+                                                }
+                                                viewModel.fetchFavoriteData()
+                                                favoritesViewModel.searchFavoritePodcastsFromIndexKit()
                                             }
                                         )
                                         FilledWideCell(data: bindingData)
                                     }
                                 }
                             } else {
-                                // TODO: add skeleton
+                                 // TODO: add skeleton
                             }
                         }
                         .padding(.horizontal, 32)
@@ -161,5 +167,7 @@ struct HomePageView: View, ItemView {
 struct HomePageView_Previews: PreviewProvider {
     static var previews: some View {
         HomePageView()
+            .environmentObject(HomePageViewModel())
+            .environmentObject(FavoritesViewModel())
     }
 }

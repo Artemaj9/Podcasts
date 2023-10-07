@@ -6,7 +6,7 @@ import AVFoundation
 import CoreImage
 import CoreImage.CIFilterBuiltins
 import SwiftUI
-
+import FirebaseAuth
 
 final class AccountSettingsViewModel: ObservableObject {
     @Published var selectedGender: SelectedGender = .male
@@ -19,17 +19,18 @@ final class AccountSettingsViewModel: ObservableObject {
     @Published var isWarningPresented = false
     @Published var isShowingImagePicker = false
     @Published var isChoosingCameraMode = false
-
+    
     //MARK: - Private properties
-
+    
     private (set) var cameraMode: UIImagePickerController.SourceType = .photoLibrary
-
+    
     //MARK: - Internal functions
-
+    
     func saveUserData() {
-        // to do firebase
+        changeDisplayName()
+        changeUserEmail()
     }
-
+    
     func presentCamera() {
         cameraMode = .camera
         switch AVCaptureDevice.authorizationStatus(for: .video) {
@@ -37,7 +38,7 @@ final class AccountSettingsViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.isShowingImagePicker = true
             }
-
+            
         case .denied, .restricted:
             DispatchQueue.main.async { [weak self] in
                 guard let self else { return }
@@ -45,7 +46,7 @@ final class AccountSettingsViewModel: ObservableObject {
                 self.isShowingImagePicker = false
                 self.isWarningPresented = true
             }
-
+            
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
                 if granted {
@@ -58,27 +59,41 @@ final class AccountSettingsViewModel: ObservableObject {
                     }
                 }
             }
-
+            
         @unknown default:
             assertionFailure("Unhandled AVCaptureDevice authorization status")
         }
     }
-
+    
     func presentLibraryPicker() {
         cameraMode = .photoLibrary
         isShowingImagePicker = true
     }
-
+    
     func openSettings() {
         if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
             UIApplication.shared.open(settingsUrl, options: [:])
         }
     }
-
+    
     //MARK: - Private functions
+    
+    private func changeUserEmail() {
+        Auth.auth().currentUser?.updateEmail(to: texts[2]) { error in
+            print(error?.localizedDescription ?? "")
+        }
+    }
+    
+    private func changeDisplayName() {
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = "\(texts[0]) \(texts[1])"
+        changeRequest?.commitChanges{ error in
+            print(error?.localizedDescription ?? "")
+        }
+    }
 
     private func showCameraWarning() {
-        warningMessage = "eror"
+        warningMessage = "error"
         isWarningPresented = true
     }
 }
