@@ -36,7 +36,7 @@ struct NavigationBars: View {
     private var leadingContentView: some View {
         Group {
             switch atView {
-            case .signUp, .channel, .nowPlaying, .accountSetting, .createPlaylist, .favorites, .chageCover:
+            case .signUp, .channel, .nowPlaying, .accountSetting, .createPlaylist, .chageCover:
                 BackButton(isReverse: false, padding: 0) {
                     leadingButtonAction()
                 }
@@ -59,7 +59,7 @@ struct NavigationBars: View {
                     Image(Images.Icon.playlist.rawValue)
                 }
 
-            case .playlist, .createPlaylist, .favorites:
+            case .playlist, .createPlaylist:
                 Button {
                     if let trailingButtonAction {
                         trailingButtonAction()

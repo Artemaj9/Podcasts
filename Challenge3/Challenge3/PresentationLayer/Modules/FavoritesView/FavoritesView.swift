@@ -13,79 +13,10 @@ struct FavoritesView: View, ItemView {
 
     var listener: CustomNavigationContainer?
     
-    let playlists: [Playlist] = [
-        Playlist(mainTitle: "Tuhan mengapa dia berbeda", secondTitle: "15 Eps"),
-        Playlist(mainTitle: "Another Playlist", secondTitle: "10 Eps")
-    ]
-    
     //MARK: - View's Body
     
     var body: some View {
-        VStack {
-            
-            HStack {
-                Text(Localizable.Favorite.favorites)
-                
-                Spacer ()
-                
-                Button {
-                    listener?.push(view: FavoritesDetailView(screenTitle: "Favorites", dataForScreen: favoritesViewModel.favoriteNetworkPodcasts.reversed()))
-                } label: {
-                    Text(Localizable.Favorite.seeAll)
-                        .foregroundColor(Pallete.Gray.forText)
-                }
-            }
-            .padding(.horizontal)
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 20) {
-                    ForEach(favoritesViewModel.favoriteNetworkPodcasts.reversed(), id: \.id) { podcast in
-                        FavoritesCell(
-                            image: podcast.image,
-                            firstText: podcast.title,
-                            secondText: podcast.author
-                        )
-                        .onTapGesture {
-                            listener?.push(view: ChannelView(screenTitle: podcast.title ?? "", dataForScreen: podcast))
-                        }
-                    }
-                }
-                .padding(.horizontal)
-            }
-            
-            HStack() {
-                Text(Localizable.Favorite.yourPlaylist)
-                Spacer()
-            }
-            .padding([.top, .leading])
-            
-            
-            HStack {
-                CreateButton {
-                    listener?.push(view: CreatePlaylistView())
-                }
-                Spacer()
-            }
-            .padding([.top, .leading])
-            
-            ScrollView() {
-                
-                ForEach(playlists, id: \.mainTitle) { playlist in
-                    BlankWideCell(
-                        mainTitle: playlist.mainTitle,
-                        secondTitle: playlist.secondTitle
-                    )
-                    .padding([.top, .leading])
-                    .onTapGesture {
-                        // TODO: add localizable string
-                        listener?.push(view: ChannelView(screenTitle: "Channel", dataForScreen: nil))
-                    }
-                }
-            }
-        }
-        .makeCustomNavBar {
-            NavigationBars(atView: .playlist) { }
-        }
+        FavoritesDetailView(screenTitle: "Favorites", dataForScreen: favoritesViewModel.favoriteNetworkPodcasts, listener: listener)
     }
 }
 
