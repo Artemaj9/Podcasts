@@ -58,6 +58,7 @@ struct Challenge3App: App {
             .environmentObject(createWithEmailViewModel)
             .environmentObject(authorizarionViewModel)
             .environmentObject(authenticationViewModel)
+            .environment(\.managedObjectContext, FavoritesDataManager.shared.container.viewContext)
             .environmentObject(searchManager)
             .environmentObject(userManager)
         }

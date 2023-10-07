@@ -56,8 +56,6 @@ struct FavoritesDetailView: View, ItemView {
         .makeCustomNavBar {
             NavigationBars(atView: .favorites, screenTitle: screenTitle) {
                 listener?.pop()
-            } trailingButtonAction: {
-
             }
         }
     }
