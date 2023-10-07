@@ -46,9 +46,6 @@ final class PlayerViewModel: ObservableObject {
     
     @Published var timeControlStatus: AVPlayer.TimeControlStatus = .paused
     
-//    var itemDurationKVOPublisher: AnyCancellable!
-//    var timeControlStatusKVOPublisher: AnyCancellable!
-    
     var scrubState: PlayerScrubState = .reset {
         didSet {
             switch scrubState {
@@ -77,22 +74,23 @@ final class PlayerViewModel: ObservableObject {
     private var playbackTimeObserver: Any?
     
     func play() {
-        print("play button pressed")
         guard let episode = currentEpisode,
               let url = URL(string: episode.enclosureUrl ?? "") else {
             return
         }
-        print("Trying to play \(episode.title ?? "no title") with url: \(episode.enclosureUrl ?? "no url")")
         
         if player == nil {
             let playerItem = AVPlayerItem(url: url)
-            player = AVPlayer(playerItem: playerItem)
             
+            player = AVPlayer(playerItem: playerItem)
             NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: .AVPlayerItemDidPlayToEndTime, object: playerItem)
             addTimeObserver()
         } else {
             if observedTime == 0 {
+                let playerItem = AVPlayerItem(url: url)
+                
                 player?.seek(to: CMTime.zero)
+                player?.replaceCurrentItem(with: playerItem)
                 player?.play()
                 isPlaying = true
                 return
@@ -155,10 +153,10 @@ final class PlayerViewModel: ObservableObject {
     }
     
     func setCurrentEpisode(index: Int) {
-        print("Debug: index \(index)")
         guard index < episodePlaylist?.count ?? 0 else {
             return
         }
+        
         observedTime = 0
         currentEpisodeIndex = index
         currentEpisode = episodePlaylist?[currentEpisodeIndex]
@@ -185,8 +183,8 @@ final class PlayerViewModel: ObservableObject {
     }
     
     func seekToTime(seconds: Double) {
-            player?.seek(to: CMTime(seconds: seconds, preferredTimescale: 1))
-        }
+        player?.seek(to: CMTime(seconds: seconds, preferredTimescale: 1))
+    }
     
     private func selectFirstEpisode() {
         if let firstEpisode = episodePlaylist?.first {
