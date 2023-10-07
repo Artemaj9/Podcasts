@@ -154,6 +154,7 @@ struct HomePageView: View, ItemView {
                                     }
                                 }
                             } else {
+                                 // TODO: add skeleton
                             }
                         }
                         .padding(.horizontal, 32)
