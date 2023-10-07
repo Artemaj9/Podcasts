@@ -9,8 +9,9 @@ struct SearchResultView: View, ItemView {
     // MARK: - Property Wrappers
     
     @ObservedObject var searchViewModel: SearchViewModel
-    @Binding var searchText: String
+    @State var searchText: String
     @State var categoryTitles = [String]()
+    @State var isPopWhenEmpty = true
     
     // MARK: - Internal Properties
     
@@ -27,8 +28,11 @@ struct SearchResultView: View, ItemView {
                             return searchText
                         },
                         set: { (newValue) in
-                            if newValue == "" {
+                            if newValue == "" && isPopWhenEmpty {
                                 listener?.pop()
+                            }
+                            if newValue.count >= 1 && !isPopWhenEmpty {
+                                isPopWhenEmpty = true
                             }
                             if newValue.count >= 2 {
                                 searchViewModel.getPodcasts(searchText: newValue)
