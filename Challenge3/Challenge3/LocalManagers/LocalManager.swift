@@ -17,7 +17,6 @@ struct FavoritesDataManager {
     init() {
         container = NSPersistentContainer(name: "FavoritesDataModel")
         container.loadPersistentStores { description, error in
-//            print("DEBUG: database init \(description)")
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
