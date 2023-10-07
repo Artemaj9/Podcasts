@@ -17,6 +17,12 @@
 "Onboarding.skip" = "Пропустить";
 "Onboarding.next" = "Далее";
 "Onboarding.getStarted" = "Начать";
+"Onboarding.podcastApp" = "Приложение подкастов";
+"Onboarding.findYourFavorite" = "Найдите свои любимые подкасты и слушайте их прямо в приложении";
+"Onboarding.favoriteAndYour" = "Плейлисты";
+"Onboarding.youCanChoose" = "Вы можете создавать собственные плейлисты";
+"Onboarding.theAbilityToCreate" = "Возможность создать свой профиль";
+"Onboarding.youCanSetUp" = "Вы можете настроить свой профиль, а затем войти в него на другом устройстве";
 
 // MARK: - Autorization
 "Autorization.enterLogin" = "Введите логин";
@@ -81,6 +87,7 @@
 // MARK: - HomePage
 
 "HomePageView.category" = "Категории";
+"HomePageView.episodes" = "Случайные подкасты";
 "HomePageView.seeAll" = "Смотреть все";
 "HomePageView.Categories.popular" = "🔥 Популярное";
 "HomePageView.Categories.recent" = "Недавние";
@@ -89,7 +96,7 @@
 
 //MARK: -Search Result
 "SearchResults.searchResults" = "Результаты поиска";
-"SearchResults.allEpisodes" = "Все эпизоды";
+"SearchResults.allEpisodes" = "Все подкасты";
 
 //MARK: - Playlist
 
@@ -97,3 +104,11 @@
 "Playlist.chooseImage" = "Выберете изображение";
 "Playlist.seeAll" = "Показать все";
 "Playlist.select" = "Выберете локальный файл";
+
+// MARK: - Search
+
+"SearchView.search" = "Поиск";
+"SearchView.topgen" = "Популярные подкасты";
+"SearchView.seeAll" = "Показать все";
+"SearchView.channelOrArtist" = "Подкасты, каналы, авторы";
+"SearchView.browesAll" = "Просмотреть все";

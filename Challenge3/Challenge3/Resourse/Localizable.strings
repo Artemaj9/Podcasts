@@ -17,6 +17,12 @@
 "Onboarding.skip" = "Skip";
 "Onboarding.next" = "Next";
 "Onboarding.getStarted" = "Get Started";
+"Onboarding.podcastApp" = "Podcast app";
+"Onboarding.findYourFavorite" = "Find your favorite podcasts and listen to them right in the app";
+"Onboarding.favoriteAndYour" = "Playlists";
+"Onboarding.youCanChoose" = "You can create your own playlists";
+"Onboarding.theAbilityToCreate" = "The ability to create your own profile";
+"Onboarding.youCanSetUp" = "You can customize your profile and then log in to it on another device";
 
 // MARK: - Autorization
 "Autorization.enterLogin" = "Enter your login";
@@ -83,6 +89,7 @@
 // MARK: - HomePage
 
 "HomePageView.category" = "Category";
+"HomePageView.episodes" = "Random podcast";
 "HomePageView.seeAll" = "See all";
 "HomePageView.Categories.popular" = "🔥 Popular";
 "HomePageView.Categories.recent" = "Recent";
@@ -92,7 +99,7 @@
 //MARK: -Search Result
 
 "SearchResults.searchResults" = "Search Results";
-"SearchResults.allEpisodes" = "All Episodes";
+"SearchResults.allEpisodes" = "All Podcasts";
 
 //MARK: - Playlist
 
@@ -100,3 +107,12 @@
 "Playlist.chooseImage" = "Choose image";
 "Playlist.seeAll" = "See All";
 "Playlist.select" = "Select from local files";
+
+// MARK: - Search
+
+"SearchView.search" = "Search";
+"SearchView.topgen" = "Popular Podcasts";
+"SearchView.seeAll" = "See All";
+"SearchView.channelOrArtist" = "Podcasts, chanell or artist";
+"SearchView.browesAll" = "Browes All";
+

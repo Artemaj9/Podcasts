@@ -32,6 +32,7 @@ struct Localizable {
             static let enterEmail = NSLocalizedString("StartCreate.enterEmail", comment: "")
             static let email = NSLocalizedString("StartCreate.email", comment: "")
         }
+        
         enum CreateWithEmail {
             static var firstName = NSLocalizedString("CreateWithEmail.firstName", comment: "")
             static var lastName = NSLocalizedString("CreateWithEmail.lastName", comment: "")
@@ -55,10 +56,17 @@ struct Localizable {
         static var skip = localizedStringKey("Onboarding.skip")
         static var next = localizedStringKey("Onboarding.next")
         static var getStarted = localizedStringKey("Onboarding.getStarted")
+        static var podcastApp = NSLocalizedString("Onboarding.podcastApp", comment: "")
+        static var findYourFavorite = NSLocalizedString("Onboarding.findYourFavorite", comment: "")
+        static var favoriteAndYour = NSLocalizedString("Onboarding.favoriteAndYour", comment: "")
+        static var youCanChoose = NSLocalizedString("Onboarding.youCanChoose", comment: "")
+        static var theAbilityToCreate = NSLocalizedString("Onboarding.theAbilityToCreate", comment: "")
+        static var youCanSetUp = NSLocalizedString("Onboarding.youCanSetUp", comment: "")
     }
 
     enum HomePage {
         static var category = NSLocalizedString("HomePageView.category", comment: "")
+        static var rndEpisodes = NSLocalizedString("HomePageView.episodes", comment: "")
         static var seeAll = NSLocalizedString("HomePageView.seeAll", comment: "")
         enum Categories {
             static var popular = NSLocalizedString("HomePageView.Categories.popular", comment: "")
@@ -75,7 +83,14 @@ struct Localizable {
     enum NowPlaying {}
 
     enum Search {
-        enum SearchBasic {}
+        enum SearchBasic {
+            static var search = NSLocalizedString("SearchView.search", comment: "")
+            static var topGen = NSLocalizedString("SearchView.topgen", comment: "")
+            static var seeAll = NSLocalizedString("SearchView.seeAll", comment: "")
+            static var chanOrArtist = NSLocalizedString("SearchView.channelOrArtist", comment: "")
+            static var browesAll = NSLocalizedString("SearchView.browesAll", comment: "")
+        }
+        
         enum SarchResult {
             static var searchResults = NSLocalizedString("SearchResults.searchResults", comment: "")
             static var allEpisodes = NSLocalizedString("SearchResults.allEpisodes", comment: "")
@@ -117,7 +132,6 @@ struct Localizable {
         static var deletePhoto = NSLocalizedString("AccountSettingsView.deletePhoto", comment: "")
         static var changeYourPicture = NSLocalizedString("AccountSettingsView.changeYourPicture", comment: "")
     }
-
 }
 
 private func localizedStringKey(_ key: String) -> LocalizedStringKey {

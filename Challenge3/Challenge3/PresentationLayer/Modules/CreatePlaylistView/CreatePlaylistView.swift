@@ -19,10 +19,10 @@ struct CreatePlaylistView: View, ItemView {
     //MARK: - Mock datas
     
     @State var cellDatas: [CellData] = [
-        CellData(iconState: false, mainLeft: "Main 1", mainRight: "Right 1", secondLeft: "Second 1", secondRight: "Right Sec 1", image: nil, iconMode: .select, height: nil),
-        CellData(iconState: true, mainLeft: "Main 2", mainRight: "Right 2", secondLeft: "Second 2", secondRight: "Right Sec 2", image: nil, iconMode: .select, height: nil),
-        CellData(iconState: false, mainLeft: "Main 3", mainRight: "Right 3", secondLeft: "Second 3", secondRight: "Right Sec 3", image: nil, iconMode: .select, height: nil),
-        CellData(iconState: true, mainLeft: "Main 4", mainRight: "Right 4", secondLeft: "Second 4", secondRight: "Right Sec 4", image: nil, iconMode: .select, height: nil)
+        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 1", mainRight: "Right 1", secondLeft: "Second 1", secondRight: "Right Sec 1", image: "image1", iconMode: .select, height: nil),
+        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 2", mainRight: "Right 2", secondLeft: "Second 2", secondRight: "Right Sec 2", image: "image2", iconMode: .select, height: nil),
+        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 3", mainRight: "Right 3", secondLeft: "Second 3", secondRight: "Right Sec 3", image: "image3", iconMode: .select, height: nil),
+        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 4", mainRight: "Right 4", secondLeft: "Second 4", secondRight: "Right Sec 4", image: "image4", iconMode: .select, height: nil)
     ]
     
     var body: some View {
@@ -53,8 +53,9 @@ struct CreatePlaylistView: View, ItemView {
             }
             .padding([.horizontal, .bottom])
             
-            SearchBarView(searchText: "", placeholder: "", backgroundColor: Pallete.Gray.forTextFields)
-                .frame(height: 32)
+            SearchBarView(searchText: .constant(""), placeholder: "", backgroundColor: Pallete.Gray.forTextFields
+            ) {}
+            .frame(height: 32)
             
             ScrollView {
                 ForEach($cellDatas) { $data in

@@ -5,9 +5,9 @@
 import Foundation
 import PodcastIndexKit
 
-struct PodcastCategory: Codable, Hashable, Sendable {
-    public let id: Int?
-    public let name: String?
+struct LocalCategory: Codable, Hashable, Sendable {
+    let id: Int?
+    let name: String?
 }
 
 @MainActor
@@ -16,10 +16,10 @@ final class CategoryManager: ObservableObject {
     
     // MARK: - This call return list of available categories
     
-    func getCategoryList(debug: Bool = false) async -> [PodcastCategory]? {
+    func getCategoryList(debug: Bool = false) async -> CategoriesResponse? {
         do {
             let result = try await PodcastIndexKit().categoriesService.list(pretty: debug)
-            return result.feeds as? [PodcastCategory]
+            return result
         }
         catch {
             return nil
