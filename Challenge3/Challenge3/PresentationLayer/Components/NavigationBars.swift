@@ -42,6 +42,13 @@ struct NavigationBars: View {
                     leadingButtonAction()
                 }
 
+            case .favorites:
+                if let screenTitle {
+                    BackButton(isReverse: false, padding: 0) {
+                        leadingButtonAction()
+                    }
+                }
+
             default:
                 EmptyView()
             }

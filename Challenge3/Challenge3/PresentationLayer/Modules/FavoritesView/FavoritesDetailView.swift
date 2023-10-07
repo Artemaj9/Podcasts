@@ -13,14 +13,14 @@ struct FavoritesDetailView: View, ItemView {
     
     // MARK: - Internal Properties
     
-    let screenTitle: String
+    var screenTitle: String?
     let dataForScreen: [Podcast]?
     
     var listener: CustomNavigationContainer?
     
     var podcastData: [Podcast]? {
         if dataForScreen == nil {
-            viewModel.getPodcastsFromCategory(category: screenTitle)
+            viewModel.getPodcastsFromCategory(category: screenTitle ?? "Favorites")
             return viewModel.podcasts
         } else {
             return dataForScreen
@@ -63,6 +63,6 @@ struct FavoritesDetailView: View, ItemView {
 
 struct FavoritesDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FavoritesDetailView(screenTitle: "Favorites", dataForScreen: nil)
+        FavoritesDetailView(dataForScreen: nil)
     }
 }

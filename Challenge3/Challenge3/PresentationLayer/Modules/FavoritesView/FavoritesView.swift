@@ -16,7 +16,7 @@ struct FavoritesView: View, ItemView {
     //MARK: - View's Body
     
     var body: some View {
-        FavoritesDetailView(screenTitle: "Favorites", dataForScreen: favoritesViewModel.favoriteNetworkPodcasts, listener: listener)
+        FavoritesDetailView(dataForScreen: favoritesViewModel.favoriteNetworkPodcasts, listener: listener)
     }
 }
 
