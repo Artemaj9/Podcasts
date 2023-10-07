@@ -41,8 +41,6 @@ class UserManager: ObservableObject {
         }
     }
     
-
-    
     func storeUserInformation(dob: Date, gender: SelectedGender = .male) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
