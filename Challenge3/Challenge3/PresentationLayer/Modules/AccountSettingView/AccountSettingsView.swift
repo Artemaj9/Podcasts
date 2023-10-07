@@ -148,8 +148,6 @@ struct AccountSettingsView: View, ItemView {
                     
                     accountSettingsViewModel.saveUserData()
                     
-                    
-                    
                     listener?.pop()
                 }
             }
@@ -171,6 +169,7 @@ struct AccountSettingsView: View, ItemView {
                                 accountSettingsViewModel.shouldShowDatePicker = false
                             }
                         }
+                    
                     DatePicker("", selection: $accountSettingsViewModel.selectedBirthday, in: ...Date(), displayedComponents: .date)
                         .padding()
                         .datePickerStyle(.graphical)
@@ -235,9 +234,12 @@ struct GenderPicker: View {
                 
                 HStack {
                     Image(selectedGender == gender ? Images.Icon.checkFill.rawValue : Images.Icon.check.rawValue)
+                    
                     Spacer()
+                    
                     Text(genderText)
                         .font(.system(size: 16, weight: .semibold))
+                    
                     Spacer()
                 }
                 .padding(.vertical, 10)
