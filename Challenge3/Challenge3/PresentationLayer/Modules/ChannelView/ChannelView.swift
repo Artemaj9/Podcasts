@@ -50,11 +50,8 @@ struct ChannelView: View, ItemView {
                         
                         FilledEpisodeWideCell(data: bindingData)
                             .onTapGesture {
-                                listener?.push(
-                                    view: NowPlayingView(
-                                        podcastIndex: channelViewModel.getEpisodeIndex(episode: episode) ?? 0,
-                                        dataForSend: channelViewModel.currentPodcastEpisodes)
-                                )
+                                // TODO: - Show now playing view
+                                print(channelViewModel.getEpisodeIndex(episode: episode))
                             }
                     }
                     .padding(.horizontal)

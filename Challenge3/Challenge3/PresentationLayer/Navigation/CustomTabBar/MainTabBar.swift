@@ -9,6 +9,7 @@ struct MainTabBar: View, ItemView {
 
     @State private var selectedTab = 0
 
+    // под каждую вкладку таббара создается свой навигейшн стек
     @StateObject var firstTabNavigationModel = CustomNavigationViewModel()
     @StateObject var secondTabNavigationModel = CustomNavigationViewModel()
     @StateObject var thirdTabNavigationModel = CustomNavigationViewModel()
@@ -21,7 +22,7 @@ struct MainTabBar: View, ItemView {
 
     var body: some View {
         VStack {
-
+            // Your main content
             switch selectedTab {
             case 0:
                 NavigationContainer(viewModel: firstTabNavigationModel) {
@@ -32,66 +33,52 @@ struct MainTabBar: View, ItemView {
                     SearchView(listener: secondTabNavigationModel as? CustomNavigationContainer)
                 }
             case 2:
-                NavigationContainer(viewModel: thirdTabNavigationModel) {
-                    FavoritesView(listener: thirdTabNavigationModel as? CustomNavigationContainer)
+                NavigationContainer(viewModel: secondTabNavigationModel) {
+                    FavoritesView(listener: secondTabNavigationModel as? CustomNavigationContainer)
                 }
             case 3:
-                NavigationContainer(viewModel: fourthTabNavigationModel) {
-                    ProfilesettingsView(listener: fourthTabNavigationModel as? CustomNavigationContainer)
+                NavigationContainer(viewModel: secondTabNavigationModel) {
+                    ProfilesettingsView(listener: secondTabNavigationModel as? CustomNavigationContainer)
                 }
             default:
                 EmptyView()
             }
-        }
-        .safeAreaInset(edge: .bottom) {
-            Rectangle()
-                .foregroundColor(.clear)
-                .frame(height: 68)
-                .background(.white)
-                .cornerRadius(20)
-                .shadow(
-                    color: Color(red: 0.21, green: 0.22, blue: 0.3).opacity(0.15),
-                    radius: 24)
-                .padding(.horizontal, 24)
-                .overlay {
-                    HStack {
-                        TabBarButton(
-                            selectedTab: $selectedTab,
-                            index: 0,
-                            activeIconName: Images.TabBar.homeFill.rawValue,
-                            inactiveIconName: Images.TabBar.home.rawValue
-                        )
-                        .padding(.leading, 31)
-                        TabBarButton(
-                            selectedTab: $selectedTab,
-                            index: 1,
-                            activeIconName: Images.TabBar.searchFill.rawValue,
-                            inactiveIconName: Images.TabBar.search.rawValue
-                        )
-                        Spacer()
-                        TabBarButton(
-                            selectedTab: $selectedTab,
-                            index: 2,
-                            activeIconName: Images.TabBar.bookmarkFill.rawValue,
-                            inactiveIconName: Images.TabBar.bookmark.rawValue
-                        )
-                        Spacer()
-                        TabBarButton(
-                            selectedTab: $selectedTab,
-                            index: 3,
-                            activeIconName: Images.TabBar.settingFill.rawValue,
-                            inactiveIconName: Images.TabBar.setting.rawValue
-                        )
-                        .padding(.trailing, 31)
-                    }
-                    .padding(5)
+
+            if firstTabNavigationModel.isRootView && secondTabNavigationModel.isRootView {
+                HStack {
+                    Spacer()
+                    TabBarButton(
+                        selectedTab: $selectedTab,
+                        index: 0,
+                        activeIconName: Images.TabBar.homeFill.rawValue,
+                        inactiveIconName: Images.TabBar.home.rawValue
+                    )
+                    TabBarButton(
+                        selectedTab: $selectedTab,
+                        index: 1,
+                        activeIconName: Images.TabBar.settingFill.rawValue,
+                        inactiveIconName: Images.TabBar.setting.rawValue
+                    )
+                    TabBarButton(
+                        selectedTab: $selectedTab,
+                        index: 2,
+                        activeIconName: Images.TabBar.bookmarkFill.rawValue,
+                        inactiveIconName: Images.TabBar.bookmark.rawValue
+                    )
+                    TabBarButton(
+                        selectedTab: $selectedTab,
+                        index: 3,
+                        activeIconName: Images.TabBar.settingFill.rawValue,
+                        inactiveIconName: Images.TabBar.setting.rawValue
+                    )
+                    Spacer()
                 }
+                .frame(height: 50)
+                .background(Pallete.Gray.forNext)
+            }
         }
     }
 }
-
-
-
 
 struct MainTabBar_Previews: PreviewProvider {
     static var previews: some View {
