@@ -10,8 +10,8 @@ import FirebaseAuth
 
 class UserManager: ObservableObject {
     
-    @Published var imageUrl: URL?
-   
+    @Published var imageUrl: String?
+    
     // MARK: - Private properties
     
     private var selectedImageUrl: URL?
@@ -46,11 +46,11 @@ class UserManager: ObservableObject {
         
         let userData = [
             "uid" : uid,
-            "avatarUrl" : selectedImageUrl?.absoluteString ?? "",
+            "avatarUrl" : String(selectedImageUrl?.absoluteString ?? ""),
             "dob": dob as NSDate,
             "gender": gender.rawValue
         ] as [String : Any]
-
+        
         Firestore.firestore()
             .collection("users")
             .document(uid)
@@ -92,11 +92,11 @@ class UserManager: ObservableObject {
                 print(error)
             }
             if let snapshot {
-                self.imageUrl = URL(string: snapshot["avatarUrl"] as? String ?? "")
+                self.imageUrl =  String(snapshot["avatarUrl"] as? String ?? "")
             }
         }
     }
-        
+    
     func getEmail() -> String {
         let userEmail = Auth.auth().currentUser?.email ?? ""
         return userEmail

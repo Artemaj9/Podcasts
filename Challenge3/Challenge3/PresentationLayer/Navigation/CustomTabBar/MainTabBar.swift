@@ -33,12 +33,12 @@ struct MainTabBar: View, ItemView {
                     SearchView(listener: secondTabNavigationModel as? CustomNavigationContainer)
                 }
             case 2:
-                NavigationContainer(viewModel: secondTabNavigationModel) {
-                    FavoritesView(listener: secondTabNavigationModel as? CustomNavigationContainer)
+                NavigationContainer(viewModel: thirdTabNavigationModel) {
+                    FavoritesView(listener: thirdTabNavigationModel as? CustomNavigationContainer)
                 }
             case 3:
-                NavigationContainer(viewModel: secondTabNavigationModel) {
-                    ProfilesettingsView(listener: secondTabNavigationModel as? CustomNavigationContainer)
+                NavigationContainer(viewModel: fourthTabNavigationModel) {
+                    ProfilesettingsView(listener: fourthTabNavigationModel as? CustomNavigationContainer)
                 }
             default:
                 EmptyView()

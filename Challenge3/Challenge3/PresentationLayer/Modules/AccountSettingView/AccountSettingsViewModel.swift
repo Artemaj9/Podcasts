@@ -9,8 +9,12 @@ import SwiftUI
 import FirebaseAuth
 
 final class AccountSettingsViewModel: ObservableObject {
+    @ObservedObject var authViewModel = AuthenticationViewModel.shared
+    
     @Published var selectedGender: SelectedGender = .male
     @Published var texts: [String] = ["", "", ""]
+    @Published var changePassword = ""
+    @Published var confirmChangePassword = ""
     @Published var selectedBirthday: Date = .now
     @Published var shouldShowDatePicker: Bool = false
     
@@ -79,19 +83,22 @@ final class AccountSettingsViewModel: ObservableObject {
     //MARK: - Private functions
     
     private func changeUserEmail() {
-        Auth.auth().currentUser?.updateEmail(to: texts[2]) { error in
-            print(error?.localizedDescription ?? "")
+        if !texts[2].isEmpty{
+            authViewModel.email = texts[2]
+            authViewModel.changeUserEmail()
         }
     }
     
+    
     private func changeDisplayName() {
-        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-        changeRequest?.displayName = "\(texts[0]) \(texts[1])"
-        changeRequest?.commitChanges{ error in
-            print(error?.localizedDescription ?? "")
+        if !texts[0].isEmpty, !texts[1].isEmpty {
+            authViewModel.firstName = texts[0]
+            authViewModel.lastName = texts[1]
+            authViewModel.changeDisplayName()
         }
     }
-
+    
+    
     private func showCameraWarning() {
         warningMessage = "error"
         isWarningPresented = true
