@@ -6,14 +6,16 @@ import SwiftUI
 import _AuthenticationServices_SwiftUI
 
 struct StartCreateAccountView: View, ItemView {
-    @EnvironmentObject var viewModel: AuthenticationViewModel
+    @ObservedObject var authViewModel = AuthenticationViewModel.shared
     @EnvironmentObject var splashViewModel: SplashViewModel
 
     var listener: CustomNavigationContainer?
     
     var body: some View {
         ZStack {
-            Pallete.Blue.forAccent.ignoresSafeArea()
+            Pallete.Blue.forAccent
+                .ignoresSafeArea()
+            
             VStack {
                 Group {
                     Text(Localizable.CreateAccount.StartCreate.navTitle)
@@ -21,16 +23,19 @@ struct StartCreateAccountView: View, ItemView {
                         .font(.title)
                         .padding(.bottom, 8)
                         .padding(.top, 64)
+                    
                     Text(Localizable.CreateAccount.StartCreate.greeting)
                         .font(.title3)
                         .padding(.bottom, 60)
                 }
                 .foregroundColor(.white)
+                
                 ZStack {
                     RoundedRectangle(cornerRadius: 30)
                         .foregroundColor(.white)
+                    
                     VStack(spacing: 8) {
-                        LoginTextField(inputText: $viewModel.email,
+                        LoginTextField(inputText: $authViewModel.email,
                                        title: Localizable.CreateAccount.StartCreate.email,
                                        placeHolder: Localizable.CreateAccount.StartCreate.enterEmail,
                                        withHideOption: false,
@@ -52,18 +57,19 @@ struct StartCreateAccountView: View, ItemView {
                                 signInWithGoogle()
                             }
                             
-                            SignInWithAppleButton(.signIn) {
-                                
-                                request in viewModel.handleSignInWithAppleRequest(request)
+                            SignInWithAppleButton(.signIn) { request in
+                                authViewModel.handleSignInWithAppleRequest(request)
                             } onCompletion: { result in
-                                viewModel.handleSignInWithAppleCompletion(result)
+                                authViewModel.handleSignInWithAppleCompletion(result)
                             }
                             .frame(height: 60)
                             .clipShape(RoundedCorners(radius: 50))
                             .padding(.horizontal)
                             
                         }
+                        
                         Spacer()
+                        
                         HStack {
                             Text(Localizable.CreateAccount.StartCreate.already)
                                 .minimumScaleFactor(0.7)
@@ -71,8 +77,11 @@ struct StartCreateAccountView: View, ItemView {
                                 listener?.pop()
                             }
                         }
+                        
                         Spacer()
+                        
                         Spacer()
+                        
                     }
                     .padding(.top, 36)
                 }
@@ -81,9 +90,10 @@ struct StartCreateAccountView: View, ItemView {
             }
         }
     }
+    
     private func signInWithGoogle() {
         Task {
-            if await viewModel.signInWithGoogle() {
+            if await authViewModel.signInWithGoogle() {
                 splashViewModel.isNotLoggedIn = true
                 listener?.push(view: MainTabBar())
             }

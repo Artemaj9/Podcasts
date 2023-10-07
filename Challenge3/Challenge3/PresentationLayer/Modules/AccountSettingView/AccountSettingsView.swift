@@ -24,9 +24,11 @@ struct AccountSettingsView: View, ItemView {
         Localizable.AccountSettings.firstName, Localizable.AccountSettings.lastName, Localizable.AccountSettings.email
     ]
     
+    
     // MARK: - Private Views
     
     var body: some View {
+        
         ScrollView(showsIndicators: false) {
             VStack(alignment: .center) {
                 VStack {
@@ -36,8 +38,8 @@ struct AccountSettingsView: View, ItemView {
                                 .resizable()
                                 .scaledToFill()
                                 .clipShape(Circle())
-                        } else if userManager.imageUrl != nil {
-                            KFImage(userManager.imageUrl)
+                        } else if  let urlString = userManager.imageUrl, let url = URL(string: urlString), url.scheme != nil {
+                            KFImage(url)
                                 .resizable()
                                 .scaledToFill()
                                 .clipShape(Circle())
@@ -87,7 +89,6 @@ struct AccountSettingsView: View, ItemView {
                         backgroundColor: Pallete.BlackWhite.white
                     )
                 }
-                
                 VStack {
                     VStack(alignment: .leading, spacing: 0) {
                         HStack {
@@ -210,6 +211,15 @@ struct AccountSettingsView: View, ItemView {
                 }
             }
         }
+        .onAppear{
+            changedTextFields()
+        }
+    }
+    
+    func changedTextFields() {
+        accountSettingsViewModel.texts[0] = userManager.getFirstName()
+        accountSettingsViewModel.texts[1] = userManager.getLastName()
+        accountSettingsViewModel.texts[2] = userManager.getEmail()
     }
 }
 

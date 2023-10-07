@@ -8,7 +8,7 @@ struct CreateWithEmailView: View, ItemView {
     
     // MARK: - Property wrapers
     
-    @EnvironmentObject var viewModel: AuthenticationViewModel
+    @ObservedObject var authViewModel = AuthenticationViewModel.shared
     @EnvironmentObject var splashViewModel: SplashViewModel
     
     // MARK: - Internal properties
@@ -23,17 +23,17 @@ struct CreateWithEmailView: View, ItemView {
                 VStack {
                     CustomLabel(labelText: Localizable.CreateAccount.CreateWithEmail.complete, additionalText: Localizable.CreateAccount.CreateWithEmail.signUpAdit, labelStyle: .create, epsText: "")
                     
-                    LoginTextField(inputText: $viewModel.firstName, title: Localizable.CreateAccount.CreateWithEmail.firstName, placeHolder: Localizable.CreateAccount.CreateWithEmail.firstNameField, withHideOption: false, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)
+                    LoginTextField(inputText: $authViewModel.firstName, title: Localizable.CreateAccount.CreateWithEmail.firstName, placeHolder: Localizable.CreateAccount.CreateWithEmail.firstNameField, withHideOption: false, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)
                     
-                    LoginTextField(inputText: $viewModel.lastName, title: Localizable.CreateAccount.CreateWithEmail.lastName, placeHolder: Localizable.CreateAccount.CreateWithEmail.lastNameField, withHideOption: false, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)
+                    LoginTextField(inputText: $authViewModel.lastName, title: Localizable.CreateAccount.CreateWithEmail.lastName, placeHolder: Localizable.CreateAccount.CreateWithEmail.lastNameField, withHideOption: false, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)
                     
-                    LoginTextField(inputText: $viewModel.email, title: Localizable.CreateAccount.CreateWithEmail.email, placeHolder: Localizable.CreateAccount.CreateWithEmail.emailField, withHideOption: false, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)
+                    LoginTextField(inputText: $authViewModel.email, title: Localizable.CreateAccount.CreateWithEmail.email, placeHolder: Localizable.CreateAccount.CreateWithEmail.emailField, withHideOption: false, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)
                     
-                    LoginTextField(inputText: $viewModel.password, isSecure: true, title: Localizable.CreateAccount.CreateWithEmail.password, placeHolder: Localizable.CreateAccount.CreateWithEmail.passwordFiled, withHideOption: true, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)
+                    LoginTextField(inputText: $authViewModel.password, isSecure: true, title: Localizable.CreateAccount.CreateWithEmail.password, placeHolder: Localizable.CreateAccount.CreateWithEmail.passwordFiled, withHideOption: true, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)
                     
-                    LoginTextField(inputText: $viewModel.confirmPassword, isSecure: true, title: Localizable.CreateAccount.CreateWithEmail.confPassword, placeHolder: Localizable.CreateAccount.CreateWithEmail.confPasswordFiled, withHideOption: true, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)
+                    LoginTextField(inputText: $authViewModel.confirmPassword, isSecure: true, title: Localizable.CreateAccount.CreateWithEmail.confPassword, placeHolder: Localizable.CreateAccount.CreateWithEmail.confPasswordFiled, withHideOption: true, withBorder: false, cornerRadius: 24, backgroundColor: Pallete.Gray.forTextFields)
                     
-                    Text(viewModel.errorMessage)
+                    Text(authViewModel.errorMessage)
                         .foregroundColor(Pallete.Other.pink)
                     
                     CustomButton(title: Localizable.CreateAccount.CreateWithEmail.signUp, font: (.system(size: 16)), buttonType: .filledBlue) {
@@ -58,8 +58,8 @@ struct CreateWithEmailView: View, ItemView {
     }
     private func signUpWithEmail() {
         Task {
-            if await viewModel.signUpWithEmailPassword() {
-                viewModel.changeDisplayName()
+            if await authViewModel.signUpWithEmailPassword() {
+                authViewModel.changeDisplayName()
                 splashViewModel.isNotLoggedIn = true
                 listener?.push(view: OnboardingView())
             }

@@ -36,7 +36,6 @@ struct Challenge3App: App {
     @StateObject var createPlaylistViewModel = CreatePlaylistViewModel()
     @StateObject var createWithEmailViewModel = CreateWithEmailViewModel()
     @StateObject var authorizarionViewModel = AuthorizarionViewModel()
-    @StateObject var authenticationViewModel = AuthenticationViewModel()
     @StateObject var searchManager = SearchManager()
     @StateObject var userManager = UserManager()
     
@@ -59,7 +58,6 @@ struct Challenge3App: App {
             .environmentObject(createPlaylistViewModel)
             .environmentObject(createWithEmailViewModel)
             .environmentObject(authorizarionViewModel)
-            .environmentObject(authenticationViewModel)
             .environment(\.managedObjectContext, FavoritesDataManager.shared.container.viewContext)
             .environmentObject(searchManager)
             .environmentObject(userManager)
