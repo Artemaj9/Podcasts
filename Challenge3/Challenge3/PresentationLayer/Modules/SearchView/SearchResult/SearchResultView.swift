@@ -37,6 +37,7 @@ struct SearchResultView: View, ItemView {
                             if newValue.count >= 2 {
                                 searchViewModel.getPodcasts(searchText: newValue)
                             }
+                            
                             categoryTitles = searchViewModel.podcasts?.compactMap { podcast in
                                 podcast.title
                             } ?? [""]
