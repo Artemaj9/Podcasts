@@ -29,7 +29,7 @@ struct FavoritesView: View, ItemView {
                 Spacer ()
                 
                 Button {
-                    listener?.push(view: FavoritesDetailView(screenTitle: "Favorites", dataForScreen: nil))
+                    listener?.push(view: FavoritesDetailView(screenTitle: "Favorites", dataForScreen: favoritesViewModel.favoriteNetworkPodcasts.reversed()))
                 } label: {
                     Text(Localizable.Favorite.seeAll)
                         .foregroundColor(Pallete.Gray.forText)
@@ -39,12 +39,15 @@ struct FavoritesView: View, ItemView {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
-                    ForEach(favoritesViewModel.favoriteNetworkPodcasts, id: \.id) { podcast in
+                    ForEach(favoritesViewModel.favoriteNetworkPodcasts.reversed(), id: \.id) { podcast in
                         FavoritesCell(
                             image: podcast.image,
                             firstText: podcast.title,
                             secondText: podcast.author
                         )
+                        .onTapGesture {
+                            listener?.push(view: ChannelView(screenTitle: podcast.title ?? "", dataForScreen: podcast))
+                        }
                     }
                 }
                 .padding(.horizontal)

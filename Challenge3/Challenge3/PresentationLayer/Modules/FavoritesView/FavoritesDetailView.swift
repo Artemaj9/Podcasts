@@ -14,24 +14,23 @@ struct FavoritesDetailView: View, ItemView {
     
     var listener: CustomNavigationContainer?
     
-    // MARK: - Mock data
-    
-    let playlists: [Playlist] = [
-        Playlist(mainTitle: "Tuhan mengapa dia berbeda", secondTitle: "15 Eps"),
-        Playlist(mainTitle: "Another Playlist", secondTitle: "10 Eps")
-    ]
-    
     // MARK: - View's body
     
     var body: some View {
-        ScrollView() {
+        ScrollView {
             
-            ForEach(playlists, id: \.mainTitle) { playlist in
-                BlankWideCell(
-                    mainTitle: playlist.mainTitle,
-                    secondTitle: playlist.secondTitle
-                )
-                .padding([.top, .leading])
+            if let dataForScreen {
+                ForEach(dataForScreen, id: \.id) { podcast in
+                    BlankWideCell(
+                        mainTitle: podcast.title,
+                        secondTitle: podcast.author,
+                        image: podcast.image
+                    )
+                    .padding([.top, .leading])
+                    .onTapGesture {
+                        listener?.push(view: ChannelView(screenTitle: podcast.title ?? "", dataForScreen: podcast))
+                    }
+                }
             }
         }
         .makeCustomNavBar {
