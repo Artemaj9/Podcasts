@@ -7,6 +7,7 @@ import SwiftUI
 struct CustomNavBar<Content: View>: View {
 
     // MARK: - Internal Properties
+    var showBackground: Bool
     var content: () -> Content
 
     // MARK: - Body
@@ -14,19 +15,21 @@ struct CustomNavBar<Content: View>: View {
         self.content()
             .padding(.bottom, 10)
             .background {
-                Color.white
-                    .ignoresSafeArea()
-                    .opacity(0.97)
-                    .blur(radius: 5, opaque: true)
+                if showBackground {
+                    Color.white
+                        .ignoresSafeArea()
+                        .opacity(0.97)
+                        .blur(radius: 5, opaque: true)
+                }
             }
     }
 }
 
 extension View {
-    func makeCustomNavBar<Content: View>(content: @escaping () -> Content) -> some View {
+    func makeCustomNavBar<Content: View>(showBackground: Bool = true, content: @escaping () -> Content) -> some View {
         VStack {
             self.safeAreaInset(edge: .top) {
-                CustomNavBar {
+                CustomNavBar(showBackground: showBackground) {
                     VStack {
                         content()
                     }
