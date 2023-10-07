@@ -18,8 +18,8 @@ struct NowPlayingView: View, ItemView {
     @State var startingOffsetX: CGFloat = UIScreen.main.bounds.width * 0
     @State var endingOffsetX: CGFloat = 0
     
-    let podcastIndex: Int
-    let dataForSend: [Episode]
+    var podcastIndex: Int?
+    var dataForSend: [Episode]?
     
     var body: some View {
         ZStack {
@@ -213,11 +213,14 @@ struct NowPlayingView: View, ItemView {
         }
         .onAppear {
             // TODO: add logic for adding data to playlist when it's empty
-            player.currentEpisodeIndex = podcastIndex
-            player.episodePlaylist = dataForSend
-            if !player.isPlaying {
+            if let index = podcastIndex {
+                player.currentEpisodeIndex = index
+            }
+            if let data = dataForSend {
+                player.episodePlaylist = data
                 player.play()
             }
+            viewModel.sendScrollToEpisodeNotification(episodeIndex: player.currentEpisodeIndex)
         }
         .onDisappear {
             // TODO: add logic for clearing current episode and playlist if playing is paused

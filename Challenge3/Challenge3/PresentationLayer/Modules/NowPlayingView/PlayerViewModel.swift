@@ -24,6 +24,8 @@ final class PlayerViewModel: ObservableObject {
     // TODO: change model NowPlayingModel to Episode
     @Published var episodePlaylist: [Episode]? {
         didSet {
+            print("new data received")
+            print("going to index \(currentEpisodeIndex)")
             setCurrentEpisode(index: currentEpisodeIndex)
         }
     }
@@ -92,7 +94,9 @@ final class PlayerViewModel: ObservableObject {
             addTimeObserver()
         } else {
             if observedTime == 0 {
+                let playerItem = AVPlayerItem(url: url)
                 player?.seek(to: CMTime.zero)
+                player?.replaceCurrentItem(with: playerItem)
                 player?.play()
                 isPlaying = true
                 return
