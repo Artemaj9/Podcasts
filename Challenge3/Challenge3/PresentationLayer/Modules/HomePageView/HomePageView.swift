@@ -129,10 +129,8 @@ struct HomePageView: View, ItemView {
                             if let podcastData = viewModel.podcastFromCategory {
                                 ForEach(podcastData.indices) { index in
                                     Button {
-                                        // TODO: add localizable string
                                         let screenTitle = "Channel"
                                         let dataForSendToScreen = viewModel.podcastFromCategory![index]
-                                        // TODO: add function for going to detail page
                                         listener?.push(view: ChannelView(
                                             screenTitle: screenTitle,
                                             dataForScreen: dataForSendToScreen)
@@ -156,7 +154,6 @@ struct HomePageView: View, ItemView {
                                     }
                                 }
                             } else {
-                                // TODO: add skeleton
                             }
                         }
                         .padding(.horizontal, 32)

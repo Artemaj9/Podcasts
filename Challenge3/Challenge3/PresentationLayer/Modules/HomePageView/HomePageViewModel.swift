@@ -102,11 +102,7 @@ final class HomePageViewModel: ObservableObject {
     
     func convertDataToCellData(podcast: Podcast) -> CellData {
         var cellData: CellData
-
-        // TODO: add boolean value from favorite db
         let isFavorite = self.favoritePodcasts.map { Int($0.id) }.contains(podcast.id)
-
-//        dump("DEBUG: podcast id = \(podcast.id), isFavorite = \(isFavorite)")
 
         cellData = CellData(
             id: podcast.id,
@@ -127,54 +123,42 @@ final class HomePageViewModel: ObservableObject {
     func addFavorite(podcastId: Int) {
         let podcast = FavoritePodcast(context: viewContext)
         podcast.id = Int64(podcastId)
-//        dump("DEBUG: object saved \(podcastId)")
         do {
             try viewContext.save()
         }
         catch {
-//            print("DEBUG: Error while saving")
         }
     }
 
     func removeFavorite(podcastId: Int) {
         if let object = getObject(podcastId: podcastId) {
-//            dump("DEBUG: object not optional \(object.id)")
             viewContext.delete(object)
             do {
                 try viewContext.save()
             }
             catch {
-//                print("DEBUG: Error while saving")
             }
-        } else {
-//            print("DEBUG: error while getting object")
         }
     }
 
     func getObject(podcastId: Int) -> FavoritePodcast? {
         let fetchRequest: NSFetchRequest<FavoritePodcast> = FavoritePodcast.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", argumentArray: [Int64(podcastId)])
-//        dump("DEBUG: get object")
         do {
             let object = try viewContext.fetch(fetchRequest).first
-//            print("DEBUG: \(object?.id)")
             return object
         }
         catch {
-//            print("DEBUG: Error while fetching object: \(error.localizedDescription)")
             return nil
         }
     }
 
 
     func fetchFavoriteData() {
-//        dump("DEBUG: data fetched")
         let request = NSFetchRequest<FavoritePodcast>(entityName: "FavoritePodcast")
-
         do {
             self.favoritePodcasts = try viewContext.fetch(request)
         } catch {
-//            print("DEBUG: Some error occured while fetching")
         }
     }
 }

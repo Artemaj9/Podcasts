@@ -90,7 +90,6 @@
 		B78EC3C52AC0C050009B8ABC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B78EC3BF2AC0C050009B8ABC /* Localizable.strings */; };
 		B78EC3C62AC0C050009B8ABC /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EC3C12AC0C050009B8ABC /* Images.swift */; };
 		B78EC3C72AC0C050009B8ABC /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EC3C22AC0C050009B8ABC /* Localizable.swift */; };
-		B7A105E52AD15E3A00317FAB /* PlaylistsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7A105E32AD15E3A00317FAB /* PlaylistsDataModel.xcdatamodeld */; };
 		B7AE4B592ACF20310070D006 /* FavoritesDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7AE4B572ACF20310070D006 /* FavoritesDataModel.xcdatamodeld */; };
 		B7FA0B202AC36F8A000022E7 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FA0B1F2AC36F8A000022E7 /* CustomNavigationBar.swift */; };
 		B7FA0B222AC36FA5000022E7 /* NavigationBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FA0B212AC36FA5000022E7 /* NavigationBars.swift */; };
@@ -208,7 +207,6 @@
 		B78EC3C02AC0C050009B8ABC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B78EC3C12AC0C050009B8ABC /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		B78EC3C22AC0C050009B8ABC /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
-		B7A105E42AD15E3A00317FAB /* PlaylistsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlaylistsDataModel.xcdatamodel; sourceTree = "<group>"; };
 		B7AE4B582ACF20310070D006 /* FavoritesDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesDataModel.xcdatamodel; sourceTree = "<group>"; };
 		B7FA0B1F2AC36F8A000022E7 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		B7FA0B212AC36FA5000022E7 /* NavigationBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBars.swift; sourceTree = "<group>"; };
@@ -300,7 +298,6 @@
 			children = (
 				5D84B2D32AC0968200BC87E7 /* LocalManager.swift */,
 				B7AE4B572ACF20310070D006 /* FavoritesDataModel.xcdatamodeld */,
-				B7A105E32AD15E3A00317FAB /* PlaylistsDataModel.xcdatamodeld */,
 			);
 			path = LocalManagers;
 			sourceTree = "<group>";
@@ -866,7 +863,6 @@
 				D02B52102AC9B08100503637 /* RecentManager.swift in Sources */,
 				B72544812AC0D0D3003B3FF6 /* OnboardingViewModel.swift in Sources */,
 				B789D1722AC82BEB006CAFAF /* Font.swift in Sources */,
-				B7A105E52AD15E3A00317FAB /* PlaylistsDataModel.xcdatamodeld in Sources */,
 				5D84B3602AC0999C00BC87E7 /* OnboardingModel.swift in Sources */,
 				B7FA0B222AC36FA5000022E7 /* NavigationBars.swift in Sources */,
 				ACDB850F2AC5B34100985723 /* BackgroundSearchView.swift in Sources */,
@@ -1205,16 +1201,6 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		B7A105E32AD15E3A00317FAB /* PlaylistsDataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				B7A105E42AD15E3A00317FAB /* PlaylistsDataModel.xcdatamodel */,
-			);
-			currentVersion = B7A105E42AD15E3A00317FAB /* PlaylistsDataModel.xcdatamodel */;
-			path = PlaylistsDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		B7AE4B572ACF20310070D006 /* FavoritesDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

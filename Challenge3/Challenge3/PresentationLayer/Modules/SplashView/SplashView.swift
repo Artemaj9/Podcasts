@@ -21,7 +21,7 @@ struct SplashView: View, ItemView {
             ProgressView()
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.async {
                 if !splashViewModel.isNotLoggedIn {
                     listener?.push(view: AuthorizationView())
                 } else {
