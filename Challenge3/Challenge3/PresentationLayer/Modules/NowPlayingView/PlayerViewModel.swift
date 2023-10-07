@@ -24,8 +24,6 @@ final class PlayerViewModel: ObservableObject {
     // TODO: change model NowPlayingModel to Episode
     @Published var episodePlaylist: [Episode]? {
         didSet {
-            print("new data received")
-            print("going to index \(currentEpisodeIndex)")
             setCurrentEpisode(index: currentEpisodeIndex)
         }
     }
@@ -90,6 +88,7 @@ final class PlayerViewModel: ObservableObject {
         } else {
             if observedTime == 0 {
                 let playerItem = AVPlayerItem(url: url)
+                
                 player?.seek(to: CMTime.zero)
                 player?.replaceCurrentItem(with: playerItem)
                 player?.play()
@@ -154,10 +153,10 @@ final class PlayerViewModel: ObservableObject {
     }
     
     func setCurrentEpisode(index: Int) {
-        print("Debug: index \(index)")
         guard index < episodePlaylist?.count ?? 0 else {
             return
         }
+        
         observedTime = 0
         currentEpisodeIndex = index
         currentEpisode = episodePlaylist?[currentEpisodeIndex]
@@ -184,8 +183,8 @@ final class PlayerViewModel: ObservableObject {
     }
     
     func seekToTime(seconds: Double) {
-            player?.seek(to: CMTime(seconds: seconds, preferredTimescale: 1))
-        }
+        player?.seek(to: CMTime(seconds: seconds, preferredTimescale: 1))
+    }
     
     private func selectFirstEpisode() {
         if let firstEpisode = episodePlaylist?.first {
