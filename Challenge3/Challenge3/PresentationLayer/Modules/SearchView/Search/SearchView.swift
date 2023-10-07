@@ -125,7 +125,7 @@ struct SearchView: View, ItemView {
                                         GenresButton(
                                             title: displayedPodcasts[index].title!,
                                             backgroundColor: buttonColor[index % buttonColor.count],
-                                            hSize: geometry.size.width*0.4
+                                            hSize: geometry.size.width * 0.4
                                         ) {
                                             listener?.push(view: ChannelView(
                                                 screenTitle: displayedPodcasts[index].title!,
@@ -161,7 +161,7 @@ struct SearchView: View, ItemView {
                                         GenresButton(
                                             title: searchViewModel.categories[index],
                                             backgroundColor: buttonColor[index % buttonColor.count],
-                                            hSize: geometry.size.width*0.4) {
+                                            hSize: geometry.size.width * 0.4) {
                                                 searchText = ""
                                                 listener?.push(view: SearchResultView(
                                                     searchViewModel: searchViewModel,
