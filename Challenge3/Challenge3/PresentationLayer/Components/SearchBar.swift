@@ -27,10 +27,10 @@ struct SearchBarView: View {
                 .opacity(searchText.isEmpty ? 0.0 : 0.8)
                 .animation(.easeIn, value: searchText.isEmpty)
                 .onTapGesture {
-                 UIApplication.shared.endEditing()
+                    UIApplication.shared.endEditing()
                     searchText = ""
                 }
-
+            
             TextField(placeholder, text: $searchText)
                 .focused($isFocused)
                 .foregroundColor(Pallete.BlackWhite.black)
@@ -50,7 +50,9 @@ struct SearchBarView: View {
                 )
                 .submitLabel(.search)
                 .onSubmit {
-                    searchFunc()
+                    if !searchText.isEmpty {
+                        searchFunc()
+                    }
                 }
         }
         .font(.headline)
