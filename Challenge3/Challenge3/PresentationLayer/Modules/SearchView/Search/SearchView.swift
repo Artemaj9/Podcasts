@@ -23,6 +23,11 @@ struct SearchView: View, ItemView {
         GridItem(.flexible(), spacing: -8, alignment: nil),
         GridItem(.flexible(), spacing: -8, alignment: nil)
     ]
+    let buttonColor = [
+        Pallete.OtherLight.blue, Pallete.Other.blue, Pallete.OtherLight.purple,
+        Pallete.OtherLight.peach, Pallete.Other.peach, Pallete.OtherLight.pink,
+        Pallete.OtherLight.slightGreen, Pallete.Other.green
+    ]
     
     // MARK: - Body
     
@@ -114,15 +119,17 @@ struct SearchView: View, ItemView {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             if let trending = searchViewModel.trendingPodcasts {
-                                ForEach(trending.filter { $0.title != nil  && $0.title!.count < 10 }, id: \.id) { podcast in
+                                let displayedPodcasts = trending.filter {
+                                    $0.title != nil  && $0.title!.count < 10 }
+                                ForEach(Array(displayedPodcasts.indices), id: \.self) { index in
                                         GenresButton(
-                                            title: podcast.title!,
-                                            backgroundColor: .cyan,
-                                            hSize: geometry.size.width*0.4
+                                            title: displayedPodcasts[index].title!,
+                                            backgroundColor: buttonColor[index % buttonColor.count],
+                                            hSize: geometry.size.width * 0.4
                                         ) {
                                             listener?.push(view: ChannelView(
-                                                screenTitle: podcast.title!,
-                                                dataForScreen: podcast)
+                                                screenTitle: displayedPodcasts[index].title!,
+                                                dataForScreen: displayedPodcasts[index])
                                             )
                                         }
                                     }
@@ -149,18 +156,18 @@ struct SearchView: View, ItemView {
                                 alignment: .center,
                                 spacing: 0
                             ) {
-                                ForEach(searchViewModel.categories, id : \.self) { title in
+                                ForEach(Array(searchViewModel.categories.indices), id: \.self) { index in
                                     GeometryReader { geo2 in
                                         GenresButton(
-                                            title: title,
-                                            backgroundColor: .green,
-                                            hSize: geometry.size.width*0.4) {
+                                            title: searchViewModel.categories[index],
+                                            backgroundColor: buttonColor[index % buttonColor.count],
+                                            hSize: geometry.size.width * 0.4) {
                                                 searchText = ""
                                                 listener?.push(view: SearchResultView(
                                                     searchViewModel: searchViewModel,
                                                     searchText: searchText,
                                                     isPopWhenEmpty: false,
-                                                    categoryName: title)
+                                                    categoryName: searchViewModel.categories[index])
                                                 )
                                             }
                                             .opacity(getScrollOpacity(geometry: geo2))
