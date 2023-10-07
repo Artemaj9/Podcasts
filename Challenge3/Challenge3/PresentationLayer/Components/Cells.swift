@@ -13,32 +13,23 @@ struct Cells: View {
         CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 1", mainRight: "Right 1", secondLeft: "Second 1", secondRight: "Right Sec 1", image: "image1", iconMode: .blank, height: nil),
         CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 2", mainRight: "Right 2", secondLeft: "Second 2", secondRight: "Right Sec 2", image: "image2", iconMode: .like, height: nil),
         CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 3", mainRight: "Right 3", secondLeft: "Second 3", secondRight: "Right Sec 3", image: "image3", iconMode: .select, height: nil),
-        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 4", mainRight: "Right 4", secondLeft: "Second 4", secondRight: "Right Sec 4", image: "image4", iconMode: .blank, height: nil)
+        CellData(id: nil, guid: nil, iconState: true, mainLeft: "Main 4", mainRight: "Right 4", secondLeft: "Second 4", secondRight: "Right Sec 4", image: "image4", iconMode: .select, height: nil)
     ]
+
+    @State var epd = EpisodeCellData(id: nil, iconState: false, mainLeft: "sgfsassfg", secondLeft: "sdgasf", secondRight: "sdgasdg", image: "image2", iconMode: .blank, height: nil)
     
     var body: some View {
         VStack {
             Text("For test ONLY!")
-            
+
             ScrollView {
+                FilledEpisodeWideCell(data: $epd)
+                    .padding()
+
                 ForEach($cellDatas) { $data in
                     FilledWideCell(data: $data)
                 }
                 .padding()
-            }
-        }
-        
-        ScrollView() {
-            CreateButton{}
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding([.top, .leading])
-            
-            ForEach(0..<2) { _ in
-                BlankWideCell(
-                    mainTitle: "Tuhan mengapa dia berbeda",
-                    secondTitle: "15 Eps"
-                )
-                .padding([.top, .leading])
             }
         }
     }
@@ -47,6 +38,77 @@ struct Cells: View {
 struct Cells_Previews: PreviewProvider {
     static var previews: some View {
         Cells()
+    }
+}
+
+struct FilledEpisodeWideCell: View {
+    @Binding var data: EpisodeCellData
+
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Pallete.Gray.forCells)
+                .frame(height: data.height)
+
+            HStack(alignment: .center) {
+                CustomImage(imageString: data.image, width: 56 ,height: 56)
+                    .padding(8)
+
+                Spacer()
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Spacer()
+
+                    HStack {
+                        if let mainLeft = data.mainLeft {
+                            Text(mainLeft)
+                                .foregroundColor(Pallete.Other.deepPurpleText)
+                        }
+
+                        Spacer()
+                    }
+
+                    HStack {
+                        if let secondLeft = data.secondLeft {
+                            Text(secondLeft)
+                                .foregroundColor(Pallete.Gray.forText)
+                        }
+                        if (data.secondLeft != nil && data.secondRight != nil) {
+                            Circle()
+                                .fill(Pallete.Gray.forDots)
+                                .frame(width: 4)
+                        }
+                        if let secondRight = data.secondRight {
+                            Text(secondRight)
+                                .foregroundColor(Pallete.Gray.darkerForText)
+                        }
+
+                        Spacer()
+                    }
+
+                    Spacer()
+                }
+
+                Spacer()
+
+                Button {
+                    data.iconState.toggle()
+                } label: {
+                    switch data.iconMode {
+                    case .like:
+                        Image(data.iconState ? Images.Icon.heartFill.rawValue : Images.Icon.heart.rawValue)
+                            .padding(.trailing, 8)
+                    case .select:
+                        Image(data.iconState ? Images.Icon.tickSquare.rawValue : Images.Icon.plusWithBorder.rawValue)
+                            .padding(.trailing, 26)
+                    default:
+                        Text("")
+                    }
+                }
+                .frame(width: 56, height: data.height)
+            }
+        }
+        .padding(5)
     }
 }
 
@@ -195,6 +257,17 @@ struct CellData: Identifiable {
     var iconState: Bool
     let mainLeft: String?
     let mainRight: String?
+    let secondLeft: String?
+    let secondRight: String?
+    let image: String?
+    let iconMode: IconMode?
+    let height: CGFloat?
+}
+
+struct EpisodeCellData: Identifiable {
+    let id: Int?
+    var iconState: Bool
+    let mainLeft: String?
     let secondLeft: String?
     let secondRight: String?
     let image: String?
