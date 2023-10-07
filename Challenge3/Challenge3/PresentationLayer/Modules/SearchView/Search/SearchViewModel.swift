@@ -42,7 +42,7 @@ final class SearchViewModel: ObservableObject {
     func getTrendingPodcasts(max: Int) {
         Task {
             trendingPodcasts = await podcastManager?.performTrendingPodcasts(
-                max: 20, category: nil
+                max: 50, category: nil
             )
         }
     }
