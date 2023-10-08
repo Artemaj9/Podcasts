@@ -35,8 +35,8 @@ final class ChannelViewModel: ObservableObject {
             id: episode.id,
             iconState: iconState,
             mainLeft: episode.title,
-            secondLeft: episode.link,
-            secondRight: String(episode.duration ?? 0),
+            secondLeft: nil,
+            secondRight: episode.link,
             image: episode.image,
             iconMode: .blank,
             height: nil

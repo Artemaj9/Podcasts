@@ -50,7 +50,7 @@ struct MainTabBar: View, ItemView {
         .safeAreaInset(edge: .bottom) {
             if authModel.authenticationState != .authenticated {
                 
-            } else if firstTabNavigationModel.isRootView && secondTabNavigationModel.isRootView {
+            } else if firstTabNavigationModel.isRootView && secondTabNavigationModel.isRootView && thirdTabNavigationModel.isRootView {
                 VStack {
                     if player.isPlaying {
                         Button {
@@ -91,12 +91,9 @@ struct MainTabBar: View, ItemView {
                                             .padding(13)
                                     }
                                     
-//                                    Spacer()
-                                    
                                     Text(title)
                                         .fontWeight(.thin)
                                         .lineLimit(2)
-//                                        .truncationMode(.tail)
                                         .minimumScaleFactor(0.8)
                                         .foregroundColor(.black)
                                     

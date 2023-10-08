@@ -62,6 +62,7 @@ struct FilledEpisodeWideCell: View {
                     HStack {
                         if let mainLeft = data.mainLeft {
                             Text(mainLeft)
+                                .lineLimit(1)
                                 .foregroundColor(Pallete.Other.deepPurpleText)
                         }
 
@@ -71,6 +72,7 @@ struct FilledEpisodeWideCell: View {
                     HStack {
                         if let secondLeft = data.secondLeft {
                             Text(secondLeft)
+                                .lineLimit(1)
                                 .foregroundColor(Pallete.Gray.forText)
                         }
                         if (data.secondLeft != nil && data.secondRight != nil) {
@@ -80,6 +82,7 @@ struct FilledEpisodeWideCell: View {
                         }
                         if let secondRight = data.secondRight {
                             Text(secondRight)
+                                .lineLimit(1)
                                 .foregroundColor(Pallete.Gray.darkerForText)
                         }
 
@@ -114,11 +117,12 @@ struct FilledEpisodeWideCell: View {
 
 struct FilledWideCell: View {
     @Binding var data: CellData
+    var isLikeble = true
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
-                .fill(Pallete.Gray.forCells)
+                .fill(Pallete.Gray.forNext.opacity(0.8))
                 .frame(height: data.height)
             
             HStack(alignment: .center) {
@@ -133,11 +137,12 @@ struct FilledWideCell: View {
                     HStack {
                         if let mainLeft = data.mainLeft {
                             Text(mainLeft)
+                                .lineLimit(1)
                                 .foregroundColor(Pallete.Other.deepPurpleText)
                         }
                         if (data.mainLeft != nil && data.mainRight != nil) {
                             Rectangle()
-                                .fill(.white)
+                                .fill(Pallete.Gray.forDots)
                                 .frame(width: 1)
                                 .padding(3)
                         } else {
@@ -145,6 +150,7 @@ struct FilledWideCell: View {
                         }
                         if let mainRight = data.mainRight {
                             Text(mainRight)
+                                .lineLimit(1)
                                 .foregroundColor(Pallete.Other.deepPurpleText)
                         }
                         
@@ -188,7 +194,7 @@ struct FilledWideCell: View {
                         Text("")
                     }
                 }
-                .frame(width: 56, height: data.height)
+                .frame(width: isLikeble ? 56 : 0, height: data.height)
             }
         }
         .padding(5)
@@ -210,10 +216,12 @@ struct BlankWideCell: View {
             VStack(alignment: .leading) {
                 if let mainTitle {
                     Text(mainTitle)
+                        .lineLimit(1)
                         .foregroundColor(.black)
                 }
                 if let secondTitle {
                     Text(secondTitle)
+                        .lineLimit(1)
                         .foregroundColor(Pallete.Gray.forText)
                 }
             }
