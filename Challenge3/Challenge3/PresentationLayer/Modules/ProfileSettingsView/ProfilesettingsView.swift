@@ -79,8 +79,7 @@ struct ProfilesettingsView: View, ItemView {
             
             CustomButton(title: Localizable.ProfileSettings.logOut, buttonType: .strokeBlue) {
                 authViewModel.signOut()
-                listener?.popToRoot()
-                
+                listener?.push(view: SplashView())
             }
         }
         .onAppear {

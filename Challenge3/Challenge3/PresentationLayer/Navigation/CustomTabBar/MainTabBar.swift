@@ -6,20 +6,21 @@ import SwiftUI
 
 struct MainTabBar: View, ItemView {
     var listener: CustomNavigationContainer?
-
+    
     @State private var selectedTab = 0
-
+    
+    @ObservedObject var authModel = AuthenticationViewModel.shared
     // под каждую вкладку таббара создается свой навигейшн стек
     @StateObject var firstTabNavigationModel = CustomNavigationViewModel()
     @StateObject var secondTabNavigationModel = CustomNavigationViewModel()
     @StateObject var thirdTabNavigationModel = CustomNavigationViewModel()
     @StateObject var fourthTabNavigationModel = CustomNavigationViewModel()
-
+    
     @EnvironmentObject var homeViewModel: HomePageViewModel
     @EnvironmentObject var searchViewModel: SearchViewModel
     @EnvironmentObject var favoritesViewModel: FavoritesViewModel
     @EnvironmentObject var profileViewModel: ProfileSettingsViewModel
-
+    
     var body: some View {
         VStack {
             // Your main content
@@ -45,7 +46,9 @@ struct MainTabBar: View, ItemView {
             }
         }
         .safeAreaInset(edge: .bottom) {
-            if firstTabNavigationModel.isRootView && secondTabNavigationModel.isRootView {
+            if authModel.authenticationState != .authenticated {
+                
+            } else if firstTabNavigationModel.isRootView && secondTabNavigationModel.isRootView {
                 Rectangle()
                     .foregroundColor(.clear)
                     .frame(height: 68)
@@ -87,7 +90,6 @@ struct MainTabBar: View, ItemView {
                         }
                         .padding(.horizontal, 31)
                     }
-
             }
         }
     }
