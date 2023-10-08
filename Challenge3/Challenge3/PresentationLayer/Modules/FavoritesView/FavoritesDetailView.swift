@@ -30,30 +30,34 @@ struct FavoritesDetailView: View, ItemView {
     // MARK: - View's body
     
     var body: some View {
-        ScrollView() {
-            if let podcasts = podcastData {
-                ForEach(podcasts, id: \.id) { podcast in
-                    Button {
-                        // TODO: replace string with localizable string
-                        let screenTitle = "Channel"
-                        let dataForSendToScreen = podcast
-                        listener?.push(view: ChannelView(
-                            screenTitle: screenTitle,
-                            dataForScreen: dataForSendToScreen))
-                    } label: {
-                        BlankWideCell(
-                            mainTitle: podcast.title,
-                            secondTitle: podcast.author,
-                            image: podcast.image
-                        )
-                        .padding([.top, .leading])
+        ZStack {
+            BackgroundView()
+            
+            ScrollView() {
+                if let podcasts = podcastData {
+                    ForEach(podcasts, id: \.id) { podcast in
+                        Button {
+                            // TODO: replace string with localizable string
+                            let screenTitle = "Channel"
+                            let dataForSendToScreen = podcast
+                            listener?.push(view: ChannelView(
+                                screenTitle: screenTitle,
+                                dataForScreen: dataForSendToScreen))
+                        } label: {
+                            BlankWideCell(
+                                mainTitle: podcast.title,
+                                secondTitle: podcast.author,
+                                image: podcast.image
+                            )
+                            .padding([.top, .leading])
+                        }
                     }
+                } else {
+                    // TODO: add skeleton
                 }
-            } else {
-                // TODO: add skeleton
             }
         }
-        .makeCustomNavBar {
+        .makeCustomNavBar(showBackground: false) {
             NavigationBars(atView: .favorites, screenTitle: screenTitle) {
                 listener?.pop()
             }

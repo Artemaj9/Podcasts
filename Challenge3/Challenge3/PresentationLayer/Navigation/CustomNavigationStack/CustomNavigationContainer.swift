@@ -42,6 +42,7 @@ struct NavigationContainer<Content: View & ItemView>: View, CustomNavigationCont
             }
         }
         .animation(.default, value: viewModel.currentScreen)
+        .padding(.bottom, -10)
     }
     // MARK: - these methods are used for making navigation in the app
     func push<Content>(view: Content) where Content: ItemView {
