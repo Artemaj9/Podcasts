@@ -146,6 +146,7 @@ struct AccountSettingsView: View, ItemView {
                         image: accountSettingsViewModel.image
                     )
                     userManager.searchImage()
+                    accountSettingsViewModel.saveUserData()
                     listener?.pop()
                 }
             }
