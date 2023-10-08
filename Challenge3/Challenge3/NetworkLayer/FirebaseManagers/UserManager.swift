@@ -30,6 +30,7 @@ class UserManager: ObservableObject {
             if let error {
                 print("put data \(error.localizedDescription)")
             }
+            
             storRef.downloadURL { (url, error) in
                 let userData = [
                     "displayName" : currentUser.displayName ?? "default display name",
@@ -81,39 +82,22 @@ class UserManager: ObservableObject {
             return ""
         }
     }
-
     
-     func searchImage() {
-         let uid = Auth.auth().currentUser?.uid ?? ""
-         database.collection("users")
-             .document(uid)
-             .getDocument { snapshot, error in
-                 if let error {
-                     print(error)
-                 }
-                 if let snapshot {
-                     self.imageUrl = snapshot["avatarUrl"] as? String ?? ""
-                     print("image url: \(self.imageUrl)")
-                 }
-             }
-     }
+    func searchImage() {
+        let uid = Auth.auth().currentUser?.uid ?? ""
+        database.collection("users")
+            .document(uid)
+            .getDocument { snapshot, error in
+                if let error {
+                    print(error)
+                }
 
-    
-//    func searchImage() -> String? {
-//        let uid = Auth.auth().currentUser?.uid ?? ""
-//        var output: String?
-//        database.collection("users")
-//            .document(uid)
-//            .getDocument { snapshot, error in
-//                if let error {
-//                    print(error)
-//                }
-//                if let snapshot {
-//                    output = snapshot["avatarUrl"] as? String ?? ""
-//                }
-//            }
-//        return output
-//    }
+                if let snapshot {
+                    self.imageUrl = snapshot["avatarUrl"] as? String ?? ""
+                    print("image url: \(self.imageUrl)")
+                }
+            }
+    }
     
     func getEmail() -> String {
         let userEmail = Auth.auth().currentUser?.email ?? ""
