@@ -96,7 +96,7 @@ struct SearchView: View, ItemView {
                                 }
                             }
                     }
-
+                    
                     HStack {
                         Text(Localizable.Search.SearchBasic.topGen)
                             .fontWeight(.semibold)
@@ -115,24 +115,24 @@ struct SearchView: View, ItemView {
                     }
                     .offset(y: 16)
                     .padding(.horizontal, 28)
-
+                    
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             if let trending = searchViewModel.trendingPodcasts {
                                 let displayedPodcasts = trending.filter {
                                     $0.title != nil  && $0.title!.count < 10 }
                                 ForEach(Array(displayedPodcasts.indices), id: \.self) { index in
-                                        GenresButton(
-                                            title: displayedPodcasts[index].title!,
-                                            backgroundColor: buttonColor[index % buttonColor.count],
-                                            hSize: geometry.size.width * 0.4
-                                        ) {
-                                            listener?.push(view: ChannelView(
-                                                screenTitle: displayedPodcasts[index].title!,
-                                                dataForScreen: displayedPodcasts[index])
-                                            )
-                                        }
+                                    GenresButton(
+                                        title: displayedPodcasts[index].title!,
+                                        backgroundColor: buttonColor[index % buttonColor.count],
+                                        hSize: geometry.size.width * 0.4
+                                    ) {
+                                        listener?.push(view: ChannelView(
+                                            screenTitle: displayedPodcasts[index].title!,
+                                            dataForScreen: displayedPodcasts[index])
+                                        )
                                     }
+                                }
                             }
                         }
                         .padding(.vertical)
@@ -140,7 +140,7 @@ struct SearchView: View, ItemView {
                     }
                     
                     Spacer()
-
+                    
                     HStack {
                         Text(Localizable.Search.SearchBasic.browesAll)
                             .fontWeight(.semibold)
@@ -148,7 +148,7 @@ struct SearchView: View, ItemView {
                         Spacer()
                     }
                     .padding(.horizontal, 28)
-
+                    
                     VStack {
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(
@@ -185,7 +185,7 @@ struct SearchView: View, ItemView {
                     .padding(.leading, -2)
                     .padding(.trailing, 10)
                 }
-
+                
                 DropDownList(
                     searchText: $searchText,
                     dropDownList: $searchViewModel.podcastTitles,

@@ -11,6 +11,7 @@ struct HomePageView: View, ItemView {
     
     @EnvironmentObject var viewModel: HomePageViewModel
     @EnvironmentObject var favoritesViewModel: FavoritesViewModel
+    @EnvironmentObject var userManager: UserManager
     
     // MARK: - Internal Properties
     
@@ -21,9 +22,32 @@ struct HomePageView: View, ItemView {
     // MARK: - Body
 
     var body: some View {
+        VStack {
+            Button {
+                listener?.push(view: AccountSettingsView())
+            } label: {
+                HStack {
+                    CustomLabel(
+                        labelText: userManager.getDisplayName(),
+                        additionalText: "Love,life and chill",
+                        labelStyle: .homepage,
+                        epsText: ""
+                    )
+                    
+                    Spacer()
+                    
+                    CustomImage(
+                        imageString: userManager.imageUrl,
+                        width: 48, height: 48
+                    )
+                    .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 4)
+                }
+                .padding(.horizontal, 32)
+            }
+            
             VStack {
                 Button {
-                    
+                  
                 } label: {
                     HStack {
                         CustomLabel(labelText: "Abigael Amaniah", additionalText: "Love,life and chill", labelStyle: .homepage, epsText: "")
@@ -100,7 +124,8 @@ struct HomePageView: View, ItemView {
                                                                     CustomLabel(
                                                                         labelText: item.title ?? "",
                                                                         additionalText: "",
-                                                                        labelStyle: .cellHomepage, epsText: ""
+                                                                        labelStyle: .cellHomepage,
+                                                                        epsText: ""
                                                                     )
                                                                 }
                                                             }
@@ -162,6 +187,10 @@ struct HomePageView: View, ItemView {
                     }
                 }
             }
+        }
+        .onAppear {
+            userManager.searchImage()
+        }
     }
 }
 
@@ -170,5 +199,6 @@ struct HomePageView_Previews: PreviewProvider {
         HomePageView()
             .environmentObject(HomePageViewModel())
             .environmentObject(FavoritesViewModel())
+            .environmentObject(UserManager())
     }
 }

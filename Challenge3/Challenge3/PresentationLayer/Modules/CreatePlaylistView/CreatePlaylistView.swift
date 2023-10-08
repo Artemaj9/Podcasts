@@ -26,57 +26,61 @@ struct CreatePlaylistView: View, ItemView {
     ]
     
     var body: some View {
-        VStack {
-            CustomImage(imageString: image, width: 84, height: 84)
-                .onTapGesture {
-                    isShowBottomSheet = true
-                }
-                .padding()
-                .cornerRadius(10)
-                .padding(.top)
-            VStack() {
-                TextField("", text: $title)
-                    .customPlaceholder(when: title.isEmpty, alinment: .center) {
-                        Text(Localizable.Playlist.playlistPlaceholder).foregroundColor(.gray)
+        ZStack {
+            BackgroundView()
+            
+            VStack {
+                CustomImage(imageString: image, width: 84, height: 84)
+                    .onTapGesture {
+                        isShowBottomSheet = true
                     }
-                    .padding(.vertical)
-                    .autocorrectionDisabled()
-                    .autocapitalization(.none)
-                    .background(
-                        VStack {
-                            Spacer()
-                            Rectangle()
-                                .fill(Pallete.Gray.forText)
-                                .frame(height: 1)
+                    .padding()
+                    .cornerRadius(10)
+                    .padding(.top)
+                VStack() {
+                    TextField("", text: $title)
+                        .customPlaceholder(when: title.isEmpty, alinment: .center) {
+                            Text(Localizable.Playlist.playlistPlaceholder).foregroundColor(.gray)
                         }
-                    )
-            }
-            .padding([.horizontal, .bottom])
-            
-            SearchBarView(searchText: .constant(""), placeholder: "", backgroundColor: Pallete.Gray.forTextFields
-            ) {}
-            .frame(height: 32)
-            
-            ScrollView {
-                ForEach($cellDatas) { $data in
-                    FilledWideCell(data: $data)
+                        .padding(.vertical)
+                        .autocorrectionDisabled()
+                        .autocapitalization(.none)
+                        .background(
+                            VStack {
+                                Spacer()
+                                Rectangle()
+                                    .fill(Pallete.Gray.forText)
+                                    .frame(height: 1)
+                            }
+                        )
                 }
-                .padding()
-            }
-            
-            Spacer()
-        }
-        .overlay {
-            BottomSheet(
-                isShowing: $isShowBottomSheet,
-                content: AnyView(ChangeCoverView(isShowSheet: $isShowBottomSheet))
-            )
-        }
-        .makeCustomNavBar {
-            NavigationBars(atView: .createPlaylist) {
-                listener?.pop()
-            } trailingButtonAction: {
+                .padding([.horizontal, .bottom])
                 
+                SearchBarView(searchText: .constant(""), placeholder: "", backgroundColor: Pallete.Gray.forTextFields
+                ) {}
+                    .frame(height: 32)
+                
+                ScrollView {
+                    ForEach($cellDatas) { $data in
+                        FilledWideCell(data: $data)
+                    }
+                    .padding()
+                }
+                
+                Spacer()
+            }
+            .overlay {
+                BottomSheet(
+                    isShowing: $isShowBottomSheet,
+                    content: AnyView(ChangeCoverView(isShowSheet: $isShowBottomSheet))
+                )
+            }
+            .makeCustomNavBar {
+                NavigationBars(atView: .createPlaylist) {
+                    listener?.pop()
+                } trailingButtonAction: {
+                    
+                }
             }
         }
     }

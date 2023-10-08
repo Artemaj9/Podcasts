@@ -85,7 +85,7 @@ struct CustomButton: View {
                         Spacer()
                     }
                         .font(font)
-                        .background(.white)
+                        .background(.clear)
                         .foregroundColor(.blue)
                         .padding()
                         .overlay(
