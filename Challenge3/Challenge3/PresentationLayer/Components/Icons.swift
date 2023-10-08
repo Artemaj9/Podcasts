@@ -53,13 +53,13 @@ struct CustomImage: View {
             if let urlString = imageString, let url = URL(string: urlString), url.scheme != nil {
                 KFImage(url)
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
                     .frame(width: width, height: height)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             } else if let imageString = imageString, !imageString.isEmpty {
                 Image(imageString)
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
                     .frame(width: width, height: height)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             } else {

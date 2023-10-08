@@ -14,17 +14,16 @@ struct ProfilesettingsView: View, ItemView {
     
     // MARK: - Body
     var body: some View {
-        ZStack {
-            BackgroundView()
-            
-            VStack(alignment: .leading, spacing: 66) {
-                if let image = userManager.imageUrl {
-                    BlankWideCell(
-                        mainTitle: userManager.getDisplayName(),
-                        secondTitle: "Love,life and chill",
-                        image: image
-                    )
+        VStack(alignment: .leading, spacing: 66) {
+            if let image = userManager.imageUrl {
+                BlankWideCell(
+                    mainTitle: userManager.getDisplayName(),
+                    secondTitle: "Love,life and chill",
+                    image: userManager.imageUrl
+                )
+           
                 }
+          
                 VStack() {
                     HStack(spacing: 12) {
                         Button {
@@ -100,6 +99,7 @@ struct ProfilesettingsView: View, ItemView {
 struct ProfilesettingsView_Previews: PreviewProvider {
     static var previews: some View {
         ProfilesettingsView()
+            .environmentObject(UserManager())
     }
 }
 

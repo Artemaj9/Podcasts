@@ -14,51 +14,45 @@ class UserManager: ObservableObject {
     
     // MARK: - Private properties
     
-    private var selectedImageUrl: URL?
     private let database = Firestore.firestore()
     private var displayName = ""
     
     // MARK: - Internal functions
     
-    func persistImageToStorage(image: Image?) {
-        let uiImage: UIImage = image.asUIImage()
-        if image == nil {
-            self.selectedImageUrl = nil
-        }
-        
-        guard let imageData = uiImage.jpegData(compressionQuality: 0.2) else { return }
-        
-        let storageRef = Storage.storage().reference().child("images")
-        
-        storageRef.putData(imageData) { (metadata, error) in
-            
-            storageRef.downloadURL { (url, error) in
-                if let url {
-                    self.selectedImageUrl = url
-                }
+    func persistImageToStorage(dob: Date, gender: SelectedGender = .male, image: Image?) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+
+        guard let imageData = image.asUIImage().jpegData(compressionQuality: 0.2) else { return }
+
+        let storRef = Storage.storage().reference(withPath: currentUser.uid)
+
+        storRef.putData(imageData) { metadata, error in
+            if let error {
+                print("put data \(error.localizedDescription)")
             }
             
-        }
-    }
-    
-    func storeUserInformation(dob: Date, gender: SelectedGender = .male) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        let userData = [
-            "uid" : uid,
-            "avatarUrl" : String(selectedImageUrl?.absoluteString ?? ""),
-            "dob": dob as NSDate,
-            "gender": gender.rawValue
-        ] as [String : Any]
-        
-        Firestore.firestore()
-            .collection("users")
-            .document(uid)
-            .setData(userData) { error in
-                if let error {
-                    print(error)
-                }
+            storRef.downloadURL { (url, error) in
+                let userData = [
+                    "displayName" : currentUser.displayName ?? "default display name",
+                    "uid" : currentUser.uid,
+                    "avatarUrl" : url?.absoluteString ?? "",
+                    "dob": dob as NSDate,
+                    "gender" : gender.rawValue
+                ] as [String : Any]
+
+                Firestore.firestore()
+                    .collection("users")
+                    .document(currentUser.uid)
+                    .setData(userData) { error in
+                        if let error {
+                            print(error)
+                        }
+                    }
+
             }
+
+        }
+
     }
     
     func getDisplayName() -> String {
@@ -71,8 +65,10 @@ class UserManager: ObservableObject {
         let name = getDisplayName()
         if name.contains("@") {
             return name.components(separatedBy: "@")[0]
-        } else {
+        } else if name.contains(" ") {
             return name.components(separatedBy: " ")[0]
+        } else {
+            return name
         }
     }
     
@@ -80,21 +76,27 @@ class UserManager: ObservableObject {
         let name = getDisplayName()
         if name.contains("@") {
             return name.components(separatedBy: "@")[1]
-        } else {
+        } else if name.contains(" ") {
             return name.components(separatedBy: " ")[1]
+        } else {
+            return ""
         }
     }
     
     func searchImage() {
         let uid = Auth.auth().currentUser?.uid ?? ""
-        database.collection("users").document(uid).getDocument { snapshot, error in
-            if let error {
-                print(error)
+        database.collection("users")
+            .document(uid)
+            .getDocument { snapshot, error in
+                if let error {
+                    print(error)
+                }
+
+                if let snapshot {
+                    self.imageUrl = snapshot["avatarUrl"] as? String ?? ""
+                    print("image url: \(self.imageUrl)")
+                }
             }
-            if let snapshot {
-                self.imageUrl =  String(snapshot["avatarUrl"] as? String ?? "")
-            }
-        }
     }
     
     func getEmail() -> String {
