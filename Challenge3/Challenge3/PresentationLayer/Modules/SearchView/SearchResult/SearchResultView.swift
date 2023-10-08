@@ -142,8 +142,8 @@ struct SearchResultView: View, ItemView {
                             .frame(height: 88)
                         }
                     }
+                    .padding(.horizontal, 20)
                 }
-                .padding(.horizontal, 20)
             }
         }
         .onAppear {
