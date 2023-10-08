@@ -26,7 +26,17 @@ struct NowPlayingView: View, ItemView {
             GeometryReader { geo in
                 let playerIndex = player.currentEpisodeIndex
                 
-                if let imageUrl = player.episodePlaylist?[playerIndex].feedImage {
+                if let imageUrl = player.episodePlaylist?[playerIndex].image {
+                    KFImage(URL(string: imageUrl))
+                        .resizable()
+                        .scaledToFill()
+                        .scaleEffect(2)
+                        .blur(radius: 100)
+                        .animation(
+                            .easeIn(duration: 1),
+                            value: viewModel.currentBackground
+                        )
+                } else if let imageUrl = player.episodePlaylist?[playerIndex].feedImage {
                     KFImage(URL(string: imageUrl))
                         .resizable()
                         .scaledToFill()
@@ -238,7 +248,14 @@ struct EpisodeImageView: View {
     let episode: Episode
     
     var body: some View {
-        if let imageURL = episode.feedImage {
+        if let imageURL = episode.image {
+            KFImage(URL(string: imageURL))
+                .resizable()
+                .scaledToFit()
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .padding(.horizontal, 4)
+                .frame(width: UIScreen.main.bounds.size.width * 0.7)
+        } else if let imageURL = episode.feedImage {
             KFImage(URL(string: imageURL))
                 .resizable()
                 .scaledToFit()

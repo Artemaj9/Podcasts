@@ -73,6 +73,16 @@ final class PlayerViewModel: ObservableObject {
     
     private var playbackTimeObserver: Any?
     
+    func getImageUrl() -> String {
+        var urlString = ""
+        if let imageString = currentEpisode?.image {
+            urlString = imageString
+        } else if let imageString = currentEpisode?.feedImage {
+            urlString = imageString
+        }
+        return urlString
+    }
+    
     func play() {
         guard let episode = currentEpisode,
               let url = URL(string: episode.enclosureUrl ?? "") else {
