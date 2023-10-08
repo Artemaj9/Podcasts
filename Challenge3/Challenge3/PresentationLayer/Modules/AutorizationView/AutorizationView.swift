@@ -59,6 +59,7 @@ struct AuthorizationView: View, ItemView {
                 authViewModel.handleSignInWithAppleRequest(request)
             } onCompletion: { result in
                 authViewModel.handleSignInWithAppleCompletion(result)
+                listener?.popToRoot()
             }
             .frame(height: 60)
             .clipShape(RoundedCorners(radius: 50))
@@ -85,7 +86,7 @@ struct AuthorizationView: View, ItemView {
         Task {
             if await authViewModel.signInWithEmailPassword() {
                 splashViewModel.isNotLoggedIn = true
-                listener?.push(view: MainTabBar())
+                listener?.popToRoot()
             }
         }
     }
@@ -93,7 +94,7 @@ struct AuthorizationView: View, ItemView {
     func signInWithGoogle() {
         Task {
             if await authViewModel.signInWithGoogle() {
-                listener?.push(view: MainTabBar())
+                listener?.popToRoot()
             }
         }
     }

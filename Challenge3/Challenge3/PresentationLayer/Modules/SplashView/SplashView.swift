@@ -8,6 +8,7 @@ struct SplashView: View, ItemView {
 
     // MARK: - Property Wrappers
 
+    @ObservedObject var authModel = AuthenticationViewModel.shared
     @EnvironmentObject var splashViewModel: SplashViewModel
 
     // MARK: - Internal Properties
@@ -22,7 +23,7 @@ struct SplashView: View, ItemView {
         }
         .onAppear {
             DispatchQueue.main.async {
-                if !splashViewModel.isNotLoggedIn {
+                if authModel.authenticationState != .authenticated {
                     listener?.push(view: AuthorizationView())
                 } else {
                     listener?.push(view: MainTabBar())
@@ -31,3 +32,4 @@ struct SplashView: View, ItemView {
         }
     }
 }
+//!splashViewModel.isNotLoggedIn
