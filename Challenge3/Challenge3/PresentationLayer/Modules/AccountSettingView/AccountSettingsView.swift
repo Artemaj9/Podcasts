@@ -140,15 +140,12 @@ struct AccountSettingsView: View, ItemView {
                 }
                 
                 CustomButton(title: strings.saveChanges, buttonType: .filledGray) {
-                    userManager.persistImageToStorage(image: accountSettingsViewModel.image)
-                    
-                    userManager.storeUserInformation (
+                    userManager.persistImageToStorage(
                         dob: accountSettingsViewModel.selectedBirthday,
-                        gender: accountSettingsViewModel.selectedGender
+                        gender: accountSettingsViewModel.selectedGender,
+                        image: accountSettingsViewModel.image
                     )
-                    
-                    accountSettingsViewModel.saveUserData()
-                    
+                    userManager.searchImage()
                     listener?.pop()
                 }
             }
@@ -211,7 +208,7 @@ struct AccountSettingsView: View, ItemView {
                 }
             }
         }
-        .onAppear{
+        .onAppear {
             changedTextFields()
         }
     }

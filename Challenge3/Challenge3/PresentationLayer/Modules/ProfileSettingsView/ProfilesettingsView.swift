@@ -19,7 +19,7 @@ struct ProfilesettingsView: View, ItemView {
                 BlankWideCell(
                     mainTitle: userManager.getDisplayName(),
                     secondTitle: "Love,life and chill",
-                    image: image
+                    image: userManager.imageUrl
                 )
             }
             VStack() {
@@ -85,7 +85,6 @@ struct ProfilesettingsView: View, ItemView {
         .onAppear {
             userManager.searchImage()
         }
-        
         .alert(isPresented: $showingAlert) {
             Alert(title: Text("Message sent!"), message: Text("We have sent you a link to change your password by email."), dismissButton: .default(Text("OK")))
         }
@@ -97,6 +96,7 @@ struct ProfilesettingsView: View, ItemView {
 struct ProfilesettingsView_Previews: PreviewProvider {
     static var previews: some View {
         ProfilesettingsView()
+            .environmentObject(UserManager())
     }
 }
 
