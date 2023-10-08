@@ -16,7 +16,11 @@ struct FavoritesView: View, ItemView {
     //MARK: - View's Body
     
     var body: some View {
-        FavoritesDetailView(screenTitle: "Favorites", dataForScreen: favoritesViewModel.favoriteNetworkPodcasts, listener: listener)
+        ZStack {
+            BackgroundView()
+            
+            FavoritesDetailView(screenTitle: "Favorites", dataForScreen: favoritesViewModel.favoriteNetworkPodcasts, listener: listener)
+        }
     }
 }
 
