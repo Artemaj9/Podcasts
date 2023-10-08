@@ -43,7 +43,7 @@ struct Challenge3App: App {
     
     // MARK: - Body
     var body: some Scene {
-        WindowGroup { // добавить if какой экран будет показываться при старте
+        WindowGroup {
             NavigationContainer(viewModel: navigationViewModel) {
                 SplashView()
             }

@@ -32,4 +32,3 @@ struct SplashView: View, ItemView {
         }
     }
 }
-//!splashViewModel.isNotLoggedIn

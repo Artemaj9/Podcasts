@@ -48,14 +48,14 @@ struct MainTabBar: View, ItemView {
         .safeAreaInset(edge: .bottom) {
             if authModel.authenticationState != .authenticated {
                 
-            } else if firstTabNavigationModel.isRootView && secondTabNavigationModel.isRootView {
+            } else if firstTabNavigationModel.isRootView && secondTabNavigationModel.isRootView && thirdTabNavigationModel.isRootView {
                 Rectangle()
                     .foregroundColor(.clear)
                     .frame(height: 68)
                     .background(.white)
                     .cornerRadius(20)
                     .shadow(
-                        color: Color(red: 0.21, green: 0.22, blue: 0.3).opacity(0.08),
+                        color: Color(red: 0.21, green: 0.22, blue: 0.3).opacity(0.2),
                         radius: 24
                     )
                     .padding(.horizontal, 24)
