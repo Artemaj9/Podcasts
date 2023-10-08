@@ -137,7 +137,7 @@ struct SearchResultView: View, ItemView {
                                     get: { return searchViewModel.convertDataToCellData(podcast: podcastData[index]) },
                                     set: {_ in }
                                 )
-                                FilledWideCell(data: bindingData)
+                                FilledWideCell(data: bindingData, isLikeble: false)
                                     .opacity(getScrollOpacity(geometry: geo))
                                     .padding(.vertical, 8)
                             }
