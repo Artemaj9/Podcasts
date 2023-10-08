@@ -13,6 +13,7 @@ struct BackgroundView: View {
             
             RadialGradient(colors: [Pallete.OtherLight.slightPink, Pallete.BlackWhite.white.opacity(0.1)], center: .topTrailing, startRadius: 30, endRadius: 250)
         }
+        .opacity(0.7)
         .ignoresSafeArea()
     }
 }
