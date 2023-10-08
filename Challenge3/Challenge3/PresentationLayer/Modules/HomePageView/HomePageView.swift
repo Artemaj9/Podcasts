@@ -47,7 +47,7 @@ struct HomePageView: View, ItemView {
             
             VStack {
                 Button {
-                    
+                  
                 } label: {
                     HStack {
                         CustomLabel(labelText: "Abigael Amaniah", additionalText: "Love,life and chill", labelStyle: .homepage, epsText: "")
@@ -116,7 +116,7 @@ struct HomePageView: View, ItemView {
                                                         Spacer()
                                                         
                                                         RoundedRectangle(cornerRadius: 12)
-                                                            .fill(Pallete.BlackWhite.white.opacity(0.6))
+                                                            .fill(Pallete.BlackWhite.white.opacity(0.5))
                                                             .frame(width: 144, height: 64)
                                                             .overlay() {
                                                                 VStack(alignment: .leading) {
@@ -124,6 +124,7 @@ struct HomePageView: View, ItemView {
                                                                     CustomLabel(
                                                                         labelText: item.title ?? "",
                                                                         additionalText: "",
+                                                                        labelStyle: .cellHomepage,
                                                                         epsText: ""
                                                                     )
                                                                 }
@@ -134,6 +135,7 @@ struct HomePageView: View, ItemView {
                                         }
                                     }
                                 }
+                                .padding(.trailing, 32)
                             }
                             
                             HStack {

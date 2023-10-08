@@ -10,7 +10,7 @@ struct CustomLabel: View {
     // MARK: - Internal Properties
     var labelText: String
     var additionalText: String
-    var color: Color = Pallete.BlackWhite.black
+    var color: Color = Pallete.Other.deepPurpleText
     var secondColor: Color = Pallete.Gray.forText
     var labelStyle: LabelStyle = .create
     var epsText: String
@@ -28,10 +28,20 @@ struct CustomLabel: View {
                     .font(.system(size: 16))
                     .foregroundColor(secondColor)
             }
+            
         case .homepage:
             VStack(alignment: .leading, spacing: 4) {
                 Text(labelText)
                     .font(.system(size: 16))
+                    .foregroundColor(color)
+                Text(additionalText)
+                    .font(.system(size: 14))
+                    .foregroundColor(secondColor)
+            }
+        case .cellHomepage:
+            VStack(alignment: .leading, spacing: 4) {
+                Text(labelText)
+                    .font(.system(size: 20))
                     .foregroundColor(color)
                 Text(additionalText)
                     .font(.system(size: 14))
@@ -86,10 +96,9 @@ struct CustomLabel: View {
         @unknown default:
             Text(labelText)
         }
-        
     }
 }
 
 enum LabelStyle: String {
-    case create, homepage, nowPlaying, channel, searchResult
+    case create, cellHomepage, homepage, nowPlaying, channel, searchResult
 }

@@ -109,9 +109,9 @@ final class HomePageViewModel: ObservableObject {
             guid: podcast.podcastGuid,
             iconState: isFavorite,
             mainLeft: podcast.title,
-            mainRight: podcast.author,
+            mainRight: nil,
             secondLeft: podcast.categories?.values.first,
-            secondRight: "\(podcast.episodeCount ?? 1) Eps",
+            secondRight: nil,
             image: podcast.image,
             iconMode: .like,
             height: nil

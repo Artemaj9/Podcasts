@@ -86,9 +86,9 @@ final class SearchViewModel: ObservableObject {
             guid: podcast.podcastGuid,
             iconState: false,
             mainLeft: podcast.title,
-            mainRight: podcast.author,
-            secondLeft: podcast.categories?.values.first,
-            secondRight: "\(podcast.episodeCount ?? 1) Eps",
+            mainRight: nil,
+            secondLeft: podcast.author,
+            secondRight: nil,
             image: podcast.image,
             iconMode: .blank,
             height: nil

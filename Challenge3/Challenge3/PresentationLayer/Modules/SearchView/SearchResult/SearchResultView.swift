@@ -117,36 +117,27 @@ struct SearchResultView: View, ItemView {
                         .padding(.horizontal, 8)
                     }
                     
-                    HStack {
-                        Text(
-                            categoryName.isEmpty ?
-                            Localizable.Search.SarchResult.allEpisodes : categoryName + " Podcasts"
-                        )
-                        .fontWeight(.light)
-                        .foregroundColor(Pallete.Other.deepPurpleText)
-                        
-                        Spacer()
-                    }
-                    
-                    if let podcastData = categoryName.isEmpty ?
-                        searchViewModel.trendingPodcasts : searchViewModel.podcastFromCategory {
-                        ForEach(podcastData.indices) { index in
-                            GeometryReader { geo in
-                                Button {
-                                    let screenTitle = "Channel"
-                                    let dataForSendToScreen = podcastData[index]
-                                    listener?.push(view: ChannelView(
-                                        screenTitle: screenTitle, dataForScreen: podcastData[index])
-                                    )
-                                } label: {
-                                    let bindingData = Binding<CellData>(
-                                        get: { return searchViewModel.convertDataToCellData(podcast: podcastData[index]) },
-                                        set: {_ in }
-                                    )
-                                    FilledWideCell(data: bindingData)
-                                        .opacity(getScrollOpacity(geometry: geo))
-                                        .padding(.vertical, 8)
-                                }
+                    Spacer()
+                }
+                                
+                if let podcastData = categoryName.isEmpty ?
+                    searchViewModel.trendingPodcasts : searchViewModel.podcastFromCategory {
+                    ForEach(podcastData.indices) { index in
+                        GeometryReader { geo in
+                            Button {
+                                let screenTitle = "Channel"
+                                let dataForSendToScreen = podcastData[index]
+                                listener?.push(view: ChannelView(
+                                    screenTitle: screenTitle, dataForScreen: podcastData[index])
+                                )
+                            } label: {
+                                let bindingData = Binding<CellData>(
+                                    get: { return searchViewModel.convertDataToCellData(podcast: podcastData[index]) },
+                                    set: {_ in }
+                                )
+                                FilledWideCell(data: bindingData, isLikeble: false)
+                                    .opacity(getScrollOpacity(geometry: geo))
+                                    .padding(.vertical, 8)
                             }
                             .frame(height: 88)
                         }
